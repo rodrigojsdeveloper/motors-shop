@@ -25,13 +25,16 @@ export interface IButtonProps {
     | "buttonSizeHeader"
     | "buttonSizeBanner"
     | "buttonSizeFooter"
-    | "buttonSizeSignUp";
+    | "buttonSizeSignUp"
+    | "buttonSizeProductDetails"
+    | "buttonSizeProductCarDetails";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
     | "buttonColorGrayFooter"
     | "buttonColorBlueBanner"
-    | "buttonColorWhiteSignUp";
+    | "buttonColorWhiteSignUp"
+    | "buttonColorBlackProductDetails";
     className?: string;
     style?: React.CSSProperties | undefined;
 }

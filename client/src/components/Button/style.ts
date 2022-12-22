@@ -56,6 +56,20 @@ const Container = styled.button<IButtonStyledProps>`
                     height: 48px;
                 `
 
+            case "buttonSizeProductDetails":
+
+                return css`
+                    max-width: 206px;
+                    height: 48px;
+                `
+            
+            case "buttonSizeProductCarDetails":
+
+                return css`
+                    max-width: 100px;
+                    height: 38px;
+                `
+
             default:
                 return false
         }
@@ -138,6 +152,19 @@ const Container = styled.button<IButtonStyledProps>`
                         background-color: #FDFDFD;
                         color: #5126EA;
                     }
+                `
+            
+            case "buttonColorBlackProductDetails":
+
+                return css`
+                    background: #0B0D0D;
+                    border: 1.5px solid #0B0D0D;
+                    border-radius: 4px;
+                    
+                    padding: 12px 28px;
+                    font-weight: 600;
+                    font-size: 15px;
+                    color: #FFF;
                 `
             
             default:
