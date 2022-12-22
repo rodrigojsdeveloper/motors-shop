@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  frontend:
+    stdin_open: true
+    container_name: motors-shop-frontend
+    build:
+      dockerfile: Dockerfile
+      context: "./client"
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - 5173:5173

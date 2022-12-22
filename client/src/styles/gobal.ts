@@ -27,4 +27,8 @@ export default createGlobalStyle`
     input[type=number] {
         -moz-appearance:textfield;
     }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;

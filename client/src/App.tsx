@@ -1,5 +1,7 @@
+import { SignIn } from "./pages/SignIn";
+
 const App = () => {
-  return <div></div>;
+  return <SignIn />;
 };
 
 export { App };
