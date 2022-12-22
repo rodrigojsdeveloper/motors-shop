@@ -11,6 +11,8 @@ export interface InputProps {
   error?: any;
   required?: boolean | undefined;
   onChange?: any;
+  size: "inputSignIn" | "inputSignUp" | "inputSignUpSmall";
+  className?: string;
 }
 
 export interface IButtonProps {
@@ -22,15 +24,23 @@ export interface IButtonProps {
     | "buttonSizeLogin"
     | "buttonSizeHeader"
     | "buttonSizeBanner"
-    | "buttonSizeFooter";
+    | "buttonSizeFooter"
+    | "buttonSizeSignUp";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
     | "buttonColorGrayFooter"
-    | "buttonColorBlueBanner";
+    | "buttonColorBlueBanner"
+    | "buttonColorWhiteSignUp";
+    className?: string;
+    style?: React.CSSProperties | undefined;
 }
 
 export interface IButtonStyledProps {
   size: string;
   color: string;
+}
+
+export interface InputStyledProps {
+  size: string;
 }

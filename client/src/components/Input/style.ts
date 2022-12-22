@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import { InputStyledProps } from "../../interfaces"
 
 
 const Container = styled.div`
@@ -17,11 +18,9 @@ const Container = styled.div`
     }
 `
 
-const InputContainer = styled.input`
+const InputContainer = styled.input<InputStyledProps>`
 
     width: 100%;
-    max-width: 315px;
-    height: 48px;
 
     padding: 15px;
 
@@ -44,6 +43,33 @@ const InputContainer = styled.input`
     &:focus::-webkit-input-placeholder {
         color: transparent;
     }
+
+    ${ ({ size }) => {
+
+        switch(size) {
+
+            case "inputSignIn":
+                return css`
+                    max-width: 315px;
+                    height: 48px;
+                `
+            
+            case "inputSignUp":
+                return css`
+                    max-width: 315px;
+                    height: 80px;
+                `
+
+            case "inputSignUpSmall":
+                return css`
+                    max-width: 152px;
+                    height: 48px;
+                `
+
+            default:
+                return false
+        }
+    } }
 `
 
 export { Container, InputContainer }

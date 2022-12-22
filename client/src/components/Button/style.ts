@@ -45,7 +45,14 @@ const Container = styled.button<IButtonStyledProps>`
             case "buttonSizeBanner":
 
                 return css`
-                    width: 182.51px;
+                    max-width: 182.51px;
+                    height: 48px;
+                `
+
+            case "buttonSizeSignUp":
+
+                return css`
+                    max-width: 152px;
                     height: 48px;
                 `
 
@@ -87,6 +94,23 @@ const Container = styled.button<IButtonStyledProps>`
                         box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
                         color: rgba(0, 0, 0, 0.65);
                         transform: translateY(-1px);
+                    }
+                `
+
+            case "buttonColorWhiteSignUp":
+                
+                return css`
+                    background-color: #FDFDFD;
+                    border: 1.5px solid #ADB5BD;
+
+                    color: #0B0D0D;
+                    padding: 12px 28px;
+
+                    :hover {
+                        border-color: #4529E6;
+                        background-color: #4529E6;
+
+                        color: #FDFDFD;
                     }
                 `
                         

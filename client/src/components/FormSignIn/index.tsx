@@ -41,6 +41,7 @@ const FormSignIn = () => {
             type="text"
             error={ errors.usuario?.message }
             required={ true }
+            size="inputSignIn"
             />
 
             <label>Senha { errors.senha?.message as string }</label>
