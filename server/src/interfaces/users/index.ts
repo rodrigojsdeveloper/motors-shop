@@ -11,4 +11,15 @@ interface IUser {
     is_seller: boolean
 }
 
-export { IUser }
+interface IUserUpdate {
+    name?: string
+    email?: string
+    password?: string
+    cellphone?: string
+    address?: IAddress
+    cpf?: string
+    birthdate?: string
+    is_seller?: boolean
+}
+
+export { IUser, IUserUpdate }
