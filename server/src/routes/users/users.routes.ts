@@ -8,7 +8,7 @@ const routes = Router()
 
 const usersRoutes = () => {
 
-    routes.post("", createUserController)
+    routes.post("/signup", createUserController)
 
     routes.patch("/:id", updateUserController)
 
