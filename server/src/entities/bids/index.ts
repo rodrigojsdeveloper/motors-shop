@@ -9,9 +9,6 @@ class Bid {
     readonly id: string
 
     @Column({ type: "string" })
-    name: string
-
-    @Column({ type: "string" })
     value: string
 
     @CreateDateColumn({ type: "date" })
