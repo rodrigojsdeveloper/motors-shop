@@ -45,6 +45,8 @@ const Container = styled.div`
                 justify-content: center;
                 align-items: center;
 
+                padding: 20px;
+
                 & > img {
                     width: 100%;
                     max-width: 441px;
@@ -63,6 +65,8 @@ const Container = styled.div`
                 padding: 28px 44px;
                 background: #FDFDFD;
                 border-radius: 4px;
+
+                margin-top: 10px;
                 
                 & > h3 {
                     font-weight: 600;
@@ -113,6 +117,7 @@ const Container = styled.div`
                         line-height: 20px;
 
                         color: #212529;
+                        font-weight: bold;
                     }
                 }
             }
@@ -214,6 +219,8 @@ const Container = styled.div`
                         background: #E9ECEF;
                         border-radius: 4px;
 
+                        margin: 0 5px;
+
                         & > img {
                             width: 100%;
                             max-width: 94.22px;
@@ -282,6 +289,23 @@ const Container = styled.div`
                 margin: 0 auto;
             }
         }  
+    }
+
+    @media (max-width: 1440px) {
+
+        flex-direction: column;
+        align-items: center;
+
+        .divPhotos {
+            margin-top: 17px;
+        }
+    }
+
+    @media (max-width: 425px) {
+
+        .divPhotos {
+            padding: 20px;
+        }
     }
 `
 

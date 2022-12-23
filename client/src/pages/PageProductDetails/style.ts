@@ -18,6 +18,8 @@ const Container = styled.div`
         & > div {
             width: 100%;
             max-width: 1238px;
+
+            padding: 10px;
         }
     }
 `

@@ -9,28 +9,28 @@ class Product{
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @Column()
+    @Column({ type: "string" })
     name: string
 
-    @Column()
+    @Column({ type: "text" })
     description: string
 
-    @Column()
+    @Column({ type: "number" })
     year: number
 
-    @Column()
+    @Column({ type: "number" })
     kilometers: number
 
-    @Column()
+    @Column({ type: "string" })
     ad_type: string
 
-    @Column()
+    @Column({ type: "string" })
     price: string
 
-    @Column()
+    @Column({ type: "string" })
     vehicle_type: string
 
-    @Column()
+    @Column({ type: "string" })
     images: string
 
     @OneToOne((type) => Auction, {
