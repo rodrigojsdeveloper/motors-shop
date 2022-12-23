@@ -2,9 +2,9 @@ import { productRepository } from "../../repositories/productRepository"
 
 const listAllProductsService = async () => {
 
-    const users = await productRepository.find()
+    const products = await productRepository.find()
 
-    return users
+    return products
 }
 
 export { listAllProductsService }

@@ -1,11 +1,11 @@
 import { useRepository } from "../../repositories/userRepository"
-import { Product } from "../../entities/products"
+import { User } from "../../entities/users"
 
-const listProductsUserService = async (id: string): Promise<Product[]> => {
+const listProductsUserService = async (id: string): Promise<User> => {
 
     const user = await useRepository.findOne({ where: { id }, relations: [ "products" ] })
 
-    return user!.products
+    return user!
 }
 
 export { listProductsUserService }

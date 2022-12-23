@@ -14,7 +14,7 @@ const productsRoutes = () => {
 
     routes.post("", tokenMiddleware, createProductController)
 
-    routes.get("", tokenMiddleware, listAllProductsController)
+    routes.get("", listAllProductsController)
 
     routes.patch("/:id", tokenMiddleware, updateProductController)
 
