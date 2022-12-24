@@ -1,25 +1,25 @@
-import { IAddress } from "../address"
+import { IAddress } from "../address";
 
 interface IUser {
-    name: string
-    email: string
-    password: string
-    cellphone: string
-    address: IAddress
-    cpf: string
-    birthdate: string
-    is_seller: boolean
+  name: string;
+  email: string;
+  password: string;
+  cellphone: string;
+  address: IAddress | object;
+  cpf: string;
+  birthdate: string;
+  is_seller: boolean;
 }
 
 interface IUserUpdate {
-    name?: string
-    email?: string
-    password?: string
-    cellphone?: string
-    address?: IAddress
-    cpf?: string
-    birthdate?: string
-    is_seller?: boolean
+  name?: string;
+  email?: string;
+  password?: string;
+  cellphone?: string;
+  address?: IAddress;
+  cpf?: string;
+  birthdate?: string;
+  is_seller?: boolean;
 }
 
-export { IUser, IUserUpdate }
+export { IUser, IUserUpdate };

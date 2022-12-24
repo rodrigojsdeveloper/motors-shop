@@ -1,5 +1,5 @@
 interface IComment {
-    content: string
+  content: string;
 }
 
-export { IComment }
+export { IComment };

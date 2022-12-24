@@ -2,14 +2,12 @@ import { Router } from "express";
 
 import { loginController } from "../../controllers/login/login.controller";
 
-
-const routes = Router()
+const routes = Router();
 
 const loginRoutes = () => {
+  routes.post("", loginController);
 
-    routes.post("", loginController)
+  return routes;
+};
 
-    return routes
-}
-
-export { loginRoutes }
+export { loginRoutes };

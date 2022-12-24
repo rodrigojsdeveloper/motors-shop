@@ -1,5 +1,5 @@
 interface IBid {
-    value: string
+  value: string;
 }
 
-export { IBid }
+export { IBid };

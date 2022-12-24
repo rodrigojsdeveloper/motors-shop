@@ -5,22 +5,28 @@ import { createProductController } from "../../controllers/products/createProduc
 import { deleteProductController } from "../../controllers/products/deleteProduct.controller";
 import { updateProductController } from "../../controllers/products/updateProduct.controller";
 
+import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../../middlewares/token.middleware";
 
+import { productSchema } from "../../schemas/product.schemas";
 
-const routes = Router()
+const routes = Router();
 
 const productsRoutes = () => {
+  routes.post(
+    "",
+    schemaValidationMiddleware(productSchema),
+    tokenMiddleware,
+    createProductController
+  );
 
-    routes.post("", tokenMiddleware, createProductController)
+  routes.get("", listAllProductsController);
 
-    routes.get("", listAllProductsController)
+  routes.patch("/:id", tokenMiddleware, updateProductController);
 
-    routes.patch("/:id", tokenMiddleware, updateProductController)
+  routes.delete("/:id", tokenMiddleware, deleteProductController);
 
-    routes.delete("/:id", tokenMiddleware, deleteProductController)
+  return routes;
+};
 
-    return routes
-}
-
-export { productsRoutes }
+export { productsRoutes };

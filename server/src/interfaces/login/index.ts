@@ -1,6 +1,6 @@
 interface ILogin {
-    email: string
-    password: string
+  email: string;
+  password: string;
 }
 
-export { ILogin }
+export { ILogin };

@@ -1,26 +1,31 @@
-import { Router } from "express"
+import { Router } from "express";
 
-import { listProductsUserController } from "../../controllers/users/listProductsUser.controller"
-import { viewProfileController } from "../../controllers/users/viewProfile.controller"
-import { createUserController } from "../../controllers/users/createUser.controller"
-import { updateUserController } from "../../controllers/users/updateUser.controller"
+import { listProductsUserController } from "../../controllers/users/listProductsUser.controller";
+import { viewProfileController } from "../../controllers/users/viewProfile.controller";
+import { createUserController } from "../../controllers/users/createUser.controller";
+import { updateUserController } from "../../controllers/users/updateUser.controller";
 
-import { tokenMiddleware } from "../../middlewares/token.middleware"
+import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
+import { tokenMiddleware } from "../../middlewares/token.middleware";
 
+import { userSchema } from "../../schemas/user.schemas";
 
-const routes = Router()
+const routes = Router();
 
 const usersRoutes = () => {
+  routes.post(
+    "/signup",
+    schemaValidationMiddleware(userSchema),
+    createUserController
+  );
 
-    routes.post("/signup", createUserController)
+  routes.get("/:id", tokenMiddleware, listProductsUserController);
 
-    routes.get("/:id", tokenMiddleware, listProductsUserController)
+  routes.patch("/:id", tokenMiddleware, updateUserController);
 
-    routes.patch("/:id", tokenMiddleware, updateUserController)
+  routes.get("/profile", tokenMiddleware, viewProfileController);
 
-    routes.get("/profile", tokenMiddleware, viewProfileController)
+  return routes;
+};
 
-    return routes
-}
-
-export { usersRoutes }
+export { usersRoutes };
