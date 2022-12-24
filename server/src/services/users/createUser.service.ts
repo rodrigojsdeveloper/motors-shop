@@ -3,6 +3,7 @@ import { useRepository } from "../../repositories/userRepository"
 import { IUser } from "../../interfaces/users"
 import { User } from "../../entities/users"
 import { hash } from "bcrypt"
+import { BadRequestError } from "../../helpers"
 
 const createUserService = async (user: IUser): Promise<User> => {
 
@@ -10,6 +11,11 @@ const createUserService = async (user: IUser): Promise<User> => {
     const newAddress = await addressRepository.save(user.address)
 
     const hashedPassword = await hash(user.password, 10)
+
+    if(user.email) {
+
+        throw new BadRequestError("Email already exists")
+    }
 
     const newUser = new User()
     newUser.name = user.name

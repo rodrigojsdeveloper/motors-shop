@@ -3,6 +3,7 @@ import { useRepository } from "../../repositories/userRepository"
 import { IUserUpdate } from "../../interfaces/users"
 import { User } from "../../entities/users"
 import { hash } from "bcrypt"
+import { NotFoundError } from "../../helpers"
 
 const updateUserService = async (user: IUserUpdate, id: string): Promise<User> => {
 
@@ -10,7 +11,7 @@ const updateUserService = async (user: IUserUpdate, id: string): Promise<User> =
 
     if(!findUser) {
 
-        throw new Error("User not found")
+        throw new NotFoundError("User not found")
     }
 
     await useRepository.update(id, {
