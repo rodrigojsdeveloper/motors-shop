@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm";
+import { Auction } from "../auctions";
 import { Product } from "../products";
 import { User } from "../users";
 
@@ -20,6 +21,9 @@ class Comment {
 
     @ManyToOne((type) => Product, product => product.comments)
     product: Product
+
+    @ManyToOne((type) => Auction, auction => auction.comments)
+    auction: Auction
 }
 
 export { Comment }

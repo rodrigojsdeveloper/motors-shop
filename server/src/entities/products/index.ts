@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, OneToOne, JoinColumn } from 'typeorm'
-import { Auction } from '../auctions'
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm'
 import { Comment } from '../comments'
 import { User } from '../users'
 
@@ -32,11 +31,6 @@ class Product{
 
     @Column({ type: "string" })
     images: string
-
-    @OneToOne((type) => Auction, {
-        lazy: true
-    })@JoinColumn()
-    auction: Auction
 
     @ManyToOne((type) => User, user => user.products)
     user: User

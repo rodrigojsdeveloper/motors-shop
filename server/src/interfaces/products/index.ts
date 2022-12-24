@@ -4,7 +4,7 @@ interface IProduct {
     year: number
     kilometers: number
     ad_type: string
-    price: string
+    price: "auction" | "sale"
     vehicle_type: string
     images: string
 }
@@ -15,7 +15,7 @@ interface IProductUpdate {
     year?: number
     kilometers?: number
     ad_type?: string
-    price?: string
+    price?: "auction" | "sale"
     vehicle_type?: string
     images?: string
 }

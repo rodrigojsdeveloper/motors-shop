@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany } from "typeorm"
 import { Address } from "../address"
+import { Auction } from "../auctions"
 import { Bid } from "../bids"
 import { Comment } from "../comments"
 import { Product } from "../products"
@@ -57,6 +58,11 @@ class User {
         lazy: true
     })
     bids: Bid[]
+
+    @OneToMany((type) => Auction, auction => auction.user, {
+        lazy: true
+    })
+    auctions: Auction[]
 }
 
 export { User }

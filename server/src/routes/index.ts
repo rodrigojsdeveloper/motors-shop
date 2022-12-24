@@ -5,6 +5,7 @@ import { usersRoutes } from "./users/users.routes"
 import { loginRoutes } from "./login/login.routes"
 import { commentsRoutes } from "./comments/comments.routes"
 import { bidsRoutes } from "./bids/bids.routes"
+import { auctionsRoutes } from "./auctions/auctions.routes"
 
 const appRoutes = (app: Express) => {
 
@@ -13,6 +14,7 @@ const appRoutes = (app: Express) => {
     app.use("/products", productsRoutes())
     app.use("/comments", commentsRoutes())
     app.use("/bids", bidsRoutes())
+    app.use("/auctions", auctionsRoutes())
 }
 
 export { appRoutes }
