@@ -1,4 +1,4 @@
-import { listAllCommentsService } from "services/comments/listAllComments.service";
+import { listAllCommentsService } from "../../services/comments/listAllComments.service";
 import { Request, Response } from "express";
 
 const listAllCommentsController = async (req: Request, res: Response) => {

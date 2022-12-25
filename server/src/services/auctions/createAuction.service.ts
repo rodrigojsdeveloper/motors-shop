@@ -1,7 +1,7 @@
-import { auctionRepository } from "repositories/auctionRepository";
-import { useRepository } from "repositories/userRepository";
-import { IAuction } from "interfaces/auctions";
-import { Auction } from "entities/auctions";
+import { auctionRepository } from "../../repositories/auctionRepository";
+import { useRepository } from "../../repositories/userRepository";
+import { IAuction } from "../../interfaces/auctions";
+import { Auction } from "../../entities/auctions";
 
 const createAuctionService = async (
   auction: IAuction,

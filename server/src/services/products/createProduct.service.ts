@@ -1,6 +1,6 @@
-import { productRepository } from "repositories/productRepository";
-import { IProduct } from "interfaces/products";
-import { Product } from "entities/products";
+import { productRepository } from "../../repositories/productRepository";
+import { IProduct } from "../../interfaces/products";
+import { Product } from "../../entities/products";
 
 const createProductService = async (product: IProduct): Promise<Product> => {
   const newProduct = new Product();

@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import { listAllCommentsController } from "controllers/comments/listAllComments.controller";
-import { createCommentController } from "controllers/comments/createComment.controller";
+import { listAllCommentsController } from "../../controllers/comments/listAllComments.controller";
+import { createCommentController } from "../../controllers/comments/createComment.controller";
 
-import { schemaValidationMiddleware } from "middlewares/schemaValidation.middleware";
-import { tokenMiddleware } from "middlewares/token.middleware";
+import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
+import { tokenMiddleware } from "../../middlewares/token.middleware";
 
-import { commentSchema } from "schemas/comment.schemas";
+import { commentSchema } from "../../schemas/comment.schemas";
 
 const routes = Router();
 

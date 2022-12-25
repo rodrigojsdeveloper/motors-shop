@@ -1,7 +1,7 @@
-import { productRepository } from "repositories/productRepository";
-import { IProductUpdate } from "interfaces/products";
-import { Product } from "entities/products";
-import { NotFoundError } from "helpers";
+import { productRepository } from "../../repositories/productRepository";
+import { IProductUpdate } from "../../interfaces/products";
+import { Product } from "../../entities/products";
+import { NotFoundError } from "../../helpers";
 
 const updateProductService = async (
   product: IProductUpdate,

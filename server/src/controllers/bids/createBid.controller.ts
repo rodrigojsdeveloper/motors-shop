@@ -1,6 +1,6 @@
+import { createBidService } from "../../services/bids/createBid.service";
+import { IBid } from "../../interfaces/bids";
 import { Request, Response } from "express";
-import { IBid } from "interfaces/bids";
-import { createBidService } from "services/bids/createBid.service";
 
 const createBidController = async (req: Request, res: Response) => {
   const email: string = req.email;

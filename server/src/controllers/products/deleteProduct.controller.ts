@@ -1,5 +1,5 @@
+import { deleteProductService } from "../../services/products/deleteProduct.service";
 import { Request, Response } from "express";
-import { deleteProductService } from "services/products/deleteProduct.service";
 
 const deleteProductController = async (req: Request, res: Response) => {
   const id: string = req.params.id;

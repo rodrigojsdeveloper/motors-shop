@@ -1,14 +1,14 @@
 import { Router } from "express";
 
-import { listAllProductsController } from "controllers/products/listAllProducts.controller";
-import { createProductController } from "controllers/products/createProduct.controller";
-import { deleteProductController } from "controllers/products/deleteProduct.controller";
-import { updateProductController } from "controllers/products/updateProduct.controller";
+import { listAllProductsController } from "../../controllers/products/listAllProducts.controller";
+import { createProductController } from "../../controllers/products/createProduct.controller";
+import { deleteProductController } from "../../controllers/products/deleteProduct.controller";
+import { updateProductController } from "../../controllers/products/updateProduct.controller";
 
-import { schemaValidationMiddleware } from "middlewares/schemaValidation.middleware";
-import { tokenMiddleware } from "middlewares/token.middleware";
+import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
+import { tokenMiddleware } from "../../middlewares/token.middleware";
 
-import { productSchema } from "schemas/product.schemas";
+import { productSchema } from "../../schemas/product.schemas";
 
 const routes = Router();
 

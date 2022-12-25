@@ -47,3 +47,21 @@ export interface IButtonStyledProps {
 export interface InputStyledProps {
   size: string;
 }
+
+export interface IUserProps {
+  name: string;
+  email: string;
+  password: string;
+  cellphone: string;
+  cpf: string;
+  birthdate: string;
+  is_seller: boolean;
+  zip_code: string;
+  country: string;
+  state: string;
+  city: string;
+  district: string;
+  street: string;
+  number: number;
+  complement: string;
+}

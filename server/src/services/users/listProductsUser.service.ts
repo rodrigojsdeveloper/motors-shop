@@ -1,6 +1,6 @@
-import { useRepository } from "repositories/userRepository";
-import { User } from "entities/users";
-import { NotFoundError } from "helpers";
+import { useRepository } from "../../repositories/userRepository";
+import { NotFoundError } from "../../helpers";
+import { User } from "../../entities/users";
 
 const listProductsUserService = async (id: string): Promise<User> => {
   const user = await useRepository.findOne({

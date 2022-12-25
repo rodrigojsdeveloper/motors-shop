@@ -1,10 +1,15 @@
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm } from "react-hook-form"
+import { Container } from "./style"
 import { Button } from "../Button"
+import { useState } from "react"
 import { Input } from "../Input"
 import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { Container } from "./style"
-import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { api } from "../../services/api"
+import {
+    AiOutlineEye,
+    AiOutlineEyeInvisible,
+  } from "react-icons/ai";
 
 
 const FormSignUp = () => {
@@ -13,22 +18,64 @@ const FormSignUp = () => {
 
     const [ changeColorAdvertiser, setChangeColorAdvertiser ] = useState<boolean>(false)
 
+    const [ buyerOrAdvertiser, setBuyerOrAdvertiser ] = useState<boolean>(true)
+
+    const [ typeInput, setTypeInput ] = useState<boolean>(false);
+
+    const [ showOutlineShow, setShowOutlineShow ] = useState<boolean>(true);
+
+    const [ typeInputRepeatPassword, setTypeInputRepeatPassword ] = useState<boolean>(false);
+
+    const [ showOutlineShowRepeatPassword, setShowOutlineShowRepeatPassword ] = useState<boolean>(true);
+
+
     const schema = yup.object().shape({
 
         name: yup.string().required("Name obrigatório"),
         email: yup.string().required("Email obrigatória").email("Email inválido"),
-        password: yup.string().required("Senha obrigatória"),
+        password: yup.string().required("Senha obrigatória").min(8, "Minimum 8 caracters").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/, "Password must contain uppercase and lowercase letters, numbers and special characters"),
         cpf: yup.string().required("CPF obrigatória"),
         cellphone: yup.string().required("Celular obrigatória"),
         birthdate: yup.string().required("Data obrigatória"),
         description: yup.string().required("Descrição obrigatória"),
+        zip_code: yup.number().required("CEP obrigatória"),
+        country: yup.string().required("País obrigatório"),
+        state: yup.string().required("Estado obrigatório"),
+        city: yup.string().required("Cidade obrigatório"),
+        district: yup.string().required("Bairro obrigatório"),
+        street: yup.string().required("Rua obrigatória"),
+        number: yup.number().required("Número obrigatório"),
+        complement: yup.string(),
+        repeat_password: yup.string().required("Senha obrigatória").min(8, "Minimum 8 caracters").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/, "Password must contain uppercase and lowercase letters, numbers and special characters").oneOf([yup.ref('password'), null], 'Passwords must match'),
     })
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     })
 
-    const onSubmitFunction = (data: object) => console.log(data)
+    const onSubmitFunction = (data: any) => {
+
+        data.is_seller = buyerOrAdvertiser
+
+        const address = {
+            zip_code: data.zip_code,
+            country: data.country,
+            state: data.state,
+            city: data.city,
+            district: data.district,
+            street: data.street,
+            number: data.number,
+            complement: data.complement,
+        }
+
+        data.address = address
+
+        Reflect.deleteProperty(data, "repeat_password")
+
+        api.post("/users/signup", data)
+        .then(res => console.log(res))
+        .catch(error => console.error(error))
+    }
 
     return (
         <Container onSubmit={ handleSubmit(onSubmitFunction) }>
@@ -107,12 +154,23 @@ const FormSignUp = () => {
 
             <Input
             label="CEP"
-            name="cep"
+            name="zip_code"
             register={ register }
             placeholder="00000-000"
             autoComplete="off"
             type="number"
-            error={ errors.cep?.message }
+            error={ errors.zip_code?.message }
+            required={ true }
+            size="inputSignIn"
+            />
+            <Input
+            label="País"
+            name="country"
+            register={ register }
+            placeholder="Ex: United States"
+            autoComplete="off"
+            type="text"
+            error={ errors.country?.message }
             required={ true }
             size="inputSignIn"
             />
@@ -142,6 +200,17 @@ const FormSignUp = () => {
                 className="changeInput"
                 />
             </div>
+            <Input
+            label="Bairro"
+            name="district"
+            register={ register }
+            placeholder="Digitar bairro"
+            autoComplete="off"
+            type="text"
+            error={ errors.district?.message }
+            required={ true }
+            size="inputSignIn"
+            />
             <Input
             label="Rua"
             name="street"
@@ -186,35 +255,90 @@ const FormSignUp = () => {
                 <Button onClick={ () => {
                     setChangeColorBuyer(true)
                     setChangeColorAdvertiser(false)
+                    setBuyerOrAdvertiser(true)
                 } } style={ changeColorBuyer ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Comprador</Button>
                 <Button onClick={ () => {
                     setChangeColorBuyer(false)
                     setChangeColorAdvertiser(true)
+                    setBuyerOrAdvertiser(false)
                     } } style={ changeColorAdvertiser ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Anunciante</Button>
             </div>
 
-            <Input
-            label="Senha"
-            name="password"
-            register={ register }
-            placeholder="Digitar senha"
-            autoComplete="off"
-            type="text"
-            error={ errors.password?.message }
-            required={ true }
-            size="inputSignIn"
+            <label className="labelPassword">Senha { !!errors.password && <span> - {errors.password?.message as string}</span>}</label>
+            <div className="divInputPassword">
+            <input
+                placeholder="Senha"
+                type={typeInput ? "text" : "password"}
+                {...register("password")}
+                required={true}
+                onChange={(e: any) => {
+                if (e.target.value == "") {
+                    setShowOutlineShow(false);
+
+                    setTypeInput(false);
+                }
+                }}
             />
-            <Input
-            label="Senha"
-            name="password"
-            register={ register }
-            placeholder="Digitar senha"
-            autoComplete="off"
-            type="text"
-            error={ errors.password?.message }
-            required={ true }
-            size="inputSignIn"
+            {showOutlineShow ? (
+                <AiOutlineEyeInvisible
+                size={ 20 }
+                className="biShow"
+                onClick={() => {
+                    setTypeInput(true);
+
+                    setShowOutlineShow(false);
+                }}
+                />
+            ) : (
+                <AiOutlineEye
+                size={ 20 }
+                className="biShow"
+                onClick={() => {
+                    setTypeInput(false);
+
+                    setShowOutlineShow(true);
+                }}
+                />
+            )}
+            </div>
+
+            <label className="labelPassword">Repetir senha { !!errors.password && <span> - {errors.password?.message as string}</span>}</label>
+            <div className="divInputPassword">
+            <input
+                placeholder="Repita a senha"
+                type={typeInputRepeatPassword ? "text" : "password"}
+                {...register("repeat_password")}
+                required={true}
+                onChange={(e: any) => {
+                if (e.target.value == "") {
+                    setShowOutlineShowRepeatPassword(false);
+
+                    setTypeInputRepeatPassword(false);
+                }
+                }}
             />
+            {showOutlineShowRepeatPassword ? (
+                <AiOutlineEyeInvisible
+                size={ 20 }
+                className="biShow"
+                onClick={() => {
+                    setTypeInputRepeatPassword(true);
+
+                    setShowOutlineShowRepeatPassword(false);
+                }}
+                />
+            ) : (
+                <AiOutlineEye
+                size={ 20 }
+                className="biShow"
+                onClick={() => {
+                    setTypeInputRepeatPassword(false);
+
+                    setShowOutlineShowRepeatPassword(true);
+                }}
+                />
+            )}
+            </div>
 
             <Button className="buttonSubmit" size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit">Finalizar cadastro</Button>
         </Container>

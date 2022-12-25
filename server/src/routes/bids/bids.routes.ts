@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import { listAllBidsController } from "controllers/bids/listAllBids.controller";
-import { createBidController } from "controllers/bids/createBid.controller";
+import { listAllBidsController } from "../../controllers/bids/listAllBids.controller";
+import { createBidController } from "../../controllers/bids/createBid.controller";
 
-import { schemaValidationMiddleware } from "middlewares/schemaValidation.middleware";
-import { tokenMiddleware } from "middlewares/token.middleware";
+import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
+import { tokenMiddleware } from "../../middlewares/token.middleware";
 
-import { bidSchema } from "schemas/bid.schemas";
+import { bidSchema } from "../../schemas/bid.schemas";
 
 const routes = Router();
 

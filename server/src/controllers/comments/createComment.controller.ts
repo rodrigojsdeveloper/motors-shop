@@ -1,6 +1,6 @@
+import { createCommentService } from "../../services/comments/createComment.service";
+import { IComment } from "../../interfaces/comments";
 import { Request, Response } from "express";
-import { IComment } from "interfaces/comments";
-import { createCommentService } from "services/comments/createComment.service";
 
 const createCommentController = async (req: Request, res: Response) => {
   const email: string = req.email;

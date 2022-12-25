@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { ApiError } from "helpers";
+import { ApiError } from "../helpers";
 
 const handleErrorMiddleware = async (
   error: Error,

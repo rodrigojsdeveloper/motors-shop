@@ -1,8 +1,8 @@
-import { addressRepository } from "repositories/addressRepository";
-import { useRepository } from "repositories/userRepository";
-import { IUserUpdate } from "interfaces/users";
-import { NotFoundError } from "helpers";
-import { User } from "entities/users";
+import { addressRepository } from "../../repositories/addressRepository";
+import { useRepository } from "../../repositories/userRepository";
+import { IUserUpdate } from "../../interfaces/users";
+import { NotFoundError } from "../../helpers";
+import { User } from "../../entities/users";
 import { hash } from "bcrypt";
 
 const updateUserService = async (

@@ -1,9 +1,9 @@
-import { auctionRepository } from "repositories/auctionRepository";
-import { useRepository } from "repositories/userRepository";
-import { bidRepository } from "repositories/bidRepository";
-import { NotFoundError } from "helpers";
-import { IBid } from "interfaces/bids";
-import { Bid } from "entities/bids";
+import { auctionRepository } from "../../repositories/auctionRepository";
+import { useRepository } from "../../repositories/userRepository";
+import { bidRepository } from "../../repositories/bidRepository";
+import { NotFoundError } from "../../helpers";
+import { IBid } from "../../interfaces/bids";
+import { Bid } from "../../entities/bids";
 
 const createBidService = async (
   bid: IBid,

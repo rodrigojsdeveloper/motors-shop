@@ -1,5 +1,5 @@
-import { updateProductService } from "services/products/updateProduct.service";
-import { IProductUpdate } from "interfaces/products";
+import { updateProductService } from "../../services/products/updateProduct.service";
+import { IProductUpdate } from "../../interfaces/products";
 import { Request, Response } from "express";
 
 const updateProductController = async (req: Request, res: Response) => {

@@ -1,4 +1,4 @@
-import { listAllBidsService } from "services/bids/listAllBids.service";
+import { listAllBidsService } from "../../services/bids/listAllBids.service";
 import { Request, Response } from "express";
 
 const listAllBidsController = async (req: Request, res: Response) => {

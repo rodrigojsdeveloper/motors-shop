@@ -1,5 +1,5 @@
-import { AppDataSource } from "data-source";
-import { Comment } from "entities/comments";
+import { Comment } from "../entities/comments";
+import { AppDataSource } from "../data-source";
 
 const commentRepository = AppDataSource.getRepository(Comment);
 

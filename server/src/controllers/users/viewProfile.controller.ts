@@ -1,4 +1,4 @@
-import { viewProfileService } from "services/users/viewProfile.service";
+import { viewProfileService } from "../../services/users/viewProfile.service";
 import { Request, Response } from "express";
 
 const viewProfileController = async (req: Request, res: Response) => {

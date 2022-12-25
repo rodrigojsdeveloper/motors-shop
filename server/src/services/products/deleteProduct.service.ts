@@ -1,5 +1,5 @@
-import { productRepository } from "repositories/productRepository";
-import { NotFoundError } from "helpers";
+import { productRepository } from "../../repositories/productRepository";
+import { NotFoundError } from "../../helpers";
 
 const deleteProductService = async (id: string): Promise<void> => {
   const user = await productRepository.findOneBy({ id });

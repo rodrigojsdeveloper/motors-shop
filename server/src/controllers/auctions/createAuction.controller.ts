@@ -1,5 +1,5 @@
-import { createAuctionService } from "services/auctions/createAuction.service";
-import { IAuction } from "interfaces/auctions";
+import { createAuctionService } from "../../services/auctions/createAuction.service";
+import { IAuction } from "../../interfaces/auctions";
 import { Request, Response } from "express";
 
 const createAuctionController = async (req: Request, res: Response) => {

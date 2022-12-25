@@ -1,8 +1,8 @@
-import { addressRepository } from "repositories/addressRepository";
-import { useRepository } from "repositories/userRepository";
-import { BadRequestError } from "helpers";
-import { IUser } from "interfaces/users";
-import { User } from "entities/users";
+import { addressRepository } from "../../repositories/addressRepository";
+import { useRepository } from "../../repositories/userRepository";
+import { BadRequestError } from "../../helpers";
+import { IUser } from "../../interfaces/users";
+import { User } from "../../entities/users";
 import { hash } from "bcrypt";
 
 const createUserService = async (user: IUser): Promise<User> => {
@@ -11,7 +11,7 @@ const createUserService = async (user: IUser): Promise<User> => {
 
   const hashedPassword = await hash(user.password, 10);
 
-  if (user.email) {
+  if (await useRepository.findOneBy({ email: user.email })) {
     throw new BadRequestError("Email already exists");
   }
 
