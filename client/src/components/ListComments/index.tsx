@@ -1,4 +1,4 @@
-import { Comment } from "../Comments"
+import { Comment } from "../Comment"
 import { Container } from "./style"
 
 const ListComments = () => {

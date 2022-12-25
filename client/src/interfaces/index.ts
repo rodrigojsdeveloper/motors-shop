@@ -3,10 +3,10 @@ import { FieldValues, UseFormRegister } from "react-hook-form";
 
 export interface InputProps {
   type?: string;
-  name: string;
+  name?: string;
   autoComplete?: string;
   placeholder?: string;
-  register: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
   label?: string;
   error?: any;
   required?: boolean | undefined;
@@ -28,7 +28,8 @@ export interface IButtonProps {
     | "buttonSizeSignUp"
     | "buttonSizeProductDetails"
     | "buttonSizeProductCarDetails"
-    | "buttonSizeSuccessModal";
+    | "buttonSizeSuccessModal"
+    | "buttonSizeCreateBid";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"

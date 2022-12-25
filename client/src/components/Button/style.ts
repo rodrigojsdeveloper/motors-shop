@@ -73,7 +73,14 @@ const Container = styled.button<IButtonStyledProps>`
             case "buttonSizeSuccessModal":
 
                 return css`
-                    width: 132px;
+                    max-width: 132px;
+                    height: 38px;
+                `
+            
+            case "buttonSizeCreateBid":
+
+                return css`
+                    max-width: 132px;
                     height: 38px;
                 `
 

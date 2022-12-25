@@ -1,8 +1,15 @@
 import { Container } from "./style"
 import rightArrow from "../../assets/Group 29.svg"
 import clock from "../../assets/Group 13.svg"
+import { useNavigate, useParams } from "react-router-dom"
 
 const CardAuction = (auction: any) => {
+
+    let { auctionId } = useParams()
+
+    auctionId = auction.id
+
+    const navigate = useNavigate()
 
     return (
         <Container>
@@ -37,7 +44,7 @@ const CardAuction = (auction: any) => {
                 </div>
             </div>
 
-            <div className="divRedirectsToAuction">
+            <div className="divRedirectsToAuction" onClick={ () => navigate(`/auctions/${ auctionId }`) }>
                 <p>Acessar página do leilão</p>
 
                 <img src={ rightArrow } alt="right arrow" />
