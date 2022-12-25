@@ -185,23 +185,58 @@ const Container = styled.header`
             background-color: #FDFDFD;
             filter: drop-shadow(0px 60px 40px rgba(0, 0, 0, 0.09));
 
-            p {
+            & > p {
                 width: 100%;
                 padding: 25px 15px;
             }
 
             & > div {
 
-                padding: 0 15px 20px 15px;
+                padding: 0 15px 15px 15px;
 
-                p {
-                    padding-left: 0;
+                & > p {
+                    padding: 25px 0;
                 }
 
                 button {
                     width: 100%;
                     max-width: unset;
                 }
+            }
+        }
+    }
+
+    .menuOpenLogged {
+        width: 200px;
+        height: 202px;
+        margin-right: 10px;
+
+        border-radius: 4px;
+        background: #F8F9FA;
+        box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+
+        position: absolute;
+        top: 90%;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+            width: 100%;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 28px;
+            text-align: center;
+
+            padding: 11.5px 0;
+
+            color: #495057;
+            cursor: pointer;
+
+            &:hover {
+                background: #dbe1e7;
             }
         }
     }

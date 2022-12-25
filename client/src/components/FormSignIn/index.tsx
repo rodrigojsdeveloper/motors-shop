@@ -88,7 +88,7 @@ const FormSignIn = () => {
                 }
             </div>
 
-            <h3>Esqueci minha senha</h3>
+            <h3 onClick={ () => navigate("/newpassword") }>Esqueci minha senha</h3>
 
             <Button size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit" disabled={ load }>{
                 

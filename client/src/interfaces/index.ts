@@ -27,7 +27,8 @@ export interface IButtonProps {
     | "buttonSizeFooter"
     | "buttonSizeSignUp"
     | "buttonSizeProductDetails"
-    | "buttonSizeProductCarDetails";
+    | "buttonSizeProductCarDetails"
+    | "buttonSizeSuccessModal";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"

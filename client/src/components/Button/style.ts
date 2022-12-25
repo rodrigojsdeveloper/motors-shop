@@ -70,6 +70,13 @@ const Container = styled.button<IButtonStyledProps>`
                     height: 38px;
                 `
 
+            case "buttonSizeSuccessModal":
+
+                return css`
+                    width: 132px;
+                    height: 38px;
+                `
+
             default:
                 return false
         }

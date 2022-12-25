@@ -11,8 +11,11 @@ import {
     AiOutlineEyeInvisible,
   } from "react-icons/ai";
 
+interface IFormSignUp {
+    setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const FormSignUp = () => {
+const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
     const [ changeColorBuyer, setChangeColorBuyer ] = useState<boolean>(true)
 
@@ -27,6 +30,8 @@ const FormSignUp = () => {
     const [ typeInputRepeatPassword, setTypeInputRepeatPassword ] = useState<boolean>(false);
 
     const [ showOutlineShowRepeatPassword, setShowOutlineShowRepeatPassword ] = useState<boolean>(true);
+
+    const [ load, setLoad ] = useState<boolean>(false)
 
 
     const schema = yup.object().shape({
@@ -55,6 +60,8 @@ const FormSignUp = () => {
 
     const onSubmitFunction = (data: any) => {
 
+        setLoad(true)
+
         data.is_seller = buyerOrAdvertiser
 
         const address = {
@@ -73,8 +80,9 @@ const FormSignUp = () => {
         Reflect.deleteProperty(data, "repeat_password")
 
         api.post("/users/signup", data)
-        .then(res => console.log(res))
+        .then(_ => setOpenModalSuccess(true))
         .catch(error => console.error(error))
+        .finally(() => setLoad(false))
     }
 
     return (
@@ -340,7 +348,9 @@ const FormSignUp = () => {
             )}
             </div>
 
-            <Button className="buttonSubmit" size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit">Finalizar cadastro</Button>
+            <Button className="buttonSubmit" size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit" disabled={ load }>{
+                load ? "Finalizando..." : "Finalizar cadastro"
+            }</Button>
         </Container>
     )
 }
