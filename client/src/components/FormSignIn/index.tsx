@@ -6,9 +6,12 @@ import { Button } from "../Button"
 import { useState } from "react"
 import { Input } from "../Input"
 import * as yup from "yup"
+import { useNavigate } from "react-router-dom"
 
 
 const FormSignIn = () => {
+
+    const navigate = useNavigate()
 
     const [ showOutlineShow, setShowOutlineShow ] = useState<boolean>(true)
 
@@ -93,7 +96,7 @@ const FormSignIn = () => {
                 
             }</Button>
             <p>Ainda não possui conta?</p>
-            <Button size="buttonSizeLogin" color="buttonColorWhiteHeader" type="button">Cadastrar</Button>
+            <Button size="buttonSizeLogin" color="buttonColorWhiteHeader" type="button" onClick={ () => navigate("/signup") }>Cadastrar</Button>
         </Container>
     )
 }

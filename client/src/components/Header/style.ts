@@ -23,7 +23,91 @@ const Container = styled.header`
         max-width: 153.02px;
     }
 
-    .menuDefault {
+    .divLogged {
+    
+        width: 100%;
+        max-width: 461.73px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        & > nav {
+
+            display: flex;
+            align-items: center;
+
+            p:nth-child(2) {
+                padding: 0 25px;
+            }
+
+            p {
+                font-weight: 600;
+                font-size: 16px;
+                color: #495057;
+
+                cursor: pointer;
+
+                :hover {
+                    color: #000;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        & > hr {
+            border: none;
+            width: 2px;
+            background-color: #DEE2E6;
+        }
+
+        & > div {
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            & > h2 {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 28px;
+                padding-left: 10px;
+
+                color: #495057;
+            }
+
+            & > img {
+
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        .divNotLogged {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                font-weight: 600;
+                font-size: 16px;
+                color: #4529E6;
+
+                padding-right: 30px;
+                cursor: pointer;
+
+                :hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .divNotLogged {
     
         width: 100%;
         max-width: 592px;
@@ -37,12 +121,14 @@ const Container = styled.header`
             display: flex;
             align-items: center;
 
+            p:nth-child(2) {
+                padding: 0 25px;
+            }
+
             p {
                 font-weight: 600;
                 font-size: 16px;
                 color: #495057;
-
-                padding: 0 18px;
 
                 cursor: pointer;
 
@@ -122,7 +208,7 @@ const Container = styled.header`
 
     @media (max-width: 1024px) {
 
-        .menuDefault {
+        .divLogged, .divNotLogged {
             display: none;
         }
 

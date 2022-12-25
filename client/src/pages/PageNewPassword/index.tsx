@@ -1,15 +1,15 @@
 import { Footer } from "../../components/Footer";
-import { FormSignIn } from "../../components/FormSignIn";
+import { FormNewPassword } from "../../components/FormNewPassword";
 import { Header } from "../../components/Header";
 import { Container } from "./style";
 
-const SignIn = () => {
+const PageNewPassword = () => {
   return (
     <Container>
       <Header />
 
       <div>
-        <FormSignIn />
+        <FormNewPassword />
       </div>
 
       <Footer />
@@ -17,4 +17,4 @@ const SignIn = () => {
   );
 };
 
-export { SignIn };
+export { PageNewPassword };

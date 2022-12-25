@@ -1,13 +1,5 @@
-import { CreateComment } from "./components/CreateComment";
-import { ListComments } from "./components/ListComments";
-import { ProductDetails } from "./components/ProductDetails";
-import { Home } from "./pages/Home";
-import { PageProductDetails } from "./pages/PageProductDetails";
-import { SignIn } from "./pages/SignIn";
-import { SignUp } from "./pages/SignUp";
+import { AllRoutes } from "./routes";
 
-const App = () => {
-  return <SignUp />;
-};
+const App = () => <AllRoutes />;
 
 export { App };
