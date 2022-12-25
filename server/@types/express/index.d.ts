@@ -1,9 +1,9 @@
-import * as express from "express"
+import * as express from "express";
 
 declare global {
-    namespace Express {
-        interface Request {
-            email: string
-        }
+  namespace Express {
+    interface Request {
+      email: string;
     }
+  }
 }
