@@ -8,11 +8,11 @@ import { loginRoutes } from "./login/login.routes";
 import { bidsRoutes } from "./bids/bids.routes";
 
 const appRoutes = (app: Express) => {
+  app.use("/bids", bidsRoutes());
   app.use("/users", usersRoutes());
   app.use("/signin", loginRoutes());
   app.use("/products", productsRoutes());
   app.use("/comments", commentsRoutes());
-  app.use("/bids", bidsRoutes());
   app.use("/auctions", auctionsRoutes());
 };
 

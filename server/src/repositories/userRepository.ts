@@ -1,6 +1,6 @@
-import { AppDataSource } from "../data-source"
-import { User } from "../entities/users"
+import { AppDataSource } from "data-source";
+import { User } from "entities/users";
 
-const useRepository = AppDataSource.getRepository(User)
+const useRepository = AppDataSource.getRepository(User);
 
-export { useRepository }
+export { useRepository };

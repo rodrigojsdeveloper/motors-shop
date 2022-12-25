@@ -1,11 +1,10 @@
-import { bidRepository } from "../../repositories/bidRepository";
-import { Bid } from "../../entities/bids";
+import { bidRepository } from "repositories/bidRepository";
+import { Bid } from "entities/bids";
 
 const listAllBidsService = async (): Promise<Bid[]> => {
+  const bids = await bidRepository.find();
 
-    const bids = await bidRepository.find()
+  return bids;
+};
 
-    return bids
-}
-
-export { listAllBidsService }
+export { listAllBidsService };

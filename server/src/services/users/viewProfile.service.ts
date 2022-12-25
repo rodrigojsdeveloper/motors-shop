@@ -1,11 +1,10 @@
-import { useRepository } from "../../repositories/userRepository";
-import { User } from "../../entities/users";
+import { useRepository } from "repositories/userRepository";
+import { User } from "entities/users";
 
 const viewProfileService = async (email: string): Promise<User> => {
+  const user = await useRepository.findOneBy({ email });
 
-    const user = await useRepository.findOneBy({ email })
+  return user!;
+};
 
-    return user!
-}
-
-export { viewProfileService }
+export { viewProfileService };

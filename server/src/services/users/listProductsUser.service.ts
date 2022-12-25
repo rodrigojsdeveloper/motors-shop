@@ -1,17 +1,18 @@
-import { useRepository } from "../../repositories/userRepository"
-import { User } from "../../entities/users"
-import { NotFoundError } from "../../helpers"
+import { useRepository } from "repositories/userRepository";
+import { User } from "entities/users";
+import { NotFoundError } from "helpers";
 
 const listProductsUserService = async (id: string): Promise<User> => {
+  const user = await useRepository.findOne({
+    where: { id },
+    relations: ["products"],
+  });
 
-    const user = await useRepository.findOne({ where: { id }, relations: [ "products" ] })
+  if (!user) {
+    throw new NotFoundError("User not found");
+  }
 
-    if(!user) {
+  return user;
+};
 
-        throw new NotFoundError("User not found")
-    }
-
-    return user
-}
-
-export { listProductsUserService }
+export { listProductsUserService };

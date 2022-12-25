@@ -1,6 +1,6 @@
-import { AppDataSource } from "../data-source"
-import { Auction } from "../entities/auctions"
+import { AppDataSource } from "data-source";
+import { Auction } from "entities/auctions";
 
-const auctionRepository = AppDataSource.getRepository(Auction)
+const auctionRepository = AppDataSource.getRepository(Auction);
 
-export { auctionRepository }
+export { auctionRepository };

@@ -1,41 +1,39 @@
-import { addressRepository } from "../../repositories/addressRepository"
-import { useRepository } from "../../repositories/userRepository"
-import { IUser } from "../../interfaces/users"
-import { User } from "../../entities/users"
-import { hash } from "bcrypt"
-import { BadRequestError } from "../../helpers"
+import { addressRepository } from "repositories/addressRepository";
+import { useRepository } from "repositories/userRepository";
+import { BadRequestError } from "helpers";
+import { IUser } from "interfaces/users";
+import { User } from "entities/users";
+import { hash } from "bcrypt";
 
 const createUserService = async (user: IUser): Promise<User> => {
+  addressRepository.create(user.address);
+  const newAddress = await addressRepository.save(user.address);
 
-    addressRepository.create(user.address)
-    const newAddress = await addressRepository.save(user.address)
+  const hashedPassword = await hash(user.password, 10);
 
-    const hashedPassword = await hash(user.password, 10)
+  if (user.email) {
+    throw new BadRequestError("Email already exists");
+  }
 
-    if(user.email) {
+  const newUser = new User();
+  newUser.name = user.name;
+  newUser.email = user.email;
+  newUser.password = hashedPassword;
+  newUser.cellphone = user.cellphone;
+  newUser.address = newAddress;
+  newUser.cpf = user.cpf;
+  newUser.birthdate = user.birthdate;
+  newUser.is_seller = user.is_seller;
+  newUser.bids = [];
+  newUser.comments = [];
+  newUser.products = [];
 
-        throw new BadRequestError("Email already exists")
-    }
+  useRepository.create(newUser);
+  await useRepository.save(newUser);
 
-    const newUser = new User()
-    newUser.name = user.name
-    newUser.email = user.email
-    newUser.password = hashedPassword
-    newUser.cellphone = user.cellphone
-    newUser.address = newAddress
-    newUser.cpf = user.cpf
-    newUser.birthdate = user.birthdate
-    newUser.is_seller = user.is_seller
-    newUser.bids = []
-    newUser.comments = []
-    newUser.products = []
+  Reflect.deleteProperty(newUser, "password");
 
-    useRepository.create(newUser)
-    await useRepository.save(newUser)
+  return newUser;
+};
 
-    Reflect.deleteProperty(newUser, "password")
-
-    return newUser
-}
-
-export { createUserService }
+export { createUserService };
