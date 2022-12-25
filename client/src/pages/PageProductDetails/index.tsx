@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { CreateComment } from "../../components/CreateComment";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
@@ -6,6 +7,9 @@ import { ProductDetails } from "../../components/ProductDetails";
 import { Container } from "./style";
 
 const PageProductDetails = () => {
+
+  let { productId } = useParams()
+  
   return (
     <Container>
       <Header />

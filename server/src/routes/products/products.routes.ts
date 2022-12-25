@@ -4,6 +4,7 @@ import { listAllProductsController } from "../../controllers/products/listAllPro
 import { createProductController } from "../../controllers/products/createProduct.controller";
 import { deleteProductController } from "../../controllers/products/deleteProduct.controller";
 import { updateProductController } from "../../controllers/products/updateProduct.controller";
+import { specificProductController } from "controllers/products/specificProduct.controller";
 
 import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../../middlewares/token.middleware";
@@ -25,6 +26,8 @@ const productsRoutes = () => {
   routes.patch("/:id", tokenMiddleware, updateProductController);
 
   routes.delete("/:id", tokenMiddleware, deleteProductController);
+
+  routes.get("/:id", tokenMiddleware, specificProductController)
 
   return routes;
 };

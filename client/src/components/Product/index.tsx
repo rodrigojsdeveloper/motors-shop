@@ -5,13 +5,15 @@ interface IUserProps {
 }
 
 export interface IProductProps {
-    name: string
-    image: string
-    description: string
-    year: number
-    kilometers: number
-    price: string
-    user: IUserProps
+    id: string;
+    name: string;
+    description: string;
+    year: number;
+    kilometers: number;
+    ad_type: "car" | "motorbike" | string;
+    price: string;
+    vehicle_type: string;
+    images: string;
 }
 
 const Product = (product: any) => {
