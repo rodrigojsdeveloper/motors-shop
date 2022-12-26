@@ -3,7 +3,7 @@ import { Express } from "express";
 import { productsRoutes } from "./products/products.routes";
 import { commentsRoutes } from "./comments/comments.routes";
 import { auctionsRoutes } from "./auctions/auctions.routes";
-import { usersRoutes } from "./users/users.routes";
+import { profileRoutes, usersRoutes } from "./users/users.routes";
 import { loginRoutes } from "./login/login.routes";
 import { bidsRoutes } from "./bids/bids.routes";
 
@@ -14,6 +14,7 @@ const appRoutes = (app: Express) => {
   app.use("/products", productsRoutes());
   app.use("/comments", commentsRoutes());
   app.use("/auctions", auctionsRoutes());
+  app.use("/profile", profileRoutes());
 };
 
 export { appRoutes };

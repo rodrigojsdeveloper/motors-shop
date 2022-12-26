@@ -23,9 +23,14 @@ const usersRoutes = () => {
 
   routes.patch("/:id", tokenMiddleware, updateUserController);
 
-  routes.get("/profile", tokenMiddleware, viewProfileController);
-
   return routes;
 };
 
-export { usersRoutes };
+const profileRoutes = () => {
+
+  routes.get("", tokenMiddleware, viewProfileController);
+
+  return routes
+}
+
+export { usersRoutes, profileRoutes };

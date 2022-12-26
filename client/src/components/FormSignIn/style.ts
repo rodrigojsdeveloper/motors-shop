@@ -21,10 +21,10 @@ const Container = styled.form`
     }
 
     & > div {
-        margin-bottom: 8px;
-    }
 
-    & > label {
+        margin-top: 15px;
+    
+        & > label {
         
         font-size: 14px;
         font-weight: 500;
@@ -32,64 +32,65 @@ const Container = styled.form`
 
         padding-top: 50px;
         
-        span {
-            color: #c20707;
+            span {
+                color: #c20707;
+            }
         }
-    }
 
-    .inputPassword {
-        
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        width: 100%;
-        max-width: 315px;
-        height: 48px;
-
-        padding: 8px 15px;
-
-        border: 2px solid #E9ECEF;
-        border-radius: 4px;
-
-        font-weight: 400;
-        font-size: 16px;
-
-        transition: .5s;
-
-        &:hover {
-            border-color: #000;
+        .inputPassword {
             
-            .biShow {
-                    display: block;
-                }
-        }
+            display: flex;
+            flex-direction: row;
+            align-items: center;
 
-        input {
             width: 100%;
-            height: 100%;
+            max-width: 315px;
+            height: 48px;
 
-            border: none;
+            padding: 8px 15px;
 
-            &::placeholder {
+            border: 2px solid #E9ECEF;
+            border-radius: 4px;
+
+            font-weight: 400;
+            font-size: 16px;
+
+            transition: .5s;
+
+            &:hover {
+                border-color: #000;
+                
+                .biShow {
+                        display: block;
+                    }
+            }
+
+            input {
+                width: 100%;
+                height: 100%;
+
+                border: none;
+
+                &::placeholder {
+                    color: #868E96;
+                    font-size: 16px;
+                }
+
+                &:focus::-webkit-input-placeholder {
+                    color: transparent;
+                }
+            }
+
+            .biShow {
+
                 color: #868E96;
-                font-size: 16px;
-            }
+                cursor: pointer;
+                display: none;
 
-            &:focus::-webkit-input-placeholder {
-                color: transparent;
-            }
-        }
-
-        .biShow {
-
-            color: #868E96;
-            cursor: pointer;
-            display: none;
-
-            :hover {
-                color: #000;
-                transition: 1s;
+                :hover {
+                    color: #000;
+                    transition: 1s;
+                }
             }
         }
     }

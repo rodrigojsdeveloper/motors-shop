@@ -7,6 +7,7 @@ import { useState } from "react"
 import { Input } from "../Input"
 import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
+import { api } from "../../services/api"
 
 
 const FormSignIn = () => {
@@ -21,7 +22,7 @@ const FormSignIn = () => {
 
     const schema = yup.object().shape({
 
-        username: yup.string().required("Usuário obrigatório"),
+        email: yup.string().required("Email obrigatório").email("Invalid Email"),
         password: yup.string().required("Senha obrigatória")
     })
 
@@ -29,63 +30,76 @@ const FormSignIn = () => {
         resolver: yupResolver(schema)
     })
 
-    const onSubmitFunction = (data: object) => console.log(data)
+    const onSubmitFunction = (data: any) => {
+
+        api.post("/signin", data)
+        .then(res => {
+
+            sessionStorage.setItem("Motors shop: token", res.data.token)
+        
+            navigate("/")
+        })
+        .catch(error => console.error(error))
+        .finally(() => setLoad(false))
+    }
 
     return (
         <Container onSubmit={ handleSubmit(onSubmitFunction) }>
             <h2>Login</h2>
 
             <Input
-            label="Usuário"
-            name="username"
+            label="Email"
+            name="email"
             register={ register }
-            placeholder="Digitar usuário"
+            placeholder="Digitar email"
             autoComplete="off"
-            type="text"
-            error={ errors.usuario?.message }
+            type="email"
+            error={ errors.email?.message }
             required={ true }
             size="inputSignIn"
             />
 
-            <label>Senha { errors.senha?.message as string }</label>
-            <div className="inputPassword">
-                <input
-                { ...register("password") }
-                placeholder="Digitar senha"
-                type={ typeInput ? "text" : "password" }
-                required={ true }
-                onChange={ (e: any) => {
+            <div>
+                <label>Senha { errors.senha?.message as string }</label>
+                <div className="inputPassword">
+                    <input
+                    { ...register("password") }
+                    placeholder="Digitar senha"
+                    type={ typeInput ? "text" : "password" }
+                    required={ true }
+                    onChange={ (e: any) => {
 
-                    if(e.target.value == '') {
-
-                        setShowOutlineShow(true)
-
-                        setTypeInput(false)
-                    }
-                } }
-                />
-                {
-                    showOutlineShow ? (
-                        
-                        <AiOutlineEyeInvisible className="biShow" onClick={ () => {
-                        
-                            setTypeInput(true)
-                            
-                            setShowOutlineShow(false)
-
-                        } } />
-                    
-                        ) : (
-                    
-                        <AiOutlineEye className="biShow" onClick={ () => {
-
-                            setTypeInput(false)
+                        if(e.target.value == '') {
 
                             setShowOutlineShow(true)
 
-                        } } />
-                    )
-                }
+                            setTypeInput(false)
+                        }
+                    } }
+                    />
+                    {
+                        showOutlineShow ? (
+                            
+                            <AiOutlineEyeInvisible className="biShow" onClick={ () => {
+                            
+                                setTypeInput(true)
+                                
+                                setShowOutlineShow(false)
+
+                            } } />
+                        
+                            ) : (
+                        
+                            <AiOutlineEye className="biShow" onClick={ () => {
+
+                                setTypeInput(false)
+
+                                setShowOutlineShow(true)
+
+                            } } />
+                        )
+                    }
+                </div>
             </div>
 
             <h3 onClick={ () => navigate("/newpassword") }>Esqueci minha senha</h3>

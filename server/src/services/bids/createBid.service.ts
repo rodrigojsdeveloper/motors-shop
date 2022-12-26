@@ -24,7 +24,7 @@ const createBidService = async (
   newBid.user = user!;
 
   bidRepository.create(newBid);
-  bidRepository.save(newBid);
+  await bidRepository.save(newBid);
 
   return newBid;
 };

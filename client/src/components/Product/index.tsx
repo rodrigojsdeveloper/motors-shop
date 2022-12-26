@@ -1,43 +1,33 @@
+import { IProductProps } from "../../interfaces"
+import { AvatarUser } from "../AvatarUser"
 import { Container } from "./style"
 
-interface IUserProps {
-    name: string
+interface IProduct {
+    product: IProductProps
 }
 
-export interface IProductProps {
-    id: string;
-    name: string;
-    description: string;
-    year: number;
-    kilometers: number;
-    ad_type: "car" | "motorbike" | string;
-    price: string;
-    vehicle_type: string;
-    images: string;
-}
-
-const Product = (product: any) => {
+const Product = ({ product }: IProduct) => {
 
     return (
         <Container>
-            <img src={ product.image } alt={ product.name } title={ product.name } />
+            <img src={ product.images } alt={ product.name } title={ product.name } />
 
             <h4>{ product.name }</h4>
 
             <p>{ product.description }</p>
 
             <div>
-                <img src="" />
+                <AvatarUser userName={ product.user.name } />
                 <h6>{ product.user.name }</h6>
             </div>
 
             <div className="divKmYearPrice">
                 <div>
-                    <p>{ product.kilometers } KM</p>
                     <p>{ product.year }</p>
+                    <p>{ product.kilometers } KM</p>
                 </div>
 
-                <span>R$ { product.price }</span>
+                <span>{ product.price }</span>
             </div>
         </Container>
     )

@@ -37,8 +37,9 @@ export interface IButtonProps {
     | "buttonColorBlueBanner"
     | "buttonColorWhiteSignUp"
     | "buttonColorBlackProductDetails";
-    className?: string;
-    style?: React.CSSProperties | undefined;
+  className?: string;
+  style?: React.CSSProperties | undefined;
+  href?: any;
 }
 
 export interface IButtonStyledProps {
@@ -51,6 +52,7 @@ export interface InputStyledProps {
 }
 
 export interface IUserProps {
+  id: string;
   name: string;
   email: string;
   password: string;
@@ -66,4 +68,40 @@ export interface IUserProps {
   street: string;
   number: number;
   complement: string;
+}
+
+export interface IProductProps {
+  id: string;
+  name: string;
+  description: string;
+  year: number;
+  kilometers: number;
+  ad_type: "car" | "motorbike" | string;
+  price: string;
+  vehicle_type: string;
+  images: string;
+  user: IUserProps;
+}
+
+export interface IAuctionProps {
+  id: string;
+  name: string;
+  description: string;
+  year: number;
+  kilometers: number;
+  ad_type: "car" | "motorbike" | string;
+  price: string;
+  vehicle_type: string;
+  images: string;
+  time_limit: string;
+  user: IUserProps;
+}
+
+export interface IListAuctions {
+  auctions: IAuctionProps[];
+}
+
+export interface IListProducts {
+  listName: string;
+  products: IProductProps[];
 }

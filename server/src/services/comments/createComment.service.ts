@@ -19,7 +19,8 @@ const createCommentService = async (
   }
 
   const newComment = new Comment();
-  (newComment.content = comment.content), (newComment.user = user!);
+  newComment.content = comment.content;
+  newComment.user = user!;
   newComment.product = product;
 
   commentRepository.create(newComment);

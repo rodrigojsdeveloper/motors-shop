@@ -11,8 +11,12 @@ const Banner = () => {
             <p>Um ambiente feito para você explorar o seu melhor</p>
 
             <div>
-                <Button size="buttonSizeBanner" color="buttonColorBlueBanner" type="button">Carros</Button>
-                <Button size="buttonSizeBanner" color="buttonColorBlueBanner" type="button">Motos</Button>
+                <a href="#carsAndMotorcycles">
+                    <Button size="buttonSizeBanner" color="buttonColorBlueBanner" type="button">Carros</Button>
+                </a>
+                <a href="#carsAndMotorcycles">
+                    <Button size="buttonSizeBanner" color="buttonColorBlueBanner" type="button">Motos</Button>
+                </a>
             </div>
         </Container>
     )

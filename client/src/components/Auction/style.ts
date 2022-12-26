@@ -64,11 +64,11 @@ const Container = styled.div`
                 width: 100%;
                 height: 177px;
 
-                h4 {
+                & > h4 {
                     font-weight: 600;
                     font-size: 20px;
 
-                    padding-bottom: 25px;
+                    padding-bottom: 15px;
                 }
                 
                 & > p {
@@ -76,28 +76,30 @@ const Container = styled.div`
                     font-size: 16px;
                     color: #CED4DA;
 
-                    padding-bottom: 28px;
+                    padding-bottom: 20px;
                 }
 
-                div {
+                .divUser {
+
                     display: flex;
                     flex-direction: row;
-                    padding-bottom: 28px;
-
-                    img {
-                        width: 32px;
-                        height: 32px;
-                        border-radius: 150px;
-                    }
+                    padding-bottom: 20px;
+                    align-items: center;
 
                     h6 {
                         font-weight: 500;
                         font-size: 14px;
                         margin-left: 8px;
                     }
+                }
                     
-                    div {
-                        width: 113px;
+                .divYearKMPrice {
+                    
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    
+                    & > div {
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
@@ -110,6 +112,8 @@ const Container = styled.div`
                             background: #EDEAFD;
                             border-radius: 4px;
                             padding: 4px 8px;
+                            
+                            margin-right: 5px;
                         }
                     }
 
@@ -117,14 +121,6 @@ const Container = styled.div`
                         font-weight: 500;
                         font-size: 16px;
                     }
-                }
-
-                .divYearKMPrice {
-                    justify-content: space-between;
-                }
-
-                .divUser {
-                    align-items: center;
                 }
             }
         }

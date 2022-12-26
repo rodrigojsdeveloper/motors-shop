@@ -1,15 +1,11 @@
-import { IProductProps, Product } from "../Product"
+import { IListProducts, IProductProps } from "../../interfaces"
+import { Product } from "../Product"
 import { Container } from "./style"
-
-interface IListProducts {
-    listName: string;
-    products: IProductProps[]
-}
 
 const ListProducts = ({ listName, products }: IListProducts) => {
 
     return (
-        <Container>
+        <Container id="carsAndMotorcycles">
             <h2>{ listName }</h2>
 
             <menu>

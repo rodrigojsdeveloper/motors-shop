@@ -8,7 +8,7 @@ const Container = styled.form`
     background-color: #FDFDFD;
     border-radius: 4px;
 
-    padding: 44px 48px;
+    padding: 44px 50px;
 
     & > h2 {
 
@@ -94,6 +94,12 @@ const Container = styled.form`
                 }
             }
         }
+    }
+
+    @media (max-width: 375px) {
+
+        padding-left: 25px;
+        padding-right: 25px;
     }
 `
 

@@ -18,7 +18,7 @@ const auctionsRoutes = () => {
     createAuctionController
   );
 
-  routes.get("", tokenMiddleware, listAllAuctionsController);
+  routes.get("", listAllAuctionsController);
 
   return routes;
 };

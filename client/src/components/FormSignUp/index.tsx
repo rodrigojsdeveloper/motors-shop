@@ -108,7 +108,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
             register={ register }
             placeholder="Ex: johndoe@org.com"
             autoComplete="off"
-            type="text"
+            type="email"
             error={ errors.email?.message }
             required={ true }
             size="inputSignIn"

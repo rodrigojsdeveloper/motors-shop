@@ -7,8 +7,6 @@ import { ListBids } from "../../components/ListBids";
 import { Container } from "./style";
 
 const PageAuctionDetails = () => {
-
-  let { productId } = useParams()
   
   return (
     <Container>

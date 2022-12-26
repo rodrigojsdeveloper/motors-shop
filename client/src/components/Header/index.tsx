@@ -3,11 +3,15 @@ import menu from "../../assets/bars.svg"
 import close from "../../assets/xmark.svg"
 import { Button } from "../Button"
 import { Container } from "./style"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { AvatarUser } from "../AvatarUser"
+import { api } from "../../services/api"
 
 
 const Header = () => {
+
+    const token = sessionStorage.getItem("Motors shop: token")
 
     const navigate = useNavigate()
 
@@ -15,7 +19,19 @@ const Header = () => {
 
     const [ menuOpenLogged, setMenuOpenLogged ] = useState<boolean>(false)
 
-    const token = false
+    const [ userName, setUserName ] = useState<string>("")
+
+    useEffect(() => {
+
+        api.get("/profile", {
+            headers: {
+                "Authorization": `Bearer ${ token }`
+            }
+        })
+        .then(res => setUserName(res.data.name))
+        .catch(error => console.error(error))
+
+    }, [])
 
     return (
         <Container>
@@ -48,8 +64,8 @@ const Header = () => {
                                 setMenuOpenLogged(false)
                             }
                         } }>
-                            <img src="https://i.pinimg.com/originals/07/27/27/07272766e2fc55ea363b3655ddf00f4e.jpg" />
-                            <h2>Rodrigo silva</h2>
+                            <AvatarUser userName={ userName } />
+                            <h2>{ userName }</h2>
                         </div>
 
                     ) : (

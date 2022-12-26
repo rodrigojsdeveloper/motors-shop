@@ -28,7 +28,7 @@ const updateUserService = async (
     is_seller: user.is_seller ? user.is_seller : findUser.is_seller,
   });
 
-  const updatedUser = await useRepository.findOneBy({ id });
+  const updatedUser = await useRepository.findOneBy({ id: findUser.id });
 
   return updatedUser!;
 };

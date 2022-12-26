@@ -3,9 +3,11 @@ import { IProduct } from "../../interfaces/products";
 import { Request, Response } from "express";
 
 const createProductController = async (req: Request, res: Response) => {
+  const email: string = req.email;
+
   const data: IProduct = req.body;
 
-  const newProduct = await createProductService(data);
+  const newProduct = await createProductService(data, email);
 
   return res.status(201).json(newProduct);
 };

@@ -55,6 +55,10 @@ const Container = styled.div`
         width: 100%;
         max-width: 381.04px;
 
+        a {
+            width: 100%;
+        }
+
         button {
             margin: 0 10px;    
         }

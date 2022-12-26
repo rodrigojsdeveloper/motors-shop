@@ -1,8 +1,12 @@
 import { productRepository } from "../../repositories/productRepository";
+import { useRepository } from "../../repositories/userRepository";
 import { IProduct } from "../../interfaces/products";
 import { Product } from "../../entities/products";
 
-const createProductService = async (product: IProduct): Promise<Product> => {
+const createProductService = async (product: IProduct, email: string): Promise<Product> => {
+  
+  const user = await useRepository.findOneBy({ email })
+  
   const newProduct = new Product();
   newProduct.name = product.name;
   newProduct.description = product.description;
@@ -13,6 +17,7 @@ const createProductService = async (product: IProduct): Promise<Product> => {
   newProduct.vehicle_type = product.vehicle_type;
   newProduct.images = product.images;
   newProduct.comments = [];
+  newProduct.user = user!
 
   productRepository.create(newProduct);
   await productRepository.save(newProduct);

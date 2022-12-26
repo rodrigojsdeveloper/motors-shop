@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Banner } from "../../components/Banner";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { ListCardAuction } from "../../components/ListCardsAuction";
+import { ListAuction } from "../../components/ListAuction";
 import { ListProducts } from "../../components/ListProducts";
-import { IProductProps } from "../../components/Product";
+import { IAuctionProps, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
@@ -14,15 +14,25 @@ const Home = () => {
 
   const [ motorcycles, setMotorcycles ] = useState<IProductProps[]>([])
 
+  const [ auctions, setAuctions ] = useState<IAuctionProps[]>([])
+
   useEffect(() => {
 
     api.get("/products")
     .then(res => {
 
-      setCars(res.data.filter((product: IProductProps) => product.ad_type == "car"))
+      setCars(res.data.filter((product: IProductProps) => product.vehicle_type == "car"))
 
-      setMotorcycles(res.data.filter((product: IProductProps) => product.ad_type == "motorbike"))
+      setMotorcycles(res.data.filter((product: IProductProps) => product.vehicle_type == "motorbike"))
     })
+    .catch(error => console.error(error))
+
+  }, [])
+
+  useEffect(() => {
+
+    api.get("/auctions")
+    .then(res => setAuctions(res.data))
     .catch(error => console.error(error))
 
   }, [])
@@ -31,7 +41,7 @@ const Home = () => {
     <Container>
       <Header />
       <Banner />
-      <ListCardAuction />
+      <ListAuction auctions={ auctions } />
       <ListProducts listName="Carros" products={ cars } />
       <ListProducts listName="Motos" products={ motorcycles } />
       <Footer />
