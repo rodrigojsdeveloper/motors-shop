@@ -17,6 +17,7 @@ export default createGlobalStyle`
     }
     a {
         text-decoration: none;
+        cursor: pointer;
     }
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {

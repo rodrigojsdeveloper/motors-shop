@@ -65,6 +65,18 @@ const InputContainer = styled.input<InputStyledProps>`
                     max-width: 152px;
                     height: 48px;
                 `
+            
+            case "inputModalEditAddressLarge":
+                return css`
+                    max-width: 466px;
+                    height: 48px;
+                `
+            
+            case "inputModalEditAddressMedium":
+                return css`
+                    max-width: 228px;
+                    height: 48px;
+                `
 
             default:
                 return false

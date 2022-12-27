@@ -17,24 +17,6 @@ const Auction = ({ auction }: IAuction) => {
 
     const navigate = useNavigate()
 
-    function startTimer(duration: any, display: any) {
-        var timer: number
-        var minutes 
-        var seconds;
-        setInterval(function () {
-            minutes = timer / 60, 10;
-            seconds = timer % 60, 10;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = minutes + ":" + seconds;
-            if (--timer < 0) {
-                timer = duration;
-            }
-        }, 1000);
-    }
-
-    startTimer(60 * 5, auction.time_limit)
-
     return (
         <Container>
             <div className="divCardDescription">

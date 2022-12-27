@@ -1,3 +1,5 @@
+import { Comment } from "../comments";
+import { User } from "../users";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,8 +7,6 @@ import {
   ManyToOne,
   OneToMany,
 } from "typeorm";
-import { Comment } from "../comments";
-import { User } from "../users";
 
 @Entity("products")
 class Product {
@@ -24,9 +24,6 @@ class Product {
 
   @Column()
   kilometers: number;
-
-  @Column()
-  ad_type: string;
 
   @Column()
   price: string;

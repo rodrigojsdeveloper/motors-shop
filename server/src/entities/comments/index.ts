@@ -1,3 +1,6 @@
+import { Auction } from "../auctions";
+import { Product } from "../products";
+import { User } from "../users";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,9 +8,6 @@ import {
   CreateDateColumn,
   ManyToOne,
 } from "typeorm";
-import { Auction } from "../auctions";
-import { Product } from "../products";
-import { User } from "../users";
 
 @Entity("comments")
 class Comment {

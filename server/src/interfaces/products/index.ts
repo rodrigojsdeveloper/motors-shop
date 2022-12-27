@@ -3,9 +3,8 @@ interface IProduct {
   description: string;
   year: number;
   kilometers: number;
-  ad_type: "car" | "motorbike" | string;
   price: string;
-  vehicle_type: string;
+  vehicle_type: "car" | "motorbike" | string;
   images: string;
 }
 
@@ -14,9 +13,8 @@ interface IProductUpdate {
   description?: string;
   year?: number;
   kilometers?: number;
-  ad_type?: "car" | "motorbike";
   price?: string;
-  vehicle_type?: string;
+  vehicle_type?: "car" | "motorbike";
   images?: string;
 }
 

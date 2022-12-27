@@ -45,43 +45,50 @@ const Container = styled.button<IButtonStyledProps>`
             case "buttonSizeBanner":
 
                 return css`
-                    max-width: 182.51px;
                     height: 48px;
+                    max-width: 182.51px;
                 `
 
             case "buttonSizeSignUp":
 
                 return css`
-                    max-width: 152px;
                     height: 48px;
+                    max-width: 152px;
                 `
 
             case "buttonSizeProductDetails":
 
                 return css`
-                    max-width: 206px;
                     height: 48px;
+                    max-width: 206px;
                 `
             
             case "buttonSizeProductCarDetails":
 
                 return css`
-                    max-width: 100px;
                     height: 38px;
+                    max-width: 100px;
                 `
 
             case "buttonSizeSuccessModal":
 
                 return css`
-                    max-width: 132px;
                     height: 38px;
+                    max-width: 132px;
                 `
             
-            case "buttonSizeCreateBid":
+            case "buttonSizeModalEditAddressMedium":
 
                 return css`
-                    max-width: 132px;
-                    height: 38px;
+                    height: 48px;
+                    max-width: 193px;
+                `
+
+            case "buttonSizeModalEditAddressSmall":
+
+                return css`
+                    height: 48px;
+                    max-width: 126px;
                 `
 
             default:
@@ -179,6 +186,23 @@ const Container = styled.button<IButtonStyledProps>`
                     font-weight: 600;
                     font-size: 15px;
                     color: #FFF;
+                `
+            
+            case "buttonColorGrayModalEditAddress":
+
+                return css`
+                    background: #DEE2E6;
+                    border: 1.5px solid #DEE2E6;
+                    border-radius: 4px;
+                    
+                    padding: 12px 28px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #495057;
+
+                    :hover {
+                        background-color: #edf4fb;
+                    }
                 `
             
             default:

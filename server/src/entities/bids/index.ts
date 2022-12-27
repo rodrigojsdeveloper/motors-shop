@@ -1,3 +1,5 @@
+import { Auction } from "../auctions";
+import { User } from "../users";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,8 +7,6 @@ import {
   CreateDateColumn,
   OneToMany,
 } from "typeorm";
-import { Auction } from "../auctions";
-import { User } from "../users";
 
 @Entity("bids")
 class Bid {

@@ -1,3 +1,8 @@
+import { Comment } from "../comments";
+import { Auction } from "../auctions";
+import { Product } from "../products";
+import { Address } from "../address";
+import { Bid } from "../bids";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -8,11 +13,6 @@ import {
   JoinColumn,
   OneToMany,
 } from "typeorm";
-import { Comment } from "../comments";
-import { Auction } from "../auctions";
-import { Product } from "../products";
-import { Address } from "../address";
-import { Bid } from "../bids";
 
 @Entity("users")
 class User {

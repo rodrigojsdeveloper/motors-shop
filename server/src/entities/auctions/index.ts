@@ -1,3 +1,6 @@
+import { Comment } from "../comments";
+import { User } from "../users";
+import { Bid } from "../bids";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,9 +8,6 @@ import {
   OneToMany,
   ManyToOne,
 } from "typeorm";
-import { Comment } from "../comments";
-import { User } from "../users";
-import { Bid } from "../bids";
 
 @Entity("auctions")
 class Auction {
@@ -25,9 +25,6 @@ class Auction {
 
   @Column()
   kilometers: number;
-
-  @Column()
-  ad_type: string;
 
   @Column()
   price: string;

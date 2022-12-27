@@ -1,3 +1,4 @@
+import { User } from "../users";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,11 +6,9 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
-import { User } from "../users";
 
 @Entity("address")
 class Address {
-  
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
@@ -36,7 +35,7 @@ class Address {
 
   @Column()
   complement: string;
-  
+
   @OneToOne((type) => User, {
     eager: true,
   })

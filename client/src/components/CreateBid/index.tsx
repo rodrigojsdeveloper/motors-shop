@@ -21,7 +21,7 @@ const CreateBid = () => {
                 size="inputSignIn"
                 />
 
-                <Button color="buttonColorBlueLogin" size="buttonSizeCreateBid" type="button">Inserir proposta</Button>
+                <Button color="buttonColorBlueLogin" size="buttonSizeSuccessModal" type="button">Inserir proposta</Button>
             </div>
         </Container>
     )

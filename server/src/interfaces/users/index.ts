@@ -1,4 +1,4 @@
-import { IAddress } from "../address";
+import { IAddress, IAddressUpdate } from "../address";
 
 interface IUser {
   name: string;
@@ -16,7 +16,7 @@ interface IUserUpdate {
   email?: string;
   password?: string;
   cellphone?: string;
-  address?: IAddress;
+  address?: IAddressUpdate;
   cpf?: string;
   birthdate?: string;
   is_seller?: boolean;

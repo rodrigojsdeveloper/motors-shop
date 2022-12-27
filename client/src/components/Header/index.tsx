@@ -7,11 +7,14 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AvatarUser } from "../AvatarUser"
 import { api } from "../../services/api"
+import { Link } from "react-router-dom"
+import { ModalBackground } from "../ModalBackground"
+import { ModalEditAddress } from "../ModalEditAddress"
 
 
 const Header = () => {
 
-    const token = sessionStorage.getItem("Motors shop: token")
+    const token = true
 
     const navigate = useNavigate()
 
@@ -21,7 +24,11 @@ const Header = () => {
 
     const [ userName, setUserName ] = useState<string>("")
 
-    useEffect(() => {
+    const [ openModalEditAddress, setOpenModalEditAddress ] = useState<boolean>(false)
+
+    const [ openModalEditUser, setOpenModalEditUser ] = useState<boolean>(false)
+
+    token && useEffect(() => {
 
         api.get("/profile", {
             headers: {
@@ -36,10 +43,28 @@ const Header = () => {
     return (
         <Container>
             {
+                openModalEditAddress && 
+                <ModalBackground>
+                    <ModalEditAddress setOpenModalEditAddress={ setOpenModalEditAddress } />
+                </ModalBackground>
+            }
+            {
                 menuOpenLogged &&
                 <div className="menuOpenLogged">
-                    <p>Editar perfil</p>
-                    <p>Editar endereço</p>
+                    <p onClick={ () => {
+                                    
+                        setOpenModalEditUser(true)
+
+                        setMenuOpenLogged(false)
+
+                    } }>Editar perfil</p>
+                    <p onClick={ () => {
+                                    
+                        setOpenModalEditAddress(true)
+
+                        setMenuOpenLogged(false)
+
+                    } }>Editar endereço</p>
                     <p>Meus Anúncios</p>
                     <p>Sair</p>
                 </div>
@@ -48,9 +73,9 @@ const Header = () => {
 
             <div className={ token ? "divLogged" : "divNotLogged" }>
                 <nav>
-                    <p onClick={ () => navigate("/") }>Carros</p>
-                    <p onClick={ () => navigate("/") }>Motos</p>
-                    <p onClick={ () => navigate("/") }>Leilão</p>
+                    <Link to="/">Carros</Link>
+                    <Link to="/">Motos</Link>
+                    <Link to="/">Leilão</Link>
                 </nav>
                 <hr />
                 {
@@ -71,7 +96,7 @@ const Header = () => {
                     ) : (
 
                         <div>
-                            <p onClick={ () => navigate("/signin") }>Fazer Login</p>
+                            <Link to="/signin">Fazer Login</Link>
                             <Button size="buttonSizeHeader" color="buttonColorWhiteHeader" type="button" onClick={ () => navigate("/signup") }>Cadastrar</Button>
                         </div>
                     )
@@ -95,27 +120,42 @@ const Header = () => {
                         
                         menuOpen && 
                         <nav>
-                            <p onClick={ () => navigate("/") }>Carros</p>
-                            <p onClick={ () => navigate("/") }>Motos</p>
-                            <p onClick={ () => navigate("/") }>Leilão</p>
+                            <Link to="/">Carros</Link>
+                            <Link to="/">Motos</Link>
+                            <Link to="/">Leilão</Link>
                             <hr />
                             <div>
-                                <p>Editar perfil</p>
-                                <p>Editar endereço</p>
-                                <p>Meus Anúncios</p>
-                                <p>Sair</p>
+                                <p onClick={ () => {
+                                    
+                                    setOpenModalEditUser(true)
+            
+                                    setMenuOpenLogged(false)
+            
+                                } }>Editar perfil</p>
+                                <p onClick={ () => {
+                                    
+                                    setOpenModalEditAddress(true)
+
+                                    setMenuOpenLogged(false)
+
+                                } }>Editar endereço</p>
+                                <Link to="">Meus Anúncios</Link>
+                                <Link to="">Sair</Link>
                             </div>
                         </nav>
 
                     ) : (
                         menuOpen && 
                         <nav>
-                            <p onClick={ () => navigate("/") }>Carros</p>
-                            <p onClick={ () => navigate("/") }>Motos</p>
-                            <p onClick={ () => navigate("/") }>Leilão</p>
                             <hr />
                             <div>
-                                <p onClick={ () => navigate("/signin") }>Fazer Login</p>
+                                <Link to="/">Carros</Link>
+                                <Link to="/">Motos</Link>
+                                <Link to="/">Leilão</Link>
+                            </div>
+                            <hr />
+                            <div>
+                                <Link to="/signin">Fazer Login</Link>
                                 <Button size="buttonSizeHeader" color="buttonColorWhiteHeader" type="button" onClick={ () => navigate("/signup") }>Cadastrar</Button>
                             </div>
                         </nav>

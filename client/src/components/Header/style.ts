@@ -19,8 +19,9 @@ const Container = styled.header`
     justify-content: space-between;
 
     & > img {
-        width: 100%;
-        max-width: 153.02px;
+        width: 153.02px;
+        height: 26.34px;
+        margin: auto 0;
     }
 
     .divLogged {
@@ -37,16 +38,14 @@ const Container = styled.header`
             display: flex;
             align-items: center;
 
-            p:nth-child(2) {
+            & > a:nth-child(2) {
                 padding: 0 25px;
             }
 
-            p {
+            & > a {
                 font-weight: 600;
                 font-size: 16px;
                 color: #495057;
-
-                cursor: pointer;
 
                 :hover {
                     color: #000;
@@ -92,13 +91,12 @@ const Container = styled.header`
             justify-content: space-between;
             align-items: center;
 
-            p {
+            & > a {
                 font-weight: 600;
                 font-size: 16px;
                 color: #4529E6;
 
                 padding-right: 30px;
-                cursor: pointer;
 
                 :hover {
                     text-decoration: underline;
@@ -119,18 +117,17 @@ const Container = styled.header`
         & > nav {
 
             display: flex;
+            flex-direction: row;
             align-items: center;
 
-            p:nth-child(2) {
-                padding: 0 25px;
+            & > a:nth-child(2) {
+                padding: 0 35px;
             }
 
-            p {
+            & > a {
                 font-weight: 600;
                 font-size: 16px;
                 color: #495057;
-
-                cursor: pointer;
 
                 :hover {
                     color: #000;
@@ -152,13 +149,12 @@ const Container = styled.header`
             justify-content: space-between;
             align-items: center;
 
-            p {
+            a {
                 font-weight: 600;
                 font-size: 16px;
                 color: #4529E6;
 
-                padding-right: 30px;
-                cursor: pointer;
+                padding-right: 45px;
 
                 :hover {
                     text-decoration: underline;
@@ -185,20 +181,62 @@ const Container = styled.header`
             background-color: #FDFDFD;
             filter: drop-shadow(0px 60px 40px rgba(0, 0, 0, 0.09));
 
-            & > p {
-                width: 100%;
-                padding: 25px 15px;
+            & > hr {
+                border: none;
+                height: 2px;
+                background: #DEE2E6;
             }
 
-            & > div {
+            & > hr:nth-child(1) {
+                margin-top: 7px;
+            }
 
-                padding: 0 15px 15px 15px;
+            & > div:nth-child(2) {
 
-                & > p {
-                    padding: 25px 0;
+                width: 100%;
+                padding: 32px 16px;
+                height: 236px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+
+                & > a {
+
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #495057;
+
+                    :hover {
+                        color: #000;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            & > div:nth-child(4) {
+
+                height: 184px;
+                padding: 32px 12px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+
+                & > a {
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #495057;
+
+                    :hover {
+                        color: #000;
+                        text-decoration: underline;
+                    }
                 }
 
-                button {
+                & > button {
                     width: 100%;
                     max-width: unset;
                 }
@@ -223,7 +261,7 @@ const Container = styled.header`
         flex-direction: column;
         align-items: center;
 
-        p {
+        & > p {
             width: 100%;
             font-weight: 400;
             font-size: 16px;
@@ -233,7 +271,6 @@ const Container = styled.header`
             padding: 11.5px 0;
 
             color: #495057;
-            cursor: pointer;
 
             &:hover {
                 background: #dbe1e7;
@@ -242,6 +279,8 @@ const Container = styled.header`
     }
 
     @media (max-width: 1024px) {
+
+        padding: 0 20px;
 
         .divLogged, .divNotLogged {
             display: none;
@@ -252,9 +291,17 @@ const Container = styled.header`
         }
     }
 
-    @media (max-width: 768px) {
+    @media (width: 280px) {
 
-        padding: 0 20px;
+        .menuIcon {
+
+            & > nav {
+            
+                & > hr:nth-child(1) {
+                    margin-top: 25px;
+                }
+            }
+        }
     }
 `
 

@@ -15,6 +15,8 @@ const Container = styled.div`
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
 
+    overflow-y: auto;
+
     @media (max-width: 768px) {
         padding-right: 40px;
         padding-left: 40px;    

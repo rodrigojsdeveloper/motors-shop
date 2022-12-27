@@ -11,7 +11,12 @@ export interface InputProps {
   error?: any;
   required?: boolean | undefined;
   onChange?: any;
-  size: "inputSignIn" | "inputSignUp" | "inputSignUpSmall";
+  size: 
+    | "inputSignIn" 
+    | "inputSignUp" 
+    | "inputSignUpSmall" 
+    | "inputModalEditAddressLarge"
+    | "inputModalEditAddressMedium";
   className?: string;
 }
 
@@ -29,14 +34,16 @@ export interface IButtonProps {
     | "buttonSizeProductDetails"
     | "buttonSizeProductCarDetails"
     | "buttonSizeSuccessModal"
-    | "buttonSizeCreateBid";
+    | "buttonSizeModalEditAddressMedium"
+    | "buttonSizeModalEditAddressSmall";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
     | "buttonColorGrayFooter"
     | "buttonColorBlueBanner"
     | "buttonColorWhiteSignUp"
-    | "buttonColorBlackProductDetails";
+    | "buttonColorBlackProductDetails"
+    | "buttonColorGrayModalEditAddress";
   className?: string;
   style?: React.CSSProperties | undefined;
   href?: any;

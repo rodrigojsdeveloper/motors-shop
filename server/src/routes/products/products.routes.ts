@@ -1,10 +1,10 @@
 import { Router } from "express";
 
 import { listAllProductsController } from "../../controllers/products/listAllProducts.controller";
+import { specificProductController } from "../../controllers/products/specificProduct.controller";
 import { createProductController } from "../../controllers/products/createProduct.controller";
 import { deleteProductController } from "../../controllers/products/deleteProduct.controller";
 import { updateProductController } from "../../controllers/products/updateProduct.controller";
-import { specificProductController } from "../../controllers/products/specificProduct.controller";
 
 import { schemaValidationMiddleware } from "../../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../../middlewares/token.middleware";
