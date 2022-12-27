@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { animationModal } from "../ModalEditUser/style";
 
 const Container = styled.div`
 
@@ -8,6 +9,7 @@ const Container = styled.div`
     
     background: #FFFFFF;
     border-radius: 8px;
+    animation: ${animationModal} 1s;
 
     header {
         display: flex;

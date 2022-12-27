@@ -10,14 +10,15 @@ import { api } from "../../services/api"
 import { Link } from "react-router-dom"
 import { ModalBackground } from "../ModalBackground"
 import { ModalEditAddress } from "../ModalEditAddress"
+import { ModalEditUser } from "../ModalEditUser"
 
 
 const Header = () => {
 
-    const token = true
-
     const navigate = useNavigate()
-
+    
+    const token = sessionStorage.getItem("Motors shop: token")
+    
     const [ menuOpen, setMenuOpen ] = useState<boolean>(false)
 
     const [ menuOpenLogged, setMenuOpenLogged ] = useState<boolean>(false)
@@ -46,6 +47,12 @@ const Header = () => {
                 openModalEditAddress && 
                 <ModalBackground>
                     <ModalEditAddress setOpenModalEditAddress={ setOpenModalEditAddress } />
+                </ModalBackground>
+            }
+            {
+                openModalEditUser && 
+                <ModalBackground>
+                    <ModalEditUser setOpenModalEditUser={ setOpenModalEditUser } />
                 </ModalBackground>
             }
             {

@@ -18,6 +18,7 @@ export interface InputProps {
     | "inputModalEditAddressLarge"
     | "inputModalEditAddressMedium";
   className?: string;
+  value?: any
 }
 
 export interface IButtonProps {
@@ -46,7 +47,6 @@ export interface IButtonProps {
     | "buttonColorGrayModalEditAddress";
   className?: string;
   style?: React.CSSProperties | undefined;
-  href?: any;
 }
 
 export interface IButtonStyledProps {

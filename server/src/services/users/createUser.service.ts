@@ -24,6 +24,7 @@ const createUserService = async (user: IUser): Promise<User> => {
   newUser.cpf = user.cpf;
   newUser.birthdate = user.birthdate;
   newUser.is_seller = user.is_seller;
+  newUser.description = user.description;
   newUser.bids = [];
   newUser.comments = [];
   newUser.products = [];

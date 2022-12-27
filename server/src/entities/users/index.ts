@@ -35,6 +35,9 @@ class User {
   cpf: string;
 
   @Column()
+  description: string;
+
+  @Column()
   birthdate: string;
 
   @Column()

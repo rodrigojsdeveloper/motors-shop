@@ -3,15 +3,21 @@ import close from "../../assets/x.svg"
 import { Input } from "../Input"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { Button } from "../Button"
+import { api } from "../../services/api"
+import { IUserProps } from "../../interfaces"
 
 interface IModalEditAddress {
     setOpenModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
+
+    const token = sessionStorage.getItem("Motors shop: token")
+
+    const [ user, setUser ] = useState<any>()
 
     const schema = yup.object().shape({
         zip_code: yup.number().required("CEP obrigatória"),
@@ -44,6 +50,18 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
         data.address = address
     }
 
+    token && useEffect(() => {
+
+        api.get("/profile", {
+            headers: {
+                "Authorization": `Bearer ${ token }`
+            }
+        })
+        .then(res => setUser(res.data))
+        .catch(error => console.error(error))
+
+    }, [])
+
     return (
         <Container>
             <header>
@@ -55,101 +73,111 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             <form onSubmit={ handleSubmit(onSubmitFunction) }>
                 <h3>Infomações de endereço</h3>
 
-                <Input
-                label="CEP"
-                name="zip_code"
-                register={ register }
-                placeholder="00000-000"
-                autoComplete="off"
-                type="number"
-                error={ errors.zip_code?.message }
-                required={ true }
-                size="inputModalEditAddressLarge"
-                />
-                <Input
-                label="País"
-                name="country"
-                register={ register }
-                placeholder="Ex: United States"
-                autoComplete="off"
-                type="text"
-                error={ errors.country?.message }
-                required={ true }
-                size="inputModalEditAddressLarge"
-                />
-                <div className="divInputs">
+                <div>
                     <Input
-                    label="Estado"
-                    name="state"
+                    label="CEP"
+                    name="zip_code"
                     register={ register }
-                    placeholder="Digitar estado"
-                    autoComplete="off"
-                    type="text"
-                    error={ errors.state?.message }
-                    required={ true }
-                    size="inputModalEditAddressMedium"
-                    className="changeInput"
-                    />
-                    <Input
-                    label="Cidade"
-                    name="city"
-                    register={ register }
-                    placeholder="Digitar cidade"
-                    autoComplete="off"
-                    type="text"
-                    error={ errors.city?.message }
-                    required={ true }
-                    size="inputModalEditAddressMedium"
-                    className="changeInput"
-                    />
-                </div>
-                <Input
-                label="Bairro"
-                name="district"
-                register={ register }
-                placeholder="Digitar bairro"
-                autoComplete="off"
-                type="text"
-                error={ errors.district?.message }
-                required={ true }
-                size="inputModalEditAddressLarge"
-                />
-                <Input
-                label="Rua"
-                name="street"
-                register={ register }
-                placeholder="Digitar rua"
-                autoComplete="off"
-                type="text"
-                error={ errors.street?.message }
-                required={ true }
-                size="inputModalEditAddressLarge"
-                />
-                <div className="divInputs">
-                    <Input
-                    className="inputNumber"
-                    label="Número"
-                    name="number"
-                    register={ register }
-                    placeholder="Digitar número"
+                    placeholder="00000-000"
                     autoComplete="off"
                     type="number"
-                    error={ errors.number?.message }
+                    error={ errors.zip_code?.message }
                     required={ true }
-                    size="inputModalEditAddressMedium"
+                    size="inputModalEditAddressLarge"
+                    value={ user?.address.zip_code }
                     />
                     <Input
-                    className="inputComplement"
-                    label="Complemento"
-                    name="complement"
+                    label="País"
+                    name="country"
                     register={ register }
-                    placeholder="Ex: Apart 307"
+                    placeholder="Ex: United States"
                     autoComplete="off"
                     type="text"
-                    error={ errors.complement?.message }
+                    error={ errors.country?.message }
                     required={ true }
-                    size="inputModalEditAddressMedium"
+                    size="inputModalEditAddressLarge"
+                    value={ user?.address.country }
                     />
+                    <div className="divInputs">
+                        <Input
+                        label="Estado"
+                        name="state"
+                        register={ register }
+                        placeholder="Digitar estado"
+                        autoComplete="off"
+                        type="text"
+                        error={ errors.state?.message }
+                        required={ true }
+                        size="inputModalEditAddressMedium"
+                        className="changeInput"
+                        value={ user?.address.state }
+                        />
+                        <Input
+                        label="Cidade"
+                        name="city"
+                        register={ register }
+                        placeholder="Digitar cidade"
+                        autoComplete="off"
+                        type="text"
+                        error={ errors.city?.message }
+                        required={ true }
+                        size="inputModalEditAddressMedium"
+                        className="changeInput"
+                        value={ user?.address.city }
+                        />
+                    </div>
+                    <Input
+                    label="Bairro"
+                    name="district"
+                    register={ register }
+                    placeholder="Digitar bairro"
+                    autoComplete="off"
+                    type="text"
+                    error={ errors.district?.message }
+                    required={ true }
+                    size="inputModalEditAddressLarge"
+                    value={ user?.address.district }
+                    />
+                    <Input
+                    label="Rua"
+                    name="street"
+                    register={ register }
+                    placeholder="Digitar rua"
+                    autoComplete="off"
+                    type="text"
+                    error={ errors.street?.message }
+                    required={ true }
+                    size="inputModalEditAddressLarge"
+                    value={ user?.address.street }
+                    />
+                    <div className="divInputs">
+                        <Input
+                        className="inputNumber"
+                        label="Número"
+                        name="number"
+                        register={ register }
+                        placeholder="Digitar número"
+                        autoComplete="off"
+                        type="number"
+                        error={ errors.number?.message }
+                        required={ true }
+                        size="inputModalEditAddressMedium"
+                        value={ user?.address.number }
+                        />
+                        <Input
+                        className="inputComplement"
+                        label="Complemento"
+                        name="complement"
+                        register={ register }
+                        placeholder="Ex: Apart 307"
+                        autoComplete="off"
+                        type="text"
+                        error={ errors.complement?.message }
+                        required={ true }
+                        size="inputModalEditAddressMedium"
+                        value={ user?.address.complement }
+                        />
+                    </div>
                 </div>
 
                 <div className="divButtons">

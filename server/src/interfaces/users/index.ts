@@ -9,6 +9,7 @@ interface IUser {
   cpf: string;
   birthdate: string;
   is_seller: boolean;
+  description: string;
 }
 
 interface IUserUpdate {
@@ -20,6 +21,7 @@ interface IUserUpdate {
   cpf?: string;
   birthdate?: string;
   is_seller?: boolean;
+  description?: string;
 }
 
 export { IUser, IUserUpdate };

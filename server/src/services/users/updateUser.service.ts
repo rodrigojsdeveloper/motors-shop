@@ -26,6 +26,7 @@ const updateUserService = async (
     cpf: user.cpf ? user.cpf : findUser.cpf,
     birthdate: user.birthdate ? user.birthdate : findUser.birthdate,
     is_seller: user.is_seller ? user.is_seller : findUser.is_seller,
+    description: user.description ? user.description : findUser.description,
   });
 
   const updatedUser = await useRepository.findOneBy({ id: findUser.id });
