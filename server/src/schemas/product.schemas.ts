@@ -3,9 +3,9 @@ import { SchemaOf } from "yup";
 import * as yup from "yup";
 
 const productSchema: SchemaOf<IProduct> = yup.object().shape({
-  name: yup
+  title: yup
     .string()
-    .required("name required"),
+    .required("title required"),
   description: yup
     .string()
     .required("description required"),
@@ -26,9 +26,12 @@ const productSchema: SchemaOf<IProduct> = yup.object().shape({
     .number()
     .required("year required")
     .typeError("Amount must be a number"),
-  images: yup
+  cover_image: yup
     .string()
-    .required("images required"),
+    .required("cover_image required"),
+  gallery_image: yup
+    .string()
+    .required("gallery_image required"),
 });
 
 export { productSchema };

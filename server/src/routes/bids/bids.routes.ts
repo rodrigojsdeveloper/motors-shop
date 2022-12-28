@@ -10,7 +10,7 @@ import { bidSchema } from "../../schemas/bid.schemas";
 
 const routes = Router();
 
-const bidsRoutes = () => {
+const bidsRoutes = (): Router => {
   routes.post(
     "/:auction_id",
     schemaValidationMiddleware(bidSchema),

@@ -90,6 +90,13 @@ const Container = styled.button<IButtonStyledProps>`
                     height: 48px;
                     max-width: 126px;
                 `
+            
+            case "buttonSizeUserDetailsMedium":
+
+                return css`
+                    height: 48px;
+                    max-width: 126px;
+                `
 
             default:
                 return false
@@ -204,7 +211,25 @@ const Container = styled.button<IButtonStyledProps>`
                         background-color: #edf4fb;
                     }
                 `
-            
+
+            case "buttonColorWhiteUserDetails":
+                
+                return css`
+                    background: #FDFDFD;
+                    border: 1.5px solid #4529E6;
+                    border-radius: 4px;
+                    
+                    padding: 12px 28px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #4529E6;
+
+                    :hover {
+                        background-color: #4529E6;
+                        color: #FDFDFD;
+                    }
+                `
+
             default:
                 return false
         }

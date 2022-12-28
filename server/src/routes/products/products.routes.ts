@@ -13,7 +13,7 @@ import { productSchema } from "../../schemas/product.schemas";
 
 const routes = Router();
 
-const productsRoutes = () => {
+const productsRoutes = (): Router => {
   routes.post(
     "",
     schemaValidationMiddleware(productSchema),

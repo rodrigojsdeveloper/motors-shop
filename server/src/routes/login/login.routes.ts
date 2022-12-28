@@ -4,7 +4,7 @@ import { loginController } from "../../controllers/login/login.controller";
 
 const routes = Router();
 
-const loginRoutes = () => {
+const loginRoutes = (): Router => {
   routes.post("", loginController);
 
   return routes;

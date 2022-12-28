@@ -1,6 +1,7 @@
 import { AppDataSource } from "../data-source";
 import { Address } from "../entities/address";
+import { Repository } from "typeorm";
 
-const addressRepository = AppDataSource.getRepository(Address);
+const addressRepository: Repository<Address> = AppDataSource.getRepository(Address);
 
 export { addressRepository };

@@ -10,7 +10,7 @@ import { commentSchema } from "../../schemas/comment.schemas";
 
 const routes = Router();
 
-const commentsRoutes = () => {
+const commentsRoutes = (): Router => {
   routes.post(
     "/:product_id",
     schemaValidationMiddleware(commentSchema),

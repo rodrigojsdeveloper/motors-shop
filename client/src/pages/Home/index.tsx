@@ -4,8 +4,6 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { ListAuction } from "../../components/ListAuction";
 import { ListProducts } from "../../components/ListProducts";
-import { ModalBackground } from "../../components/ModalBackground";
-import { ModalCreateAnnouncement } from "../../components/ModalCreateAnnouncement";
 import { IAuctionProps, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
@@ -48,10 +46,6 @@ const Home = () => {
   }, [])
 
   return (
-    <>
-    <ModalBackground>
-      <ModalCreateAnnouncement/>
-    </ModalBackground>
     <Container>
       <Header />
       <Banner />
@@ -60,8 +54,6 @@ const Home = () => {
       <ListProducts listName="Motos" products={ motorcycles } />
       <Footer />
     </Container>
-    </>
-
   );
 };
 

@@ -2,10 +2,10 @@ import { useRepository } from "../../repositories/userRepository";
 import { NotFoundError } from "../../helpers";
 import { User } from "../../entities/users";
 
-const listProductsUserService = async (id: string): Promise<User> => {
+const listAllProductsUserService = async (id: string): Promise<User> => {
   const user = await useRepository.findOne({
     where: { id },
-    relations: ["products"],
+    relations: ["address", "products", "comments", "bids"],
   });
 
   if (!user) {
@@ -15,4 +15,4 @@ const listProductsUserService = async (id: string): Promise<User> => {
   return user;
 };
 
-export { listProductsUserService };
+export { listAllProductsUserService };

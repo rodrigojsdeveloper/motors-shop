@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { listProductsUserController } from "../../controllers/users/listProductsUser.controller";
+import { listAllProductsUserController } from "../../controllers/users/listAllProductsUser.controller";
 import { viewProfileController } from "../../controllers/users/viewProfile.controller";
 import { createUserController } from "../../controllers/users/createUser.controller";
 import { updateUserController } from "../../controllers/users/updateUser.controller";
@@ -12,21 +12,21 @@ import { userSchema } from "../../schemas/user.schemas";
 
 const routes = Router();
 
-const usersRoutes = () => {
+const usersRoutes = (): Router => {
   routes.post(
     "/signup",
     schemaValidationMiddleware(userSchema),
     createUserController
   );
 
-  routes.get("/:id", tokenMiddleware, listProductsUserController);
+  routes.get("/:id", tokenMiddleware, listAllProductsUserController);
 
   routes.patch("/:id", tokenMiddleware, updateUserController);
 
   return routes;
 };
 
-const profileRoutes = () => {
+const profileRoutes = (): Router => {
 
   routes.get("", tokenMiddleware, viewProfileController);
 

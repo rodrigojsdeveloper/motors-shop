@@ -1,6 +1,7 @@
 import { Auction } from "../entities/auctions";
 import { AppDataSource } from "../data-source";
+import { Repository } from "typeorm";
 
-const auctionRepository = AppDataSource.getRepository(Auction);
+const auctionRepository: Repository<Auction> = AppDataSource.getRepository(Auction);
 
 export { auctionRepository };
