@@ -16,7 +16,8 @@ export interface InputProps {
     | "inputSignUp" 
     | "inputSignUpSmall" 
     | "inputModalEditAddressLarge"
-    | "inputModalEditAddressMedium";
+    | "inputModalEditAddressMedium"
+    | "inputModalCreateAnnouncementSmall";
   className?: string;
   value?: any
 }

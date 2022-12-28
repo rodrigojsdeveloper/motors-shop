@@ -3,7 +3,7 @@ import { Auction } from "../../entities/auctions";
 
 const listAllAuctionsService = async (): Promise<Auction[]> => {
   const auctions = await auctionRepository.find({
-    relations: ["user"],
+    relations: ["product", "bids"],
   });
 
   return auctions;

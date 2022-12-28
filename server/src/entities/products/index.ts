@@ -1,3 +1,4 @@
+import { Auction } from "../../entities/auctions";
 import { Comment } from "../comments";
 import { User } from "../users";
 import {
@@ -6,6 +7,7 @@ import {
   Column,
   ManyToOne,
   OneToMany,
+  OneToOne,
 } from "typeorm";
 
 @Entity("products")
@@ -14,7 +16,7 @@ class Product {
   id: string;
 
   @Column()
-  name: string;
+  title: string;
 
   @Column()
   description: string;
@@ -28,11 +30,20 @@ class Product {
   @Column()
   price: string;
 
+  @Column({ default: true })
+  is_active: boolean;
+
+  @Column()
+  ad_type: string;
+
   @Column()
   vehicle_type: string;
 
   @Column()
-  images: string;
+  cover_image: string;
+
+  @Column()
+  gallery_image: string;
 
   @ManyToOne((type) => User, (user) => user.products)
   user: User;
@@ -41,6 +52,9 @@ class Product {
     lazy: true,
   })
   comments: Comment[];
+
+  @OneToOne((type) => Auction, (auction) => auction.product)
+  auction: Auction;
 }
 
 export { Product };

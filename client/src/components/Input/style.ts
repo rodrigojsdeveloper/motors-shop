@@ -77,6 +77,12 @@ const InputContainer = styled.input<InputStyledProps>`
                     max-width: 228px;
                     height: 48px;
                 `
+            
+            case "inputModalCreateAnnouncementSmall":
+                return css`
+                    max-width: 148px;
+                    height: 48px;
+                `
 
             default:
                 return false

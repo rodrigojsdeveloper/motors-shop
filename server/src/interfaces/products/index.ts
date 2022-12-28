@@ -1,21 +1,25 @@
 interface IProduct {
-  name: string;
+  title: string;
   description: string;
   year: number;
   kilometers: number;
   price: string;
+  ad_type: "sale" | "auction" | string;
   vehicle_type: "car" | "motorbike" | string;
-  images: string;
+  cover_image: string;
+  gallery_image: string;
 }
 
 interface IProductUpdate {
-  name?: string;
+  title?: string;
   description?: string;
   year?: number;
   kilometers?: number;
   price?: string;
-  vehicle_type?: "car" | "motorbike";
-  images?: string;
+  ad_type?: "sale" | "auction" | string;
+  vehicle_type?: "car" | "motorbike" | string;
+  cover_image?: string;
+  gallery_image: string;
 }
 
 export { IProduct, IProductUpdate };

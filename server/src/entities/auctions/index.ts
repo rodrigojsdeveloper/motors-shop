@@ -1,47 +1,20 @@
-import { Comment } from "../comments";
-import { User } from "../users";
 import { Bid } from "../bids";
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
-  ManyToOne,
+  OneToOne,
 } from "typeorm";
+import { Product } from "../../entities/products";
 
 @Entity("auctions")
 class Auction {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column()
-  name: string;
-
-  @Column()
-  description: string;
-
-  @Column()
-  year: number;
-
-  @Column()
-  kilometers: number;
-
-  @Column()
-  price: string;
-
-  @Column()
-  vehicle_type: string;
-
-  @Column()
-  images: string;
-
-  @ManyToOne((type) => User, (user) => user.auctions)
-  user: User;
-
-  @OneToMany((type) => Comment, (comment) => comment.auction, {
-    lazy: true,
-  })
-  comments: Comment[];
+  @OneToOne((type) => Product, (product) => product.auction)
+  product: Product;
 
   @OneToMany((type) => Bid, (bid) => bid.auction, {
     lazy: true,

@@ -1,5 +1,4 @@
 import { Comment } from "../comments";
-import { Auction } from "../auctions";
 import { Product } from "../products";
 import { Address } from "../address";
 import { Bid } from "../bids";
@@ -69,11 +68,6 @@ class User {
     lazy: true,
   })
   bids: Bid[];
-
-  @OneToMany((type) => Auction, (auction) => auction.user, {
-    lazy: true,
-  })
-  auctions: Auction[];
 }
 
 export { User };

@@ -1,4 +1,3 @@
-import { Auction } from "../auctions";
 import { Product } from "../products";
 import { User } from "../users";
 import {
@@ -25,9 +24,6 @@ class Comment {
 
   @ManyToOne((type) => Product, (product) => product.comments)
   product: Product;
-
-  @ManyToOne((type) => Auction, (auction) => auction.comments)
-  auction: Auction;
 }
 
 export { Comment };

@@ -14,7 +14,7 @@ const updateProductService = async (
   }
 
   await productRepository.update(findProduct.id, {
-    name: product.name ? product.name : findProduct.name,
+    title: product.title ? product.title : findProduct.title,
     description: product.description
       ? product.description
       : findProduct.description,
@@ -27,7 +27,8 @@ const updateProductService = async (
     vehicle_type: product.vehicle_type
       ? product.vehicle_type
       : findProduct.vehicle_type,
-    images: product.images ? product.images : findProduct.images,
+    cover_image: product.cover_image ? product.cover_image : findProduct.cover_image,
+    gallery_image: product.gallery_image ? product.gallery_image : findProduct.gallery_image,
   });
 
   const updatedProduct = await productRepository.findOneBy({
