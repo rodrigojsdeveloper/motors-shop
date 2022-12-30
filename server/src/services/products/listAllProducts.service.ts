@@ -1,7 +1,7 @@
 import { productRepository } from "../../repositories/productRepository";
 import { Product } from "../../entities/product.entity";
 
-const listAllProductsService = async (): Promise<Array<Product>> => {
+const listAllProductsService = async (): Promise<ReadonlyArray<Product>> => {
   const products = await productRepository.find({
     relations: ["user", "comments"],
   });
