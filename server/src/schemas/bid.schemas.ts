@@ -1,4 +1,4 @@
-import { IBid } from "../interfaces/bids";
+import { IBid } from "../interfaces/bid.interface";
 import { SchemaOf } from "yup";
 import * as yup from "yup";
 

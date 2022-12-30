@@ -1,5 +1,5 @@
 import { createBidService } from "../../services/bids/createBid.service";
-import { IBid } from "../../interfaces/bids";
+import { IBid } from "../../interfaces/bid.interface";
 import { Request, Response } from "express";
 
 const createBidController = async (req: Request, res: Response) => {

@@ -1,8 +1,8 @@
 import { commentRepository } from "../../repositories/commentRepository";
 import { productRepository } from "../../repositories/productRepository";
 import { useRepository } from "../../repositories/userRepository";
-import { IComment } from "../../interfaces/comments";
-import { Comment } from "../../entities/comments";
+import { IComment } from "../../interfaces/comment.interface";
+import { Comment } from "../../entities/comment.entity";
 import { NotFoundError } from "../../helpers";
 
 const createCommentService = async (

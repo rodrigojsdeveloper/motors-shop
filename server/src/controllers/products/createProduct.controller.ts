@@ -1,5 +1,5 @@
 import { createProductService } from "../../services/products/createProduct.service";
-import { IProduct } from "../../interfaces/products";
+import { IProduct } from "../../interfaces/product.interface";
 import { Request, Response } from "express";
 
 const createProductController = async (req: Request, res: Response) => {

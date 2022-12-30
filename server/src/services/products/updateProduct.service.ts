@@ -1,6 +1,6 @@
 import { productRepository } from "../../repositories/productRepository";
-import { IProductUpdate } from "../../interfaces/products";
-import { Product } from "../../entities/products";
+import { IProductUpdate } from "../../interfaces/product.interface";
+import { Product } from "../../entities/product.entity";
 import { NotFoundError } from "../../helpers";
 
 const updateProductService = async (
@@ -27,8 +27,12 @@ const updateProductService = async (
     vehicle_type: product.vehicle_type
       ? product.vehicle_type
       : findProduct.vehicle_type,
-    cover_image: product.cover_image ? product.cover_image : findProduct.cover_image,
-    gallery_image: product.gallery_image ? product.gallery_image : findProduct.gallery_image,
+    cover_image: product.cover_image
+      ? product.cover_image
+      : findProduct.cover_image,
+    gallery_image: product.gallery_image
+      ? product.gallery_image
+      : findProduct.gallery_image,
   });
 
   const updatedProduct = await productRepository.findOneBy({

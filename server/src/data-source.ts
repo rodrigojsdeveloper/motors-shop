@@ -13,7 +13,7 @@ const AppDataSource = new DataSource({
   database: process.env.PG_DATABASE,
   logging: true,
   synchronize: true,
-  entities: [`${__dirname}/**/entities/**/*.{ts,js}`],
+  entities: [`${__dirname}/**/entities/*.{ts,js}`],
   migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
 });
 

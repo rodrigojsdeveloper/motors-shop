@@ -1,5 +1,5 @@
 import { loginService } from "../../services/login/login.service";
-import { ILogin } from "../../interfaces/login";
+import { ILogin } from "../../interfaces/login.interface";
 import { Request, Response } from "express";
 
 const loginController = async (req: Request, res: Response) => {

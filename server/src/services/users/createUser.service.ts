@@ -1,8 +1,8 @@
 import { addressRepository } from "../../repositories/addressRepository";
 import { useRepository } from "../../repositories/userRepository";
+import { IUser } from "../../interfaces/user.interface";
+import { User } from "../../entities/user.entity";
 import { BadRequestError } from "../../helpers";
-import { IUser } from "../../interfaces/users";
-import { User } from "../../entities/users";
 import { hash } from "bcrypt";
 
 const createUserService = async (user: IUser): Promise<User> => {

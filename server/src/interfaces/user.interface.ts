@@ -1,4 +1,4 @@
-import { IAddress, IAddressUpdate } from "../address";
+import { IAddress, IAddressUpdate } from "./address.interface";
 
 interface IUser {
   name: string;

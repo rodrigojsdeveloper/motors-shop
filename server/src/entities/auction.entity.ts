@@ -1,4 +1,5 @@
-import { Bid } from "../bids";
+import { Product } from "./product.entity";
+import { Bid } from "./bid.entity";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -6,7 +7,6 @@ import {
   OneToMany,
   OneToOne,
 } from "typeorm";
-import { Product } from "../../entities/products";
 
 @Entity("auctions")
 class Auction {

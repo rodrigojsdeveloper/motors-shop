@@ -1,4 +1,4 @@
-import { User } from "../users";
+import { User } from "./user.entity";
 import {
   Entity,
   PrimaryGeneratedColumn,

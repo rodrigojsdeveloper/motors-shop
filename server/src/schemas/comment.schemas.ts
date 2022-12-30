@@ -1,4 +1,4 @@
-import { IComment } from "../interfaces/comments";
+import { IComment } from "../interfaces/comment.interface";
 import { SchemaOf } from "yup";
 import * as yup from "yup";
 

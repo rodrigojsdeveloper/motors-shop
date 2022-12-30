@@ -19,7 +19,7 @@ interface IProductUpdate {
   ad_type?: "sale" | "auction" | string;
   vehicle_type?: "car" | "motorbike" | string;
   cover_image?: string;
-  gallery_image: string;
+  gallery_image?: string;
 }
 
 export { IProduct, IProductUpdate };

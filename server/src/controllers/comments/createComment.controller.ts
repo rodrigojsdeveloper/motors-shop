@@ -1,5 +1,5 @@
 import { createCommentService } from "../../services/comments/createComment.service";
-import { IComment } from "../../interfaces/comments";
+import { IComment } from "../../interfaces/comment.interface";
 import { Request, Response } from "express";
 
 const createCommentController = async (req: Request, res: Response) => {

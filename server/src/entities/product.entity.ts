@@ -1,6 +1,6 @@
-import { Auction } from "../../entities/auctions";
-import { Comment } from "../comments";
-import { User } from "../users";
+import { Auction } from "./auction.entity";
+import { Comment } from "./comment.entity";
+import { User } from "./user.entity";
 import {
   Entity,
   PrimaryGeneratedColumn,

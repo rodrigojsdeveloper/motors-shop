@@ -1,5 +1,5 @@
-import { Product } from "../products";
-import { User } from "../users";
+import { Product } from "./product.entity";
+import { User } from "./user.entity";
 import {
   Entity,
   PrimaryGeneratedColumn,

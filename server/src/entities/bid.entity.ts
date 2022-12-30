@@ -1,5 +1,5 @@
-import { Auction } from "../auctions";
-import { User } from "../users";
+import { Auction } from "./auction.entity";
+import { User } from "./user.entity";
 import {
   Entity,
   PrimaryGeneratedColumn,

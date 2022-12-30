@@ -1,9 +1,9 @@
 import { productRepository } from "../../repositories/productRepository";
 import { auctionRepository } from "../../repositories/auctionRepository";
 import { useRepository } from "../../repositories/userRepository";
-import { IProduct } from "../../interfaces/products";
-import { Product } from "../../entities/products";
-import { Auction } from "../../entities/auctions";
+import { IProduct } from "../../interfaces/product.interface";
+import { Auction } from "../../entities/auction.entity";
+import { Product } from "../../entities/product.entity";
 
 const createProductService = async (
   product: IProduct,

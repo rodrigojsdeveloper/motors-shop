@@ -1,6 +1,6 @@
 import { useRepository } from "../../repositories/userRepository";
+import { User } from "../../entities/user.entity";
 import { NotFoundError } from "../../helpers";
-import { User } from "../../entities/users";
 
 const listAllProductsUserService = async (id: string): Promise<User> => {
   const user = await useRepository.findOne({

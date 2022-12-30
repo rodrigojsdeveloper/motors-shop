@@ -1,7 +1,7 @@
-import { Comment } from "../comments";
-import { Product } from "../products";
-import { Address } from "../address";
-import { Bid } from "../bids";
+import { Comment } from "./comment.entity";
+import { Product } from "./product.entity";
+import { Address } from "./address.entity";
+import { Bid } from "./bid.entity";
 import {
   Entity,
   PrimaryGeneratedColumn,
