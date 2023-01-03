@@ -1,8 +1,8 @@
 import { Express } from "express";
 
 import { profileRoutes, usersRoutes } from "./users.routes";
-import { commentsRoutes } from "./comments/comments.routes";
 import { auctionsRoutes } from "./auctions/auctions.routes";
+import { commentsRoutes } from "./comments.routes";
 import { loginRoutes } from "./login/login.routes";
 import { productsRoutes } from "./products.routes";
 import { bidsRoutes } from "./bids/bids.routes";
