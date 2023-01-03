@@ -78,49 +78,6 @@ const Container = styled.div`
             }
         }
 
-        .divTextArea {
-
-            margin-top: 30px;
-
-            & > label {
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
-                color: #212529;
-            }
-
-            & > textarea {
-                margin-top: 5px;
-                resize:none;
-
-                background: transparent;
-                width: 100%;
-
-                padding: 15px;
-
-                border: 2px solid #E9ECEF;
-                border-radius: 4px;
-
-                font-weight: 400;
-                font-size: 16px;
-
-                transition: .5s;
-                height: 80px;
-
-                &::placeholder {
-                    color: #868E96;
-                }
-
-                &:hover {
-                    border-color: #000;
-                }
-
-                &:focus::-webkit-input-placeholder {
-                    color: transparent;
-                }
-            }
-        }
-
         & > div {
 
             & > h4 {

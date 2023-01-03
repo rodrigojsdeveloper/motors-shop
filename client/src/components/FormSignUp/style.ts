@@ -92,7 +92,6 @@ const Container = styled.form`
       color: #c20707;
     }
   }
-  
 
   .divInputPassword {
     display: flex;
@@ -145,50 +144,6 @@ const Container = styled.form`
 
         color: #000;
         transition: 1s;
-      }
-    }
-  }
-  .divTextArea {
-
-    display: flex;
-    flex-direction: column;
-
-    padding-top: 20px;
-
-    & > label {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 25px;
-    }
-
-    & > textarea {
-
-      resize:none;
-
-      background: transparent;
-      width: 100%;
-
-      padding: 15px;
-
-      border: 2px solid #E9ECEF;
-      border-radius: 4px;
-
-      font-weight: 400;
-      font-size: 16px;
-
-      transition: .5s;
-      height: 80px;
-
-      &::placeholder {
-          color: #868E96;
-      }
-
-      &:hover {
-          border-color: #000;
-      }
-
-      &:focus::-webkit-input-placeholder {
-          color: transparent;
       }
     }
   }

@@ -10,6 +10,7 @@ import {
     AiOutlineEye,
     AiOutlineEyeInvisible,
   } from "react-icons/ai";
+import { TextArea } from "../TextArea"
 
 interface IFormSignUp {
     setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>
@@ -146,10 +147,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
             required={ true }
             size="inputSignIn"
             />
-            <div className="divTextArea">
-                <label>Descrição</label>
-                <textarea placeholder="Digitar descrição"/>
-            </div>
+            <TextArea />
             
             <h4>Informações de endereço</h4>
 

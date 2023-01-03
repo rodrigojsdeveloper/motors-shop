@@ -6,6 +6,7 @@ import { Input } from "../Input"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
+import { TextArea } from "../TextArea"
 
 const ModalCreateAnnouncement = () => {
 
@@ -118,11 +119,7 @@ const ModalCreateAnnouncement = () => {
                     size="inputModalCreateAnnouncementSmall"    
                     />
                 </div>
-
-                <div className="divTextArea">
-                    <label>Descrição</label>
-                    <textarea  placeholder="Digitar descrição"/>
-                </div>
+                <TextArea />
 
                 <div>
                     <h4>Tipo de veículo</h4>

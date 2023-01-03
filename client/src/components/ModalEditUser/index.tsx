@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { Button } from "../Button"
 import { api } from "../../services/api"
+import { TextArea } from "../TextArea"
 
 interface IModalEditUser {
     setOpenModalEditUser: React.Dispatch<React.SetStateAction<boolean>>
@@ -120,11 +121,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
                     size="inputModalEditAddressLarge"
                     value={ user?.birthdate }
                     />
-
-                    <div className="divTextArea">
-                        <label>Descrição</label>
-                        <textarea placeholder="Digitar descrição" value={ user?.description }/>
-                    </div>
+                    <TextArea />
                 </div>
 
                 <div className="divButtons">
