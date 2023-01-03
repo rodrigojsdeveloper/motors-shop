@@ -1,6 +1,6 @@
 import { Express } from "express";
 
-import { profileRoutes, usersRoutes } from "./users/users.routes";
+import { profileRoutes, usersRoutes } from "./users.routes";
 import { productsRoutes } from "./products/products.routes";
 import { commentsRoutes } from "./comments/comments.routes";
 import { auctionsRoutes } from "./auctions/auctions.routes";

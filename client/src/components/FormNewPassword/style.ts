@@ -13,11 +13,7 @@ const Container = styled.form`
     & > h2 {
 
         font-weight: 500;
-        font-size: 24px;
-
-        text-align: start;
-
-        padding-bottom: 20px;
+        font-size: 22px;
     }
 
     & > div {

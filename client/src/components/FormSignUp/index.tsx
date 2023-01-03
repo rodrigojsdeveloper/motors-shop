@@ -146,17 +146,10 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
             required={ true }
             size="inputSignIn"
             />
-            <Input
-            label="Descrição"
-            name="description"
-            register={ register }
-            placeholder="Digitar descrição"
-            autoComplete="off"
-            type="text"
-            error={ errors.description?.message }
-            required={ true }
-            size="inputSignUp"
-            />
+            <div className="divTextArea">
+                <label>Descrição</label>
+                <textarea placeholder="Digitar descrição"/>
+            </div>
             
             <h4>Informações de endereço</h4>
 
