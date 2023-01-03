@@ -11,8 +11,7 @@ const AppDataSource = new DataSource({
   username: process.env.PG_USER,
   password: process.env.PG_PASSWORD,
   database: process.env.PG_DATABASE,
-  logging: true,
-  synchronize: true,
+  synchronize: false,
   entities: [`${__dirname}/**/entities/*.{ts,js}`],
   migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
 });
