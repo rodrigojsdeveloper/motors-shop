@@ -1,6 +1,6 @@
-import { useRepository } from "../repositories/userRepository";
+import { UnauthorizedError } from "../errors/unauthorized.error";
+import { useRepository } from "../repositories/user.repository";
 import { ILogin } from "../interfaces/login.interface";
-import { UnauthorizedError } from "../helpers";
 import { sign } from "jsonwebtoken";
 import { compare } from "bcrypt";
 

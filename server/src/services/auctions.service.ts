@@ -1,4 +1,4 @@
-import { auctionRepository } from "../repositories/auctionRepository";
+import { auctionRepository } from "../repositories/auction.repository";
 import { Auction } from "../entities/auction.entity";
 
 class AuctionsServices {

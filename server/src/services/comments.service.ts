@@ -1,9 +1,9 @@
-import { commentRepository } from "../repositories/commentRepository";
-import { productRepository } from "../repositories/productRepository";
-import { useRepository } from "../repositories/userRepository";
+import { commentRepository } from "../repositories/comment.repository";
+import { productRepository } from "../repositories/product.repository";
+import { useRepository } from "../repositories/user.repository";
 import { IComment } from "../interfaces/comment.interface";
+import { NotFoundError } from "../errors/notFound.error";
 import { Comment } from "../entities/comment.entity";
-import { NotFoundError } from "../helpers";
 
 class CommentsServices {
   async create(

@@ -1,10 +1,10 @@
 import { IProduct, IProductUpdate } from "../interfaces/product.interface";
-import { auctionRepository } from "../repositories/auctionRepository";
-import { productRepository } from "../repositories/productRepository";
-import { useRepository } from "../repositories/userRepository";
+import { auctionRepository } from "../repositories/auction.repository";
+import { productRepository } from "../repositories/product.repository";
+import { useRepository } from "../repositories/user.repository";
+import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
 import { Product } from "../entities/product.entity";
-import { NotFoundError } from "../helpers";
 
 class ProductsServices {
   async create(product: IProduct, email: string): Promise<Product | Auction> {

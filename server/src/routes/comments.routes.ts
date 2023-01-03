@@ -5,7 +5,7 @@ import { CommentsControllers } from "../controllers/comments.controller";
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
 
-import { commentSchema } from "../schemas/comment.schemas";
+import { commentSchema } from "../schemas/comment.schema";
 
 const routes = Router();
 

@@ -1,7 +1,8 @@
-import { addressRepository } from "../repositories/addressRepository";
+import { addressRepository } from "../repositories/address.repository";
 import { IUser, IUserUpdate } from "../interfaces/user.interface";
-import { useRepository } from "../repositories/userRepository";
-import { BadRequestError, NotFoundError } from "../helpers";
+import { useRepository } from "../repositories/user.repository";
+import { BadRequestError } from "../errors/badRequest.error";
+import { NotFoundError } from "../errors/notFound.error";
 import { User } from "../entities/user.entity";
 import { hash } from "bcrypt";
 

@@ -5,7 +5,7 @@ import { BidsControllers } from "../controllers/bids.controller";
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
 
-import { bidSchema } from "../schemas/bid.schemas";
+import { bidSchema } from "../schemas/bid.schema";
 
 const routes = Router();
 

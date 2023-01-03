@@ -5,7 +5,7 @@ import { UsersControllers } from "../controllers/users.controller";
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
 
-import { userSchema } from "../schemas/user.schemas";
+import { userSchema } from "../schemas/user.schema";
 
 const routes = Router();
 

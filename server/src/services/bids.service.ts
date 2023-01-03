@@ -1,9 +1,9 @@
-import { auctionRepository } from "../repositories/auctionRepository";
-import { useRepository } from "../repositories/userRepository";
-import { bidRepository } from "../repositories/bidRepository";
+import { auctionRepository } from "../repositories/auction.repository";
+import { useRepository } from "../repositories/user.repository";
+import { bidRepository } from "../repositories/bid.repository";
+import { NotFoundError } from "../errors/notFound.error";
 import { IBid } from "../interfaces/bid.interface";
 import { Bid } from "../entities/bid.entity";
-import { NotFoundError } from "../helpers";
 
 class BidsServices {
   async create(bid: IBid, email: string, auction_id: string): Promise<Bid> {
