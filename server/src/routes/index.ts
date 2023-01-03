@@ -1,10 +1,10 @@
 import { Express } from "express";
 
 import { profileRoutes, usersRoutes } from "./users.routes";
-import { auctionsRoutes } from "./auctions/auctions.routes";
+import { auctionsRoutes } from "./auctions.routes";
 import { commentsRoutes } from "./comments.routes";
-import { loginRoutes } from "./login/login.routes";
 import { productsRoutes } from "./products.routes";
+import { loginRoutes } from "./login/login.routes";
 import { bidsRoutes } from "./bids.routes";
 
 const appRoutes = (app: Express): void => {
