@@ -5,7 +5,7 @@ import { auctionsRoutes } from "./auctions/auctions.routes";
 import { commentsRoutes } from "./comments.routes";
 import { loginRoutes } from "./login/login.routes";
 import { productsRoutes } from "./products.routes";
-import { bidsRoutes } from "./bids/bids.routes";
+import { bidsRoutes } from "./bids.routes";
 
 const appRoutes = (app: Express): void => {
   app.use("/bids", bidsRoutes());
