@@ -1,5 +1,5 @@
-import { IProduct, IProductUpdate } from "../interfaces/product.interface";
 import { ProductsServices } from "../services/products.service";
+import { IProduct } from "../interfaces/product.interface";
 import { Request, Response } from "express";
 
 class ProductsControllers {
@@ -30,7 +30,7 @@ class ProductsControllers {
   async update(req: Request, res: Response) {
     const id: string = req.params.id;
 
-    const data: IProductUpdate = req.body;
+    const data: Partial<IProduct> = req.body;
 
     const updatedProduct = await new ProductsServices().update(data, id);
 

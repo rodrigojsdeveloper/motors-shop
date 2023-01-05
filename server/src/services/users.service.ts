@@ -1,8 +1,8 @@
 import { addressRepository } from "../repositories/address.repository";
-import { IUser, IUserUpdate } from "../interfaces/user.interface";
 import { useRepository } from "../repositories/user.repository";
 import { BadRequestError } from "../errors/badRequest.error";
 import { NotFoundError } from "../errors/notFound.error";
+import { IUser } from "../interfaces/user.interface";
 import { User } from "../entities/user.entity";
 import { hash } from "bcrypt";
 
@@ -54,7 +54,7 @@ class UsersServices {
     });
 
     if (!user) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("User");
     }
 
     return user;
@@ -66,11 +66,11 @@ class UsersServices {
     return user!;
   }
 
-  async update(user: IUserUpdate, id: string): Promise<User> {
+  async update(user: Partial<IUser>, id: string): Promise<User> {
     const findUser = await useRepository.findOneBy({ id });
 
     if (!findUser) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("User");
     }
 
     await useRepository.update(id, {

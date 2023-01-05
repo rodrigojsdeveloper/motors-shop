@@ -1,7 +1,7 @@
-import { IProduct, IProductUpdate } from "../interfaces/product.interface";
 import { auctionRepository } from "../repositories/auction.repository";
 import { productRepository } from "../repositories/product.repository";
 import { useRepository } from "../repositories/user.repository";
+import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
 import { Product } from "../entities/product.entity";
@@ -56,17 +56,17 @@ class ProductsServices {
     });
 
     if (!product) {
-      throw new NotFoundError("Product not found");
+      throw new NotFoundError("Product");
     }
 
     return product;
   }
 
-  async update(product: IProductUpdate, id: string): Promise<Product> {
+  async update(product: Partial<IProduct>, id: string): Promise<Product> {
     const findProduct = await productRepository.findOneBy({ id });
 
     if (!findProduct) {
-      throw new NotFoundError("Product not found");
+      throw new NotFoundError("Product");
     }
 
     await productRepository.update(findProduct.id, {
@@ -102,7 +102,7 @@ class ProductsServices {
     const product = await productRepository.findOneBy({ id });
 
     if (!product) {
-      throw new NotFoundError("Product not found");
+      throw new NotFoundError("Product");
     }
 
     await productRepository.delete(product.id);

@@ -16,7 +16,7 @@ class CommentsServices {
     const product = await productRepository.findOneBy({ id: product_id });
 
     if (!product) {
-      throw new NotFoundError("Product not found");
+      throw new NotFoundError("Product");
     }
 
     const newComment = new Comment();

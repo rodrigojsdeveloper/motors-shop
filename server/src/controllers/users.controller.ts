@@ -1,5 +1,5 @@
-import { IUser, IUserUpdate } from "../interfaces/user.interface";
 import { UsersServices } from "../services/users.service";
+import { IUser } from "../interfaces/user.interface";
 import { Request, Response } from "express";
 
 class UsersControllers {
@@ -36,7 +36,7 @@ class UsersControllers {
   async update(req: Request, res: Response) {
     const id: string = req.params.id;
 
-    const data: IUserUpdate = req.body;
+    const data: Partial<IUser> = req.body;
 
     const updatedUser = await new UsersServices().update(data, id);
 

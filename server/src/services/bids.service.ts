@@ -12,7 +12,7 @@ class BidsServices {
     const auction = await auctionRepository.findOneBy({ id: auction_id });
 
     if (!auction) {
-      throw new NotFoundError("Auction not found");
+      throw new NotFoundError("Auction");
     }
 
     const newBid = new Bid();
