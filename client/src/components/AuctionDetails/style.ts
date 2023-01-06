@@ -54,13 +54,17 @@ const Container = styled.div`
                     
                     object-fit: contain;
                 }
+
+                @media (max-width: 720px) {
+
+                    margin-bottom: 5px;
+                }
             }
 
             .divCarDetails {
 
                 width: 100%;
                 max-width: 752px;
-                height: 239.39px;
                 
                 padding: 28px 44px;
                 background: #FDFDFD;
@@ -120,6 +124,25 @@ const Container = styled.div`
                         font-weight: bold;
                     }
                 }
+
+                @media (max-width: 720px) {
+
+                    padding: 30px;
+
+                    & > h3 {
+                        margin-bottom: 20px;
+                    }
+                    
+                    & > div {
+                        flex-direction: column;
+                        align-items: unset;
+                        margin-bottom: 15px;
+
+                        & > div {
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
             }
         }
 
@@ -132,11 +155,11 @@ const Container = styled.div`
 
             width: 100%;
             max-width: 751px;
-            height: 213px;
 
             padding: 36px 44px;
             background: #FDFDFD;
             border-radius: 4px;
+            
 
             & > h4 {
 
@@ -156,6 +179,12 @@ const Container = styled.div`
                 line-height: 28px;
             
                 color: #495057;
+            }
+
+            @media (max-width: 720px) {
+
+                margin-top: 30px;
+                padding: 30px;
             }
         }
     }
@@ -219,8 +248,6 @@ const Container = styled.div`
                         background: #E9ECEF;
                         border-radius: 4px;
 
-                        margin: 0 5px;
-
                         & > img {
                             width: 100%;
                             max-width: 94.22px;
@@ -229,7 +256,16 @@ const Container = styled.div`
                             object-fit: contain;
                         }
                     }
+
+                    & > div:nth-child(2) {
+                        margin: 0 7px;
+                    }
                 }
+            }
+
+            @media (max-width: 720px) {
+
+                padding: 30px;
             }
         }
     }
@@ -257,11 +293,8 @@ const Container = styled.div`
         
             & > img {
             
-                width: 100%;
-                max-width: 104px;
+                width: 104px;
                 height: 104px;
-
-                background: #4529E6;
 
                 border-radius: 50%;
             }
@@ -288,7 +321,13 @@ const Container = styled.div`
             & > button {
                 margin: 0 auto;
             }
-        }  
+        }
+
+        @media (max-width: 720px) {
+
+            padding: 30px;
+            margin-top: 55px;
+        }
     }
 
     @media (max-width: 1440px) {
@@ -298,6 +337,19 @@ const Container = styled.div`
 
         .divPhotos {
             margin-top: 17px;
+        }
+
+        .divPhotos, .divUserDetails {
+            max-width: 752px;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 720px) {
+
+        .divCarDetailsDescription {
+
+            height: auto;
         }
     }
 

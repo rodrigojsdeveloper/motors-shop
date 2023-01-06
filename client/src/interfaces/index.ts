@@ -38,7 +38,8 @@ export interface IButtonProps {
     | "buttonSizeSuccessModal"
     | "buttonSizeModalEditAddressMedium"
     | "buttonSizeModalEditAddressSmall"
-    | "buttonSizeUserDetailsMedium";
+    | "buttonSizeUserDetailsMedium"
+    | "buttonSizeCreateBid";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"

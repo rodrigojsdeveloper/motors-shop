@@ -127,8 +127,8 @@ const Header = () => {
                         
                         menuOpen && 
                         <nav>
-                            <Link to="/">Carros</Link>
-                            <Link to="/">Motos</Link>
+                            <Link to="/#cars">Carros</Link>
+                            <Link to="/#motorcycles">Motos</Link>
                             <Link to="/">Leilão</Link>
                             <hr />
                             <div>
@@ -156,8 +156,8 @@ const Header = () => {
                         <nav>
                             <hr />
                             <div>
-                                <Link to="/">Carros</Link>
-                                <Link to="/">Motos</Link>
+                                <Link to="/#cars">Carros</Link>
+                                <Link to="/#motorcycles">Motos</Link>
                                 <Link to="/">Leilão</Link>
                             </div>
                             <hr />

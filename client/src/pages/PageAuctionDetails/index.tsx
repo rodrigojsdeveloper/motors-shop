@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { AuctionDetails } from "../../components/AuctionDetails";
 import { CreateBid } from "../../components/CreateBid";
 import { Footer } from "../../components/Footer";

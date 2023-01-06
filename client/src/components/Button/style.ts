@@ -98,6 +98,13 @@ const Container = styled.button<IButtonStyledProps>`
                     max-width: 126px;
                 `
 
+            case "buttonSizeCreateBid":
+
+            return css`
+                height: 48px;
+                max-width: 179px;
+            `
+
             default:
                 return false
         }

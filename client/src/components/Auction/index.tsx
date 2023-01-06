@@ -13,7 +13,7 @@ const Auction = ({ auction }: any) => {
 
     let { auctionId } = useParams()
 
-    auctionId = auction.id
+    auctionId = auction.title
 
     const navigate = useNavigate()
 

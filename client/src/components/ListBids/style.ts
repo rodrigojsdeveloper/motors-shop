@@ -11,8 +11,6 @@ const Container = styled.div`
     background: #FDFDFD;
     border-radius: 4px;
 
-    margin-top: 15px;
-
     & > h3 {
         font-weight: 600;
         font-size: 20px;
@@ -31,6 +29,16 @@ const Container = styled.div`
 
         height: 436px;
         overflow-y: auto;
+    }
+
+    @media (max-width: 1440px) {
+
+        margin: 15px auto 50px auto;
+    }
+
+    @media (max-width: 720px) {
+
+        padding: 40px;
     }
 `
 

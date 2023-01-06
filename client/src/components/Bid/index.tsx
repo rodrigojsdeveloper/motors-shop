@@ -1,3 +1,4 @@
+import { AvatarUser } from "../AvatarUser"
 import { Container } from "./style"
 
 const Bid = () => {
@@ -6,7 +7,7 @@ const Bid = () => {
         <Container>
             <div>
                 <div>
-                    <img src="" />
+                    <AvatarUser userName="Rodrigo Silva" />
                     <h3>Rodrigo Silva</h3>
                 </div>
 
