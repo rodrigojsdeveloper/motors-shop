@@ -10,7 +10,7 @@ const ListProducts = ({ listName, products }: IListProducts) => {
 
             <menu>
                 {
-                    products.map((p: IProductProps) => <Product product={ p } key={ p.id } />)
+                    products.map((p: any) => <Product product={ p } key={ p.id } />)
                 }
             </menu>
         </Container>

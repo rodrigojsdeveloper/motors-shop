@@ -1,6 +1,6 @@
 import { auctionRepository } from "../repositories/auction.repository";
 import { productRepository } from "../repositories/product.repository";
-import { useRepository } from "../repositories/user.repository";
+import { userRepository } from "../repositories/user.repository";
 import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
@@ -8,7 +8,7 @@ import { Product } from "../entities/product.entity";
 
 class ProductsServices {
   async create(product: IProduct, email: string): Promise<Product | Auction> {
-    const user = await useRepository.findOneBy({ email });
+    const user = await userRepository.findOneBy({ email });
 
     const newProduct = new Product();
     newProduct.title = product.title;

@@ -8,6 +8,7 @@ import {
   ManyToOne,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 
 @Entity("products")
@@ -45,16 +46,19 @@ class Product {
   @Column()
   gallery_image: string;
 
+  @OneToOne((type) => Auction, {
+    eager: true,
+  })
+  @JoinColumn({ name: "auction_id" })
+  auction: Auction;
+
   @ManyToOne((type) => User, (user) => user.products)
   user: User;
 
   @OneToMany((type) => Comment, (comment) => comment.product, {
-    lazy: true,
+    eager: true,
   })
-  comments: Comment[];
-
-  @OneToOne((type) => Auction, (auction) => auction.product)
-  auction: Auction;
+  comments: Array<Comment>;
 }
 
 export { Product };

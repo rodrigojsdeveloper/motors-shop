@@ -10,9 +10,9 @@ const Product = ({ product }: IProduct) => {
 
     return (
         <Container>
-            <img src={ product.images } alt={ product.name } title={ product.name } />
+            <img src={ product.cover_image } alt={ product.title } title={ product.title } />
 
-            <h4>{ product.name }</h4>
+            <h4>{ product.title }</h4>
 
             <p>{ product.description }</p>
 

@@ -1,5 +1,5 @@
 import { addressRepository } from "../repositories/address.repository";
-import { useRepository } from "../repositories/user.repository";
+import { userRepository } from "../repositories/user.repository";
 import { BadRequestError } from "../errors/badRequest.error";
 import { NotFoundError } from "../errors/notFound.error";
 import { IUser } from "../interfaces/user.interface";
@@ -8,12 +8,12 @@ import { hash } from "bcrypt";
 
 class UsersServices {
   async create(user: IUser): Promise<User> {
-    addressRepository.create(user.address);
-    const newAddress = await addressRepository.save(user.address);
+    const newAddress = addressRepository.create(user.address);
+    await addressRepository.save(newAddress);
 
     const hashedPassword = await hash(user.password, 10);
 
-    if (await useRepository.findOneBy({ email: user.email })) {
+    if (await userRepository.findOneBy({ email: user.email })) {
       throw new BadRequestError("Email already exists");
     }
 
@@ -31,8 +31,8 @@ class UsersServices {
     newUser.comments = [];
     newUser.products = [];
 
-    useRepository.create(newUser);
-    await useRepository.save(newUser);
+    userRepository.create(newUser);
+    await userRepository.save(newUser);
 
     Reflect.deleteProperty(newUser, "password");
 
@@ -40,7 +40,7 @@ class UsersServices {
   }
 
   async list(): Promise<ReadonlyArray<User>> {
-    const users = await useRepository.find({
+    const users = await userRepository.find({
       relations: ["address", "products", "comments", "bids"],
     });
 
@@ -48,7 +48,7 @@ class UsersServices {
   }
 
   async listProducts(id: string): Promise<User> {
-    const user = await useRepository.findOne({
+    const user = await userRepository.findOne({
       where: { id },
       relations: ["address", "products", "comments", "bids"],
     });
@@ -61,19 +61,19 @@ class UsersServices {
   }
 
   async profile(email: string): Promise<User> {
-    const user = await useRepository.findOneBy({ email });
+    const user = await userRepository.findOneBy({ email });
 
     return user!;
   }
 
   async update(user: Partial<IUser>, id: string): Promise<User> {
-    const findUser = await useRepository.findOneBy({ id });
+    const findUser = await userRepository.findOneBy({ id });
 
     if (!findUser) {
       throw new NotFoundError("User");
     }
 
-    await useRepository.update(id, {
+    await userRepository.update(id, {
       name: user.name ? user.name : findUser.name,
       email: user.email ? user.email : findUser.email,
       password: user.password
@@ -89,7 +89,7 @@ class UsersServices {
       description: user.description ? user.description : findUser.description,
     });
 
-    const updatedUser = await useRepository.findOneBy({ id: findUser.id });
+    const updatedUser = await userRepository.findOneBy({ id: findUser.id });
 
     return updatedUser!;
   }

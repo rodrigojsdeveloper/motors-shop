@@ -11,15 +11,15 @@ export interface InputProps {
   error?: any;
   required?: boolean | undefined;
   onChange?: any;
-  size: 
-    | "inputSignIn" 
-    | "inputSignUp" 
-    | "inputSignUpSmall" 
+  size:
+    | "inputSignIn"
+    | "inputSignUp"
+    | "inputSignUpSmall"
     | "inputModalEditAddressLarge"
     | "inputModalEditAddressMedium"
     | "inputModalCreateAnnouncementSmall";
   className?: string;
-  value?: any
+  value?: any;
 }
 
 export interface IButtonProps {
@@ -82,14 +82,15 @@ export interface IUserProps {
 
 export interface IProductProps {
   id: string;
-  name: string;
+  title: string;
   description: string;
   year: number;
   kilometers: number;
   ad_type: "car" | "motorbike" | string;
   price: string;
   vehicle_type: string;
-  images: string;
+  cover_image: string;
+  gallery_image: string;
   user: IUserProps;
 }
 

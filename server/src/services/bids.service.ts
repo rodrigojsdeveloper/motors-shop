@@ -1,5 +1,5 @@
 import { auctionRepository } from "../repositories/auction.repository";
-import { useRepository } from "../repositories/user.repository";
+import { userRepository } from "../repositories/user.repository";
 import { bidRepository } from "../repositories/bid.repository";
 import { NotFoundError } from "../errors/notFound.error";
 import { IBid } from "../interfaces/bid.interface";
@@ -7,7 +7,7 @@ import { Bid } from "../entities/bid.entity";
 
 class BidsServices {
   async create(bid: IBid, email: string, auction_id: string): Promise<Bid> {
-    const user = await useRepository.findOneBy({ email });
+    const user = await userRepository.findOneBy({ email });
 
     const auction = await auctionRepository.findOneBy({ id: auction_id });
 

@@ -6,6 +6,7 @@ import {
   Column,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 
 @Entity("auctions")
@@ -13,13 +14,16 @@ class Auction {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @OneToOne((type) => Product, (product) => product.auction)
+  @OneToOne((type) => Product, {
+    eager: true,
+  })
+  @JoinColumn({ name: "product_id" })
   product: Product;
 
   @OneToMany((type) => Bid, (bid) => bid.auction, {
-    lazy: true,
+    eager: true,
   })
-  bids: Bid[];
+  bids: Array<Bid>;
 
   @Column()
   time_limit: string;

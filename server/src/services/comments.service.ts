@@ -1,6 +1,6 @@
 import { commentRepository } from "../repositories/comment.repository";
 import { productRepository } from "../repositories/product.repository";
-import { useRepository } from "../repositories/user.repository";
+import { userRepository } from "../repositories/user.repository";
 import { IComment } from "../interfaces/comment.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Comment } from "../entities/comment.entity";
@@ -11,7 +11,7 @@ class CommentsServices {
     email: string,
     product_id: string
   ): Promise<Comment> {
-    const user = await useRepository.findOneBy({ email });
+    const user = await userRepository.findOneBy({ email });
 
     const product = await productRepository.findOneBy({ id: product_id });
 

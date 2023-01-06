@@ -18,8 +18,8 @@ const Container = styled.div`
     overflow-y: auto;
 
     @media (max-width: 768px) {
-        padding-right: 40px;
-        padding-left: 40px;    
+        padding-right: 30px;
+        padding-left: 30px;    
     }
 
     @media (max-width: 375px) {

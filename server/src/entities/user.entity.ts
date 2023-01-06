@@ -49,25 +49,25 @@ class User {
   updated_at: Date;
 
   @OneToOne((type) => Address, {
-    lazy: true,
+    eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({ name: "address_id" })
   address: Address;
 
   @OneToMany((type) => Product, (product) => product.user, {
-    lazy: true,
+    eager: true,
   })
-  products: Product[];
+  products: Array<Product>;
 
   @OneToMany((type) => Comment, (comment) => comment.user, {
-    lazy: true,
+    eager: true,
   })
-  comments: Comment[];
+  comments: Array<Comment>;
 
   @OneToMany((type) => Bid, (bid) => bid.user, {
-    lazy: true,
+    eager: true,
   })
-  bids: Bid[];
+  bids: Array<Bid>;
 }
 
 export { User };

@@ -18,15 +18,7 @@ const Home = () => {
 
   useEffect(() => {
 
-    api.get("/products", {
-      onDownloadProgress: (progressEvent: any) => {
-          let progress: number = Math.round (
-            (progressEvent.loaded * 100) / progressEvent.total
-          )
-
-          console.log(`está sendo carregado em ${ progress }`)
-      },
-    })
+    api.get("/products")
     .then(res => {
 
       setCars(res.data.filter((product: IProductProps) => product.vehicle_type == "car"))
