@@ -70,6 +70,7 @@ const Container = styled.form`
                 height: 100%;
 
                 border: none;
+                background: transparent;
 
                 &::placeholder {
                     color: #868E96;

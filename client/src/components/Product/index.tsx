@@ -6,7 +6,7 @@ interface IProduct {
     product: IProductProps
 }
 
-const Product = ({ product }: IProduct) => {
+const Product = ({ product }: any) => {
 
     return (
         <Container>

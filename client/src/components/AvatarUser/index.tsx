@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-import { api } from "../../services/api"
 import { Container } from "./style"
 
 interface IAvatarUserProps {
@@ -15,8 +13,8 @@ const AvatarUser = ({ userName }: IAvatarUserProps) => {
                     <p>{ userName[0] }</p>                    
                 ) : (
                     <>
-                        <p>{ userName[0][0] }</p>
-                        <p>{ userName[1][0] }</p>
+                        <p>{ userName[0] }</p>
+                        <p>{ userName.split(" ")[1][0] }</p>
                     </>    
                 )
             }

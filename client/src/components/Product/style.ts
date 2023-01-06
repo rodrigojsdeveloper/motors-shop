@@ -4,13 +4,13 @@ const Container = styled.div`
 
     width: 100%;
     max-width: 312px;
-    margin: 20px 10px 20px 30px;
+    margin-right: 40px;
 
     & > img  {
         width: 312px;
         height: 152px;
         background: #E9ECEF;
-        border: 2px solid #E9ECEF;
+        object-fit: contain;
     }
 
     & > h4 {
@@ -92,8 +92,7 @@ const Container = styled.div`
 
     @media (max-width: 375px) {
 
-        margin-left: 10px;
-        margin-right: 0;
+        margin-right: 15px;
     }
 `
 

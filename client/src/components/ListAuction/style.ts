@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
     
-    padding: 100px 0;
+    padding: 100px 0 100px 50px;
 
     & > h2 {
-        margin-left: 20px;
         font-weight: 600;
         font-size: 24px;
         line-height: 30px;
@@ -18,14 +17,12 @@ const Container = styled.div`
         overflow-x: scroll;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
 
-        & > h2 {
-            margin-left: 8px;
-        }
+        padding-left: 25px;
 
         & > menu {
-            height: 497px;
+            height: 580px;
         }
     }
 `

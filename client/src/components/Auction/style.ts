@@ -10,7 +10,7 @@ const Container = styled.div`
     border-radius: 4px;
     position: relative;
 
-    margin: 0 15px;
+    margin-right: 24px;
 
     .divCardDescription {
         
@@ -19,9 +19,11 @@ const Container = styled.div`
         & > img {
             width: 735px;
             height: 326px;
-            object-fit: cover;
+            object-fit: contain;
 
             background-color: #E9ECEF;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
         }
 
         .divDescription {
@@ -147,24 +149,23 @@ const Container = styled.div`
     @media (max-width: 768px) {
         
         width: 328px;
-        height: 435px;
 
-        margin: 0 0 0 8px;
+        margin-right: 10px;
 
         .divCardDescription {
 
-            height: 435px;
+            height: 500px;
             
             & > img {
                 width: 328px;
-                height: 435px;
+                height: 500px;
 
                 object-fit: contain;
             }
 
             .divDescription {
                 padding: 20px 15px;
-                height: 435px;
+                height: 500px;
                 justify-content: unset;
 
                 .divTimeAuction {
@@ -175,6 +176,11 @@ const Container = styled.div`
                     
                     .divYearKMPrice {
                         flex-direction: column;
+
+                        & > div {
+                            justify-content: unset;
+                            padding-bottom: 15px;
+                        }
                     }
                 }
             }

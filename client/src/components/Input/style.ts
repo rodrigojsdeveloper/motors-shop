@@ -31,6 +31,7 @@ const InputContainer = styled.input<InputStyledProps>`
     font-size: 16px;
 
     transition: .5s;
+    background: transparent;
 
     &::placeholder {
         color: #868E96;

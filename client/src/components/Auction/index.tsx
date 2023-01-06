@@ -9,7 +9,7 @@ interface IAuction {
     auction: IAuctionProps
 }
 
-const Auction = ({ auction }: IAuction) => {
+const Auction = ({ auction }: any) => {
 
     let { auctionId } = useParams()
 
@@ -20,7 +20,7 @@ const Auction = ({ auction }: IAuction) => {
     return (
         <Container>
             <div className="divCardDescription">
-                <img src={ auction.images } alt={ auction.name } />
+                <img src={ auction.cover_image } alt={ auction.title } />
 
                 <div className="divDescription">
                     <div className="divTimeAuction">
@@ -29,7 +29,7 @@ const Auction = ({ auction }: IAuction) => {
                     </div>
 
                     <div>
-                        <h4>{ auction.name }</h4>
+                        <h4>{ auction.title }</h4>
 
                         <p>{ auction.description }</p>
 
