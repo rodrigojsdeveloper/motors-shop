@@ -11,11 +11,11 @@ class UsersServices {
     const newAddress = addressRepository.create(user.address);
     await addressRepository.save(newAddress);
 
-    const hashedPassword = await hash(user.password, 10);
-
     if (await userRepository.findOneBy({ email: user.email })) {
       throw new BadRequestError("Email already exists");
     }
+
+    const hashedPassword = await hash(user.password, 10);
 
     const newUser = new User();
     newUser.name = user.name;

@@ -8,8 +8,8 @@ import { loginRoutes } from "./login.routes";
 import { bidsRoutes } from "./bids.routes";
 
 const appRoutes = (app: Express): void => {
-  app.use("/bids", bidsRoutes());
   app.use("/users", usersRoutes());
+  app.use("/bids", bidsRoutes());
   app.use("/signin", loginRoutes());
   app.use("/products", productsRoutes());
   app.use("/comments", commentsRoutes());
