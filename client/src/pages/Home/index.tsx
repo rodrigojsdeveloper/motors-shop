@@ -3,7 +3,8 @@ import { Banner } from "../../components/Banner";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { ListAuction } from "../../components/ListAuction";
-import { ListProducts } from "../../components/ListProducts";
+import { ListCars } from "../../components/ListCars";
+import { ListMotorcycles } from "../../components/ListMotorcycles";
 import { IAuctionProps, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
@@ -42,8 +43,8 @@ const Home = () => {
       <Header />
       <Banner />
       <ListAuction auctions={ auctions } />
-      <ListProducts listName="Carros" products={ cars } />
-      <ListProducts listName="Motos" products={ motorcycles } />
+      <ListCars listName="Carros" products={ cars } />
+      <ListMotorcycles listName="Motos" products={ motorcycles } />
       <Footer />
     </Container>
   );

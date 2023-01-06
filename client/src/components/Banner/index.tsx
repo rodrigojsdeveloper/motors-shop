@@ -11,10 +11,10 @@ const Banner = () => {
             <p>Um ambiente feito para você explorar o seu melhor</p>
 
             <div>
-                <a href="#carsAndMotorcycles">
+                <a href="#cars">
                     <Button size="buttonSizeBanner" color="buttonColorBlueBanner" type="button">Carros</Button>
                 </a>
-                <a href="#carsAndMotorcycles">
+                <a href="#motorcycles">
                     <Button size="buttonSizeBanner" color="buttonColorBlueBanner" type="button">Motos</Button>
                 </a>
             </div>

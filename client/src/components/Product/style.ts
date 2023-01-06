@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-
-    width: 100%;
-    max-width: 312px;
+    
+    width: 312px;
     margin-right: 40px;
 
     & > img  {

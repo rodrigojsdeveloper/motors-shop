@@ -2,7 +2,7 @@ import { IListProducts, IProductProps } from "../../interfaces"
 import { Product } from "../Product"
 import { Container } from "./style"
 
-const ListProducts = ({ listName, products }: IListProducts) => {
+const ListCars = ({ listName, products }: IListProducts) => {
 
     const car = {
         title: "Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 ",
@@ -20,7 +20,7 @@ const ListProducts = ({ listName, products }: IListProducts) => {
     }
 
     return (
-        <Container id="carsAndMotorcycles">
+        <Container id="cars">
             <h2>{ listName }</h2>
 
             <menu>
@@ -34,4 +34,4 @@ const ListProducts = ({ listName, products }: IListProducts) => {
     )
 }
 
-export { ListProducts }
+export { ListCars }
