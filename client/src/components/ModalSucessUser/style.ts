@@ -11,37 +11,6 @@ const Container = styled.div`
     border-radius: 8px;
     animation: ${animationModal} 1s;
 
-    header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-        height: 56px;
-        padding: 16px 24px;
-
-        p {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 20px;
-            color: #212529;
-            font-weight: bold;
-        }
-
-        img {
-            cursor: pointer;
-
-            :hover {
-                padding: 2.5px;
-
-                border-radius: 8px;
-                border-color: rgba(0, 0, 0, 0.15);
-                box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-                color: rgba(0, 0, 0, 0.65);
-            }
-        }
-    }
-
     div {
 
         padding: 35px 20px 20px 20px;

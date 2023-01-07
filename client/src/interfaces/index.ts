@@ -42,7 +42,8 @@ export interface IButtonProps {
     | "buttonSizeCreateBid"
     | "buttonSizeEditProduct"
     | "buttonSizeShowProduct"
-    | "buttonSizeShowAdvertiser";
+    | "buttonSizeShowAdvertiser"
+    | "buttonSizeModalEditProduct";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"

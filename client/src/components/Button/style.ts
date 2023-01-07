@@ -131,6 +131,13 @@ const Container = styled.button<IButtonStyledProps>`
                     max-width: 160px;
                 `
 
+            case "buttonSizeModalEditProduct":
+
+            return css`
+                height: 48px;
+                max-width: 262px;
+            `
+
             default:
                 return false
         }

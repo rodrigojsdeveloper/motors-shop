@@ -1,7 +1,7 @@
 import { Container } from "./style"
-import close from "../../assets/x.svg"
 import { Button } from "../Button"
 import { useNavigate } from "react-router-dom"
+import { HeaderModal } from "../HeaderModal"
 
 interface IFormSignUp {
     setOpenModalSuccess:  React.Dispatch<React.SetStateAction<boolean>>
@@ -13,11 +13,7 @@ const ModalSucessUser = ({ setOpenModalSuccess }: IFormSignUp) => {
 
     return (
         <Container>
-            <header>
-                <p>Sucesso!</p>
-
-                <img src={ close } onClick={ () => setOpenModalSuccess(false) } />
-            </header>
+            <HeaderModal title="Sucesso!" setCloseModal={ setOpenModalSuccess } />
 
             <div>
                 <h5>Seu anúncio foi criado com sucesso!</h5>

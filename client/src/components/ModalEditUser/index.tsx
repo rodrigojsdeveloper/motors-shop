@@ -1,5 +1,4 @@
 import { Container } from "./style"
-import close from "../../assets/x.svg"
 import { Input } from "../Input"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -8,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { Button } from "../Button"
 import { api } from "../../services/api"
 import { TextArea } from "../TextArea"
+import { HeaderModal } from "../HeaderModal"
 
 interface IModalEditUser {
     setOpenModalEditUser: React.Dispatch<React.SetStateAction<boolean>>
@@ -51,11 +51,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
 
     return (
         <Container>
-            <header>
-                <h2>Editar perfil</h2>
-
-                <img src={ close } alt="x" onClick={ () => setOpenModalEditUser(false) } />
-            </header>
+            <HeaderModal title="Editar perfil"  setCloseModal={ setOpenModalEditUser } />
 
             <form onSubmit={ handleSubmit(onSubmitFunction) }>
                 <h3>Infomações pessoais</h3>

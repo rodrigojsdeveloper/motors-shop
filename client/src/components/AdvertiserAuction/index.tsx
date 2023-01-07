@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ModalBackground } from "../ModalBackground";
-import { ModalEditUser } from "../ModalEditUser";
+import { ModalEditProduct } from "../ModalEditProduct";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -18,16 +18,16 @@ const AdvertiserAuction = ({ auction }: any) => {
 
   auctionId = auction.title
 
-  const [ openModalEdit, setOpenModalEdit ] = useState<boolean>(false)
+  const [ openModalEditProduct, setOpenModalEditProduct ] = useState<boolean>(false)
 
   const navigate = useNavigate()
 
   return (
     <>
     {
-      openModalEdit &&
+      openModalEditProduct &&
       <ModalBackground>
-        <ModalEditUser setOpenModalEditUser={ setOpenModalEdit } />
+        <ModalEditProduct setOpenModalEditProduct={ setOpenModalEditProduct } />
       </ModalBackground>
     }
     <Container>
@@ -63,7 +63,7 @@ const AdvertiserAuction = ({ auction }: any) => {
       </div>
 
       <div className="divRedirectsToAuction">
-        <Button color="buttonColorBlueBanner" size="buttonSizeEditProduct" type="button" onClick={ () => setOpenModalEdit(true) }>Editar</Button>
+        <Button color="buttonColorBlueBanner" size="buttonSizeEditProduct" type="button" onClick={ () => setOpenModalEditProduct(true) }>Editar</Button>
         <Button color="buttonColorBlueBanner" size="buttonSizeShowProduct" type="button" onClick={ () => navigate(`/auctions/${auctionId}`) }>Ver como</Button>
       </div>
     </Container>

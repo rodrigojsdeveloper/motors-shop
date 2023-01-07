@@ -1,5 +1,4 @@
 import { Container } from "./style"
-import close from "../../assets/x.svg"
 import { Input } from "../Input"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -7,7 +6,7 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { Button } from "../Button"
 import { api } from "../../services/api"
-import { IUserProps } from "../../interfaces"
+import { HeaderModal } from "../HeaderModal"
 
 interface IModalEditAddress {
     setOpenModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>
@@ -64,11 +63,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
 
     return (
         <Container>
-            <header>
-                <h2>Editar endereço</h2>
-
-                <img src={ close } alt="x" onClick={ () => setOpenModalEditAddress(false) } />
-            </header>
+            <HeaderModal title="Editar endereço" setCloseModal={ setOpenModalEditAddress } />
 
             <form onSubmit={ handleSubmit(onSubmitFunction) }>
                 <h3>Infomações de endereço</h3>

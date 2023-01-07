@@ -146,7 +146,7 @@ const Header = () => {
                                     setMenuOpenLogged(false)
 
                                 } }>Editar endereço</p>
-                                <Link to="">Meus Anúncios</Link>
+                                <Link to="/myadvertiser">Meus Anúncios</Link>
                                 <Link to="">Sair</Link>
                             </div>
                         </nav>

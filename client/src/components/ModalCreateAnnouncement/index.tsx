@@ -1,5 +1,4 @@
 import { Container } from "./style"
-import close from "../../assets/x.svg"
 import { Button } from "../Button"
 import { useState } from "react"
 import { Input } from "../Input"
@@ -7,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { TextArea } from "../TextArea"
+import { HeaderModal } from "../HeaderModal"
 
 const ModalCreateAnnouncement = () => {
 
@@ -45,11 +45,7 @@ const ModalCreateAnnouncement = () => {
 
     return (
         <Container>
-            <header>
-                <h2>Criar anúncio</h2>
-
-                <img src={ close } />
-            </header>
+            <HeaderModal title="Criar anúncio" setCloseModal={ setOpenModalCreateAnnouncement } />
 
             <form onSubmit={ handleSubmit(onSubmitFunction) }>
                 <div>
