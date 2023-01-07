@@ -17,6 +17,11 @@ const Container = styled.button<IButtonStyledProps>`
 
     transition: .5s;
 
+    :disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+
     ${({ size }) => {
 
         switch(size) {

@@ -1,7 +1,11 @@
 import { Button } from "../Button"
+import { CardSeller } from "../CardSeller"
+import { PhotosGallery } from "../PhotosGallery"
 import { Container } from "./style"
 
 const AuctionDetails = () => {
+
+    const token = true
 
     return (
         <Container>
@@ -23,7 +27,11 @@ const AuctionDetails = () => {
                             <span>R$ 00.000,00</span>
                         </div>
 
-                        <Button size="buttonSizeProductCarDetails" color="buttonColorBlueLogin" type="button">Comprar</Button>
+                        {
+                            token && 
+                            <Button size="buttonSizeProductCarDetails" color="buttonColorBlueLogin" type="button">Comprar</Button>
+                        }
+
                     </div>    
                 </div>
 
@@ -35,44 +43,8 @@ const AuctionDetails = () => {
             </div>
 
             <div className="divPhotosAndUserDetails">
-                <div className="divPhotos">
-                    <h3>Fotos</h3>
-
-                    <div>
-                        <div>
-                            <div>
-                                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                            </div>
-                            <div>
-                                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                            </div>
-                            <div>
-                                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                            </div>
-                            <div>
-                                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                            </div>
-                            <div>
-                                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="divUserDetails">
-                    <div>
-                        <img src="https://i.pinimg.com/originals/07/27/27/07272766e2fc55ea363b3655ddf00f4e.jpg" />
-                        <h4>Rodrigo Silva</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                    
-                        <Button size="buttonSizeProductDetails" color="buttonColorBlackProductDetails" type="button">Ver todos anuncios</Button>
-                    </div>
-                </div>
+                <PhotosGallery />
+                <CardSeller />
             </div>
         </Container>
     )

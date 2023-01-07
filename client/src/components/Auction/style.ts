@@ -133,12 +133,15 @@ const Container = styled.div`
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        padding: 20px;
         
         background: #4529E6;
         height: 62px;
         padding: 24px 36px;
         border-bottom-right-radius: 4px;
         border-bottom-left-radius: 4px;
+
+        cursor: pointer;
 
         p {
             font-weight: 600;
@@ -184,10 +187,6 @@ const Container = styled.div`
                     }
                 }
             }
-        }
-
-        .divRedirectsToAuction {
-            padding: 20px;
         }
     }
 `

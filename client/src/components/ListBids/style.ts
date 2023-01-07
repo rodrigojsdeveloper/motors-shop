@@ -11,6 +11,8 @@ const Container = styled.div`
     background: #FDFDFD;
     border-radius: 4px;
 
+    margin-top: 15px;
+
     & > h3 {
         font-weight: 600;
         font-size: 20px;

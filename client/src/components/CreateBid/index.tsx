@@ -8,6 +8,8 @@ const CreateBid = () => {
 
     const { register } = useForm({})
 
+    const token = true
+
     return (
         <Container>
             <div>
@@ -28,7 +30,7 @@ const CreateBid = () => {
                     name="label"
                     />
 
-                    <Button color="buttonColorBlueLogin" size="buttonSizeCreateBid" type="button">Inserir proposta</Button>
+                    <Button color="buttonColorBlueLogin" size="buttonSizeCreateBid" type="button" disabled={ token }>Inserir proposta</Button>
                 </div>
             </div>
         </Container>
