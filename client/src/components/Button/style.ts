@@ -124,6 +124,13 @@ const Container = styled.button<IButtonStyledProps>`
                     max-width: 105px;
                 `
 
+            case "buttonSizeShowAdvertiser":
+                
+                return css`
+                    height: 48px;
+                    max-width: 160px;
+                `
+
             default:
                 return false
         }
