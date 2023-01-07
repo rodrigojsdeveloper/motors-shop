@@ -11,19 +11,22 @@ import { Link } from "react-router-dom"
 import { ModalBackground } from "../ModalBackground"
 import { ModalEditAddress } from "../ModalEditAddress"
 import { ModalEditUser } from "../ModalEditUser"
+import { IUserProps } from "../../interfaces"
 
 
 const Header = () => {
 
     const navigate = useNavigate()
     
-    const token = sessionStorage.getItem("Motors shop: token")
+    const token = true
     
     const [ menuOpen, setMenuOpen ] = useState<boolean>(false)
 
     const [ menuOpenLogged, setMenuOpenLogged ] = useState<boolean>(false)
 
-    const [ userName, setUserName ] = useState<string>("")
+    const [ menuOpenLoggedNotAnnouncement, setMenuOpenLoggedNotAnnouncement ] = useState<boolean>(false)
+
+    const [ user, setUser ] = useState<IUserProps>({} as IUserProps)
 
     const [ openModalEditAddress, setOpenModalEditAddress ] = useState<boolean>(false)
 
@@ -36,7 +39,7 @@ const Header = () => {
                 "Authorization": `Bearer ${ token }`
             }
         })
-        .then(res => setUserName(res.data.name))
+        .then(res => setUser(res.data))
         .catch(error => console.error(error))
 
     }, [])
@@ -57,7 +60,8 @@ const Header = () => {
             }
             {
                 menuOpenLogged &&
-                <div className="menuOpenLogged">
+                user.is_seller ? (
+                <div className="menuOpenLoggedAnnouncement">
                     <p onClick={ () => {
                                     
                         setOpenModalEditUser(true)
@@ -72,9 +76,29 @@ const Header = () => {
                         setMenuOpenLogged(false)
 
                     } }>Editar endereço</p>
-                    <p>Meus Anúncios</p>
-                    <p>Sair</p>
+                    <Link to="myadvertiser">Meus Anúncios</Link>
+                    <Link to="">Sair</Link>
                 </div>
+                ) : (
+                menuOpenLoggedNotAnnouncement &&
+                <div className="menuOpenLoggedNotAnnouncement">
+                    <p onClick={ () => {
+                                    
+                        setOpenModalEditUser(true)
+
+                        setMenuOpenLoggedNotAnnouncement(false)
+
+                    } }>Editar perfil</p>
+                    <p onClick={ () => {
+                                    
+                        setOpenModalEditAddress(true)
+
+                        setMenuOpenLoggedNotAnnouncement(false)
+
+                    } }>Editar endereço</p>
+                    <Link to="">Sair</Link>
+                </div>
+                )
             }
             <img src={ logo } alt="Motors shop" title="Motors shop" />
 
@@ -89,15 +113,25 @@ const Header = () => {
                     token ? (
 
                         <div onClick={ () => {
-                            setMenuOpenLogged(true)
+                            
+                            if(user.is_seller) {
+                                setMenuOpenLogged(true)
+                            }
+
+                            setMenuOpenLoggedNotAnnouncement(true)
 
                             if(menuOpenLogged) {
 
                                 setMenuOpenLogged(false)
                             }
+
+                            if(menuOpenLoggedNotAnnouncement) {
+
+                                setMenuOpenLoggedNotAnnouncement(false)   
+                            }
                         } }>
-                            <AvatarUser userName={ userName } />
-                            <h2>{ userName }</h2>
+                            <AvatarUser userName="rodrigo silva" />
+                            <h2>{ user.name }</h2>
                         </div>
 
                     ) : (
@@ -126,10 +160,13 @@ const Header = () => {
                     token ? (
                         
                         menuOpen && 
-                        <nav>
-                            <Link to="/#cars">Carros</Link>
-                            <Link to="/#motorcycles">Motos</Link>
-                            <Link to="/">Leilão</Link>
+                        user.is_seller ? (
+                        <nav className="navLogged">
+                            <div>
+                                <Link to="/#cars" onClick={ () => setMenuOpen(false)}>Carros</Link>
+                                <Link to="/#motorcycles" onClick={ () => setMenuOpen(false)}>Motos</Link>
+                                <Link to="/" onClick={ () => setMenuOpen(false)}>Leilão</Link>
+                            </div>
                             <hr />
                             <div>
                                 <p onClick={ () => {
@@ -137,6 +174,8 @@ const Header = () => {
                                     setOpenModalEditUser(true)
             
                                     setMenuOpenLogged(false)
+
+                                    setMenuOpen(false)
             
                                 } }>Editar perfil</p>
                                 <p onClick={ () => {
@@ -145,15 +184,48 @@ const Header = () => {
 
                                     setMenuOpenLogged(false)
 
+                                    setMenuOpen(false)
+
                                 } }>Editar endereço</p>
-                                <Link to="/myadvertiser">Meus Anúncios</Link>
-                                <Link to="">Sair</Link>
+                                <Link to="/myadvertiser" onClick={ () => setMenuOpen(false)}>Meus Anúncios</Link>
+                                <Link to="" onClick={ () => setMenuOpen(false)}>Sair</Link>
                             </div>
                         </nav>
+                        ) : (
+                        <nav className="navLogged">
+                            <div>
+                                <Link to="/#cars" onClick={ () => setMenuOpen(false)}>Carros</Link>
+                                <Link to="/#motorcycles" onClick={ () => setMenuOpen(false)}>Motos</Link>
+                                <Link to="/" onClick={ () => setMenuOpen(false)}>Leilão</Link>
+                            </div>
+                            <hr />
+                            <div>
+                                <p onClick={ () => {
+                                    
+                                    setOpenModalEditUser(true)
+            
+                                    setMenuOpenLogged(false)
+
+                                    setMenuOpen(false)
+            
+                                } }>Editar perfil</p>
+                                <p onClick={ () => {
+                                    
+                                    setOpenModalEditAddress(true)
+
+                                    setMenuOpenLogged(false)
+
+                                    setMenuOpen(false)
+
+                                } }>Editar endereço</p>
+                                <Link to="" onClick={ () => setMenuOpen(false)}>Sair</Link>
+                            </div>
+                        </nav>
+                        )
 
                     ) : (
                         menuOpen && 
-                        <nav>
+                        <nav className="navNotLogged">
                             <hr />
                             <div>
                                 <Link to="/#cars">Carros</Link>

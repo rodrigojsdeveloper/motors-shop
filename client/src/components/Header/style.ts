@@ -169,8 +169,58 @@ const Container = styled.header`
         margin: auto 0;
 
         z-index: 5px;
+        
+        .navLogged {
 
-        & > nav {
+            width: 100%;
+            position: fixed;
+
+            left: 0;
+            top: 8.5%;
+            
+            background-color: #FDFDFD;
+            filter: drop-shadow(0px 60px 40px rgba(0, 0, 0, 0.09));
+
+            & > hr {
+                border: none;
+                height: 2px;
+                background: #DEE2E6;
+            }
+
+            & > hr:nth-child(1) {
+                margin-top: 7px;
+            }
+
+            & > div {
+
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+
+                & > a, & > p {
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #495057;
+
+                    padding: 20px 0;
+
+                    :focus {
+                        color: #0B0D0D;
+                        text-decoration: underline;
+                    }
+                }
+
+                & > a:nth-child(4) {
+                    
+                    border: 1.5px solid #000;
+                    border-radius: 4px;
+                    text-align: center;
+                    padding: 12px 28px;
+                }
+            }
+        }
+
+        .navNotLogged {
 
             width: 100%;
             position: fixed;
@@ -244,7 +294,7 @@ const Container = styled.header`
         }
     }
 
-    .menuOpenLogged {
+    .menuOpenLoggedAnnouncement {
         width: 200px;
         height: 202px;
         margin-right: 10px;
@@ -261,7 +311,7 @@ const Container = styled.header`
         flex-direction: column;
         align-items: center;
 
-        & > p {
+        & > p, & > a {
             width: 100%;
             font-weight: 400;
             font-size: 16px;
@@ -274,6 +324,41 @@ const Container = styled.header`
 
             &:hover {
                 background: #dbe1e7;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    .menuOpenLoggedNotAnnouncement {
+        width: 200px;
+        margin-right: 10px;
+
+        border-radius: 4px;
+        background: #F8F9FA;
+        box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+
+        position: absolute;
+        top: 90%;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > p, & > a {
+            width: 100%;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 28px;
+            text-align: center;
+
+            padding: 11.5px 0;
+
+            color: #495057;
+
+            &:hover {
+                background: #dbe1e7;
+                border-radius: 4px;
             }
         }
     }

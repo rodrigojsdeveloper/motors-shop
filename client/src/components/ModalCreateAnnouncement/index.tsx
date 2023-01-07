@@ -8,7 +8,11 @@ import * as yup from "yup"
 import { TextArea } from "../TextArea"
 import { HeaderModal } from "../HeaderModal"
 
-const ModalCreateAnnouncement = () => {
+interface IModalCreateAnnouncement {
+    setCloseModalCreateAnnouncement: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ModalCreateAnnouncement = ({ setCloseModalCreateAnnouncement }: IModalCreateAnnouncement) => {
 
     const [ changeColorBuyer, setChangeColorBuyer ] = useState<boolean>(true)
 
@@ -21,10 +25,6 @@ const ModalCreateAnnouncement = () => {
     const [ changeColorAdvertiserVehicleType, setChangeColorAdvertiserVehicleType ] = useState<boolean>(false)
 
     const [ buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType ] = useState<boolean>(true)
-
-
-    const [ openModalCreateAnnouncement, setOpenModalCreateAnnouncement ] = useState<boolean>(false)
-
 
     const schema = yup.object().shape({
 
@@ -45,7 +45,7 @@ const ModalCreateAnnouncement = () => {
 
     return (
         <Container>
-            <HeaderModal title="Criar anúncio" setCloseModal={ setOpenModalCreateAnnouncement } />
+            <HeaderModal title="Criar anúncio" setCloseModal={ setCloseModalCreateAnnouncement } />
 
             <form onSubmit={ handleSubmit(onSubmitFunction) }>
                 <div>
@@ -158,7 +158,7 @@ const ModalCreateAnnouncement = () => {
                 />
 
                 <div>
-                    <Button color="buttonColorGrayModalEditAddress" size="buttonSizeModalEditAddressSmall" type="button" onClick={ () => setOpenModalCreateAnnouncement(false) }>Cancelar</Button>
+                    <Button color="buttonColorGrayModalEditAddress" size="buttonSizeModalEditAddressSmall" type="button" onClick={ () => setCloseModalCreateAnnouncement(false) }>Cancelar</Button>
                     <Button color="buttonColorBlueLogin" size="buttonSizeModalEditAddressMedium" type="button">Criar anúncio</Button>
                 </div>
             </form>

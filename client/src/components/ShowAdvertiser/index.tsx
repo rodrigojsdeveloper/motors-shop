@@ -1,9 +1,22 @@
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
 import { Button } from "../Button";
+import { useState } from "react";
+import { ModalBackground } from "../ModalBackground";
+import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
 
 const ShowAdvertiser = () => {
+
+  const [ openModalCreateAnnouncement, setOpenModalCreateAnnouncement ] = useState<boolean>(false)
+
   return (
+    <>
+    {
+      openModalCreateAnnouncement &&
+      <ModalBackground>
+        <ModalCreateAnnouncement setCloseModalCreateAnnouncement={ setOpenModalCreateAnnouncement } />
+      </ModalBackground>
+    }
     <Container>
       <AvatarUser userName="Rodrigo Silva" />
 
@@ -22,10 +35,12 @@ const ShowAdvertiser = () => {
         color="buttonColorWhiteUserDetails"
         size="buttonSizeShowAdvertiser"
         type="button"
+        onClick={ () => setOpenModalCreateAnnouncement(true) }
       >
         Criar anúncio
       </Button>
     </Container>
+    </>
   );
 };
 
