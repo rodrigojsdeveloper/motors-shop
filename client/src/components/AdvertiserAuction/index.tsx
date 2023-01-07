@@ -3,6 +3,10 @@ import clock from "../../assets/Group 13.svg";
 import { IAuctionProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Button } from "../Button";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ModalBackground } from "../ModalBackground";
+import { ModalEditUser } from "../ModalEditUser";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -10,7 +14,22 @@ interface IAuction {
 
 const AdvertiserAuction = ({ auction }: any) => {
 
+  let auctionId = useParams()
+
+  auctionId = auction.title
+
+  const [ openModalEdit, setOpenModalEdit ] = useState<boolean>(false)
+
+  const navigate = useNavigate()
+
   return (
+    <>
+    {
+      openModalEdit &&
+      <ModalBackground>
+        <ModalEditUser setOpenModalEditUser={ setOpenModalEdit } />
+      </ModalBackground>
+    }
     <Container>
       <div className="divCardDescription">
         <img src={auction.cover_image} alt={auction.title} />
@@ -44,10 +63,11 @@ const AdvertiserAuction = ({ auction }: any) => {
       </div>
 
       <div className="divRedirectsToAuction">
-        <Button color="buttonColorBlueBanner" size="buttonSizeEditProduct" type="button">Editar</Button>
-        <Button color="buttonColorBlueBanner" size="buttonSizeShowProduct" type="button">Ver como</Button>
+        <Button color="buttonColorBlueBanner" size="buttonSizeEditProduct" type="button" onClick={ () => setOpenModalEdit(true) }>Editar</Button>
+        <Button color="buttonColorBlueBanner" size="buttonSizeShowProduct" type="button" onClick={ () => navigate(`/auctions/${auctionId}`) }>Ver como</Button>
       </div>
     </Container>
+    </>
   );
 };
 
