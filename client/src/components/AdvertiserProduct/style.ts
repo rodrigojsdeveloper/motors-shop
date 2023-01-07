@@ -84,6 +84,15 @@ const Container = styled.div`
     }
   }
 
+  .divButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 201px;
+  }
+
   @media (max-width: 375px) {
     margin-right: 15px;
   }

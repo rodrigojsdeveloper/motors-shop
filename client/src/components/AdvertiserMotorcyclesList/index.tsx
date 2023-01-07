@@ -1,8 +1,8 @@
-import { IListProducts, IProductProps } from "../../interfaces";
+import { IListProducts } from "../../interfaces";
 import { Product } from "../Product";
 import { Container } from "./style";
 
-const ListMotorcycles = ({ listName, products }: IListProducts) => {
+const AdvertiserMotorcyclesList = ({ listName, products }: IListProducts) => {
   const motorcycle = {
     title: "Zero Motorcycles SR/S",
     description:
@@ -22,7 +22,7 @@ const ListMotorcycles = ({ listName, products }: IListProducts) => {
   };
 
   return (
-    <Container id="motorcycles">
+    <Container id="cars">
       <h2>{listName}</h2>
 
       <menu>
@@ -36,4 +36,4 @@ const ListMotorcycles = ({ listName, products }: IListProducts) => {
   );
 };
 
-export { ListMotorcycles };
+export { AdvertiserMotorcyclesList };

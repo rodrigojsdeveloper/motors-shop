@@ -3,7 +3,7 @@ import { Container } from "./style"
 
 const CreateComment = () => {
 
-    const token = false
+    const token = !sessionStorage.getItem("Motors shop: token")
 
     return (
         <Container>

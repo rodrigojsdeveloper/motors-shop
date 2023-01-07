@@ -39,7 +39,9 @@ export interface IButtonProps {
     | "buttonSizeModalEditAddressMedium"
     | "buttonSizeModalEditAddressSmall"
     | "buttonSizeUserDetailsMedium"
-    | "buttonSizeCreateBid";
+    | "buttonSizeCreateBid"
+    | "buttonSizeEditProduct"
+    | "buttonSizeShowProduct";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
@@ -48,7 +50,8 @@ export interface IButtonProps {
     | "buttonColorWhiteSignUp"
     | "buttonColorBlackProductDetails"
     | "buttonColorGrayModalEditAddress"
-    | "buttonColorWhiteUserDetails";
+    | "buttonColorWhiteUserDetails"
+    | "buttonColorWhiteEditAndShowProduct";
   className?: string;
   style?: React.CSSProperties | undefined;
 }
