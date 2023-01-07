@@ -22,6 +22,13 @@ const Container = styled.div`
             padding: 10px;
         }
     }
+
+    @media (max-width: 1440px) {
+
+        .divWhite {
+            height: auto;
+        }
+    }
 `
 
 export { Container }

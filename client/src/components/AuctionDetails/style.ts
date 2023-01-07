@@ -1,60 +1,58 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Container = styled.div`
+  width: 100%;
+  max-width: 1230px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-top: -525px;
+
+  & > article {
+    height: 870px;
 
     width: 100%;
-    max-width: 1230px;
+    max-width: 751px;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 
-    margin-top: -525px;
+    .divCarPhotoAndDetails {
+      width: 100%;
+      max-width: 751px;
+      height: 610px;
 
-    & > article {
-
-        height: 870px;
-
-        width: 100%;
-        max-width: 751px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        .divCarPhotoAndDetails {
-
-            width: 100%;
-            max-width: 751px;
-            height: 610px;
-            
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+  }
+
+  .divPhotosAndUserDetails {
+    height: 837px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1440px) {
+    flex-direction: column;
+    align-items: center;
 
     .divPhotosAndUserDetails {
-
-        height: 837px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      width: 100%;
+      max-width: 751px;
     }
+  }
 
-    @media (max-width: 1440px) {
-
-        flex-direction: column;
-        align-items: center;
+  @media (max-width: 720px) {
+    & > article {
+      height: auto;
     }
+  }
+`;
 
-    @media (max-width: 720px) {
-
-        .divCarDetailsDescription {
-
-            height: auto;
-        }
-    }
-`
-
-export { Container }
+export { Container };

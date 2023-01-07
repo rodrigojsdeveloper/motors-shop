@@ -4,7 +4,6 @@ const Container = styled.div`
 
     width: 100%;
     max-width: 663px;
-    height: 116px;
 
     margin-bottom: 15px;
 
@@ -66,6 +65,15 @@ const Container = styled.div`
         font-size: 14px;
         line-height: 24px;
         color: #495057;
+        line-height: 1.2rem;
+        /*
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; 
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        */
     }
 `
 

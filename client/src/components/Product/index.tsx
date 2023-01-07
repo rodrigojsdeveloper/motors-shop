@@ -1,36 +1,46 @@
-import { IProductProps } from "../../interfaces"
-import { AvatarUser } from "../AvatarUser"
-import { Container } from "./style"
+import { useNavigate, useParams } from "react-router-dom";
+import { IProductProps } from "../../interfaces";
+import { AvatarUser } from "../AvatarUser";
+import { Container } from "./style";
 
 interface IProduct {
-    product: IProductProps
+  product: IProductProps;
 }
 
 const Product = ({ product }: any) => {
+  let { productId } = useParams();
 
-    return (
-        <Container>
-            <img src={ product.cover_image } alt={ product.title } title={ product.title } />
+  productId = product.title;
 
-            <h4>{ product.title }</h4>
+  const navigate = useNavigate();
 
-            <p>{ product.description }</p>
+  return (
+    <Container onClick={() => navigate(`/products/${productId}`)}>
+      <img
+        src={product.cover_image}
+        alt={product.title}
+        title={product.title}
+      />
 
-            <div>
-                <AvatarUser userName={ product.user.name } />
-                <h6>{ product.user.name }</h6>
-            </div>
+      <h4>{product.title}</h4>
 
-            <div className="divKmYearPrice">
-                <div>
-                    <p>{ product.year }</p>
-                    <p>{ product.kilometers } KM</p>
-                </div>
+      <p>{product.description}</p>
 
-                <span>{ product.price }</span>
-            </div>
-        </Container>
-    )
-}
+      <div>
+        <AvatarUser userName={product.user.name} />
+        <h6>{product.user.name}</h6>
+      </div>
 
-export { Product }
+      <div className="divKmYearPrice">
+        <div>
+          <p>{product.year}</p>
+          <p>{product.kilometers} KM</p>
+        </div>
+
+        <span>{product.price}</span>
+      </div>
+    </Container>
+  );
+};
+
+export { Product };

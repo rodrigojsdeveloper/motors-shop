@@ -4,7 +4,6 @@ const Container = styled.div`
 
     width: 100%;
     max-width: 751px;
-    height: 289px;
 
     background: #FDFDFD;
     border-radius: 4px;
@@ -48,10 +47,15 @@ const Container = styled.div`
         max-width: 672px;
         height: 128px;
         
-        border: 1.5px solid #E9ECEF;
+        border: 2px solid #E9ECEF;
         border-radius: 4px;
 
         padding: 10px;
+        transition: .5s;
+
+        &:hover {
+            border-color: #000;
+        }
 
         & > textarea {
 
@@ -72,6 +76,46 @@ const Container = styled.div`
                 color: #868E96;
 
                 padding: 10px 10px 0 0;
+            }
+
+            &:focus::-webkit-input-placeholder {
+                color: transparent;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            border: none;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100%;
+            padding: 0;
+
+            & > textarea {
+                border: 2px solid #E9ECEF;
+                border-radius: 4px;
+                
+                width: 100%;
+                height: 128px;
+
+                margin-bottom: 20px;
+                padding: 15px 0 15px 15px;
+
+                &:hover {
+                    border-color: #000;
+                }
+                &::placeholder {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 0px;
+                    color: #868E96;
+
+                    padding: 10px 10px 0 0;
+                }
+
+                &:focus::-webkit-input-placeholder {
+                    color: transparent;
+                }
             }
         }
     }
@@ -96,7 +140,32 @@ const Container = styled.div`
 
             margin-right: 10px;
             padding: 0px 12px;
+            transition: .5s;
+
+            &:hover {
+                color: #000;
+            }
         }
+
+        @media (max-width: 720px) {
+
+            flex-direction: column;
+
+            & > p {
+                margin: 10px 0;
+                width: fit-content;
+            }
+        }
+    }
+
+    @media (max-width: 1440px) {
+
+        margin: 50px auto;
+    }
+
+    @media (max-width: 720px) {
+
+        padding: 30px;
     }
 `
 

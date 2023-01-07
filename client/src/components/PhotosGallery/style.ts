@@ -68,6 +68,7 @@ const Container = styled.aside`
     max-width: 752px;
     width: 100%;
     margin-top: 17px;
+    align-items: center;
   }
 
   @media (max-width: 720px) {

@@ -32,6 +32,16 @@ const Container = styled.div`
         height: 436px;
         overflow-y: auto;
     }
+
+    @media (max-width: 1440px) {
+
+        margin: 20px auto 0 auto;
+    }
+
+    @media (max-width: 720px) {
+
+        padding: 30px;
+    }
 `
 
 export { Container }

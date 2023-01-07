@@ -3,6 +3,8 @@ import { Container } from "./style"
 
 const CreateComment = () => {
 
+    const token = false
+
     return (
         <Container>
             <div className="divUserPhotoAndName">
@@ -11,8 +13,8 @@ const CreateComment = () => {
             </div>
 
             <div className="divInputLarge">
-                <textarea placeholder="Carro muito confortável, foi uma ótima experiência de compra..." />
-                <Button size="buttonSizeProductCarDetails" color="buttonColorBlueLogin" type="button">Comentar</Button>
+                <textarea placeholder={ token ? "Digitar comentário" : "Carro muito confortável, foi uma ótima experiência de compra..."} />
+                <Button size="buttonSizeProductCarDetails" color="buttonColorBlueLogin" type="button" disabled={ token }>Comentar</Button>
             </div>
 
             <div className="divReadyComments">
