@@ -1,5 +1,6 @@
+import { PageAdvertiser } from "./pages/PageAdvertiser";
 import { AllRoutes } from "./routes";
 
-const App = () => <AllRoutes />;
+const App = () => <PageAdvertiser />;
 
 export { App };

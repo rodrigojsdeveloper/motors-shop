@@ -23,6 +23,11 @@ const Container = styled.div`
       height: 580px;
     }
   }
+
+  @media (max-width: 1250px) {
+
+    padding-left: 0;
+  }
 `;
 
 export { Container };

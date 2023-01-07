@@ -276,6 +276,7 @@ const Container = styled.button<IButtonStyledProps>`
 
                 :hover {
                     background-color: #212529;
+                    color: #fff;
                 }
             `
 

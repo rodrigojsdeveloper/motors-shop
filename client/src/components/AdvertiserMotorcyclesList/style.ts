@@ -13,11 +13,16 @@ const Container = styled.div`
   & > menu {
     display: flex;
     flex-direction: row;
-    overflow-x: scroll;
+    overflow-x: scroll; 
   }
 
   @media (max-width: 1024px) {
     padding-left: 25px;
+  }
+
+  @media (max-width: 1250px) {
+
+    padding-left: 0;
   }
 `;
 

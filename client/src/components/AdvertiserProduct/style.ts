@@ -91,6 +91,10 @@ const Container = styled.div`
 
     width: 100%;
     max-width: 201px;
+
+    & > button {
+      padding: 0;
+    }
   }
 
   @media (max-width: 375px) {

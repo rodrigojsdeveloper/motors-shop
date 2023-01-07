@@ -126,7 +126,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
 
     background: #4529e6;
     height: 62px;
@@ -136,7 +136,18 @@ const Container = styled.div`
 
     & > button:nth-child(1) {
 
-      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    & > button {
+      padding: 0;
+    }
+
+    @media (max-width: 768px) {
+
+      & > button {
+        max-width: unset;
+      }
     }
   }
 

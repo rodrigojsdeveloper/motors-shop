@@ -1,5 +1,5 @@
 import { IListProducts, IProductProps } from "../../interfaces";
-import { Product } from "../Product";
+import { AdvertiserProduct } from "../AdvertiserProduct";
 import { Container } from "./style";
 
 const AdvertiserCarsList = ({ listName, products }: IListProducts) => {
@@ -26,11 +26,11 @@ const AdvertiserCarsList = ({ listName, products }: IListProducts) => {
       <h2>{listName}</h2>
 
       <menu>
-        <Product product={car} />
-        <Product product={car} />
-        <Product product={car} />
-        <Product product={car} />
-        <Product product={car} />
+        <AdvertiserProduct product={car} />
+        <AdvertiserProduct product={car} />
+        <AdvertiserProduct product={car} />
+        <AdvertiserProduct product={car} />
+        <AdvertiserProduct product={car} />
       </menu>
     </Container>
   );
