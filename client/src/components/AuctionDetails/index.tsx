@@ -4,23 +4,28 @@ import { CardSeller } from "../CardSeller";
 import { Details } from "../Details";
 import { Container } from "./style";
 import { Photo } from "../Photo";
+import { IAuctionProps } from "../../interfaces";
 
-const AuctionDetails = () => {
+interface IAuctionDetails {
+  auction: IAuctionProps
+}
+
+const AuctionDetails = ({ auction }: IAuctionDetails) => {
   return (
     <Container>
       <article>
         <div className="divCarPhotoAndDetails">
-          <Photo />
+          <Photo image={ auction.cover_image } />
 
-          <Details />
+          <Details product={ auction } />
         </div>
 
-        <Description />
+        <Description description={ auction.description } />
       </article>
 
       <div className="divPhotosAndUserDetails">
-        <PhotosGallery />
-        <CardSeller />
+        <PhotosGallery gallery_image={ auction.gallery_image } />
+        <CardSeller user={ auction.user } />
       </div>
     </Container>
   );

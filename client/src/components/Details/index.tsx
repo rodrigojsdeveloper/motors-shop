@@ -1,20 +1,25 @@
+import { IAuctionProps, IProductProps } from "../../interfaces";
 import { Button } from "../Button";
 import { Container } from "./style";
 
-const Details = () => {
-  const token = true;
+interface IDetails {
+  product: IAuctionProps | IProductProps
+}
+
+const Details = ({ product }: IDetails) => {
+  const token = sessionStorage.getItem("Motors shop: token");
 
   return (
     <Container>
-      <h3>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200</h3>
+      <h3>{ product.description }</h3>
 
       <div>
         <div>
-          <p>2013</p>
-          <p>0 KM</p>
+          <p>{ product.year }</p>
+          <p>{ product.kilometers } KM</p>
         </div>
 
-        <span>R$ 00.000,00</span>
+        <span>{ product.price }</span>
       </div>
 
       {token && (

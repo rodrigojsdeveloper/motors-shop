@@ -76,6 +76,7 @@ export interface IUserProps {
   cpf: string;
   birthdate: string;
   is_seller: boolean;
+  description: string;
   zip_code: string;
   country: string;
   state: string;
@@ -92,9 +93,10 @@ export interface IProductProps {
   description: string;
   year: number;
   kilometers: number;
-  ad_type: "car" | "motorbike" | string;
   price: string;
-  vehicle_type: string;
+  ad_type: "sale" | "auction" | string;
+  vehicle_type: "car" | "motorbike" | string;
+  is_published: boolean;
   cover_image: string;
   gallery_image: string;
   user: IUserProps;
@@ -102,16 +104,19 @@ export interface IProductProps {
 
 export interface IAuctionProps {
   id: string;
-  name: string;
+  title: string;
   description: string;
   year: number;
   kilometers: number;
-  ad_type: "car" | "motorbike" | string;
   price: string;
-  vehicle_type: string;
-  images: string;
-  time_limit: string;
+  ad_type: "sale" | "auction" | string;
+  vehicle_type: "car" | "motorbike" | string;
+  is_published: boolean;
+  cover_image: string;
+  gallery_image: string;
   user: IUserProps;
+  time_limit: string;
+  bids: IBid[]
 }
 
 export interface IListAuctions {
@@ -121,4 +126,11 @@ export interface IListAuctions {
 export interface IListProducts {
   listName: string;
   products: IProductProps[];
+}
+
+export interface IBid {
+  value: string
+  created_at: string
+  user: IUserProps
+  auction: IAuctionProps
 }

@@ -1,49 +1,59 @@
-import { ProductsServices } from "../services/products.service";
+import {
+  createProductService,
+  listProductsService,
+  specificProductService,
+  updateProductService,
+  deleteProductService,
+} from "../services/products.service";
 import { IProduct } from "../interfaces/product.interface";
 import { Request, Response } from "express";
 
-class ProductsControllers {
-  async create(req: Request, res: Response) {
-    const email: string = req.email;
+const createProductController = async (req: Request, res: Response) => {
+  const email: string = req.email;
 
-    const data: IProduct = req.body;
+  const data: IProduct = req.body;
 
-    const newProduct = await new ProductsServices().create(data, email);
+  const newProduct = await createProductService(data, email);
 
-    return res.status(201).json(newProduct);
-  }
+  return res.status(201).json(newProduct);
+};
 
-  async list(req: Request, res: Response) {
-    const products = await new ProductsServices().list();
+const listProductsController = async (req: Request, res: Response) => {
+  const products = await listProductsService();
 
-    return res.json(products);
-  }
+  return res.json(products);
+};
 
-  async specific(req: Request, res: Response) {
-    const id: string = req.params.id;
+const specificProductController = async (req: Request, res: Response) => {
+  const id: string = req.params.id;
 
-    const specificProduct = await new ProductsServices().specific(id);
+  const specificProduct = await specificProductService(id);
 
-    return res.json(specificProduct);
-  }
+  return res.json(specificProduct);
+};
 
-  async update(req: Request, res: Response) {
-    const id: string = req.params.id;
+const updateProductController = async (req: Request, res: Response) => {
+  const id: string = req.params.id;
 
-    const data: Partial<IProduct> = req.body;
+  const data: Partial<IProduct> = req.body;
 
-    const updatedProduct = await new ProductsServices().update(data, id);
+  const updatedProduct = await updateProductService(data, id);
 
-    return res.json(updatedProduct);
-  }
+  return res.json(updatedProduct);
+};
 
-  async delete(req: Request, res: Response) {
-    const id: string = req.params.id;
+const deleteProductController = async (req: Request, res: Response) => {
+  const id: string = req.params.id;
 
-    await new ProductsServices().delete(id);
+  await deleteProductService(id);
 
-    return res.status(204).json();
-  }
-}
+  return res.status(204).json();
+};
 
-export { ProductsControllers };
+export {
+  createProductController,
+  listProductsController,
+  specificProductController,
+  updateProductController,
+  deleteProductController,
+};

@@ -7,12 +7,14 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { Button } from "../Button"
 import { Input } from "../Input"
 import { TextArea } from "../TextArea"
+import { IAuctionProps } from "../../interfaces"
 
 interface IModalEditProduct {
   setOpenModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>
+  auction: IAuctionProps
 }
 
-const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
+const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduct) => {
 
   const [ changeColorBuyer, setChangeColorBuyer ] = useState<boolean>(true)
 
@@ -57,14 +59,18 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
                 <div className="divButtons">
 
                     <Button onClick={ () => {
-                        setChangeColorBuyer(true)
-                        setChangeColorAdvertiser(false)
-                        setBuyerOrAdvertiser(true)
+                        if(auction.ad_type == "sale") {
+                            setChangeColorBuyer(true)
+                            setChangeColorAdvertiser(false)
+                            setBuyerOrAdvertiser(true)
+                        }
                     } } style={ changeColorBuyer ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Venda</Button>
                     <Button onClick={ () => {
-                        setChangeColorBuyer(false)
-                        setChangeColorAdvertiser(true)
-                        setBuyerOrAdvertiser(false)
+                        if(auction.ad_type == "auction") {
+                            setChangeColorBuyer(false)
+                            setChangeColorAdvertiser(true)
+                            setBuyerOrAdvertiser(false)
+                        }
                         } } style={ changeColorAdvertiser ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Leilão</Button>
                 </div>
             </div>
@@ -81,6 +87,7 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
             error={ errors.title?.message }
             required={ true }
             size="inputModalEditAddressLarge"    
+            value={ auction.title }
             />
 
             <div>
@@ -93,7 +100,8 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
                 type="number"
                 error={ errors.year?.message }
                 required={ true }
-                size="inputModalCreateAnnouncementSmall"    
+                size="inputModalCreateAnnouncementSmall"   
+                value={ auction.year } 
                 />
                 <Input
                 label="Quilometragem"
@@ -105,7 +113,8 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
                 error={ errors.kilometers?.message }
                 required={ true }
                 size="inputModalCreateAnnouncementSmall" 
-                className="inputKilometers"   
+                className="inputKilometers"
+                value={ auction.kilometers }   
                 />
                 <Input
                 label="Preço"
@@ -117,23 +126,28 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
                 error={ errors.price?.message }
                 required={ true }
                 size="inputModalCreateAnnouncementSmall"    
+                value={ auction.price }
                 />
             </div>
-            <TextArea />
+            <TextArea value={ auction.description } />
 
             <div>
                 <h4>Tipo de veículo</h4>
                 <div className="divButtons">
 
                     <Button onClick={ () => {
-                        setChangeColorBuyerVehicleType(true)
-                        setChangeColorAdvertiserVehicleType(false)
-                        setBuyerOrAdvertiserVehicleType(true)
+                        if(auction.vehicle_type == "car") {
+                            setChangeColorBuyerVehicleType(true)
+                            setChangeColorAdvertiserVehicleType(false)
+                            setBuyerOrAdvertiserVehicleType(true)
+                        }
                     } } style={ changeColorBuyerVehicleType ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Carro</Button>
                     <Button onClick={ () => {
-                        setChangeColorBuyerVehicleType(false)
-                        setChangeColorAdvertiserVehicleType(true)
-                        setBuyerOrAdvertiserVehicleType(false)
+                        if(auction.vehicle_type == "motorbike") {
+                            setChangeColorBuyerVehicleType(false)
+                            setChangeColorAdvertiserVehicleType(true)
+                            setBuyerOrAdvertiserVehicleType(false)
+                        }
                         } } style={ changeColorAdvertiserVehicleType ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Moto</Button>
                 </div>
             </div>
@@ -143,12 +157,16 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
                 <div className="divButtons">
 
                     <Button onClick={ () => {
-                        setChangPostedToYes(true)
-                        setChangPostedToNo(false)
+                        if(auction.is_published) {
+                            setChangPostedToYes(true)
+                            setChangPostedToNo(false)
+                        }
                     } } style={ changePostedToYes ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Sim</Button>
                     <Button onClick={ () => {
-                        setChangPostedToNo(true)
-                        setChangPostedToYes(false)
+                        if(!auction.is_published) {
+                            setChangPostedToNo(true)
+                            setChangPostedToYes(false)
+                        }
                         } } style={ changePostedToNo ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Não</Button>
                 </div>
             </div>
@@ -163,6 +181,7 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
             error={ errors.cover_image?.message }
             required={ true }
             size="inputModalEditAddressLarge"
+            value={ auction.cover_image }
             />
             <Input
             label="1º Imagem da galeria"
@@ -174,6 +193,7 @@ const ModalEditProduct = ({ setOpenModalEditProduct }: IModalEditProduct) => {
             error={ errors.gallery_image?.message }
             required={ true }
             size="inputModalEditAddressLarge"
+            value={ auction.gallery_image }
             />
 
             <div>

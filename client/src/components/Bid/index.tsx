@@ -1,22 +1,27 @@
+import { IBid } from "../../interfaces"
 import { AvatarUser } from "../AvatarUser"
 import { Container } from "./style"
 
-const Bid = () => {
+interface IBidComponent {
+    bid: IBid
+}
+
+const Bid = ({ bid }: IBidComponent) => {
 
     return (
         <Container>
             <div>
                 <div>
-                    <AvatarUser userName="Rodrigo Silva" />
-                    <h3>Rodrigo Silva</h3>
+                    <AvatarUser userName={ bid.user.name } />
+                    <h3>{ bid.user.name }</h3>
                 </div>
 
                 <hr />
                 
-                <p>há 3 dias</p>
+                <p>há { bid.created_at.split("N")[0] } dias</p>
             </div>
             
-            <span>R$ 58.000</span>
+            <span>{ bid.value }</span>
         </Container>
     )
 }

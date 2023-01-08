@@ -1,10 +1,14 @@
 import { Container } from "./style";
 
-const TextArea = () => {
+interface ITextArea {
+  value?: string;
+}
+
+const TextArea = ({ value }: ITextArea) => {
   return (
     <Container>
       <label>Descrição</label>
-      <textarea placeholder="Digitar descrição" />
+      <textarea placeholder="Digitar descrição" value={ value } />
     </Container>
   );
 };

@@ -1,11 +1,17 @@
 import { Router } from "express";
 
-import { UsersControllers } from "../controllers/users.controller";
+import {
+  createUserController,
+  listProductsUserController,
+  listUsersController,
+  updateUserController,
+} from "../controllers/users.controller";
 
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
 
 import { userSchema } from "../schemas/user.schema";
+import { profileService } from "../services/users.service";
 
 const routes = Router();
 
@@ -13,20 +19,20 @@ const usersRoutes = (): Router => {
   routes.post(
     "/signup",
     schemaValidationMiddleware(userSchema),
-    new UsersControllers().create
+    createUserController
   );
 
-  routes.get("", new UsersControllers().list);
+  routes.get("", listUsersController);
 
-  routes.get("/:id", tokenMiddleware, new UsersControllers().listProducts);
+  routes.get("/:id", tokenMiddleware, listProductsUserController);
 
-  routes.patch("/:id", tokenMiddleware, new UsersControllers().update);
+  routes.patch("/:id", tokenMiddleware, updateUserController);
 
   return routes;
 };
 
 const profileRoutes = (): Router => {
-  routes.get("", tokenMiddleware, new UsersControllers().profile);
+  routes.get("", tokenMiddleware, profileService);
 
   return routes;
 };

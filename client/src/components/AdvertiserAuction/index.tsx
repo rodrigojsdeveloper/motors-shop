@@ -3,10 +3,11 @@ import clock from "../../assets/Group 13.svg";
 import { IAuctionProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Button } from "../Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ModalBackground } from "../ModalBackground";
 import { ModalEditProduct } from "../ModalEditProduct";
+import { api } from "../../services/api";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -20,14 +21,23 @@ const AdvertiserAuction = ({ auction }: any) => {
 
   const [ openModalEditProduct, setOpenModalEditProduct ] = useState<boolean>(false)
 
+  const [ auctionRequest, setAuctionRequest ] = useState<IAuctionProps>({} as IAuctionProps)
+
   const navigate = useNavigate()
+
+  useEffect(() => {
+
+    api.get(`/auctions/${ auction.id }`)
+    .then(res => setAuctionRequest(res.data))
+    .catch(error => console.error(error))
+  }, [])
 
   return (
     <>
     {
       openModalEditProduct &&
       <ModalBackground>
-        <ModalEditProduct setOpenModalEditProduct={ setOpenModalEditProduct } />
+        <ModalEditProduct auction={ auctionRequest } setOpenModalEditProduct={ setOpenModalEditProduct } />
       </ModalBackground>
     }
     <Container>

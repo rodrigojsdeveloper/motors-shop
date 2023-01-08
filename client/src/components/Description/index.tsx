@@ -1,14 +1,17 @@
-import { Container } from "./style"
+import { Container } from "./style";
 
-const Description = () => {
+interface IDescription {
+  description: string;
+}
 
+const Description = ({ description }: IDescription) => {
   return (
     <Container>
       <h4>Descrição</h4>
 
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      <p>{description}</p>
     </Container>
-  )
-}
+  );
+};
 
-export { Description }
+export { Description };

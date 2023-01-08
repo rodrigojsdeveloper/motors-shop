@@ -18,7 +18,7 @@ const Header = () => {
 
     const navigate = useNavigate()
     
-    const token = true
+    const token = sessionStorage.getItem("Motors shop: token")
     
     const [ menuOpen, setMenuOpen ] = useState<boolean>(false)
 
@@ -130,7 +130,7 @@ const Header = () => {
                                 setMenuOpenLoggedNotAnnouncement(false)   
                             }
                         } }>
-                            <AvatarUser userName="rodrigo silva" />
+                            <AvatarUser userName={ user.name } />
                             <h2>{ user.name }</h2>
                         </div>
 

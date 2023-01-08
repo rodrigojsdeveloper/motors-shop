@@ -1,47 +1,57 @@
-import { UsersServices } from "../services/users.service";
+import {
+  createUserService,
+  listUsersService,
+  listProductsUserService,
+  profileService,
+  updateUserService,
+} from "../services/users.service";
 import { IUser } from "../interfaces/user.interface";
 import { Request, Response } from "express";
 
-class UsersControllers {
-  async create(req: Request, res: Response) {
-    const data: IUser = req.body;
+const createUserController = async (req: Request, res: Response) => {
+  const data: IUser = req.body;
 
-    const newUser = await new UsersServices().create(data);
+  const newUser = await createUserService(data);
 
-    return res.status(201).json(newUser);
-  }
+  return res.status(201).json(newUser);
+};
 
-  async list(req: Request, res: Response) {
-    const users = await new UsersServices().list();
+const listUsersController = async (req: Request, res: Response) => {
+  const users = await listUsersService();
 
-    return res.json(users);
-  }
+  return res.json(users);
+};
 
-  async listProducts(req: Request, res: Response) {
-    const id: string = req.params.id;
+const listProductsUserController = async (req: Request, res: Response) => {
+  const id: string = req.params.id;
 
-    const listProducts = await new UsersServices().listProducts(id);
+  const listProducts = await listProductsUserService(id);
 
-    return res.json(listProducts);
-  }
+  return res.json(listProducts);
+};
 
-  async profile(req: Request, res: Response) {
-    const email: string = req.email;
+const profileController = async (req: Request, res: Response) => {
+  const email: string = req.email;
 
-    const profile = await new UsersServices().profile(email);
+  const profile = await profileService(email);
 
-    return res.json(profile);
-  }
+  return res.json(profile);
+};
 
-  async update(req: Request, res: Response) {
-    const id: string = req.params.id;
+const updateUserController = async (req: Request, res: Response) => {
+  const id: string = req.params.id;
 
-    const data: Partial<IUser> = req.body;
+  const data: Partial<IUser> = req.body;
 
-    const updatedUser = await new UsersServices().update(data, id);
+  const updatedUser = await updateUserService(data, id);
 
-    return res.json(updatedUser);
-  }
-}
+  return res.json(updatedUser);
+};
 
-export { UsersControllers };
+export {
+  createUserController,
+  listUsersController,
+  listProductsUserController,
+  profileController,
+  updateUserController,
+};

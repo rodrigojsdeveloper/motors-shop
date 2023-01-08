@@ -1,21 +1,21 @@
-import { Bid } from "../Bid"
+import { IBid } from "../../interfaces"
 import { Container } from "./style"
+import { Bid } from "../Bid"
 
-const ListBids = () => {
+interface IListBids {
+    bids: IBid[]
+}
+
+const ListBids = ({ bids }: IListBids) => {
 
     return (
         <Container>
             <h3>Lances</h3>
 
             <menu>
-                <Bid />
-                <Bid />
-                <Bid />
-                <Bid />
-                <Bid />
-                <Bid />
-                <Bid />
-                <Bid />
+                {
+                    bids.map(b => <Bid bid={ b } />)
+                }
             </menu>
         </Container>
     )

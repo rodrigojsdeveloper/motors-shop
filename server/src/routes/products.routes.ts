@@ -1,6 +1,12 @@
 import { Router } from "express";
 
-import { ProductsControllers } from "../controllers/products.controller";
+import {
+  createProductController,
+  deleteProductController,
+  listProductsController,
+  specificProductController,
+  updateProductController,
+} from "../controllers/products.controller";
 
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
@@ -14,16 +20,16 @@ const productsRoutes = (): Router => {
     "",
     schemaValidationMiddleware(productSchema),
     tokenMiddleware,
-    new ProductsControllers().create
+    createProductController
   );
 
-  routes.get("", new ProductsControllers().list);
+  routes.get("", listProductsController);
 
-  routes.patch("/:id", tokenMiddleware, new ProductsControllers().update);
+  routes.patch("/:id", tokenMiddleware, updateProductController);
 
-  routes.delete("/:id", tokenMiddleware, new ProductsControllers().delete);
+  routes.delete("/:id", tokenMiddleware, deleteProductController);
 
-  routes.get("/:id", tokenMiddleware, new ProductsControllers().specific);
+  routes.get("/:id", tokenMiddleware, specificProductController);
 
   return routes;
 };

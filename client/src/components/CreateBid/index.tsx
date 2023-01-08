@@ -1,21 +1,38 @@
+import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { IAuctionProps, IBid } from "../../interfaces"
 import { AvatarUser } from "../AvatarUser"
 import { Button } from "../Button"
 import { Input } from "../Input"
 import { Container } from "./style"
 
-const CreateBid = () => {
+interface ICreateBid {
+    product: IAuctionProps
+    ListBidsFunc: (bid: IBid) => void
+}
 
-    const { register } = useForm({})
+const CreateBid = ({ product , ListBidsFunc }: ICreateBid) => {
 
-    const token = true
+    const [ disable, setDisable ] = useState<boolean>(false)
+
+    const { register, handleSubmit } = useForm({})
+
+    const token = sessionStorage.getItem("Motors shop: token")
+
+    if(token) {
+        setDisable(false)
+    } else {
+        setDisable(true)
+    }
+
+    const onSubmitFunction = (data: any) => ListBidsFunc(data)
 
     return (
-        <Container>
+        <Container onSubmit={ handleSubmit(onSubmitFunction) }>
             <div>
                 <div>
-                    <AvatarUser userName="Rodrigo Silva" />
-                    <h3>Rodrigo Silva</h3>
+                    <AvatarUser userName={ product.user.name } />
+                    <h3>{ product.user.name }</h3>
                 </div>
 
                 <div>
@@ -30,7 +47,7 @@ const CreateBid = () => {
                     name="label"
                     />
 
-                    <Button color="buttonColorBlueLogin" size="buttonSizeCreateBid" type="button" disabled={ token }>Inserir proposta</Button>
+                    <Button color="buttonColorBlueLogin" size="buttonSizeCreateBid" type="submit" disabled={ disable }>Inserir proposta</Button>
                 </div>
             </div>
         </Container>
