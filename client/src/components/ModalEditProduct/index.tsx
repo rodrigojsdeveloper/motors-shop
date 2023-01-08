@@ -10,15 +10,18 @@ import { TextArea } from "../TextArea"
 import { IAuctionProps, IProductProps } from "../../interfaces"
 import { AdType } from "../AdType"
 import { TypeOfVehicle } from "../TypeOfVehicle"
+import { api } from "../../services/api"
 
 interface IModalEditProduct {
   setOpenModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>
-  auction: IAuctionProps
+  product: IAuctionProps
+  setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>
+  link: string
 }
 
-const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduct) => {
+const ModalEditProduct = ({ product, setOpenModalEditProduct, setCloseModalDeleteProduct, link }: IModalEditProduct) => {
 
-  const [ product, setProduct ] = useState<IProductProps>({} as IProductProps)
+  const [ productRequest, setProductRequest ] = useState<IProductProps>({} as IProductProps)
 
   const [ changePostedToYes, setChangPostedToYes ] = useState<boolean>(true)
 
@@ -39,14 +42,19 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
       resolver: yupResolver(schema)
   })
   
-  const onSubmitFunction = (data: any) => {}
+  const onSubmitFunction = (data: any) => {
+
+    api.patch(`/${link}/${ product.id }`, data)
+    .then(_ => setOpenModalEditProduct(false))
+    .catch(error => console.error(error))
+  }
 
   return (
     <Container>
       <HeaderModal title="Editar anúncio" setCloseModal={ setOpenModalEditProduct } />
 
         <form onSubmit={ handleSubmit(onSubmitFunction) }>
-            <AdType product={ auction } />            
+            <AdType product={ productRequest } />            
 
             <h4>Informações do veículo</h4>
 
@@ -60,7 +68,7 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
             error={ errors.title?.message }
             required={ true }
             size="inputModalEditAddressLarge"    
-            value={ auction.title }
+            value={ productRequest.title }
             />
 
             <div>
@@ -74,7 +82,7 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
                 error={ errors.year?.message }
                 required={ true }
                 size="inputModalCreateAnnouncementSmall"   
-                value={ auction.year } 
+                value={ productRequest.year } 
                 />
                 <Input
                 label="Quilometragem"
@@ -87,7 +95,7 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
                 required={ true }
                 size="inputModalCreateAnnouncementSmall" 
                 className="inputKilometers"
-                value={ auction.kilometers }   
+                value={ productRequest.kilometers }   
                 />
                 <Input
                 label="Preço"
@@ -99,10 +107,10 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
                 error={ errors.price?.message }
                 required={ true }
                 size="inputModalCreateAnnouncementSmall"    
-                value={ auction.price }
+                value={ productRequest.price }
                 />
             </div>
-            <TextArea value={ auction.description } />
+            <TextArea value={ productRequest.description } />
             
             <TypeOfVehicle product={ product } />
             <div>
@@ -110,13 +118,13 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
                 <div className="divButtons">
 
                     <Button onClick={ () => {
-                        if(auction.is_published) {
+                        if(productRequest.is_published) {
                             setChangPostedToYes(true)
                             setChangPostedToNo(false)
                         }
                     } } style={ changePostedToYes ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Sim</Button>
                     <Button onClick={ () => {
-                        if(!auction.is_published) {
+                        if(!productRequest.is_published) {
                             setChangPostedToNo(true)
                             setChangPostedToYes(false)
                         }
@@ -134,7 +142,7 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
             error={ errors.cover_image?.message }
             required={ true }
             size="inputModalEditAddressLarge"
-            value={ auction.cover_image }
+            value={ productRequest.cover_image }
             />
             <Input
             label="1º Imagem da galeria"
@@ -146,11 +154,14 @@ const ModalEditProduct = ({ auction, setOpenModalEditProduct }: IModalEditProduc
             error={ errors.gallery_image?.message }
             required={ true }
             size="inputModalEditAddressLarge"
-            value={ auction.gallery_image }
+            value={ productRequest.gallery_image }
             />
 
             <div>
-                <Button color="buttonColorGrayModalEditAddress" size="buttonSizeModalEditProduct" type="button" onClick={ () => setOpenModalEditProduct(false) }>Excluir anúncio</Button>
+                <Button color="buttonColorGrayModalEditAddress" size="buttonSizeModalEditProduct" type="button" onClick={ () => {
+                    setOpenModalEditProduct(false)
+                    setCloseModalDeleteProduct(true)
+                }}>Excluir anúncio</Button>
                 <Button color="buttonColorBlueLogin" size="buttonSizeModalEditAddressMedium" type="button">Salvar alterações</Button>
             </div>
       </form>

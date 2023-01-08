@@ -133,10 +133,17 @@ const Container = styled.button<IButtonStyledProps>`
 
             case "buttonSizeModalEditProduct":
 
-            return css`
-                height: 48px;
-                max-width: 262px;
-            `
+                return css`
+                    height: 48px;
+                    max-width: 262px;
+                `
+
+            case "buttonSizeModalDeleteProduct":
+
+                return css`
+                    height: 48px;
+                    max-width: 211px;
+                `
 
             default:
                 return false
@@ -209,8 +216,6 @@ const Container = styled.button<IButtonStyledProps>`
 
                 return css`
                     border: 1.5px solid #FDFDFD;
-                    border-radius: 4px;
-
                     background-color: transparent;
                     padding: 12px 28px;
 
@@ -227,7 +232,6 @@ const Container = styled.button<IButtonStyledProps>`
                 return css`
                     background: #0B0D0D;
                     border: 1.5px solid #0B0D0D;
-                    border-radius: 4px;
                     
                     padding: 12px 28px;
                     font-weight: 600;
@@ -240,7 +244,6 @@ const Container = styled.button<IButtonStyledProps>`
                 return css`
                     background: #DEE2E6;
                     border: 1.5px solid #DEE2E6;
-                    border-radius: 4px;
                     
                     padding: 12px 28px;
                     font-weight: 600;
@@ -257,7 +260,6 @@ const Container = styled.button<IButtonStyledProps>`
                 return css`
                     background: #FDFDFD;
                     border: 1.5px solid #4529E6;
-                    border-radius: 4px;
                     
                     padding: 12px 28px;
                     font-weight: 600;
@@ -272,20 +274,35 @@ const Container = styled.button<IButtonStyledProps>`
             
             case "buttonColorWhiteEditAndShowProduct":
 
-            return css`
-                padding: 12px 20px;
-                border: 1.5px solid #212529;
-                border-radius: 4px;
-               
-                font-weight: 600;
-                font-size: 14px;
-                color: #212529;
+                return css`
+                    padding: 12px 20px;
+                    border: 1.5px solid #212529;
+                
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: #212529;
 
-                :hover {
-                    background-color: #212529;
-                    color: #fff;
-                }
-            `
+                    :hover {
+                        background-color: #212529;
+                        color: #fff;
+                    }
+                `
+
+            case "buttonColorRedModalDeleteProduct":
+
+                return css`
+                    padding: 12px 15px;
+                    background: #FDD8D8;
+                    border: 1.5px solid #FDD8D8;
+
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #CD2B31;
+
+                    :hover {
+                        border-color: #CD2B31;
+                    }
+                `
 
             default:
                 return false

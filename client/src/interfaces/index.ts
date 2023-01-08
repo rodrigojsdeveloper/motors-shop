@@ -43,7 +43,8 @@ export interface IButtonProps {
     | "buttonSizeEditProduct"
     | "buttonSizeShowProduct"
     | "buttonSizeShowAdvertiser"
-    | "buttonSizeModalEditProduct";
+    | "buttonSizeModalEditProduct"
+    | "buttonSizeModalDeleteProduct";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
@@ -53,7 +54,8 @@ export interface IButtonProps {
     | "buttonColorBlackProductDetails"
     | "buttonColorGrayModalEditAddress"
     | "buttonColorWhiteUserDetails"
-    | "buttonColorWhiteEditAndShowProduct";
+    | "buttonColorWhiteEditAndShowProduct"
+    | "buttonColorRedModalDeleteProduct";
   className?: string;
   style?: React.CSSProperties | undefined;
 }

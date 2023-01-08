@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ModalBackground } from "../ModalBackground";
 import { ModalEditProduct } from "../ModalEditProduct";
 import { api } from "../../services/api";
+import { ModalDeleteProduct } from "../ModalDeleteProduct";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -23,6 +24,8 @@ const AdvertiserAuction = ({ auction }: any) => {
 
   const [ auctionRequest, setAuctionRequest ] = useState<IAuctionProps>({} as IAuctionProps)
 
+  const [ closeModalDeleteProduct, setCloseModalDeleteProduct ] = useState<boolean>(false)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -37,7 +40,13 @@ const AdvertiserAuction = ({ auction }: any) => {
     {
       openModalEditProduct &&
       <ModalBackground>
-        <ModalEditProduct auction={ auctionRequest } setOpenModalEditProduct={ setOpenModalEditProduct } />
+        <ModalEditProduct product={ auctionRequest } setOpenModalEditProduct={ setOpenModalEditProduct } setCloseModalDeleteProduct={ setCloseModalDeleteProduct } link="auctions" />
+      </ModalBackground>
+    }
+    {
+      closeModalDeleteProduct &&
+      <ModalBackground>
+        <ModalDeleteProduct product={ auctionRequest } setCloseModalDeleteProduct={ setCloseModalDeleteProduct } link="auctions" />
       </ModalBackground>
     }
     <Container>
