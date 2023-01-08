@@ -8,6 +8,7 @@ import { Input } from "../Input"
 import * as yup from "yup"
 import { useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
+import { Link } from "react-router-dom"
 
 
 const FormSignIn = () => {
@@ -102,7 +103,7 @@ const FormSignIn = () => {
                 </div>
             </div>
 
-            <h3 onClick={ () => navigate("/newpassword") }>Esqueci minha senha</h3>
+            <Link to="/newpassword">Esqueci minha senha</Link>
 
             <Button size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit" disabled={ load }>{
                 

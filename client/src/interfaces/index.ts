@@ -124,7 +124,6 @@ export interface IListAuctions {
 }
 
 export interface IListProducts {
-  listName: string;
   products: IProductProps[];
 }
 

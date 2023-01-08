@@ -43,8 +43,8 @@ const Home = () => {
       <Header />
       <Banner />
       <ListAuction auctions={ auctions } />
-      <ListCars listName="Carros" products={ cars } />
-      <ListMotorcycles listName="Motos" products={ motorcycles } />
+      <ListCars products={ cars } />
+      <ListMotorcycles products={ motorcycles } />
       <Footer />
     </Container>
   );

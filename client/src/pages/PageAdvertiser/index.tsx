@@ -51,11 +51,8 @@ const PageAdvertiser = () => {
         <div>
           <ShowAdvertiser />
           <AdvertiserAuctionsList auctions={auctions} />
-          <AdvertiserCarsList listName="Cars" products={cars} />
-          <AdvertiserMotorcyclesList
-            listName="Motorcycles"
-            products={motorcycles}
-          />
+          <AdvertiserCarsList products={cars} />
+          <AdvertiserMotorcyclesList products={motorcycles} />
         </div>
       </div>
       <Footer />

@@ -166,7 +166,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
             label="País"
             name="country"
             register={ register }
-            placeholder="Ex: United States"
+            placeholder="Ex: Brasil"
             autoComplete="off"
             type="text"
             error={ errors.country?.message }

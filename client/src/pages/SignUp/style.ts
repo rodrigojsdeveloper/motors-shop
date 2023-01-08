@@ -6,7 +6,7 @@ const Container = styled.div`
     & > div {
 
         width: 100%;
-        margin-top: 80px;
+        margin-top: 50px;
 
         background-color: #F1F3F5;
 
@@ -14,14 +14,7 @@ const Container = styled.div`
         justify-content: center;
         align-items: center;
 
-        padding: 20px;
-    }
-
-    @media (max-width: 768px) {
-        
-        & > div {
-            margin-top: 80px;
-        }
+        padding: 15px;
     }
 `
 

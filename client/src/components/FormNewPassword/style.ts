@@ -16,9 +16,13 @@ const Container = styled.form`
         font-size: 22px;
     }
 
-    & > div {
+    & > div:nth-child(2) {
+        margin-top: 20px;
+    }
 
-        margin: 30px 0;
+    & > div:nth-child(3), & > div:nth-child(4) {
+
+        margin: 25px 0;
 
         & > label {
             text-align: left;
@@ -92,10 +96,24 @@ const Container = styled.form`
         }
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 425px) {
+        padding: 44px 28px;
 
-        padding-left: 25px;
-        padding-right: 25px;
+        & > div:nth-child(2), & > div:nth-child(3), & > div:nth-child(4) {
+            
+            & > input {
+                max-width: unset;
+            }
+            
+            & > div {
+                max-width: unset;
+                
+            }
+        }
+
+        & > button {
+            max-width: unset;
+        }
     }
 `
 

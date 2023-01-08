@@ -38,45 +38,17 @@ const Container = styled.form`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 
-    .inputNumber {
-      width: 100%;
-      max-width: 152px;
+    & > div:nth-child(1),
+    & > button:nth-child(1) {
+      margin-right: 5px;
     }
 
-    .inputComplement {
+    .inputNumber,
+    .inputComplement,
+    .changeInput {
       width: 100%;
       max-width: 152px;
-    }
-
-    @media (max-width: 450px) {
-      flex-direction: column;
-      justify-content: unset;
-      align-items: unset;
-
-      .changeInput {
-        display: flex;
-        flex-direction: column;
-
-        & > input {
-          max-width: 315px;
-        }
-      }
-
-      .inputNumber,
-      .inputComplement {
-        max-width: 315px;
-
-        & > input {
-          max-width: 315px;
-        }
-      }
-
-      .changeButton {
-        max-width: 315px;
-        margin-top: 10px;
-      }
     }
   }
 
@@ -152,8 +124,54 @@ const Container = styled.form`
     margin-top: 30px;
   }
 
-  @media (max-width: 320px) {
-    padding: 44px 30px;
+  @media (max-width: 425px) {
+    padding: 44px 28px;
+
+    & > div {
+      input {
+        max-width: unset;
+      }
+    }
+
+    .divInputs {
+      max-width: unset;
+      width: 100%;
+      flex-direction: column;
+      justify-content: unset;
+      align-items: unset;
+
+      & > div {
+        max-width: unset;
+        width: 100%;
+        input {
+          max-width: unset;
+          width: 100%;
+        }
+      }
+
+      & > div:nth-child(1) {
+        margin-right: 0;
+      }
+
+      .inputNumber,
+      .inputComplement,
+      .changeInput {
+        max-width: unset;
+      }
+
+      .changeButton {
+        margin-top: 10px;
+        max-width: unset;
+      }
+    }
+
+    .divInputPassword {
+      max-width: unset;
+    }
+
+    button {
+      max-width: unset;
+    }
   }
 `;
 

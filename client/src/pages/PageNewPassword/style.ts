@@ -14,7 +14,15 @@ const Container = styled.div`
         justify-content: center;
         align-items: center;
 
-        padding: 20px;
+        padding: 15px;
+    }
+
+    @media (min-width: 1921px) {
+
+        & > div {
+
+            height: 100vh;
+        }
     }
 `
 

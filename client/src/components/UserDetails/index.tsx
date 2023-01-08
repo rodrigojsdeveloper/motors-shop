@@ -1,22 +1,25 @@
 import { useState } from "react"
+import { IUserProps } from "../../interfaces"
 import { AvatarUser } from "../AvatarUser"
 import { Button } from "../Button"
 import { Container } from "./style"
 
-const UserDetails = () => {
+interface IUserDetails {
+    user: IUserProps
+}
 
-    const [ user, setUser ] = useState<any>()
+const UserDetails = ({ user }: IUserDetails) => {
 
     return (
         <Container>
-            <AvatarUser userName={ user } />
+            <AvatarUser userName={ user.name } />
 
             <div>
-                <h2>Rodrigo</h2>
+                <h2>{ user.name }</h2>
                 <p>{ user.is_seller ? "Anúnciante" : "Comprador" }</p>
             </div>
 
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <p>{ user.description }</p>
 
             <Button size="buttonSizeUserDetailsMedium" color="buttonColorWhiteUserDetails" type="button">Criar anúncio</Button>
         </Container>

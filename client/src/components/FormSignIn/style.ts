@@ -96,18 +96,20 @@ const Container = styled.form`
         }
     }
 
-    & > p, & > h3 {
+    & > p, & > a {
 
         color: #495057;
         font-weight: 500;
         font-size: 14px;
     }
 
-    & > h3 {
+    & > a {
 
-        text-align: right;
-        padding: 10px 0 23px 0;
+        display: flex;
+        justify-content: flex-end;
         cursor: pointer;
+
+        padding: 20px 0;
 
         :hover {
             text-decoration: underline;
@@ -120,10 +122,23 @@ const Container = styled.form`
         padding: 38px 0;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 425px) {
+        padding: 44px 28px;
 
-        padding-left: 20px;
-        padding-right: 20px;
+        & > div {
+            
+            & > input {
+                max-width: unset;
+            }
+
+            .inputPassword {
+                max-width: unset;
+            }
+        }
+
+        & > button {
+            max-width: unset;
+        }
     }
 `
 
