@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { TextArea } from "../TextArea"
 import { HeaderModal } from "../HeaderModal"
+import { AdType } from "../AdType"
+import { IProductProps } from "../../interfaces"
+import { TypeOfVehicle } from "../TypeOfVehicle"
 
 interface IModalCreateAnnouncement {
     setCloseModalCreateAnnouncement: React.Dispatch<React.SetStateAction<boolean>>
@@ -14,11 +17,7 @@ interface IModalCreateAnnouncement {
 
 const ModalCreateAnnouncement = ({ setCloseModalCreateAnnouncement }: IModalCreateAnnouncement) => {
 
-    const [ changeColorBuyer, setChangeColorBuyer ] = useState<boolean>(true)
-
-    const [ changeColorAdvertiser, setChangeColorAdvertiser ] = useState<boolean>(false)
-
-    const [ buyerOrAdvertiser, setBuyerOrAdvertiser ] = useState<boolean>(true)
+    const [ product, setProduct ] = useState<IProductProps>({} as IProductProps)
 
     const [ changeColorBuyerVehicleType, setChangeColorBuyerVehicleType ] = useState<boolean>(true)
 
@@ -48,22 +47,7 @@ const ModalCreateAnnouncement = ({ setCloseModalCreateAnnouncement }: IModalCrea
             <HeaderModal title="Criar anúncio" setCloseModal={ setCloseModalCreateAnnouncement } />
 
             <form onSubmit={ handleSubmit(onSubmitFunction) }>
-                <div>
-                    <h4>Tipo de anúncio</h4>
-                    <div className="divButtons">
-
-                        <Button onClick={ () => {
-                            setChangeColorBuyer(true)
-                            setChangeColorAdvertiser(false)
-                            setBuyerOrAdvertiser(true)
-                        } } style={ changeColorBuyer ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Venda</Button>
-                        <Button onClick={ () => {
-                            setChangeColorBuyer(false)
-                            setChangeColorAdvertiser(true)
-                            setBuyerOrAdvertiser(false)
-                            } } style={ changeColorAdvertiser ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Leilão</Button>
-                    </div>
-                </div>
+                <AdType  product={ product } />
 
                 <h4>Informações do veículo</h4>
 
@@ -117,22 +101,7 @@ const ModalCreateAnnouncement = ({ setCloseModalCreateAnnouncement }: IModalCrea
                 </div>
                 <TextArea />
 
-                <div>
-                    <h4>Tipo de veículo</h4>
-                    <div className="divButtons">
-
-                        <Button onClick={ () => {
-                            setChangeColorBuyerVehicleType(true)
-                            setChangeColorAdvertiserVehicleType(false)
-                            setBuyerOrAdvertiserVehicleType(true)
-                        } } style={ changeColorBuyerVehicleType ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Carro</Button>
-                        <Button onClick={ () => {
-                            setChangeColorBuyerVehicleType(false)
-                            setChangeColorAdvertiserVehicleType(true)
-                            setBuyerOrAdvertiserVehicleType(false)
-                            } } style={ changeColorAdvertiserVehicleType ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" } : { background: "#fff", color: "#000", borderColor: "#ADB5BD" } } size="buttonSizeSignUp" color="buttonColorWhiteSignUp" type="button" className="changeButton">Moto</Button>
-                    </div>
-                </div>
+                <TypeOfVehicle product={ product } />
 
                 <Input
                 label="Imagem da capa"

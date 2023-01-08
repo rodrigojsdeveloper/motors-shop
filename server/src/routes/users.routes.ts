@@ -4,6 +4,7 @@ import {
   createUserController,
   listProductsUserController,
   listUsersController,
+  specificUserWithEmailController,
   updateUserController,
 } from "../controllers/users.controller";
 
@@ -27,6 +28,8 @@ const usersRoutes = (): Router => {
   routes.get("/:id", tokenMiddleware, listProductsUserController);
 
   routes.patch("/:id", tokenMiddleware, updateUserController);
+
+  routes.get("/email/:email", specificUserWithEmailController);
 
   return routes;
 };

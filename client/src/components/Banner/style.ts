@@ -27,7 +27,7 @@ const Container = styled.div`
 
         color: #FDFDFD;
 
-        @media (max-width: 425px) {
+        @media (max-width: 768px) {
 
             font-weight: 600;
             font-size: 32px;
@@ -74,6 +74,11 @@ const Container = styled.div`
                 margin: 10px 0;
             }
         }
+    }
+
+    @media (max-width: 425px) {
+
+        height: 623px;
     }
 `
 

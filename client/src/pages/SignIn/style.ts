@@ -21,8 +21,14 @@ const Container = styled.div`
     @media (min-width: 1921px) {
 
         & > div {
-
             height: 100vh;
+        }
+    }
+
+    @media (max-width: 425px) {
+        
+        & > div {
+            margin-top: 10px;
         }
     }
 `

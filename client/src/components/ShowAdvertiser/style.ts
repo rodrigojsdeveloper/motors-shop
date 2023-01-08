@@ -66,6 +66,11 @@ const Container = styled.section`
     padding: 30px;
   }
 
+  @media (max-width: 425px) {
+
+    margin-top: -182.5px;
+  }
+
   @media (max-width: 375px) {
 
     & > div:nth-child(2) {

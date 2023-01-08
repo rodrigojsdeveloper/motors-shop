@@ -4,6 +4,11 @@ const Container = styled.div`
   .divBlue {
     height: 350px;
     background: #4529e6;
+    margin-top: 80px;
+
+    @media (max-width: 425px) {
+      height: 251px;
+    }
   }
 
   .divWhite {

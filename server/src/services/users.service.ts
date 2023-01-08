@@ -94,10 +94,22 @@ const updateUserService = async (
   return updatedUser!;
 };
 
+const specificUserWithEmailService = async (email: string): Promise<User> => {
+  const user = await userRepository.findOneBy({ email });
+
+  if(!user) {
+
+    throw new NotFoundError("User")
+  }
+
+  return user;
+};
+
 export {
   createUserService,
   listUsersService,
   listProductsUserService,
   profileService,
   updateUserService,
+  specificUserWithEmailService
 };

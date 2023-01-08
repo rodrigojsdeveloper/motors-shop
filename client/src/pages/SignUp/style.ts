@@ -6,7 +6,7 @@ const Container = styled.div`
     & > div {
 
         width: 100%;
-        margin-top: 50px;
+        margin-top: 20px;
 
         background-color: #F1F3F5;
 
