@@ -104,9 +104,9 @@ const Header = () => {
 
             <div className={ token ? "divLogged" : "divNotLogged" }>
                 <nav>
-                    <Link to="/">Carros</Link>
-                    <Link to="/">Motos</Link>
-                    <Link to="/">Leilão</Link>
+                    <a href="#cars">Carros</a>
+                    <a href="#motorcycles">Motos</a>
+                    <a href="#auctions">Leilão</a>
                 </nav>
                 <hr />
                 {
@@ -163,9 +163,9 @@ const Header = () => {
                         user.is_seller ? (
                         <nav className="navLogged">
                             <div>
-                                <Link to="/#cars" onClick={ () => setMenuOpen(false)}>Carros</Link>
-                                <Link to="/#motorcycles" onClick={ () => setMenuOpen(false)}>Motos</Link>
-                                <Link to="/" onClick={ () => setMenuOpen(false)}>Leilão</Link>
+                                <a href="#cars" onClick={ () => setMenuOpen(false)}>Carros</a>
+                                <a href="#motorcycles" onClick={ () => setMenuOpen(false)}>Motos</a>
+                                <a href="#auctions" onClick={ () => setMenuOpen(false)}>Leilão</a>
                             </div>
                             <hr />
                             <div>
@@ -194,9 +194,9 @@ const Header = () => {
                         ) : (
                         <nav className="navLogged">
                             <div>
-                                <Link to="/#cars" onClick={ () => setMenuOpen(false)}>Carros</Link>
-                                <Link to="/#motorcycles" onClick={ () => setMenuOpen(false)}>Motos</Link>
-                                <Link to="/" onClick={ () => setMenuOpen(false)}>Leilão</Link>
+                                <a href="#cars" onClick={ () => setMenuOpen(false)}>Carros</a>
+                                <a href="#motorcycles" onClick={ () => setMenuOpen(false)}>Motos</a>
+                                <a href="#auctions" onClick={ () => setMenuOpen(false)}>Leilão</a>
                             </div>
                             <hr />
                             <div>
@@ -228,9 +228,9 @@ const Header = () => {
                         <nav className="navNotLogged">
                             <hr />
                             <div>
-                                <Link to="/#cars">Carros</Link>
-                                <Link to="/#motorcycles">Motos</Link>
-                                <Link to="/">Leilão</Link>
+                                <a href="#cars">Carros</a>
+                                <a href="#motorcycles">Motos</a>
+                                <a href="#auctions">Leilão</a>
                             </div>
                             <hr />
                             <div>

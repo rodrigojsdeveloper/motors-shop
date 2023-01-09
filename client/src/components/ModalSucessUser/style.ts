@@ -10,13 +10,12 @@ const Container = styled.div`
     background: #FFFFFF;
     border-radius: 8px;
     animation: ${animationModal} 1s;
+    padding: 16px 24px;
 
-    div {
-
-        padding: 35px 20px 20px 20px;
+    & > div {
         text-align: start;
 
-        h5 {
+        & > h5 {
             font-weight: 500;
             font-size: 16px;
             line-height: 20px;
@@ -26,7 +25,7 @@ const Container = styled.div`
             font-weight: bold;
         }
 
-        p {
+        & > p {
             font-weight: 400;
             font-size: 16px;
             line-height: 28px;
@@ -37,7 +36,7 @@ const Container = styled.div`
             padding-bottom: 15px;
         }
 
-        button {
+        & > button {
             padding: 12px 20px;
             font-weight: 600;
             font-size: 12px;
@@ -46,28 +45,20 @@ const Container = styled.div`
 
     @media (max-width: 425px) {
         
-        div {
+        & > div {
 
-            h5, p {
+            & > h5, & > p {
                 font-size: 14px;
             }
         }
     }
 
-    @media (max-width: 375px) {
-
-        div {
-
-            
-        }
-    }
-
     @media (max-width: 320px) {
 
-        div {
+        & > div {
             padding-top: 20px;
 
-            h5 {
+            & > h5 {
                 padding-bottom: 15px;
             }
         }

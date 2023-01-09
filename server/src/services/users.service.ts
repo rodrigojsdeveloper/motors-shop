@@ -4,6 +4,7 @@ import { BadRequestError } from "../errors/badRequest.error";
 import { NotFoundError } from "../errors/notFound.error";
 import { IUser } from "../interfaces/user.interface";
 import { User } from "../entities/user.entity";
+import { createTransport } from "nodemailer";
 import { hash } from "bcrypt";
 
 const createUserService = async (user: IUser): Promise<User> => {
@@ -97,10 +98,31 @@ const updateUserService = async (
 const specificUserWithEmailService = async (email: string): Promise<User> => {
   const user = await userRepository.findOneBy({ email });
 
-  if(!user) {
-
-    throw new NotFoundError("User")
+  if (!user) {
+    throw new NotFoundError("User");
   }
+
+  const transporter = createTransport({
+    host: "smtp.office365.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.SMTP_EMAIL,
+      pass: process.env.SMTP_PASSWORD,
+    },
+  });
+
+  await transporter
+    .sendMail({
+      from: "rodrigojsdeveloper@outlook.com",
+      to: user.email,
+      subject: "Change the password",
+      html: "Reset your password at this link: http://localhost:3000/newpassword",
+    })
+    .catch((err) => {
+      console.error(err);
+      throw new BadRequestError("Error sending email, try again later");
+    });
 
   return user;
 };
@@ -111,5 +133,5 @@ export {
   listProductsUserService,
   profileService,
   updateUserService,
-  specificUserWithEmailService
+  specificUserWithEmailService,
 };

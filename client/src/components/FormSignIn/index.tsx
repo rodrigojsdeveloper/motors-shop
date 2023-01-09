@@ -103,7 +103,7 @@ const FormSignIn = () => {
                 </div>
             </div>
 
-            <Link to="/newpassword">Esqueci minha senha</Link>
+            <Link to="/resetpassword">Esqueci minha senha</Link>
 
             <Button size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit" disabled={ load }>{
                 

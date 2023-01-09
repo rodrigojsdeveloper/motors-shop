@@ -20,7 +20,7 @@ const Container = styled.form`
         margin-top: 20px;
     }
 
-    & > div:nth-child(3), & > div:nth-child(4) {
+    & > div:nth-child(2), & > div:nth-child(3) {
 
         margin: 25px 0;
 
@@ -99,7 +99,7 @@ const Container = styled.form`
     @media (max-width: 425px) {
         padding: 44px 28px;
 
-        & > div:nth-child(2), & > div:nth-child(3), & > div:nth-child(4) {
+        & > div:nth-child(2), & > div:nth-child(3) {
             
             & > input {
                 max-width: unset;

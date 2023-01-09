@@ -4,7 +4,7 @@ import { Container } from "./style";
 
 const ListAuction = ({ auctions }: IListAuctions) => {
   return (
-    <Container>
+    <Container id="auctions">
       <h2>Leilão</h2>
 
       <menu>
