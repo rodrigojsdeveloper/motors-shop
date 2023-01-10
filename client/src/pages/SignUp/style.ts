@@ -1,21 +1,18 @@
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 const Container = styled.div`
+  & > main {
+    width: 100%;
 
-    & > div {
+    background-color: #f1f3f5;
 
-        width: 100%;
-        margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        background-color: #F1F3F5;
+    padding: 15px;
+    margin-top: 20px;
+  }
+`;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding: 15px;
-    }
-`
-
-export { Container }
+export { Container };

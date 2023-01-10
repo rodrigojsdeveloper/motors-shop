@@ -1,29 +1,27 @@
-import { useState } from "react";
-import { Footer } from "../../components/Footer";
-import { FormSignUp } from "../../components/FormSignUp";
-import { Header } from "../../components/Header";
 import { ModalBackground } from "../../components/ModalBackground";
 import { ModalSucessUser } from "../../components/ModalSucessUser";
+import { FormSignUp } from "../../components/FormSignUp";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 import { Container } from "./style";
+import { useState } from "react";
 
 const SignUp = () => {
-
-  const [ openModalSuccess, setOpenModalSuccess ] = useState<boolean>(false)
+  const [openModalSuccess, setOpenModalSuccess] = useState<boolean>(false);
 
   return (
     <>
-      {
-        openModalSuccess &&
+      {openModalSuccess && (
         <ModalBackground>
-          <ModalSucessUser setOpenModalSuccess={ setOpenModalSuccess } />
+          <ModalSucessUser setOpenModalSuccess={setOpenModalSuccess} />
         </ModalBackground>
-      }
+      )}
       <Container>
         <Header />
 
-        <div>
-          <FormSignUp setOpenModalSuccess={ setOpenModalSuccess } />
-        </div>
+        <main>
+          <FormSignUp setOpenModalSuccess={setOpenModalSuccess} />
+        </main>
 
         <Footer />
       </Container>

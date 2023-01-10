@@ -1,5 +1,5 @@
-import { Footer } from "../../components/Footer";
 import { FormSignIn } from "../../components/FormSignIn";
+import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Container } from "./style";
 
@@ -8,9 +8,9 @@ const SignIn = () => {
     <Container>
       <Header />
 
-      <div>
+      <main>
         <FormSignIn />
-      </div>
+      </main>
 
       <Footer />
     </Container>

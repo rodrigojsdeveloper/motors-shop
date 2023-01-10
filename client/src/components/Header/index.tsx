@@ -100,7 +100,7 @@ const Header = () => {
                 </div>
                 )
             }
-            <img src={ logo } alt="Motors shop" title="Motors shop" />
+            <img src={ logo } alt="Motors shop" />
 
             <div className={ token ? "divLogged" : "divNotLogged" }>
                 <nav>

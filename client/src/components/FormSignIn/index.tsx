@@ -56,6 +56,7 @@ const FormSignIn = () => {
         autoComplete="off"
         type="text"
         error={errors.name?.message}
+        required={ true }
         size="inputSignIn"
       />
 
@@ -70,6 +71,7 @@ const FormSignIn = () => {
           <input
             {...register("password")}
             placeholder="Digitar senha"
+            required={ true }
             type={typeInput ? "text" : "password"}
             onChange={(e: any) => {
               if (e.target.value == "") {

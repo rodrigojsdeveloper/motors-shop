@@ -15,10 +15,9 @@ const Container = styled.form`
   margin: 90px 0;
 
   & > h2 {
-    font-weight: 500;
+    font-weight: bold;
     font-size: 24px;
     line-height: 30px;
-    font-weight: bold;
 
     padding-bottom: 10px;
   }
@@ -171,6 +170,26 @@ const Container = styled.form`
 
     button {
       max-width: unset;
+    }
+  }
+
+  @media (max-width: 265px) {
+    & > h2 {
+      font-size: 20px;
+    }
+
+    h4, button {
+      font-size: 13px;
+    }
+
+    label, input, textarea {
+      font-size: 12px;
+    }
+
+    .divInputPassword {
+      input {
+        font-size: 12px;
+      }
     }
   }
 `;
