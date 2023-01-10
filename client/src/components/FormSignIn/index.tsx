@@ -1,119 +1,127 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
-import { Container } from "./style"
-import { Button } from "../Button"
-import { useState } from "react"
-import { Input } from "../Input"
-import * as yup from "yup"
-import { useNavigate } from "react-router-dom"
-import { api } from "../../services/api"
-import { Link } from "react-router-dom"
-
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { api } from "../../services/api";
+import { Link } from "react-router-dom";
+import { Container } from "./style";
+import { Button } from "../Button";
+import { useState } from "react";
+import { Input } from "../Input";
+import * as yup from "yup";
 
 const FormSignIn = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const [showOutlineShow, setShowOutlineShow] = useState<boolean>(true);
 
-    const [ showOutlineShow, setShowOutlineShow ] = useState<boolean>(true)
+  const [typeInput, setTypeInput] = useState<boolean>(false);
 
-    const [ typeInput, setTypeInput ] = useState<boolean>(false)
+  const [load, setLoad] = useState<boolean>(false);
 
-    const [ load, setLoad ] = useState<boolean>(false)
+  const schema = yup.object().shape({
+    name: yup.string().required("Usuário obrigatório"),
+    password: yup.string().required("Senha obrigatória"),
+  });
 
-    const schema = yup.object().shape({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-        email: yup.string().required("Email obrigatório").email("Invalid Email"),
-        password: yup.string().required("Senha obrigatória")
-    })
+  const onSubmitFunction = (data: any) => {
+    api
+      .post("/signin", data)
+      .then((res) => {
+        sessionStorage.setItem("Motors shop: token", res.data.token);
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema)
-    })
+        navigate("/");
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
 
-    const onSubmitFunction = (data: any) => {
+  return (
+    <Container onSubmit={handleSubmit(onSubmitFunction)}>
+      <h2>Login</h2>
 
-        api.post("/signin", data)
-        .then(res => {
+      <Input
+        label="Usuário"
+        name="name"
+        register={register}
+        placeholder="Digitar usuário"
+        autoComplete="off"
+        type="text"
+        error={errors.name?.message}
+        size="inputSignIn"
+      />
 
-            sessionStorage.setItem("Motors shop: token", res.data.token)
-        
-            navigate("/")
-        })
-        .catch(error => console.error(error))
-        .finally(() => setLoad(false))
-    }
+      <div>
+        <label>
+          Senha{" "}
+          {!!errors.password && (
+            <span> - {errors.password?.message as string}</span>
+          )}
+        </label>
+        <div className="inputPassword">
+          <input
+            {...register("password")}
+            placeholder="Digitar senha"
+            type={typeInput ? "text" : "password"}
+            onChange={(e: any) => {
+              if (e.target.value == "") {
+                setShowOutlineShow(true);
 
-    return (
-        <Container onSubmit={ handleSubmit(onSubmitFunction) }>
-            <h2>Login</h2>
+                setTypeInput(false);
+              }
+            }}
+          />
+          {showOutlineShow ? (
+            <AiOutlineEyeInvisible
+              className="biShow"
+              onClick={() => {
+                setTypeInput(true);
 
-            <Input
-            label="Email"
-            name="email"
-            register={ register }
-            placeholder="Digitar email"
-            autoComplete="off"
-            type="email"
-            error={ errors.email?.message }
-            required={ true }
-            size="inputSignIn"
+                setShowOutlineShow(false);
+              }}
             />
+          ) : (
+            <AiOutlineEye
+              className="biShow"
+              onClick={() => {
+                setTypeInput(false);
 
-            <div>
-                <label>Senha { errors.senha?.message as string }</label>
-                <div className="inputPassword">
-                    <input
-                    { ...register("password") }
-                    placeholder="Digitar senha"
-                    type={ typeInput ? "text" : "password" }
-                    required={ true }
-                    onChange={ (e: any) => {
+                setShowOutlineShow(true);
+              }}
+            />
+          )}
+        </div>
+      </div>
 
-                        if(e.target.value == '') {
+      <Link to="/resetpassword">Esqueci minha senha</Link>
 
-                            setShowOutlineShow(true)
+      <Button
+        size="buttonSizeLogin"
+        color="buttonColorBlueLogin"
+        type="submit"
+        disabled={load}
+      >
+        {load ? "Entrando..." : "Entrar"}
+      </Button>
+      <small>Ainda não possui conta?</small>
+      <Button
+        size="buttonSizeLogin"
+        color="buttonColorWhiteHeader"
+        type="button"
+        onClick={() => navigate("/signup")}
+      >
+        Cadastrar
+      </Button>
+    </Container>
+  );
+};
 
-                            setTypeInput(false)
-                        }
-                    } }
-                    />
-                    {
-                        showOutlineShow ? (
-                            
-                            <AiOutlineEyeInvisible className="biShow" onClick={ () => {
-                            
-                                setTypeInput(true)
-                                
-                                setShowOutlineShow(false)
-
-                            } } />
-                        
-                            ) : (
-                        
-                            <AiOutlineEye className="biShow" onClick={ () => {
-
-                                setTypeInput(false)
-
-                                setShowOutlineShow(true)
-
-                            } } />
-                        )
-                    }
-                </div>
-            </div>
-
-            <Link to="/resetpassword">Esqueci minha senha</Link>
-
-            <Button size="buttonSizeLogin" color="buttonColorBlueLogin" type="submit" disabled={ load }>{
-                
-                load ? "Entrando..." : "Entrar"
-                
-            }</Button>
-            <p>Ainda não possui conta?</p>
-            <Button size="buttonSizeLogin" color="buttonColorWhiteHeader" type="button" onClick={ () => navigate("/signup") }>Cadastrar</Button>
-        </Container>
-    )
-}
-
-export { FormSignIn }
+export { FormSignIn };

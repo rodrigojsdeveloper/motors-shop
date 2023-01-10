@@ -4,7 +4,7 @@ import { Auction } from "../entities/auction.entity";
 
 const listAuctionsService = async (): Promise<ReadonlyArray<Auction>> => {
   const auctions = await auctionRepository.find({
-    relations: ["product", "bids"],
+    relations: ["bids"],
   });
 
   return auctions;

@@ -39,7 +39,7 @@ const Header = () => {
                 "Authorization": `Bearer ${ token }`
             }
         })
-        .then(res => setUser(res.data))
+        .then(res => setUser(res.data[0]))
         .catch(error => console.error(error))
 
     }, [])
@@ -130,7 +130,6 @@ const Header = () => {
                                 setMenuOpenLoggedNotAnnouncement(false)   
                             }
                         } }>
-                            <AvatarUser userName={ user.name } />
                             <h2>{ user.name }</h2>
                         </div>
 

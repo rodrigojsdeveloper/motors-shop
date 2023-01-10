@@ -34,6 +34,28 @@ const createUserService = async (user: IUser): Promise<User> => {
   userRepository.create(newUser);
   await userRepository.save(newUser);
 
+  const transporter = createTransport({
+    host: "smtp.office365.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.SMTP_EMAIL,
+      pass: process.env.SMTP_PASSWORD,
+    },
+  });
+
+  await transporter
+    .sendMail({
+      from: "rodrigojsdeveloper@outlook.com",
+      to: user.email,
+      subject: "Created user",
+      html: "You just created this user",
+    })
+    .catch((err) => {
+      console.error(err);
+      throw new BadRequestError("Error sending email, try again later");
+    });
+
   Reflect.deleteProperty(newUser, "password");
 
   return newUser;

@@ -14,12 +14,6 @@ class Auction {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @OneToOne((type) => Product, {
-    eager: true,
-  })
-  @JoinColumn({ name: "product_id" })
-  product: Product;
-
   @OneToMany((type) => Bid, (bid) => bid.auction, {
     eager: true,
   })

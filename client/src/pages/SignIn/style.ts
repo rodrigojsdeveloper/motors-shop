@@ -1,36 +1,37 @@
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 const Container = styled.div`
+  & > div {
+    width: 100%;
+    margin-top: 50px;
 
+    height: 790px;
+    background-color: #f1f3f5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+  }
+
+  @media (min-width: 1921px) {
     & > div {
-
-        width: 100%;
-        margin-top: 50px;
-
-        height: 790px;
-        background-color: #F1F3F5;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding: 15px;
+      height: 100vh;
     }
+  }
 
-    @media (min-width: 1921px) {
-
-        & > div {
-            height: 100vh;
-        }
+  @media (max-width: 425px) {
+    & > div {
+      margin-top: 10px;
     }
+  }
 
-    @media (max-width: 425px) {
-        
-        & > div {
-            margin-top: 10px;
-        }
+  @media (min-height: 1050px) {
+    & > div {
+      height: 100vh;
     }
-`
+  }
+`;
 
-export { Container }
+export { Container };

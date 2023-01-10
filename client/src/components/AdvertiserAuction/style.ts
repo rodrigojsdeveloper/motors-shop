@@ -7,9 +7,9 @@ const Container = styled.div`
   height: 388px;
 
   border-radius: 4px;
-  position: relative;
-
   margin-right: 24px;
+  
+  position: relative;
 
   .divCardDescription {
     height: 326px;
@@ -33,7 +33,7 @@ const Container = styled.div`
       position: absolute;
       top: 0;
 
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
+      background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 1));
       display: flex;
       flex-direction: column;
       justify-content: space-between;

@@ -7,12 +7,12 @@ const Container = styled.div`
     text-align: left;
     padding-top: 20px;
 
-    label {
+    & > label {
         font-size: 14px;
         font-weight: 500;
-        line-height: 25px;
+        line-height: 30px;
 
-        span {
+        & > span {
             color: #c20707;
         }
     }

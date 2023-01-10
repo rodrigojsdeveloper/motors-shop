@@ -1,7 +1,7 @@
 import { Container } from "./style"
 
 interface IAvatarUserProps {
-    userName: string
+    userName: any
 }
 
 const AvatarUser = ({ userName }: IAvatarUserProps) => {

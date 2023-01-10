@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  OneToMany,
+  ManyToOne,
 } from "typeorm";
 
 @Entity("bids")
@@ -19,10 +19,10 @@ class Bid {
   @CreateDateColumn()
   created_at: Date;
 
-  @OneToMany((type) => User, (user) => user.bids)
+  @ManyToOne((type) => User, (user) => user.bids)
   user: User;
 
-  @OneToMany((type) => Auction, (auction) => auction.bids)
+  @ManyToOne((type) => Auction, (auction) => auction.bids)
   auction: Auction;
 }
 
