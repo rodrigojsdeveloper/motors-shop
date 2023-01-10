@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  & > div {
+  & > main {
     width: 100%;
     margin-top: 50px;
 
@@ -16,7 +16,19 @@ const Container = styled.div`
   }
 
   @media (min-width: 1921px) {
-    & > div {
+    & > main {
+      height: 100vh;
+    }
+  }
+
+  @media (max-width: 425px) {
+    & > main {
+      margin-top: 10px;
+    }
+  }
+
+  @media (min-height: 1050px) {
+    & > main {
       height: 100vh;
     }
   }

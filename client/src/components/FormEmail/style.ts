@@ -21,8 +21,35 @@ const Container = styled.form`
   @media (max-width: 425px) {
     padding: 44px 28px;
 
-    & > div, & > button {
+    & > button {
       max-width: unset;
+    }
+
+    & > div {
+      & > input {
+        max-width: unset;
+      }
+    }
+  }
+
+  @media (max-width: 265px) {
+    & > h2 {
+      font-size: 20px;
+    }
+
+    & > div {
+      & > label {
+        font-size: 12px;
+      }
+      & > input {
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
+    }
+
+    & > button {
+      font-size: 14px;
     }
   }
 `;

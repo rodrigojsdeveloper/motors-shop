@@ -8,9 +8,9 @@ const PageNewPassword = () => {
     <Container>
       <Header />
 
-      <div>
+      <main>
         <FormNewPassword />
-      </div>
+      </main>
 
       <Footer />
     </Container>

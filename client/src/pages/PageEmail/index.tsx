@@ -8,9 +8,9 @@ const PageEmail = () => {
     <Container>
       <Header />
 
-      <div>
+      <main>
         <FormEmail />
-      </div>
+      </main>
 
       <Footer />
     </Container>

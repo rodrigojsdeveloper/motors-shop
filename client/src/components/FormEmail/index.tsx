@@ -34,7 +34,9 @@ const FormEmail = () => {
     setOpenModalSucess(true)
     api
       .post(`/email/${data.email}`)
-      .then((res) => userId = res.data.id)
+      .then((res) => {
+        userId = res.data.id
+      })
       .catch((error) => console.error(error));
   };
 

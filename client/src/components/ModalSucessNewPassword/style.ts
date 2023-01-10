@@ -21,7 +21,7 @@ const Container = styled.div`
       line-height: 20px;
       color: #212529;
 
-      padding-bottom: 50px;
+      padding-bottom: 30px;
       font-weight: bold;
     }
 
