@@ -1,3 +1,4 @@
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
@@ -7,7 +8,6 @@ import { Button } from "../Button";
 import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 interface IFormSignUp {
   setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -97,7 +97,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
     api
       .post("/users/signup", data)
-      .then((_) => setOpenModalSuccess(true))
+      .then(() => setOpenModalSuccess(true))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };

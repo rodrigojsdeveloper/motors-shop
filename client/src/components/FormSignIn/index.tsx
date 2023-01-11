@@ -20,7 +20,7 @@ const FormSignIn = () => {
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    name: yup.string().required("Usuário obrigatório"),
+    email: yup.string().required("Usuário obrigatório"),
     password: yup.string().required("Senha obrigatória"),
   });
 
@@ -33,6 +33,8 @@ const FormSignIn = () => {
   });
 
   const onSubmitFunction = (data: any) => {
+    setLoad(true);
+
     api
       .post("/signin", data)
       .then((res) => {
@@ -50,13 +52,13 @@ const FormSignIn = () => {
 
       <Input
         label="Usuário"
-        name="name"
+        name="email"
         register={register}
         placeholder="Digitar usuário"
         autoComplete="off"
         type="text"
-        error={errors.name?.message}
-        required={ true }
+        error={errors.email?.message}
+        required={true}
         size="inputSignIn"
       />
 
@@ -71,7 +73,7 @@ const FormSignIn = () => {
           <input
             {...register("password")}
             placeholder="Digitar senha"
-            required={ true }
+            required={true}
             type={typeInput ? "text" : "password"}
             onChange={(e: any) => {
               if (e.target.value == "") {

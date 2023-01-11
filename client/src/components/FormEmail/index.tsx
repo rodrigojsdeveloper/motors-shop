@@ -11,15 +11,14 @@ import { ModalSucessNewPassword } from "../ModalSucessNewPassword";
 import { Container } from "./style";
 
 const FormEmail = () => {
-  let { userId } = useParams()
+  let { userId } = useParams();
 
-  const [ openModalSucess, setOpenModalSucess ] = useState<boolean>(false)
+  const [load, setLoad] = useState<boolean>(false);
+
+  const [openModalSucess, setOpenModalSucess] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Email obrigatório")
-      .email("Email invalido")
+    email: yup.string().required("Email obrigatório").email("Email invalido"),
   });
 
   const {
@@ -31,47 +30,50 @@ const FormEmail = () => {
   });
 
   const onSubmitFunc = (data: any) => {
-    setOpenModalSucess(true)
+    setLoad(true);
+
     api
-      .post(`/email/${data.email}`)
+      .get(`/users/email/${data.email}`)
       .then((res) => {
-        userId = res.data.id
+        userId = res.data.id;
+        setOpenModalSucess(true);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
   };
 
   return (
     <>
-    {
-      openModalSucess &&
-      <ModalBackground>
-        <ModalSucessNewPassword setOpenModalSuccess={ setOpenModalSucess } />
-      </ModalBackground>
-    }
-    <Container onSubmit={handleSubmit(onSubmitFunc)}>
-      <h2>Insira seu email</h2>
+      {openModalSucess && (
+        <ModalBackground>
+          <ModalSucessNewPassword setOpenModalSuccess={setOpenModalSucess} />
+        </ModalBackground>
+      )}
+      <Container onSubmit={handleSubmit(onSubmitFunc)}>
+        <h2>Insira seu email</h2>
 
-      <Input
-        label="Email"
-        name="email"
-        register={register}
-        placeholder="Digitar email"
-        autoComplete="off"
-        type="email"
-        error={errors.email?.message}
-        required={true}
-        size="inputSignIn"
-      />
+        <Input
+          label="Email"
+          name="email"
+          register={register}
+          placeholder="Digitar email"
+          autoComplete="off"
+          type="email"
+          error={errors.email?.message}
+          required={true}
+          size="inputSignIn"
+        />
 
-      <Button
-        className="buttonSubmit"
-        size="buttonSizeLogin"
-        color="buttonColorBlueLogin"
-        type="submit"
-      >
-        Enviar
-      </Button>
-    </Container>
+        <Button
+          className="buttonSubmit"
+          size="buttonSizeLogin"
+          color="buttonColorBlueLogin"
+          type="submit"
+          disabled={load}
+        >
+          {load ? "Enviando..." : "Enviar"}
+        </Button>
+      </Container>
     </>
   );
 };

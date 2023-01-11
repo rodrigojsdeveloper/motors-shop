@@ -51,7 +51,7 @@ const updateUserController = async (req: Request, res: Response) => {
 
 const specificUserWithEmailController = async (req: Request, res: Response) => {
 
-  const email = req.params.email
+  const email: string = req.params.email
 
   const user = await specificUserWithEmailService(email)
 

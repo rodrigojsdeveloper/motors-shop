@@ -125,7 +125,7 @@ const specificUserWithEmailService = async (email: string): Promise<User> => {
   }
 
   const transporter = createTransport({
-    host: "smtp.office365.com",
+    host: "smtp-mail.outlook.com",
     port: 587,
     secure: false,
     auth: {
@@ -136,10 +136,10 @@ const specificUserWithEmailService = async (email: string): Promise<User> => {
 
   await transporter
     .sendMail({
-      from: "rodrigojsdeveloper@outlook.com",
+      from: process.env.SMTP_EMAIL,
       to: user.email,
       subject: "Change the password",
-      html: "Reset your password at this link: http://localhost:3000/newpassword",
+      html: `Reset your password at this link: http://localhost:5173/newpassword/${ user.id }`,
     })
     .catch((err) => {
       console.error(err);
