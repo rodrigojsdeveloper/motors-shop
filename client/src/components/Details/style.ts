@@ -3,12 +3,17 @@ import styled from "styled-components";
 const Container = styled.section`
   width: 100%;
   max-width: 752px;
+  height: 239.39px;
 
   padding: 28px 44px;
   background: #fdfdfd;
   border-radius: 4px;
 
   margin-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   & > h3 {
     font-weight: 600;
@@ -29,15 +34,15 @@ const Container = styled.section`
     margin-bottom: 30px;
 
     & > div {
-      width: 100%;
-      max-width: 113px;
-
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
+      & > p:nth-child(1) {
+        margin-right: 5px;
+      }
+
       & > p {
-        width: 50px;
         height: 32px;
 
         padding: 4px 8px;
@@ -63,6 +68,7 @@ const Container = styled.section`
 
   @media (max-width: 720px) {
     padding: 30px;
+    height: unset;
 
     & > h3 {
       margin-bottom: 20px;

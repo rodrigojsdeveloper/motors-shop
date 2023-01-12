@@ -18,12 +18,20 @@ const Container = styled.aside`
     width: 100%;
     max-width: 352px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    & > img {
+    & > div:nth-child(1) {
       width: 104px;
       height: 104px;
-
       border-radius: 50%;
+
+      & > p {
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 53px;
+      }
     }
 
     & > h4 {

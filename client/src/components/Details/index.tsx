@@ -11,7 +11,7 @@ const Details = ({ product }: IDetails) => {
 
   return (
     <Container>
-      <h3>{ product.description }</h3>
+      <h3>{ product.title }</h3>
 
       <div>
         <div>

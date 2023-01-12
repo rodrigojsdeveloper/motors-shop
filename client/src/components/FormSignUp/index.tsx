@@ -106,7 +106,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
     <Container onSubmit={handleSubmit(onSubmitFunction)}>
       <h2>Cadastro</h2>
 
-      <h4>Informações pessoais</h4>
+      <h3>Informações pessoais</h3>
 
       <Input
         label="Nome"
@@ -165,7 +165,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
       />
       <TextArea />
 
-      <h4>Informações de endereço</h4>
+      <h3>Informações de endereço</h3>
 
       <Input
         label="CEP"
@@ -264,7 +264,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         />
       </div>
 
-      <h4>Tipo de conta</h4>
+      <h3>Tipo de conta</h3>
 
       <div className="divInputs">
         <Button

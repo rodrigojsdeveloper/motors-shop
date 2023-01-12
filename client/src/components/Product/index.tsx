@@ -10,7 +10,7 @@ interface IProduct {
 const Product = ({ product }: any) => {
   let { productId } = useParams();
 
-  productId = product.title;
+  productId = product.id;
 
   const navigate = useNavigate();
 
@@ -22,22 +22,24 @@ const Product = ({ product }: any) => {
         title={product.title}
       />
 
-      <h4>{product.title}</h4>
-
-      <p>{product.description}</p>
-
       <div>
-        <AvatarUser userName={product.user.name} />
-        <h6>{product.user.name}</h6>
-      </div>
+        <h4>{product.title}</h4>
 
-      <div className="divKmYearPrice">
+        <p>{product.description}</p>
+
         <div>
-          <p>{product.year}</p>
-          <p>{product.kilometers} KM</p>
+          <AvatarUser userName={product.user.name} />
+          <h6>{product.user.name}</h6>
         </div>
 
-        <span>{product.price}</span>
+        <div className="divKmYearPrice">
+          <div>
+            <p>{product.year}</p>
+            <p>{product.kilometers} KM</p>
+          </div>
+
+          <span>{product.price}</span>
+        </div>
       </div>
     </Container>
   );

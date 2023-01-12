@@ -29,12 +29,15 @@ const createCommentService = async (
   return newComment;
 };
 
-const listCommentsService = async (): Promise<ReadonlyArray<Comment>> => {
-  const comments = await commentRepository.find({
-    relations: ["user", "product"],
-  });
+const listCommentsProductService = async (product_id: string): Promise<ReadonlyArray<Comment>> => {
 
-  return comments;
+  const product = await productRepository.findOne({ where: { id: product_id }, relations: ["comments"] })
+
+  if(!product) {
+    throw new NotFoundError("Product")
+  }
+
+  return product.comments;
 };
 
-export { createCommentService, listCommentsService };
+export { createCommentService, listCommentsProductService };

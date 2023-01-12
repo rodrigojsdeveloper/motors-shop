@@ -22,7 +22,7 @@ const Container = styled.form`
     padding-bottom: 10px;
   }
 
-  & > h4 {
+  & > h3 {
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
@@ -178,7 +178,7 @@ const Container = styled.form`
       font-size: 20px;
     }
 
-    h4, button {
+    h3, button {
       font-size: 13px;
     }
 

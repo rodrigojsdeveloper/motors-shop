@@ -1,6 +1,6 @@
 import {
   createCommentService,
-  listCommentsService,
+  listCommentsProductService,
 } from "../services/comments.service";
 import { IComment } from "../interfaces/comment.interface";
 import { Request, Response } from "express";
@@ -17,10 +17,12 @@ const createCommentController = async (req: Request, res: Response) => {
   return res.status(201).json(newComment);
 };
 
-const listCommentsController = async (req: Request, res: Response) => {
-  const comments = await listCommentsService();
+const listCommentsProductController = async (req: Request, res: Response) => {
+  const product_id: string = req.params.product_id;
+
+  const comments = await listCommentsProductService(product_id);
 
   return res.json(comments);
 };
 
-export { createCommentController, listCommentsController };
+export { createCommentController, listCommentsProductController };

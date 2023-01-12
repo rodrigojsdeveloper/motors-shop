@@ -29,7 +29,7 @@ const productsRoutes = (): Router => {
 
   routes.delete("/:id", tokenMiddleware, deleteProductController);
 
-  routes.get("/:id", tokenMiddleware, specificProductController);
+  routes.get("/:id", specificProductController);
 
   return routes;
 };

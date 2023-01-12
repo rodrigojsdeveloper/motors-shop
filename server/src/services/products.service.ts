@@ -30,7 +30,6 @@ const createProductService = async (
 
   if ((newProduct.ad_type = "auction")) {
     const newAuction = new Auction();
-    newAuction.product = newProduct;
     newAuction.bids = [];
     newAuction.time_limit = "1:00:00";
 

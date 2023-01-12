@@ -1,29 +1,85 @@
-import { Button } from "../Button"
-import { Container } from "./style"
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { IComment, IProductProps } from "../../interfaces";
+import { AvatarUser } from "../AvatarUser";
+import { Button } from "../Button";
+import { Container } from "./style";
+import * as yup from "yup";
+import { api } from "../../services/api";
 
-const CreateComment = () => {
-
-    const token = !sessionStorage.getItem("Motors shop: token")
-
-    return (
-        <Container>
-            <div className="divUserPhotoAndName">
-                <img src="https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png" />
-                <h4>Rodrigo de Jesus</h4>
-            </div>
-
-            <div className="divInputLarge">
-                <textarea placeholder={ token ? "Digitar comentário" : "Carro muito confortável, foi uma ótima experiência de compra..."} />
-                <Button size="buttonSizeProductCarDetails" color="buttonColorBlueLogin" type="button" disabled={ token }>Comentar</Button>
-            </div>
-
-            <div className="divReadyComments">
-                <p>Gostei muito!</p>
-                <p>Incrível</p>
-                <p>Recomendarei para meus amigos!</p>
-            </div>
-        </Container>
-    )
+interface ICreateComment {
+  product: IProductProps;
+  ListCommentsFunc: (comment: IComment) => void;
 }
 
-export { CreateComment }
+const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
+  const [disable, setDisable] = useState<boolean>(false);
+
+  const [load, setLoad] = useState<boolean>(false);
+
+  const token = sessionStorage.getItem("Motors shop: token");
+
+  useEffect(() => {
+    token ? setDisable(false) : setDisable(true);
+  }, []);
+
+  const schema = yup.object().shape({
+    content: yup.string().required("content required"),
+  });
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmitFunction = (data: any) => {
+    setLoad(true);
+
+    api
+      .post(`/comments/${product.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => ListCommentsFunc(res.data))
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
+
+  return (
+    <Container>
+      <div className="divUserPhotoAndName">
+        <AvatarUser userName={product.user.name} />
+        <h4>{product.user.name}</h4>
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmitFunction)}>
+        <textarea
+          placeholder={
+            disable
+              ? "Digitar comentário"
+              : "Carro muito confortável, foi uma ótima experiência de compra..."
+          }
+          {...register("content")}
+          name="content"
+        />
+        <Button
+          size="buttonSizeProductCarDetails"
+          color="buttonColorBlueLogin"
+          type="submit"
+          disabled={disable ? disable : load}
+        >
+          {load ? "Comentando..." : "Comentar"}
+        </Button>
+      </form>
+
+      <div className="divReadyComments">
+        <p>Gostei muito!</p>
+        <p>Incrível</p>
+        <p>Recomendarei para meus amigos!</p>
+      </div>
+    </Container>
+  );
+};
+
+export { CreateComment };

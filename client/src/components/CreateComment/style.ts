@@ -36,7 +36,7 @@ const Container = styled.div`
         }
     }
 
-    .divInputLarge {
+    & > form {
 
         display: flex;
         flex-direction: row;

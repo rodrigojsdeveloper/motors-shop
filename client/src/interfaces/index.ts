@@ -102,6 +102,7 @@ export interface IProductProps {
   cover_image: string;
   gallery_image: string;
   user: IUserProps;
+  comments: []
 }
 
 export interface IAuctionProps {
@@ -118,7 +119,7 @@ export interface IAuctionProps {
   gallery_image: string;
   user: IUserProps;
   time_limit: string;
-  bids: IBid[]
+  bids: IBid[];
 }
 
 export interface IListAuctions {
@@ -130,8 +131,14 @@ export interface IListProducts {
 }
 
 export interface IBid {
-  value: string
-  created_at: string
-  user: IUserProps
-  auction: IAuctionProps
+  value: string;
+  created_at: string;
+  user: IUserProps;
+  auction: IAuctionProps;
+}
+
+export interface IComment {
+  id: string;
+  content: string;
+  user: IUserProps;
 }

@@ -34,8 +34,6 @@ const Auction = ({ auction }: any) => {
                         <p>{ auction.description }</p>
 
                         <div className="divUser">
-                            <AvatarUser userName={ auction.user.name } />
-                            <h6>{ auction.user.name }</h6>
                         </div>
 
                         <div className="divYearKMPrice">
