@@ -4,7 +4,7 @@ import close from "../../assets/xmark.svg";
 import { Button } from "../Button";
 import { Container } from "./style";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AvatarUser } from "../AvatarUser";
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
@@ -15,6 +15,8 @@ import { IUserProps } from "../../interfaces";
 
 const Header = () => {
   const navigate = useNavigate();
+
+  let advertiserId = useParams()
 
   const token = sessionStorage.getItem("Motors shop: token");
 
@@ -52,12 +54,16 @@ const Header = () => {
   token &&
     useEffect(() => {
       api
-        .get("/profile", {
+        .get("users/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => setUser(res.data[0]))
+        .then((res) => {
+          setUser(res.data)
+          console.log(res.data.id)
+          advertiserId = res.data.id
+        })
         .catch((error) => console.error(error));
     }, []);
 
@@ -93,7 +99,7 @@ const Header = () => {
           >
             Editar endereço
           </p>
-          <Link to="myadvertiser">Meus Anúncios</Link>
+          <a onClick={ () => navigate(`myadvertiser/${advertiserId}`) }>Meus Anúncios</a>
           <Link to="">Sair</Link>
         </div>
       ) : (
@@ -125,9 +131,9 @@ const Header = () => {
 
       <div className={token ? "divLogged" : "divNotLogged"}>
         <nav>
-          <a href="#cars">Carros</a>
-          <a href="#motorcycles">Motos</a>
-          <a href="#auctions">Leilão</a>
+          <a href="/#cars">Carros</a>
+          <a href="/#motorcycles">Motos</a>
+          <a href="/#auctions">Leilão</a>
         </nav>
         <hr />
         {token ? (
@@ -137,7 +143,9 @@ const Header = () => {
                 setMenuOpenLogged(true);
               }
 
-              setMenuOpenLoggedNotAnnouncement(true);
+              if(!user.is_seller) {
+                setMenuOpenLoggedNotAnnouncement(true);
+              }
 
               if (menuOpenLogged) {
                 setMenuOpenLogged(false);

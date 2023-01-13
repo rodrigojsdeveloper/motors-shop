@@ -5,7 +5,7 @@ const Container = styled.div`
 
     width: 100%;
     max-width: 520px;
-    height: 767px;
+    height: 787px;
 
     background: #FFFFFF;
     border-radius: 8px;
@@ -59,10 +59,11 @@ const Container = styled.div`
             flex-direction: row;
             justify-content: end;
 
-            padding-top: 30px;
+            padding-top: 20px;
 
-            & > button:nth-child(1) {
+            & > button:nth-child(2) {
                 margin-right: 7px;
+                margin-left: 7px;
             }
 
             @media (max-width: 425px) {
@@ -70,12 +71,13 @@ const Container = styled.div`
                 flex-direction: column;
 
                 & > button:nth-child(1) {
-                    margin-right: 0;
                     max-width: unset;
                 }
-
+                
                 & > button:nth-child(2) {
                     margin-top: 10px;
+                    margin-right: 0;
+                    margin-left: 0;
                     max-width: unset;
                 }
             }

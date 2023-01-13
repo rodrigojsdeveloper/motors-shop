@@ -53,7 +53,7 @@ const listProductsService = async (): Promise<ReadonlyArray<Product>> => {
 const specificProductService = async (id: string): Promise<Product> => {
   const product = await productRepository.findOne({
     where: { id },
-    relations: ["comments", "user"],
+    relations: ["user", "comments"],
   });
 
   if (!product) {

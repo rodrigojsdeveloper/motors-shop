@@ -37,7 +37,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
 
     token && useEffect(() => {
 
-        api.get("/profile", {
+        api.get("/users/profile", {
             headers: {
                 "Authorization": `Bearer ${ token }`
             }
@@ -117,7 +117,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
                     size="inputModalEditAddressLarge"
                     value={ user?.birthdate }
                     />
-                    <TextArea />
+                    <TextArea value={ user?.description } />
                 </div>
 
                 <div className="divButtons">

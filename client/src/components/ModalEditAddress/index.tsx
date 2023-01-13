@@ -51,7 +51,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
 
     token && useEffect(() => {
 
-        api.get("/profile", {
+        api.get("users/profile", {
             headers: {
                 "Authorization": `Bearer ${ token }`
             }

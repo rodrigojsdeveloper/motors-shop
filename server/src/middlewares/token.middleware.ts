@@ -20,7 +20,7 @@ const tokenMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
       req.email = decoded.email;
 
-      return next();
+      next();
     }
   );
 };

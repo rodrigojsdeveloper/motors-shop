@@ -37,7 +37,6 @@ const Container = styled.div`
         }
         
         & > div:nth-child(2) {
-            height: 567px;
             overflow-y: auto;
 
             .divInputs {
@@ -89,6 +88,11 @@ const Container = styled.div`
                 }
             }
         }
+    }
+
+    @media (max-width: 425px) {
+
+        height: 870px;
     }
 `
 

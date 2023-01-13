@@ -28,13 +28,6 @@ const AdvertiserAuction = ({ auction }: any) => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-
-    api.get(`/auctions/${ auction.id }`)
-    .then(res => setAuctionRequest(res.data))
-    .catch(error => console.error(error))
-  }, [])
-
   return (
     <>
     {

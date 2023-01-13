@@ -54,17 +54,19 @@ const PageProductDetails = () => {
     .catch(error => console.error(error))
   }, [])
 
+  const [ commentsList, setCommentsList ] = useState<IComment[]>([])
+
   useEffect(() => {
-    api.get(`/comments/${ productId }`, {
+    api.get(`/products/${ productId }`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
-    .then(res => setCommentsList(res.data.user.products[1].comments))
+    .then(res => console.log(res.data))
     .catch(error => console.error(error))
   }, [])
 
-  const [ commentsList, setCommentsList ] = useState<IComment[]>([...productRequest.comments])
+  console.log(commentsList)
 
   const ListCommentsFunc = (comment: IComment) => setCommentsList([ comment, ...commentsList ])
 
@@ -77,7 +79,7 @@ const PageProductDetails = () => {
         <div className="divWhite">
           <div>
             <ProductDetails product={ productRequest } />
-            <ListComments comments={ productRequest.comments } />
+            <ListComments comments={ commentsList } />
             <CreateComment ListCommentsFunc={ ListCommentsFunc } product={ productRequest } />
           </div>
         </div>

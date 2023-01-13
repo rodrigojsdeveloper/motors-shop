@@ -4,8 +4,13 @@ import { Button } from "../Button";
 import { useState } from "react";
 import { ModalBackground } from "../ModalBackground";
 import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
+import { IUserProps } from "../../interfaces";
 
-const ShowAdvertiser = () => {
+interface IShowAdvertiser {
+  user: IUserProps
+}
+
+const ShowAdvertiser = ({ user }: IShowAdvertiser) => {
 
   const [ openModalCreateAnnouncement, setOpenModalCreateAnnouncement ] = useState<boolean>(false)
 
@@ -18,18 +23,14 @@ const ShowAdvertiser = () => {
       </ModalBackground>
     }
     <Container>
-      <AvatarUser userName="Rodrigo Silva" />
+      <AvatarUser userName={ user.name } />
 
       <div>
-        <h3>Rodrigo Silva</h3>
-        <p>Anunciante</p>
+        <h3>{ user.name }</h3>
+        <p>{ user.is_seller && "Anunciante"}</p>
       </div>
 
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s
-      </p>
+      <p>{ user.description }</p>
 
       <Button
         color="buttonColorWhiteUserDetails"

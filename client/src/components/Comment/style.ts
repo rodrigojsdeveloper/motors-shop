@@ -14,6 +14,7 @@ const Container = styled.div`
         justify-content: start;
 
         width: 100%;
+        padding-bottom: 10px;
 
         & > div {
 
@@ -22,22 +23,13 @@ const Container = styled.div`
             align-items: center;
             justify-content: space-between;
 
-            & > img {
-
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-
-                object-fit: contain;
-            }
-
             & > h5 {
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 24px;
 
                 color: #212529;
-                margin-left: 12px;
+                margin-left: 10px;
             }
         }
 

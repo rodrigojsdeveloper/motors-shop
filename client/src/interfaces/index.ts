@@ -102,7 +102,7 @@ export interface IProductProps {
   cover_image: string;
   gallery_image: string;
   user: IUserProps;
-  comments: []
+  comments: [];
 }
 
 export interface IAuctionProps {
@@ -141,4 +141,5 @@ export interface IComment {
   id: string;
   content: string;
   user: IUserProps;
+  created_at: string;
 }
