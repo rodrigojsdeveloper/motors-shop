@@ -48,7 +48,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
     cellphone: yup.string().required("Celular obrigatória"),
     birthdate: yup.string().required("Data obrigatória"),
     description: yup.string().required("Descrição obrigatória"),
-    zip_code: yup.number().required("CEP obrigatória"),
+    zip_code: yup.string().required("CEP obrigatória"),
     country: yup.string().required("País obrigatório"),
     state: yup.string().required("Estado obrigatório"),
     city: yup.string().required("Cidade obrigatório"),
@@ -136,7 +136,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         register={register}
         placeholder="000.000.000-00"
         autoComplete="off"
-        type="number"
+        type="text"
         error={errors.cpf?.message}
         required={true}
         size="inputSignIn"

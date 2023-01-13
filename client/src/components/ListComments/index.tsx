@@ -4,17 +4,28 @@ import { Container } from "./style";
 
 interface IListComments {
   comments: any;
+  loaded: boolean;
 }
 
-const ListComments = ({ comments }: IListComments) => {
+const ListComments = ({ comments, loaded }: IListComments) => {
   return (
     <Container>
       <h3>Comentários</h3>
 
       <menu>
-        {comments.map((comment: IComment) => (
-          <Comment comment={comment} key={comment.id} />
-        ))}
+        {loaded ? (
+          <div className="loadScreen">
+            <div></div>
+          </div>
+        ) : comments.length > 0 ? (
+          comments.map((comment: IComment) => (
+            <Comment comment={comment} key={comment.id} />
+          ))
+        ) : (
+          <section>
+            <p>Não há comentários</p>
+          </section>
+        )}
       </menu>
     </Container>
   );

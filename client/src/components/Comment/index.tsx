@@ -26,7 +26,7 @@ const Comment = ({ comment }: ICommentComponent) => {
 
         <hr />
 
-        <p>há { showDate() } { showDate() == 0 || 1 ? "dia" : "dias" }</p>
+        <p>há { showDate() } { [0, 1].includes(showDate()) ? "dia" : "dias" }</p>
       </div>
 
       <p>{comment.content}</p>

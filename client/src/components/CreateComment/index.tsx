@@ -41,17 +41,22 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => ListCommentsFunc(res.data))
+      .then((res) => {
+        ListCommentsFunc(res.data)
+        console.log(res.data)
+      })
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };
 
   return (
     <Container>
-      <div className="divUserPhotoAndName">
-        <AvatarUser userName={product.user.name} />
-        <h4>{product.user.name}</h4>
-      </div>
+      {token && (
+        <div className="divUserPhotoAndName">
+          <AvatarUser userName={product.user.name} />
+          <h4>{product.user.name}</h4>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <textarea
@@ -62,6 +67,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           }
           {...register("content")}
           name="content"
+          disabled={ disable ? disable : load }
         />
         <Button
           size="buttonSizeProductCarDetails"

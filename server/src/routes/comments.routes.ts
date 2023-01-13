@@ -20,7 +20,7 @@ const commentsRoutes = (): Router => {
     createCommentController
   );
 
-  routes.get("/:product_id", tokenMiddleware, listCommentsProductController);
+  routes.get("/:product_id", listCommentsProductController);
 
   return routes;
 };

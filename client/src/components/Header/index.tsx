@@ -61,7 +61,6 @@ const Header = () => {
         })
         .then((res) => {
           setUser(res.data)
-          console.log(res.data.id)
           advertiserId = res.data.id
         })
         .catch((error) => console.error(error));
@@ -127,7 +126,9 @@ const Header = () => {
           </div>
         )
       )}
-      <img src={logo} alt="Motors shop" />
+      <Link to="/">
+        <img src={logo} alt="Motors shop" />
+      </Link>
 
       <div className={token ? "divLogged" : "divNotLogged"}>
         <nav>
@@ -191,13 +192,13 @@ const Header = () => {
           menuOpen && user.is_seller ? (
             <nav className="navLogged">
               <div>
-                <a href="#cars" onClick={() => setMenuOpen(false)}>
+                <a href="/#cars" onClick={() => setMenuOpen(false)}>
                   Carros
                 </a>
-                <a href="#motorcycles" onClick={() => setMenuOpen(false)}>
+                <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
                   Motos
                 </a>
-                <a href="#auctions" onClick={() => setMenuOpen(false)}>
+                <a href="/#auctions" onClick={() => setMenuOpen(false)}>
                   Leilão
                 </a>
               </div>
@@ -236,13 +237,13 @@ const Header = () => {
           ) : (
             <nav className="navLogged">
               <div>
-                <a href="#cars" onClick={() => setMenuOpen(false)}>
+                <a href="/#cars" onClick={() => setMenuOpen(false)}>
                   Carros
                 </a>
-                <a href="#motorcycles" onClick={() => setMenuOpen(false)}>
+                <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
                   Motos
                 </a>
-                <a href="#auctions" onClick={() => setMenuOpen(false)}>
+                <a href="/#auctions" onClick={() => setMenuOpen(false)}>
                   Leilão
                 </a>
               </div>
@@ -281,9 +282,9 @@ const Header = () => {
             <nav className="navNotLogged">
               <hr />
               <div>
-                <a href="#cars">Carros</a>
-                <a href="#motorcycles">Motos</a>
-                <a href="#auctions">Leilão</a>
+                <a href="/#cars">Carros</a>
+                <a href="/#motorcycles">Motos</a>
+                <a href="/#auctions">Leilão</a>
               </div>
               <hr />
               <div>

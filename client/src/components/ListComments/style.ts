@@ -1,4 +1,10 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+
+const AnimateLoading = keyframes`
+    to {
+        transform: rotate(1turn);
+    }
+`
 
 const Container = styled.div`
 
@@ -31,6 +37,46 @@ const Container = styled.div`
 
         height: 436px;
         overflow-y: auto;
+
+        & > section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+
+            & > p {
+                text-align: center;
+                font-size: 25px;
+                color: #868E96;
+                font-weight: bold;
+                padding: 0 20px;
+            }
+
+            @media (max-width: 425px) {
+
+                & > p {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .loadScreen {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            padding: 0 20px;
+
+            & > div {
+                animation: ${AnimateLoading} 1s infinite;
+                border: 4px solid transparent;
+                border-radius: 50%;
+                border-top-color: #000;
+                height: 50px;
+                width: 50px;
+            }
+        }
     }
 
     @media (max-width: 1440px) {

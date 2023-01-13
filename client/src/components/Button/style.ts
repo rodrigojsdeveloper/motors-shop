@@ -58,7 +58,7 @@ const Container = styled.button<IButtonStyledProps>`
 
                 return css`
                     height: 48px;
-                    max-width: 152px;
+                    max-width: 155.5px;
                 `
 
             case "buttonSizeProductDetails":

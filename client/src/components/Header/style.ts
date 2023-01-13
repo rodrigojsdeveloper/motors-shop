@@ -16,10 +16,14 @@ const Container = styled.header`
   flex-direction: row;
   justify-content: space-between;
 
-  & > img {
+  & > a {
+    display: flex;
+    align-items: center;
+    img {
     width: 153.02px;
     height: 26.34px;
     margin: auto 0;
+  }
   }
 
   .divLogged {

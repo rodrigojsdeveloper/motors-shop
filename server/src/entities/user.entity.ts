@@ -30,7 +30,7 @@ class User {
   @Column()
   cellphone: string;
 
-  @Column({ length: 11 })
+  @Column()
   cpf: string;
 
   @Column()

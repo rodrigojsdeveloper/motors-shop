@@ -8,11 +8,11 @@ import { Request, Response } from "express";
 const createCommentController = async (req: Request, res: Response) => {
   const email: string = req.email;
 
-  const id: string = req.params.id;
+  const product_id: string = req.params.product_id;
 
   const data: IComment = req.body;
 
-  const newComment = await createCommentService(data, email, id);
+  const newComment = await createCommentService(data, email, product_id);
 
   return res.status(201).json(newComment);
 };

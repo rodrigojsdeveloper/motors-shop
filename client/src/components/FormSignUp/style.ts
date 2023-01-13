@@ -43,11 +43,13 @@ const Container = styled.form`
       margin-right: 5px;
     }
 
-    .inputNumber,
-    .inputComplement,
-    .changeInput {
+    .inputComplement {
       width: 100%;
-      max-width: 152px;
+      max-width: 155.5px;
+
+      input {
+        max-width: 155.5px;
+      }
     }
   }
 
@@ -102,6 +104,10 @@ const Container = styled.form`
       &:focus::-webkit-input-placeholder {
         color: transparent;
       }
+      
+      &:focus::-moz-placeholder {
+        color: transparent;
+      }
 
       &::placeholder {
         color: #868e96;
@@ -139,23 +145,15 @@ const Container = styled.form`
       justify-content: unset;
       align-items: unset;
 
-      & > div {
-        max-width: unset;
-        width: 100%;
-        input {
-          max-width: unset;
-          width: 100%;
-        }
-      }
-
       & > div:nth-child(1) {
         margin-right: 0;
       }
 
-      .inputNumber,
-      .inputComplement,
-      .changeInput {
+      .inputComplement {
         max-width: unset;
+        input {
+          max-width: unset;
+        }
       }
 
       .changeButton {

@@ -45,6 +45,10 @@ const InputContainer = styled.input<InputStyledProps>`
         color: transparent;
     }
 
+    &:focus::-moz-placeholder {
+        color: transparent;
+    }
+
     ${ ({ size }) => {
 
         switch(size) {
@@ -63,7 +67,7 @@ const InputContainer = styled.input<InputStyledProps>`
 
             case "inputSignUpSmall":
                 return css`
-                    max-width: 152px;
+                    max-width: 155.5px;
                     height: 48px;
                 `
             

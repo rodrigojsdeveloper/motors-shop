@@ -5,7 +5,7 @@ class Address {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column({ length: 8 })
+  @Column()
   zip_code: string;
 
   @Column()

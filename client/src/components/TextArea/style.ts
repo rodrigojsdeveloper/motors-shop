@@ -37,7 +37,8 @@ const Container = styled.div`
       border-color: #000;
     }
 
-    &:focus::-webkit-input-placeholder {
+    &:focus::-webkit-input-placeholder,
+    &:focus::-moz-placeholder {
       color: transparent;
     }
   }
