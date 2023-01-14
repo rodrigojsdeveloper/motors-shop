@@ -1,36 +1,29 @@
 import { IAuctionProps, IProductProps } from "../../interfaces";
-import { Button } from "../Button";
 import { Container } from "./style";
 
 interface IDetails {
-  product: IAuctionProps | IProductProps
+  product: IAuctionProps | IProductProps;
 }
 
 const Details = ({ product }: IDetails) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
+  const link = `https://api.whatsapp.com/send?phone=${product.user.cellphone}&text=Olá%2C%20%20estou%20interessado%20em%20seu%20veículo%2C%20estou%20entrando%20em%20contato%20para%20negociar%20valores`;
+
   return (
     <Container>
-      <h3>{ product.title }</h3>
+      <h3>{product.title}</h3>
 
       <div>
         <div>
-          <p>{ product.year }</p>
-          <p>{ product.kilometers } KM</p>
+          <p>{product.year}</p>
+          <p>{product.kilometers} KM</p>
         </div>
 
-        <span>{ product.price }</span>
+        <span>{product.price}</span>
       </div>
 
-      {token && (
-        <Button
-          size="buttonSizeProductCarDetails"
-          color="buttonColorBlueLogin"
-          type="button"
-        >
-          Comprar
-        </Button>
-      )}
+      {token && <a href={link}>Comprar</a>}
     </Container>
   );
 };

@@ -7,25 +7,29 @@ import { Photo } from "../Photo";
 import { IProductProps } from "../../interfaces";
 
 interface IAuctionDetails {
-  product: IProductProps
+  product: IProductProps;
+  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ProductDetails = ({ product }: IAuctionDetails) => {
+const ProductDetails = ({ product, setOpenModalPhoto }: IAuctionDetails) => {
   return (
     <Container>
       <article>
         <div className="divCarPhotoAndDetails">
-          <Photo image={ product.cover_image } />
+          <Photo
+            image={product.cover_image}
+            setOpenModalPhoto={setOpenModalPhoto}
+          />
 
-          <Details product={ product } />
+          <Details product={product} />
         </div>
 
-        <Description description={ product.description } />
+        <Description description={product.description} />
       </article>
 
       <div className="divPhotosAndUserDetails">
-        <PhotosGallery gallery_image={ product.gallery_image } />
-        <CardSeller user={ product.user } />
+        <PhotosGallery gallery_image={product.gallery_image} />
+        <CardSeller user={product.user} />
       </div>
     </Container>
   );

@@ -20,6 +20,7 @@ const Container = styled.section`
     height: 252.96px;
 
     object-fit: contain;
+    cursor: pointer;
   }
 
   @media (max-width: 720px) {

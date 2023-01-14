@@ -66,6 +66,31 @@ const Container = styled.section`
     }
   }
 
+  & > a {
+    width: 100%;
+    max-width: 100px;
+    height: 38px;
+
+    padding: 12px 20px;
+    background: #4529e6;
+    border: 1.5px solid #4529e6;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.5s;
+
+    &:hover {
+      background-color: #7f6fd9;
+      border-color: #7f6fd9;
+    }
+  }
+
   @media (max-width: 720px) {
     padding: 30px;
     height: unset;

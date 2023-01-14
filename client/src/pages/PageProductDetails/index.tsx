@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IComment, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
+import { ModalBackground } from "../../components/ModalBackground";
+import { ModalPhoto } from "../../components/ModalPhoto";
 
 const PageProductDetails = () => {
   const { productId } = useParams();
@@ -15,6 +17,8 @@ const PageProductDetails = () => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [loaded, setLoaded] = useState<boolean>(false);
+
+  const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
 
   const [productRequest, setProductnRequest] = useState<IProductProps>({
     title: "Hyundai SUV",
@@ -79,25 +83,39 @@ const PageProductDetails = () => {
     setCommentsList([comment, ...commentsList]);
 
   return (
-    <Container>
-      <Header />
+    <>
+      {openModalPhoto && (
+        <ModalBackground>
+          <ModalPhoto
+            setOpenModalPhoto={setOpenModalPhoto}
+            cover_image={productRequest.cover_image}
+            title={productRequest.title}
+          />
+        </ModalBackground>
+      )}
+      <Container>
+        <Header />
 
-      <div>
-        <div className="divBlue"></div>
-        <div className="divWhite">
-          <div>
-            <ProductDetails product={productRequest} />
-            <ListComments loaded={loaded} comments={commentsList} />
-            <CreateComment
-              ListCommentsFunc={ListCommentsFunc}
-              product={productRequest}
-            />
+        <div>
+          <div className="divBlue"></div>
+          <div className="divWhite">
+            <div>
+              <ProductDetails
+                product={productRequest}
+                setOpenModalPhoto={setOpenModalPhoto}
+              />
+              <ListComments loaded={loaded} comments={commentsList} />
+              <CreateComment
+                ListCommentsFunc={ListCommentsFunc}
+                product={productRequest}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </>
   );
 };
 

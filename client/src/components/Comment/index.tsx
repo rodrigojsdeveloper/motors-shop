@@ -14,7 +14,7 @@ const Comment = ({ comment }: ICommentComponent) => {
 
   const newDate = comment.created_at.split("T")[0].split("-")[2]
 
-  const showDate = (): number => Number(day) - Number(newDate)
+  const showDate = (): number => Number(day) - Number(newDate) + 1
 
   return (
     <Container>
