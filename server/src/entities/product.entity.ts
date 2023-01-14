@@ -1,4 +1,3 @@
-import { Auction } from "./auction.entity";
 import { Comment } from "./comment.entity";
 import { User } from "./user.entity";
 import {
@@ -7,8 +6,6 @@ import {
   Column,
   ManyToOne,
   OneToMany,
-  OneToOne,
-  JoinColumn,
 } from "typeorm";
 
 @Entity("products")
@@ -45,12 +42,6 @@ class Product {
 
   @Column()
   gallery_image: string;
-
-  @OneToOne((type) => Auction, {
-    eager: true,
-  })
-  @JoinColumn({ name: "auction_id" })
-  auction: Auction;
 
   @ManyToOne((type) => User, (user) => user.products)
   user: User;

@@ -8,6 +8,7 @@ const Container = styled.section`
 
   width: 100%;
   max-width: 751px;
+  height: 239.39px;
 
   padding: 36px 44px;
   background: #fdfdfd;
@@ -34,6 +35,7 @@ const Container = styled.section`
   @media (max-width: 720px) {
     margin-top: 30px;
     padding: 30px;
+    height: unset;
   }
 `;
 

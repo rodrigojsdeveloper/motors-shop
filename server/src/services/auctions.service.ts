@@ -11,7 +11,7 @@ const listAuctionsService = async (): Promise<ReadonlyArray<Auction>> => {
 };
 
 const specificAuctionService = async (auction_id: string): Promise<Auction> => {
-  const auction = await auctionRepository.findOneBy({ id: auction_id });
+  const auction = await auctionRepository.findOne({ where: { id: auction_id }, relations: ["product"] });
 
   if (!auction) {
     throw new NotFoundError("Auction");

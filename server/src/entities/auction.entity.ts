@@ -19,6 +19,12 @@ class Auction {
   })
   bids: Array<Bid>;
 
+  @OneToOne((type) => Product, {
+    eager: true,
+  })
+  @JoinColumn({ name: "product_id" })
+  product: Product;
+
   @Column()
   time_limit: string;
 }

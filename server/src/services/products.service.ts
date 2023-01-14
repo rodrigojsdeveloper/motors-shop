@@ -28,7 +28,7 @@ const createProductService = async (
   productRepository.create(newProduct);
   await productRepository.save(newProduct);
 
-  if ((newProduct.ad_type = "auction")) {
+  if (newProduct.ad_type == "auction") {
     const newAuction = new Auction();
     newAuction.bids = [];
     newAuction.time_limit = "1:00:00";
@@ -37,9 +37,9 @@ const createProductService = async (
     await auctionRepository.save(newAuction);
 
     return newAuction;
+  } else {
+    return newProduct;
   }
-
-  return newProduct;
 };
 
 const listProductsService = async (): Promise<ReadonlyArray<Product>> => {
