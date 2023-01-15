@@ -7,7 +7,9 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  ManyToOne,
 } from "typeorm";
+import { User } from "./user.entity";
 
 @Entity("auctions")
 class Auction {
@@ -24,6 +26,9 @@ class Auction {
   })
   @JoinColumn({ name: "product_id" })
   product: Product;
+
+  @ManyToOne((type) => User, (user) => user.auctions)
+  user: User;
 
   @Column()
   time_limit: string;

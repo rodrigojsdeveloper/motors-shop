@@ -22,9 +22,11 @@ const Home = () => {
     api.get("/products")
     .then(res => {
 
-      setCars(res.data.filter((product: IProductProps) => product.vehicle_type == "car"))
+      const products = res.data.filter((product: IProductProps) => product.ad_type == "sale")
 
-      setMotorcycles(res.data.filter((product: IProductProps) => product.vehicle_type == "motorbike"))
+      setCars(products.filter((product: IProductProps) => product.vehicle_type == "car"))
+
+      setMotorcycles(products.filter((product: IProductProps) => product.vehicle_type == "motorbike"))
     })
     .catch(error => console.error(error))
 

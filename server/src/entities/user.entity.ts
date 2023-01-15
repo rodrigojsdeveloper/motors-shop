@@ -12,6 +12,7 @@ import {
   JoinColumn,
   OneToMany,
 } from "typeorm";
+import { Auction } from "./auction.entity";
 
 @Entity("users")
 class User {
@@ -58,6 +59,11 @@ class User {
     eager: true,
   })
   products: Array<Product>;
+
+  @OneToMany((type) => Auction, (auction) => auction.user, {
+    eager: true,
+  })
+  auctions: Array<Auction>;
 
   @OneToMany((type) => Comment, (comment) => comment.user, {
     eager: true,

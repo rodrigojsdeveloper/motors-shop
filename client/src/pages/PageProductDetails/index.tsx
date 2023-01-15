@@ -21,21 +21,6 @@ const PageProductDetails = () => {
   const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
 
   const [productRequest, setProductnRequest] = useState<IProductProps>({
-    title: "Hyundai SUV",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    year: 2017,
-    kilometers: 1000,
-    price: "R$ 120.000,00",
-    ad_type: "sale",
-    vehicle_type: "car",
-    cover_image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ05KgqO1GWbZVemiSSoyOG0q-sZ4LqWPmgi5DcI9Tkagf5AELXICyqG_6_u9wgynoztl0&usqp=CAU",
-    gallery_image:
-      "https://image.similarpng.com/very-thumbnail/2020/05/White-premium-car-crossover-SUV-transparent-PNG.png",
-    id: "21",
-    is_published: true,
-    comments: [],
     user: {
       name: "rodrigo",
       email: "rodrigonohype@gmail.com",

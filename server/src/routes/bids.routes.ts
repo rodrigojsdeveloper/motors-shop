@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import {
   createBidController,
-  listBidsController,
+  listBidsAuctionController,
 } from "../controllers/bids.controller";
 
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
@@ -20,7 +20,7 @@ const bidsRoutes = (): Router => {
     createBidController
   );
 
-  routes.get("", tokenMiddleware, listBidsController);
+  routes.get("/:auction_id", tokenMiddleware, listBidsAuctionController);
 
   return routes;
 };

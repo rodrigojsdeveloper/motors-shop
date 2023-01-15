@@ -20,6 +20,7 @@ export interface InputProps {
     | "inputModalCreateAnnouncementSmall";
   className?: string;
   value?: any;
+  disabled?: boolean;
 }
 
 export interface IButtonProps {
@@ -107,19 +108,10 @@ export interface IProductProps {
 
 export interface IAuctionProps {
   id: string;
-  title: string;
-  description: string;
-  year: number;
-  kilometers: number;
-  price: string;
-  ad_type: "sale" | "auction" | string;
-  vehicle_type: "car" | "motorbike" | string;
-  is_published: boolean;
-  cover_image: string;
-  gallery_image: string;
+  product: IProductProps
   user: IUserProps;
   time_limit: string;
-  bids: IBid[];
+  bids: [];
 }
 
 export interface IListAuctions {
@@ -131,6 +123,7 @@ export interface IListProducts {
 }
 
 export interface IBid {
+  id: string;
   value: string;
   created_at: string;
   user: IUserProps;

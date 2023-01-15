@@ -7,7 +7,7 @@ interface IProduct {
   product: IProductProps;
 }
 
-const Product = ({ product }: any) => {
+const Product = ({ product }: IProduct) => {
   let { productId } = useParams();
 
   productId = product.id;

@@ -9,40 +9,42 @@ interface IAuction {
     auction: IAuctionProps
 }
 
-const Auction = ({ auction }: any) => {
+const Auction = ({ auction }: IAuction) => {
 
     let { auctionId } = useParams()
 
-    auctionId = auction.title
+    auctionId = auction?.id
 
     const navigate = useNavigate()
 
     return (
         <Container>
             <div className="divCardDescription">
-                <img src={ auction.cover_image } alt={ auction.title } />
+                <img src={ auction.product?.cover_image } alt={ auction.product?.title } />
 
                 <div className="divDescription">
                     <div className="divTimeAuction">
                         <img src={clock} />
-                        <time>{ auction.time_limit }</time>
+                        <time>{ auction?.time_limit }</time>
                     </div>
 
                     <div>
-                        <h4>{ auction.title }</h4>
+                        <h4>{ auction.product?.title }</h4>
 
-                        <p>{ auction.description }</p>
+                        <p>{ auction.product?.description }</p>
 
                         <div className="divUser">
+                            <AvatarUser userName={ auction.user.name } />
+                            <h6>{ auction.user.name }</h6>
                         </div>
 
                         <div className="divYearKMPrice">
                             <div>
-                                <p>{ auction.year }</p>
-                                <p>{ auction.kilometers } KM</p>
+                                <p>{ auction.product?.year }</p>
+                                <p>{ auction.product?.kilometers } KM</p>
                             </div>
 
-                            <span>{ auction.price }</span>
+                            <span>{ auction.product?.price }</span>
                         </div>
                     </div>
                 </div>

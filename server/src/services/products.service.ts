@@ -32,6 +32,8 @@ const createProductService = async (
     const newAuction = new Auction();
     newAuction.bids = [];
     newAuction.time_limit = "1:00:00";
+    newAuction.product = newProduct
+    newAuction.user = user!
 
     auctionRepository.create(newAuction);
     await auctionRepository.save(newAuction);

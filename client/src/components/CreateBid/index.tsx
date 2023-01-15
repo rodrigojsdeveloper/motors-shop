@@ -1,57 +1,87 @@
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { IAuctionProps, IBid } from "../../interfaces"
-import { AvatarUser } from "../AvatarUser"
-import { Button } from "../Button"
-import { Input } from "../Input"
-import { Container } from "./style"
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { IAuctionProps, IBid } from "../../interfaces";
+import { api } from "../../services/api";
+import { AvatarUser } from "../AvatarUser";
+import { Button } from "../Button";
+import { Input } from "../Input";
+import { Container } from "./style";
+import * as yup from "yup";
 
 interface ICreateBid {
-    product: IAuctionProps
-    ListBidsFunc: (bid: IBid) => void
+  auction: IAuctionProps;
+  ListBidsFunc: (bid: IBid) => void;
 }
 
-const CreateBid = ({ product , ListBidsFunc }: ICreateBid) => {
+const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
+  const token = sessionStorage.getItem("Motors shop: token");
 
-    const [ disable, setDisable ] = useState<boolean>(false)
+  useEffect(() => {
+    token ? setDisable(false) : setDisable(true);
+  }, []);
 
-    const { register, handleSubmit } = useForm({})
+  const [disable, setDisable] = useState<boolean>(false);
 
-    const token = sessionStorage.getItem("Motors shop: token")
+  const [load, setLoad] = useState<boolean>(false);
 
-    if(token) {
-        setDisable(false)
-    } else {
-        setDisable(true)
-    }
+  const schema = yup.object().shape({
+    value: yup.string().required("value required"),
+  });
 
-    const onSubmitFunction = (data: any) => ListBidsFunc(data)
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    return (
-        <Container onSubmit={ handleSubmit(onSubmitFunction) }>
-            <div>
-                <div>
-                    <AvatarUser userName={ product.user.name } />
-                    <h3>{ product.user.name }</h3>
-                </div>
+  const onSubmitFunction = (data: any) => {
+    setLoad(true);
 
-                <div>
-                    <Input
-                    label="Lance"
-                    placeholder="Inserir valor do lance"
-                    autoComplete="off"
-                    type="text"
-                    required={ true }
-                    size="inputSignIn"
-                    register={ register }
-                    name="label"
-                    />
+    api
+      .post(`/bids/${auction?.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => ListBidsFunc(res.data))
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
 
-                    <Button color="buttonColorBlueLogin" size="buttonSizeCreateBid" type="submit" disabled={ disable }>Inserir proposta</Button>
-                </div>
-            </div>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <div>
+        {token && (
+          <div className="divUser">
+            <AvatarUser userName={auction.user.name} />
+            <h3>{auction.user.name}</h3>
+          </div>
+        )}
 
-export { CreateBid }
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            label="Lance"
+            placeholder="Inserir valor do lance"
+            autoComplete="off"
+            type="text"
+            required={true}
+            size="inputSignIn"
+            register={register}
+            name="value"
+            disabled={disable ? disable : load}
+          />
+
+          <Button
+            color="buttonColorBlueLogin"
+            size="buttonSizeCreateBid"
+            type="submit"
+            disabled={disable ? disable : load}
+          >
+            { load ? "Inserindo...": "Inserir proposta" }
+          </Button>
+        </form>
+      </div>
+    </Container>
+  );
+};
+
+export { CreateBid };

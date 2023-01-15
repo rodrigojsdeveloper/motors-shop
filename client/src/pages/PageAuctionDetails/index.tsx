@@ -5,44 +5,99 @@ import { CreateBid } from "../../components/CreateBid";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { ListBids } from "../../components/ListBids";
+import { ModalBackground } from "../../components/ModalBackground";
+import { ModalPhoto } from "../../components/ModalPhoto";
 import { IAuctionProps, IBid } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
 const PageAuctionDetails = () => {
+  const { auctionId } = useParams();
 
-  const auctionId = useParams()
+  const token = sessionStorage.getItem("Motors shop: token");
 
-  const [ auctionRequest, setAuctionRequest ] = useState<IAuctionProps>({} as IAuctionProps)
+  const [auctionRequest, setAuctionRequest] = useState<IAuctionProps>({
+    bids: [],
+    user: {
+      name: "rodrigo",
+      email: "rodrigonohype@gmail.com",
+      password: "Johndoe@123",
+      cellphone: "99 99999-9999",
+      cpf: "99999999999",
+      birthdate: "99/99/9999",
+      is_seller: true,
+      description: "description",
+      country: "United State",
+      state: "Califórnia",
+      city: "Mountain View",
+      district: "Amphitheatre Pkwy",
+      street: "Amphitheatre Pkwy",
+      number: 1600,
+      complement: "Googleplex",
+      zip_code: "9098",
+    },
+  } as IAuctionProps);
 
-  const [ bidsList, setBidsList ] = useState<IBid[]>([])
+  const [bidsList, setBidsList] = useState<IBid[]>([]);
 
-  const ListBidsFunc = (bid: IBid) => setBidsList([ ...bidsList, bid ])
+  const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
+
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
+    api
+      .get(`/auctions/${auctionId}`)
+      .then((res) => setAuctionRequest(res.data))
+      .catch((error) => console.error(error));
+  }, []);
 
-    api.get(`/auctions/${ auctionId }`)
-    .then(res => setAuctionRequest(res.data))
-    .catch(error => console.error(error))
-  }, [])
-  
+  useEffect(() => {
+    setLoaded(true);
+
+    api
+      .get(`/bids/${auctionId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setBidsList(res.data))
+      .catch((error) => console.error(error))
+      .finally(() => setLoaded(false));
+  }, []);
+
+  const ListBidsFunc = (bid: IBid) => setBidsList([bid, ...bidsList]);
+
   return (
-    <Container>
-      <Header />
+    <>
+      {openModalPhoto && (
+        <ModalBackground>
+          <ModalPhoto
+            setOpenModalPhoto={setOpenModalPhoto}
+            title={auctionRequest.product.title}
+            cover_image={auctionRequest.product.cover_image}
+          />
+        </ModalBackground>
+      )}
+      <Container>
+        <Header />
 
-      <div>
-        <div className="divBlue"></div>
-        <div className="divWhite">
-          <div>
-            <AuctionDetails auction={ auctionRequest } />
-            <ListBids bids={ auctionRequest.bids } />
-            <CreateBid product={ auctionRequest } ListBidsFunc={ ListBidsFunc } />
+        <div>
+          <div className="divBlue"></div>
+          <div className="divWhite">
+            <div>
+              <AuctionDetails
+                auction={auctionRequest}
+                setOpenModalPhoto={setOpenModalPhoto}
+              />
+              <ListBids bids={bidsList} loaded={loaded} />
+              <CreateBid ListBidsFunc={ListBidsFunc} auction={auctionRequest} />
+            </div>
           </div>
         </div>
-      </div>
 
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </>
   );
 };
 

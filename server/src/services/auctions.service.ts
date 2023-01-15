@@ -4,14 +4,14 @@ import { Auction } from "../entities/auction.entity";
 
 const listAuctionsService = async (): Promise<ReadonlyArray<Auction>> => {
   const auctions = await auctionRepository.find({
-    relations: ["bids"],
+    relations: ["bids", "user"],
   });
 
   return auctions;
 };
 
 const specificAuctionService = async (auction_id: string): Promise<Auction> => {
-  const auction = await auctionRepository.findOne({ where: { id: auction_id }, relations: ["product"] });
+  const auction = await auctionRepository.findOne({ where: { id: auction_id }, relations: ["product", "user"] });
 
   if (!auction) {
     throw new NotFoundError("Auction");

@@ -29,12 +29,21 @@ const createBidService = async (
   return newBid;
 };
 
-const listBidsService = async (): Promise<ReadonlyArray<Bid>> => {
-  const bids = await bidRepository.find({
-    relations: ["user", "auction"],
+const listBidsAuctionService = async (
+  auction_id: string
+): Promise<ReadonlyArray<Bid>> => {
+  const auction = await auctionRepository.findOne({
+    where: { id: auction_id },
+    relations: ["bids"],
   });
 
-  return bids;
+  const bids = await bidRepository.find({ relations: ["user", "auction"] });
+
+  if (!auction) {
+    throw new NotFoundError("Auction");
+  }
+
+  return bids.filter((bid) => bid.auction.id == auction.id);
 };
 
-export { createBidService, listBidsService };
+export { createBidService, listBidsAuctionService };

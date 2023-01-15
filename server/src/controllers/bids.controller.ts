@@ -1,11 +1,11 @@
-import { createBidService, listBidsService } from "../services/bids.service";
+import { createBidService, listBidsAuctionService } from "../services/bids.service";
 import { IBid } from "../interfaces/bid.interface";
 import { Request, Response } from "express";
 
 const createBidController = async (req: Request, res: Response) => {
   const email: string = req.email;
 
-  const auction_id: string = req.params.id;
+  const auction_id: string = req.params.auction_id;
 
   const data: IBid = req.body;
 
@@ -14,10 +14,12 @@ const createBidController = async (req: Request, res: Response) => {
   return res.status(201).json(newBid);
 };
 
-const listBidsController = async (req: Request, res: Response) => {
-  const bids = await listBidsService();
+const listBidsAuctionController = async (req: Request, res: Response) => {
+  const auction_id: string = req.params.auction_id;
+
+  const bids = await listBidsAuctionService(auction_id);
 
   return res.json(bids);
 };
 
-export { createBidController, listBidsController };
+export { createBidController, listBidsAuctionController };

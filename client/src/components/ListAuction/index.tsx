@@ -1,4 +1,4 @@
-import { IAuctionProps, IListAuctions } from "../../interfaces";
+import { IListAuctions } from "../../interfaces";
 import { Auction } from "../Auction";
 import { Container } from "./style";
 

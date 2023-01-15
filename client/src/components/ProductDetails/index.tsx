@@ -17,18 +17,18 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IAuctionDetails) => {
       <article>
         <div className="divCarPhotoAndDetails">
           <Photo
-            image={product.cover_image}
+            image={product?.cover_image}
             setOpenModalPhoto={setOpenModalPhoto}
           />
 
           <Details product={product} />
         </div>
 
-        <Description description={product.description} />
+        <Description description={product?.description} />
       </article>
 
       <div className="divPhotosAndUserDetails">
-        <PhotosGallery gallery_image={product.gallery_image} />
+        <PhotosGallery gallery_image={product?.gallery_image} />
         <CardSeller user={product.user} />
       </div>
     </Container>

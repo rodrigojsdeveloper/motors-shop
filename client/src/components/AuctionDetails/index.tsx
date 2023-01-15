@@ -8,23 +8,24 @@ import { IAuctionProps } from "../../interfaces";
 
 interface IAuctionDetails {
   auction: IAuctionProps
+  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const AuctionDetails = ({ auction }: IAuctionDetails) => {
+const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
   return (
     <Container>
       <article>
         <div className="divCarPhotoAndDetails">
-          <Photo image={ auction.cover_image } />
+          <Photo image={ auction.product?.cover_image } setOpenModalPhoto={ setOpenModalPhoto } />
 
-          <Details product={ auction } />
+          <Details auction={ auction } />
         </div>
 
-        <Description description={ auction.description } />
+        <Description description={ auction.product?.description } />
       </article>
 
       <div className="divPhotosAndUserDetails">
-        <PhotosGallery gallery_image={ auction.gallery_image } />
+        <PhotosGallery gallery_image={ auction.product?.gallery_image } />
         <CardSeller user={ auction.user } />
       </div>
     </Container>

@@ -36,15 +36,12 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
     setLoad(true);
 
     api
-      .post(`/comments/${product.id}`, data, {
+      .post(`/comments/${product?.id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => {
-        ListCommentsFunc(res.data)
-        console.log(res.data)
-      })
+      .then((res) => ListCommentsFunc(res.data))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };
@@ -67,7 +64,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           }
           {...register("content")}
           name="content"
-          disabled={ disable ? disable : load }
+          disabled={disable ? disable : load}
         />
         <Button
           size="buttonSizeProductCarDetails"
