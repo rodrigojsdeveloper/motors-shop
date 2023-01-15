@@ -77,19 +77,6 @@ const Container = styled.div`
           padding-bottom: 20px;
         }
 
-        .divUser {
-          display: flex;
-          flex-direction: row;
-          padding-bottom: 20px;
-          align-items: center;
-
-          h6 {
-            font-weight: 500;
-            font-size: 14px;
-            margin-left: 8px;
-          }
-        }
-
         .divYearKMPrice {
           display: flex;
           flex-direction: row;

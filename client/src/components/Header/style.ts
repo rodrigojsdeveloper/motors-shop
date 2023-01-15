@@ -46,6 +46,7 @@ const Container = styled.header`
         font-weight: 600;
         font-size: 16px;
         color: #495057;
+        cursor: pointer;
 
         :hover {
           color: #000;
@@ -64,6 +65,7 @@ const Container = styled.header`
       display: flex;
       flex-direction: row;
       align-items: center;
+      cursor: pointer;
 
       & > h2 {
         font-weight: 400;
@@ -94,6 +96,7 @@ const Container = styled.header`
         color: #4529e6;
 
         padding-right: 30px;
+        cursor: pointer;
 
         :hover {
           text-decoration: underline;
@@ -123,6 +126,7 @@ const Container = styled.header`
         font-weight: 600;
         font-size: 16px;
         color: #495057;
+        cursor: pointer;
 
         :hover {
           color: #000;
@@ -149,6 +153,7 @@ const Container = styled.header`
         color: #4529e6;
 
         padding-right: 45px;
+        cursor: pointer;
 
         :hover {
           text-decoration: underline;
@@ -301,6 +306,7 @@ const Container = styled.header`
       padding: 11.5px 0;
 
       color: #495057;
+      cursor: pointer;
 
       &:hover {
         background: #dbe1e7;
@@ -336,6 +342,7 @@ const Container = styled.header`
       padding: 11.5px 0;
 
       color: #495057;
+      cursor: pointer;
 
       &:hover {
         background: #dbe1e7;

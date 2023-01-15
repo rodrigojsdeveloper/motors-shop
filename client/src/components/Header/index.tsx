@@ -27,24 +27,7 @@ const Header = () => {
   const [menuOpenLoggedNotAnnouncement, setMenuOpenLoggedNotAnnouncement] =
     useState<boolean>(false);
 
-  const [user, setUser] = useState<IUserProps>({
-    name: "rodrigo",
-    email: "rodrigonohype@gmail.com",
-    password: "Johndoe@123",
-    cellphone: "99 99999-9999",
-    cpf: "99999999999",
-    birthdate: "99/99/9999",
-    is_seller: true,
-    description: "description",
-    country: "United State",
-    state: "Califórnia",
-    city: "Mountain View",
-    district: "Amphitheatre Pkwy",
-    street: "Amphitheatre Pkwy",
-    number: 1600,
-    complement: "Googleplex",
-    zip_code: "9098",
-  } as IUserProps);
+  const [user, setUser] = useState<IUserProps>({ name: "" } as IUserProps);
 
   const [openModalEditAddress, setOpenModalEditAddress] =
     useState<boolean>(false);
@@ -78,7 +61,7 @@ const Header = () => {
           <ModalEditUser setOpenModalEditUser={setOpenModalEditUser} />
         </ModalBackground>
       )}
-      {menuOpenLogged && user.is_seller ? (
+      {menuOpenLogged && user?.is_seller ? (
         <div className="menuOpenLoggedAnnouncement">
           <p
             onClick={() => {
@@ -101,7 +84,17 @@ const Header = () => {
           <a onClick={() => navigate(`myadvertiser/${advertiserId}`)}>
             Meus Anúncios
           </a>
-          <Link to="">Sair</Link>
+          <p
+            onClick={() => {
+              setMenuOpenLogged(false);
+
+              sessionStorage.removeItem("Motors shop: token");
+
+              navigate("/signin");
+            }}
+          >
+            Sair
+          </p>
         </div>
       ) : (
         menuOpenLoggedNotAnnouncement && (
@@ -124,7 +117,17 @@ const Header = () => {
             >
               Editar endereço
             </p>
-            <Link to="">Sair</Link>
+            <p
+              onClick={() => {
+                setMenuOpenLoggedNotAnnouncement(false);
+
+                sessionStorage.removeItem("Motors shop: token");
+
+                navigate("/signin");
+              }}
+            >
+              Sair
+            </p>
           </div>
         )
       )}
@@ -142,11 +145,11 @@ const Header = () => {
         {token ? (
           <div
             onClick={() => {
-              if (user.is_seller) {
+              if (user?.is_seller) {
                 setMenuOpenLogged(true);
               }
 
-              if (!user.is_seller) {
+              if (!user?.is_seller) {
                 setMenuOpenLoggedNotAnnouncement(true);
               }
 
@@ -160,7 +163,7 @@ const Header = () => {
             }}
           >
             <AvatarUser userName={user.name} />
-            <h2>{user.name}</h2>
+            <h2>{user?.name}</h2>
           </div>
         ) : (
           <div>
@@ -191,7 +194,7 @@ const Header = () => {
         />
 
         {token ? (
-          menuOpen && user.is_seller ? (
+          menuOpen && user?.is_seller ? (
             <nav className="navLogged">
               <div>
                 <a href="/#cars" onClick={() => setMenuOpen(false)}>
@@ -228,12 +231,26 @@ const Header = () => {
                 >
                   Editar endereço
                 </p>
-                <Link to="/myadvertiser" onClick={() => setMenuOpen(false)}>
+                <p
+                  onClick={() => {
+                    setMenuOpen(false);
+
+                    navigate("/myadvertiser");
+                  }}
+                >
                   Meus Anúncios
-                </Link>
-                <Link to="" onClick={() => setMenuOpen(false)}>
+                </p>
+                <p
+                  onClick={() => {
+                    setMenuOpen(false);
+
+                    sessionStorage.removeItem("Motors shop: token");
+
+                    navigate("/signin");
+                  }}
+                >
                   Sair
-                </Link>
+                </p>
               </div>
             </nav>
           ) : (
@@ -273,9 +290,17 @@ const Header = () => {
                 >
                   Editar endereço
                 </p>
-                <Link to="" onClick={() => setMenuOpen(false)}>
+                <p
+                  onClick={() => {
+                    setMenuOpen(false);
+
+                    navigate("/signin");
+
+                    sessionStorage.removeItem("Motors shop: token");
+                  }}
+                >
                   Sair
-                </Link>
+                </p>
               </div>
             </nav>
           )

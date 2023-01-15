@@ -24,14 +24,14 @@ const ShowAdvertiser = ({ user }: IShowAdvertiser) => {
         </ModalBackground>
       )}
       <Container>
-        <AvatarUser userName={user.name} />
+        <AvatarUser userName={user?.name} />
 
         <div>
-          <h3>{user.name}</h3>
-          <p>{user.is_seller && "Anunciante"}</p>
+          <h3>{user?.name}</h3>
+          <p>{user?.is_seller && "Anunciante"}</p>
         </div>
 
-        <p>{user.description}</p>
+        <p>{user?.description}</p>
 
         <Button
           color="buttonColorWhiteUserDetails"

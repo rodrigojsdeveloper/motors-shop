@@ -1,22 +1,20 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
-import { useNavigate, useParams } from "react-router-dom";
 import { ModalEditProduct } from "../ModalEditProduct";
 import { ModalBackground } from "../ModalBackground";
 import { IAuctionProps } from "../../interfaces";
+import { useNavigate } from "react-router-dom";
 import clock from "../../assets/Group 13.svg";
-import { AvatarUser } from "../AvatarUser";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { useState } from "react";
 
 interface IAuction {
   auction: IAuctionProps;
 }
 
-const AdvertiserAuction = ({ auction }: any) => {
-  let auctionId = useParams();
-
-  auctionId = auction.title;
+const AdvertiserAuction = ({ auction }: IAuction) => {
+  const navigate = useNavigate();
 
   const [openModalEditProduct, setOpenModalEditProduct] =
     useState<boolean>(false);
@@ -27,8 +25,12 @@ const AdvertiserAuction = ({ auction }: any) => {
 
   const [closeModalDeleteProduct, setCloseModalDeleteProduct] =
     useState<boolean>(false);
-
-  const navigate = useNavigate();
+  
+  useEffect(() => {
+    api.get(`/auctions/${auction.id}`)
+    .then(res => setAuctionRequest(res.data))
+    .catch(error => console.error(error))
+  }, [])
 
   return (
     <>
@@ -53,7 +55,10 @@ const AdvertiserAuction = ({ auction }: any) => {
       )}
       <Container>
         <div className="divCardDescription">
-          <img src={auction.cover_image} alt={auction.title} />
+          <img
+            src={auction?.product?.cover_image}
+            alt={auction?.product?.title}
+          />
 
           <div className="divDescription">
             <div className="divTimeAuction">
@@ -62,22 +67,17 @@ const AdvertiserAuction = ({ auction }: any) => {
             </div>
 
             <div>
-              <h4>{auction.title}</h4>
+              <h4>{auction?.product?.title}</h4>
 
-              <p>{auction.description}</p>
-
-              <div className="divUser">
-                <AvatarUser userName={auction.user.name} />
-                <h6>{auction.user.name}</h6>
-              </div>
+              <p>{auction?.product?.description}</p>
 
               <div className="divYearKMPrice">
                 <div>
-                  <p>{auction.year}</p>
-                  <p>{auction.kilometers} KM</p>
+                  <p>{auction?.product?.year}</p>
+                  <p>{auction?.product?.kilometers} KM</p>
                 </div>
 
-                <span>{auction.price}</span>
+                <span>{auction?.product?.price}</span>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@ const AdvertiserAuction = ({ auction }: any) => {
             color="buttonColorBlueBanner"
             size="buttonSizeShowProduct"
             type="button"
-            onClick={() => navigate(`/auctions/${auctionId}`)}
+            onClick={() => navigate(`/auctions/${auction.id}`)}
           >
             Ver como
           </Button>

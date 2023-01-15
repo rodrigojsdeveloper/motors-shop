@@ -14,20 +14,15 @@ import * as yup from "yup";
 
 interface IModalEditProduct {
   setOpenModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  product: IAuctionProps;
+  product: IProductProps;
   setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  link: string;
 }
 
 const ModalEditProduct = ({
   product,
   setOpenModalEditProduct,
   setCloseModalDeleteProduct,
-  link,
 }: IModalEditProduct) => {
-  const [productRequest, setProductRequest] = useState<IProductProps>(
-    {} as IProductProps
-  );
 
   const [changePostedToYes, setChangPostedToYes] = useState<boolean>(true);
 
@@ -53,7 +48,7 @@ const ModalEditProduct = ({
 
   const onSubmitFunction = (data: any) => {
     api
-      .patch(`/${link}/${product.id}`, data)
+      .patch(`/products/${product?.id}`, data)
       .then((_) => setOpenModalEditProduct(false))
       .catch((error) => console.error(error));
   };
@@ -66,7 +61,7 @@ const ModalEditProduct = ({
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdType product={productRequest} />
+        <AdType product={product} />
 
         <h4>Informações do veículo</h4>
 
@@ -80,7 +75,7 @@ const ModalEditProduct = ({
           error={errors.title?.message}
           required={true}
           size="inputModalEditAddressLarge"
-          value={productRequest.title}
+          value={product?.title}
         />
 
         <div>
@@ -94,7 +89,7 @@ const ModalEditProduct = ({
             error={errors.year?.message}
             required={true}
             size="inputModalCreateAnnouncementSmall"
-            value={productRequest.year}
+            value={product?.year}
           />
           <Input
             label="Quilometragem"
@@ -107,7 +102,7 @@ const ModalEditProduct = ({
             required={true}
             size="inputModalCreateAnnouncementSmall"
             className="inputKilometers"
-            value={productRequest.kilometers}
+            value={product?.kilometers}
           />
           <Input
             label="Preço"
@@ -119,10 +114,10 @@ const ModalEditProduct = ({
             error={errors.price?.message}
             required={true}
             size="inputModalCreateAnnouncementSmall"
-            value={productRequest.price}
+            value={product?.price}
           />
         </div>
-        <TextArea value={productRequest.description} />
+        <TextArea value={product?.description} />
 
         <TypeOfVehicle product={product} />
         <div>
@@ -130,7 +125,7 @@ const ModalEditProduct = ({
           <div className="divButtons">
             <Button
               onClick={() => {
-                if (productRequest.is_published) {
+                if (product?.is_published) {
                   setChangPostedToYes(true);
                   setChangPostedToNo(false);
                 }
@@ -157,7 +152,7 @@ const ModalEditProduct = ({
             </Button>
             <Button
               onClick={() => {
-                if (!productRequest.is_published) {
+                if (!product?.is_published) {
                   setChangPostedToNo(true);
                   setChangPostedToYes(false);
                 }
@@ -195,7 +190,7 @@ const ModalEditProduct = ({
           error={errors.cover_image?.message}
           required={true}
           size="inputModalEditAddressLarge"
-          value={productRequest.cover_image}
+          value={product?.cover_image}
         />
         <Input
           label="1º Imagem da galeria"
@@ -207,7 +202,7 @@ const ModalEditProduct = ({
           error={errors.gallery_image?.message}
           required={true}
           size="inputModalEditAddressLarge"
-          value={productRequest.gallery_image}
+          value={product?.gallery_image}
         />
 
         <div>

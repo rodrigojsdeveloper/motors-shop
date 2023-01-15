@@ -11,11 +11,11 @@ import { Container } from "./style";
 import { useParams } from "react-router-dom";
 
 const PageAdvertiser = () => {
-  const { advertiserId } = useParams()
+  const { advertiserId } = useParams();
 
-  console.log(advertiserId)
+  console.log(advertiserId);
 
-  const token = sessionStorage.getItem("Motors shop: token")
+  const token = sessionStorage.getItem("Motors shop: token");
 
   const [cars, setCars] = useState<IProductProps[]>([]);
 
@@ -23,50 +23,39 @@ const PageAdvertiser = () => {
 
   const [auctions, setAuctions] = useState<IAuctionProps[]>([]);
 
-  const [ user, setUser ] = useState<IUserProps>({
-    name: "rodrigo",
-    email: "rodrigonohype@gmail.com",
-    password: "Johndoe@123",
-    cellphone: "99 99999-9999",
-    cpf: "99999999999",
-    birthdate: "99/99/9999",
-    is_seller: true,
-    description: "description",
-    country: "United State",
-    state: "Califórnia",
-    city: "Mountain View",
-    district: "Amphitheatre Pkwy",
-    street: "Amphitheatre Pkwy",
-    number: 1600,
-    complement: "Googleplex",
-    zip_code: "9098",
-    id: "1"
-  } as IUserProps)
+  const [user, setUser] = useState<IUserProps>({
+    name: "",
+  } as IUserProps);
 
-  token && useState(() => {
+  token &&
+    useState(() => {
+      api
+        .get("/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setUser(res.data);
 
-    api.get("/users/profile", {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    })
-    .then(res => {
-      setUser(res.data)
-      
-      setCars(
-        res.data.products.filter(
-          (product: IProductProps) => product.vehicle_type == "car"
-        )
-      );
+          const products = res.data.products.filter(
+            (product: IProductProps) => product.ad_type == "sale"
+          );
 
-      setMotorcycles(
-        res.data.products.filter(
-          (product: IProductProps) => product.vehicle_type == "motorbike"
-        )
-      );
-    })
-    .catch(error => console.error(error))
-  })
+          setCars(
+            products.filter(
+              (product: IProductProps) => product.vehicle_type == "car"
+            )
+          );
+
+          setMotorcycles(
+            products.filter(
+              (product: IProductProps) => product.vehicle_type == "motorbike"
+            )
+          );
+        })
+        .catch((error) => console.error(error));
+    });
 
   /*
   token && useEffect(() => {
@@ -91,7 +80,7 @@ const PageAdvertiser = () => {
       <div className="divBlue"></div>
       <div className="divWhite">
         <div>
-          <ShowAdvertiser user={ user } />
+          <ShowAdvertiser user={user} />
           <AdvertiserAuctionsList auctions={auctions} />
           <AdvertiserCarsList products={cars} />
           <AdvertiserMotorcyclesList products={motorcycles} />

@@ -1,5 +1,5 @@
 import { AdvertiserProduct } from "../AdvertiserProduct";
-import { IListProducts } from "../../interfaces";
+import { IListProducts, IProductProps } from "../../interfaces";
 import { Container } from "./style";
 
 const AdvertiserMotorcyclesList = ({ products }: IListProducts) => {
@@ -8,7 +8,7 @@ const AdvertiserMotorcyclesList = ({ products }: IListProducts) => {
       <h2>Motos</h2>
 
       <menu>
-        {products.map((product) => (
+        {products.map((product: IProductProps) => (
           <AdvertiserProduct product={product} />
         ))}
       </menu>
