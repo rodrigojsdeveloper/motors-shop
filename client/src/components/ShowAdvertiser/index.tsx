@@ -1,46 +1,47 @@
+import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
+import { ModalBackground } from "../ModalBackground";
+import { IUserProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { useState } from "react";
-import { ModalBackground } from "../ModalBackground";
-import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
-import { IUserProps } from "../../interfaces";
 
 interface IShowAdvertiser {
-  user: IUserProps
+  user: IUserProps;
 }
 
 const ShowAdvertiser = ({ user }: IShowAdvertiser) => {
-
-  const [ openModalCreateAnnouncement, setOpenModalCreateAnnouncement ] = useState<boolean>(false)
+  const [openModalCreateAnnouncement, setOpenModalCreateAnnouncement] =
+    useState<boolean>(false);
 
   return (
     <>
-    {
-      openModalCreateAnnouncement &&
-      <ModalBackground>
-        <ModalCreateAnnouncement setCloseModalCreateAnnouncement={ setOpenModalCreateAnnouncement } />
-      </ModalBackground>
-    }
-    <Container>
-      <AvatarUser userName={ user.name } />
+      {openModalCreateAnnouncement && (
+        <ModalBackground>
+          <ModalCreateAnnouncement
+            setCloseModalCreateAnnouncement={setOpenModalCreateAnnouncement}
+          />
+        </ModalBackground>
+      )}
+      <Container>
+        <AvatarUser userName={user.name} />
 
-      <div>
-        <h3>{ user.name }</h3>
-        <p>{ user.is_seller && "Anunciante"}</p>
-      </div>
+        <div>
+          <h3>{user.name}</h3>
+          <p>{user.is_seller && "Anunciante"}</p>
+        </div>
 
-      <p>{ user.description }</p>
+        <p>{user.description}</p>
 
-      <Button
-        color="buttonColorWhiteUserDetails"
-        size="buttonSizeShowAdvertiser"
-        type="button"
-        onClick={ () => setOpenModalCreateAnnouncement(true) }
-      >
-        Criar anúncio
-      </Button>
-    </Container>
+        <Button
+          color="buttonColorWhiteUserDetails"
+          size="buttonSizeShowAdvertiser"
+          type="button"
+          onClick={() => setOpenModalCreateAnnouncement(true)}
+        >
+          Criar anúncio
+        </Button>
+      </Container>
     </>
   );
 };

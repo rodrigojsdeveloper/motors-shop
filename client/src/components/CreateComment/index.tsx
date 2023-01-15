@@ -1,12 +1,12 @@
+import { IComment, IProductProps } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { IComment, IProductProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
-import { Button } from "../Button";
-import { Container } from "./style";
-import * as yup from "yup";
+import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
+import { Container } from "./style";
+import { Button } from "../Button";
+import * as yup from "yup";
 
 interface ICreateComment {
   product: IProductProps;

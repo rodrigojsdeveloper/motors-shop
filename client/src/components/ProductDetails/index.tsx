@@ -1,10 +1,10 @@
 import { PhotosGallery } from "../PhotosGallery";
+import { IProductProps } from "../../interfaces";
 import { Description } from "../Description";
 import { CardSeller } from "../CardSeller";
 import { Details } from "../Details";
 import { Container } from "./style";
 import { Photo } from "../Photo";
-import { IProductProps } from "../../interfaces";
 
 interface IAuctionDetails {
   product: IProductProps;

@@ -1,20 +1,19 @@
-import { Container } from "./style"
-import close from "../../assets/x.svg"
+import close from "../../assets/x.svg";
+import { Container } from "./style";
 
 interface IHeaderModal {
-  title: string
-  setCloseModal: React.Dispatch<React.SetStateAction<boolean>>
+  title: string;
+  setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const HeaderModal = ({ title, setCloseModal }: IHeaderModal) => {
-
   return (
     <Container>
-      <h2>{ title }</h2>
+      <h2>{title}</h2>
 
-      <img src={ close } onClick={ () => setCloseModal(false) } />
+      <img src={close} onClick={() => setCloseModal(false)} />
     </Container>
-  )
-}
+  );
+};
 
-export { HeaderModal }
+export { HeaderModal };

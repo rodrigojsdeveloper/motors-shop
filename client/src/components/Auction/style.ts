@@ -1,194 +1,185 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  color: #fdfdfd;
 
-    color: #FDFDFD;
-    
-    width: 735px;
-    height: 388px;
+  width: 735px;
+  height: 388px;
 
-    border-radius: 4px;
-    position: relative;
+  border-radius: 4px;
+  position: relative;
 
-    margin-right: 24px;
+  margin-right: 24px;
 
-    .divCardDescription {
-        
-        height: 326px;
+  .divCardDescription {
+    height: 326px;
 
-        & > img {
-            width: 735px;
-            height: 326px;
-            object-fit: contain;
+    & > img {
+      width: 735px;
+      height: 326px;
+      object-fit: contain;
 
-            background-color: #E9ECEF;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-        }
-
-        .divDescription {
-            border-top-right-radius: 4px;
-            border-top-left-radius: 4px;
-        
-            width: 100%;
-            height: 326px;
-            position: absolute;
-            top: 0;
-
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 25px 40px;
-
-            .divTimeAuction {
-
-                background: #FFFFFF;
-                border-radius: 32px;
-                padding: 5px;
-                width: 123px;
-                height: 36px;
-
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-around;
-
-                time {
-                    font-weight: 500;
-                    font-size: 16px;
-                    color: #212529;
-                }
-            }
-
-            & > div {
-
-                width: 100%;
-                height: 177px;
-
-                & > h4 {
-                    font-weight: 600;
-                    font-size: 20px;
-
-                    padding-bottom: 15px;
-                }
-                
-                & > p {
-                    font-weight: 400;
-                    font-size: 16px;
-                    color: #CED4DA;
-
-                    padding-bottom: 20px;
-                }
-
-                .divUser {
-
-                    display: flex;
-                    flex-direction: row;
-                    padding-bottom: 20px;
-                    align-items: center;
-
-                    h6 {
-                        font-weight: 500;
-                        font-size: 14px;
-                        margin-left: 8px;
-                    }
-                }
-                    
-                .divYearKMPrice {
-                    
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    
-                    & > div {
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        
-                        & > p {
-                            font-weight: 500;
-                            font-size: 14px;
-                            color: #4529E6;
-                            
-                            background: #EDEAFD;
-                            border-radius: 4px;
-                            padding: 4px 8px;
-                            
-                            margin-right: 5px;
-                        }
-                    }
-
-                    span {
-                        font-weight: 500;
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
+      background-color: #e9ecef;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
     }
 
-    .divRedirectsToAuction {
+    .divDescription {
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+
+      width: 100%;
+      height: 326px;
+      position: absolute;
+      top: 0;
+
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px 40px;
+
+      .divTimeAuction {
+        background: #ffffff;
+        border-radius: 32px;
+        padding: 5px;
+        width: 123px;
+        height: 36px;
+
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        padding: 20px;
-        
-        background: #4529E6;
-        height: 62px;
-        padding: 24px 36px;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
+        justify-content: space-around;
 
-        cursor: pointer;
+        time {
+          font-weight: 500;
+          font-size: 16px;
+          color: #212529;
+        }
+      }
 
-        p {
-            font-weight: 600;
+      & > div {
+        width: 100%;
+        height: 177px;
+
+        & > h4 {
+          font-weight: 600;
+          font-size: 20px;
+
+          padding-bottom: 15px;
+        }
+
+        & > p {
+          font-weight: 400;
+          font-size: 16px;
+          color: #ced4da;
+
+          padding-bottom: 20px;
+        }
+
+        .divUser {
+          display: flex;
+          flex-direction: row;
+          padding-bottom: 20px;
+          align-items: center;
+
+          h6 {
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 8px;
+          }
+        }
+
+        .divYearKMPrice {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          & > div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            & > p {
+              font-weight: 500;
+              font-size: 14px;
+              color: #4529e6;
+
+              background: #edeafd;
+              border-radius: 4px;
+              padding: 4px 8px;
+
+              margin-right: 5px;
+            }
+          }
+
+          span {
+            font-weight: 500;
             font-size: 16px;
+          }
         }
+      }
     }
+  }
 
-    @media (max-width: 768px) {
-        
+  .divRedirectsToAuction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+    background: #4529e6;
+    height: 62px;
+    padding: 24px 36px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    cursor: pointer;
+
+    p {
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 328px;
+
+    margin-right: 10px;
+
+    .divCardDescription {
+      height: 500px;
+
+      & > img {
         width: 328px;
+        height: 500px;
 
-        margin-right: 10px;
+        object-fit: contain;
+      }
 
-        .divCardDescription {
+      .divDescription {
+        padding: 20px 15px;
+        height: 500px;
+        justify-content: unset;
 
-            height: 500px;
-            
-            & > img {
-                width: 328px;
-                height: 500px;
-
-                object-fit: contain;
-            }
-
-            .divDescription {
-                padding: 20px 15px;
-                height: 500px;
-                justify-content: unset;
-
-                .divTimeAuction {
-                    margin-bottom: 60px;
-                }                
-
-                & > div {
-                    
-                    .divYearKMPrice {
-                        flex-direction: column;
-
-                        & > div {
-                            justify-content: unset;
-                            padding-bottom: 15px;
-                        }
-                    }
-                }
-            }
+        .divTimeAuction {
+          margin-bottom: 60px;
         }
-    }
-`
 
-export { Container }
+        & > div {
+          .divYearKMPrice {
+            flex-direction: column;
+
+            & > div {
+              justify-content: unset;
+              padding-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export { Container };

@@ -1,12 +1,12 @@
-import { Container } from "./style";
-import { Input } from "../Input";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { HeaderModal } from "../HeaderModal";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../Button";
 import { api } from "../../services/api";
-import { HeaderModal } from "../HeaderModal";
+import { Container } from "./style";
+import { Button } from "../Button";
+import { Input } from "../Input";
+import * as yup from "yup";
 
 interface IModalEditAddress {
   setOpenModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>;

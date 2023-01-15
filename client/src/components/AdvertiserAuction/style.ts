@@ -8,7 +8,7 @@ const Container = styled.div`
 
   border-radius: 4px;
   margin-right: 24px;
-  
+
   position: relative;
 
   .divCardDescription {
@@ -33,7 +33,7 @@ const Container = styled.div`
       position: absolute;
       top: 0;
 
-      background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 1));
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 1));
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -135,7 +135,6 @@ const Container = styled.div`
     border-bottom-left-radius: 4px;
 
     & > button:nth-child(1) {
-
       margin-right: 20px;
     }
 
@@ -144,7 +143,6 @@ const Container = styled.div`
     }
 
     @media (max-width: 768px) {
-
       & > button {
         max-width: unset;
       }

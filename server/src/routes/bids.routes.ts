@@ -20,7 +20,7 @@ const bidsRoutes = (): Router => {
     createBidController
   );
 
-  routes.get("/:auction_id", tokenMiddleware, listBidsAuctionController);
+  routes.get("/:auction_id", listBidsAuctionController);
 
   return routes;
 };

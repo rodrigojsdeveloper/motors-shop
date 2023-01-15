@@ -1,5 +1,5 @@
+import { animationModal } from "../../animations";
 import styled from "styled-components";
-import { animationModal } from "../ModalEditUser/style";
 
 const Container = styled.div`
   width: 100%;

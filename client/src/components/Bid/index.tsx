@@ -1,12 +1,30 @@
-import { IBid } from "../../interfaces";
+import { IBid, IUserProps } from "../../interfaces";
+import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
+import { api } from "../../services/api";
 import { Container } from "./style";
+import { Button } from "../Button";
 
 interface IBidComponent {
   bid: IBid;
 }
 
 const Bid = ({ bid }: IBidComponent) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+
+  useEffect(() => {
+    api
+      .get("/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setUser(res.data))
+      .catch((error) => console.error(error));
+  }, []);
+
   const date = new Date();
 
   const day = String(date.getDate()).padStart(2, "0");
@@ -30,7 +48,22 @@ const Bid = ({ bid }: IBidComponent) => {
         </p>
       </div>
 
-      <span>{bid.value}</span>
+      <span>
+        R${" "}
+        {bid.value.split(" ").length > 1
+          ? bid.value.split(" ")[1]
+          : bid.value.split(" ")[0]}
+      </span>
+
+      {user.id == bid.user.id ? (
+        <Button
+          size="buttonSizeSellBid"
+          color="buttonColorGraySellBid"
+          type="button"
+        >
+          Vender
+        </Button>
+      ) : null}
     </Container>
   );
 };

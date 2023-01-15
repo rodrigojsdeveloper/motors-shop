@@ -1,72 +1,62 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Container = styled.div`
+  width: 100%;
+  max-width: 663px;
+
+  margin-bottom: 15px;
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
 
     width: 100%;
-    max-width: 663px;
-
-    margin-bottom: 15px;
+    padding-bottom: 10px;
 
     & > div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: start;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
 
-        width: 100%;
-        padding-bottom: 10px;
+      & > h5 {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
 
-        & > div {
+        color: #212529;
+        margin-left: 10px;
+      }
+    }
 
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+    & > hr {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
 
-            & > h5 {
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 24px;
+      background: #adb5bd;
 
-                color: #212529;
-                margin-left: 10px;
-            }
-        }
-
-        & > hr {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-
-            background: #ADB5BD;
-
-            margin: 0 12px 0 8px;
-        }
-
-        & > p {
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 24px;
-
-            color: #868E96;
-        }
+      margin: 0 12px 0 8px;
     }
 
     & > p {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
-        color: #495057;
-        line-height: 1.2rem;
-        /*
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical; 
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 24px;
 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        */
+      color: #868e96;
     }
-`
+  }
 
-export { Container }
+  & > p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #495057;
+    line-height: 1.2rem;
+  }
+`;
+
+export { Container };

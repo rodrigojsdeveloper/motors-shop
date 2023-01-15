@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { IProductProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
-import { Button } from "../Button";
 import { Container } from "./style";
+import { Button } from "../Button";
 
 interface IProduct {
   product: IProductProps;
@@ -42,8 +42,20 @@ const AdvertiserProduct = ({ product }: any) => {
       </div>
 
       <div className="divButtons">
-        <Button color="buttonColorWhiteEditAndShowProduct" size="buttonSizeEditProduct" type="button">Editar</Button>
-        <Button color="buttonColorWhiteEditAndShowProduct" size="buttonSizeShowProduct" type="button">Ver como</Button>
+        <Button
+          color="buttonColorWhiteEditAndShowProduct"
+          size="buttonSizeEditProduct"
+          type="button"
+        >
+          Editar
+        </Button>
+        <Button
+          color="buttonColorWhiteEditAndShowProduct"
+          size="buttonSizeShowProduct"
+          type="button"
+        >
+          Ver como
+        </Button>
       </div>
     </Container>
   );

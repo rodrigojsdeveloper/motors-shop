@@ -104,7 +104,7 @@ const Container = styled.form`
       &:focus::-webkit-input-placeholder {
         color: transparent;
       }
-      
+
       &:focus::-moz-placeholder {
         color: transparent;
       }
@@ -176,11 +176,14 @@ const Container = styled.form`
       font-size: 20px;
     }
 
-    h3, button {
+    h3,
+    button {
       font-size: 13px;
     }
 
-    label, input, textarea {
+    label,
+    input,
+    textarea {
       font-size: 12px;
     }
 

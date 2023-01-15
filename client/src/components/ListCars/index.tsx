@@ -9,7 +9,7 @@ const ListCars = ({ products }: IListProducts) => {
 
       <menu>
         {products.map((product) => (
-          <Product product={product} key={ product.id } />
+          <Product product={product} key={product.id} />
         ))}
       </menu>
     </Container>

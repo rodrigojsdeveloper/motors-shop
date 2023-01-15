@@ -1,29 +1,33 @@
-import { useState } from "react"
-import { IUserProps } from "../../interfaces"
-import { AvatarUser } from "../AvatarUser"
-import { Button } from "../Button"
-import { Container } from "./style"
+import { IUserProps } from "../../interfaces";
+import { AvatarUser } from "../AvatarUser";
+import { Container } from "./style";
+import { Button } from "../Button";
 
 interface IUserDetails {
-    user: IUserProps
+  user: IUserProps;
 }
 
 const UserDetails = ({ user }: IUserDetails) => {
+  return (
+    <Container>
+      <AvatarUser userName={user.name} />
 
-    return (
-        <Container>
-            <AvatarUser userName={ user.name } />
+      <div>
+        <h2>{user.name}</h2>
+        <p>{user.is_seller ? "Anúnciante" : "Comprador"}</p>
+      </div>
 
-            <div>
-                <h2>{ user.name }</h2>
-                <p>{ user.is_seller ? "Anúnciante" : "Comprador" }</p>
-            </div>
+      <p>{user.description}</p>
 
-            <p>{ user.description }</p>
+      <Button
+        size="buttonSizeUserDetailsMedium"
+        color="buttonColorWhiteUserDetails"
+        type="button"
+      >
+        Criar anúncio
+      </Button>
+    </Container>
+  );
+};
 
-            <Button size="buttonSizeUserDetailsMedium" color="buttonColorWhiteUserDetails" type="button">Criar anúncio</Button>
-        </Container>
-    )
-}
-
-export { UserDetails }
+export { UserDetails };

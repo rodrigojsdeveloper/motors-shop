@@ -1,10 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import { AnimateLoading } from "../../animations";
+import styled from "styled-components";
 
-const AnimateLoading = keyframes`
-    to {
-        transform: rotate(1turn);
-    }
-`;
 const Container = styled.div`
   padding: 36px 44px;
 

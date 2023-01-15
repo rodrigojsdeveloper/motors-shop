@@ -7,7 +7,7 @@ import { Header } from "../../components/Header";
 import { ListBids } from "../../components/ListBids";
 import { ModalBackground } from "../../components/ModalBackground";
 import { ModalPhoto } from "../../components/ModalPhoto";
-import { IAuctionProps, IBid } from "../../interfaces";
+import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
@@ -15,6 +15,8 @@ const PageAuctionDetails = () => {
   const { auctionId } = useParams();
 
   const token = sessionStorage.getItem("Motors shop: token");
+
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
   const [auctionRequest, setAuctionRequest] = useState<IAuctionProps>({
     bids: [],
@@ -43,6 +45,17 @@ const PageAuctionDetails = () => {
   const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
 
   const [loaded, setLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    api
+      .get("/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setUser(res.data))
+      .catch((error) => console.error(error));
+  }, []);
 
   useEffect(() => {
     api
@@ -90,7 +103,12 @@ const PageAuctionDetails = () => {
                 setOpenModalPhoto={setOpenModalPhoto}
               />
               <ListBids bids={bidsList} loaded={loaded} />
-              <CreateBid ListBidsFunc={ListBidsFunc} auction={auctionRequest} />
+              {user.id == auctionRequest.user.id ? null : (
+                <CreateBid
+                  ListBidsFunc={ListBidsFunc}
+                  auction={auctionRequest}
+                />
+              )}
             </div>
           </div>
         </div>

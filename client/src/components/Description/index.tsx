@@ -9,7 +9,9 @@ const Description = ({ description }: IDescription) => {
     <Container>
       <h4>Descrição</h4>
 
-      <p>{description}</p>
+      <div>
+        <p>{description}</p>
+      </div>
     </Container>
   );
 };

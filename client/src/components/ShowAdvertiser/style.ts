@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 const Container = styled.section`
-
   width: 100%;
   max-width: 1240px;
 
-  background: #FDFDFD;
+  background: #fdfdfd;
   border-radius: 4px;
 
   padding: 36px 44px;
@@ -15,7 +14,7 @@ const Container = styled.section`
     width: 104px;
     height: 104px;
 
-    &> p {
+    & > p {
       font-size: 36px;
     }
   }
@@ -25,7 +24,7 @@ const Container = styled.section`
     flex-direction: row;
     align-items: center;
     padding: 20px 0;
-    
+
     & > h3 {
       font-weight: 600;
       font-size: 20px;
@@ -38,13 +37,13 @@ const Container = styled.section`
     & > p {
       padding: 4px 8px;
 
-      background: #EDEAFD;
+      background: #edeafd;
       border-radius: 4px;
-      
+
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      color: #4529E6;
+      color: #4529e6;
     }
   }
 
@@ -62,17 +61,14 @@ const Container = styled.section`
   }
 
   @media (max-width: 720px) {
-
     padding: 30px;
   }
 
   @media (max-width: 425px) {
-
     margin-top: -182.5px;
   }
 
   @media (max-width: 375px) {
-
     & > div:nth-child(2) {
       flex-direction: column;
       align-items: unset;
@@ -83,6 +79,6 @@ const Container = styled.section`
       }
     }
   }
-`
+`;
 
-export { Container }
+export { Container };

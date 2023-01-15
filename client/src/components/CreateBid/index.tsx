@@ -1,12 +1,12 @@
+import { IAuctionProps, IBid } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { IAuctionProps, IBid } from "../../interfaces";
-import { api } from "../../services/api";
 import { AvatarUser } from "../AvatarUser";
+import { useForm } from "react-hook-form";
+import { api } from "../../services/api";
+import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { Container } from "./style";
 import * as yup from "yup";
 
 interface ICreateBid {
@@ -76,7 +76,7 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
             type="submit"
             disabled={disable ? disable : load}
           >
-            { load ? "Inserindo...": "Inserir proposta" }
+            {load ? "Inserindo..." : "Inserir proposta"}
           </Button>
         </form>
       </div>

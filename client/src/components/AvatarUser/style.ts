@@ -1,25 +1,24 @@
 import styled from "styled-components";
 
-const colors = [ "#000", "purple", "#8257e5" ]
+const colors = ["#000", "purple", "#8257e5"];
 
 const Container = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 150px;
 
-    width: 32px;
-    height: 32px;
-    border-radius: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: ${colors[Math.floor(Math.random() * colors.length)]};
 
-    background-color: ${ colors[Math.floor(Math.random() * colors.length)] };
+  & > p {
+    font-weight: 700;
+    font-size: 14px;
 
-    & > p {
-        font-weight: 700;
-        font-size: 14px;
-        
-        color: #FFFFFF;
-    }
-`
+    color: #ffffff;
+  }
+`;
 
-export { Container }
+export { Container };

@@ -1,7 +1,7 @@
 import { Container } from "./style";
 
 interface IPhotosGallery {
-  gallery_image: string
+  gallery_image: string;
 }
 
 const PhotosGallery = ({ gallery_image }: IPhotosGallery) => {
@@ -12,24 +12,24 @@ const PhotosGallery = ({ gallery_image }: IPhotosGallery) => {
       <div>
         <div>
           <div>
-            <img src={ gallery_image } />
+            <img src={gallery_image} />
           </div>
           <div>
-            <img src={ gallery_image } />
+            <img src={gallery_image} />
           </div>
           <div>
-            <img src={ gallery_image } />
+            <img src={gallery_image} />
           </div>
         </div>
         <div>
           <div>
-            <img src={ gallery_image } />
+            <img src={gallery_image} />
           </div>
           <div>
-            <img src={ gallery_image } />
+            <img src={gallery_image} />
           </div>
           <div>
-            <img src={ gallery_image } />
+            <img src={gallery_image} />
           </div>
         </div>
       </div>

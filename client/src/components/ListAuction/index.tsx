@@ -9,7 +9,7 @@ const ListAuction = ({ auctions }: IListAuctions) => {
 
       <menu>
         {auctions.map((auction) => (
-          <Auction auction={auction} key={ auction.id } />
+          <Auction auction={auction} key={auction.id} />
         ))}
       </menu>
     </Container>

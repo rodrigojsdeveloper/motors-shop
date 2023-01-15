@@ -5,10 +5,10 @@ const Container = styled.div`
   max-width: 520px;
   height: min-content;
 
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 8px;
   padding: 20px;
-  
+
   & > div {
     padding: 20px 0;
 
@@ -36,13 +36,12 @@ const Container = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      
+
       & > button:nth-child(1) {
         margin-right: 10px;
       }
 
       @media (max-width: 425px) {
-
         flex-direction: column;
 
         button:nth-child(1) {
@@ -55,6 +54,6 @@ const Container = styled.div`
       }
     }
   }
-`
+`;
 
-export { Container }
+export { Container };

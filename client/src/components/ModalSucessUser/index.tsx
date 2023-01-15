@@ -1,34 +1,38 @@
-import { Container } from "./style"
-import { Button } from "../Button"
-import { useNavigate } from "react-router-dom"
-import { HeaderModal } from "../HeaderModal"
+import { useNavigate } from "react-router-dom";
+import { HeaderModal } from "../HeaderModal";
+import { Container } from "./style";
+import { Button } from "../Button";
 
 interface IFormSignUp {
-    setOpenModalSuccess:  React.Dispatch<React.SetStateAction<boolean>>
+  setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ModalSucessUser = ({ setOpenModalSuccess }: IFormSignUp) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  return (
+    <Container>
+      <HeaderModal title="Sucesso!" setCloseModal={setOpenModalSuccess} />
 
-    return (
-        <Container>
-            <HeaderModal title="Sucesso!" setCloseModal={ setOpenModalSuccess } />
+      <div>
+        <h5>Seu anúncio foi criado com sucesso!</h5>
 
-            <div>
-                <h5>Seu anúncio foi criado com sucesso!</h5>
+        <p>Agora você poderá ver seus negócios crescendo em grande escala</p>
 
-                <p>Agora você poderá ver seus negócios crescendo em grande escala</p>
+        <Button
+          size="buttonSizeSuccessModal"
+          color="buttonColorBlueLogin"
+          type="button"
+          onClick={() => {
+            setOpenModalSuccess(false);
+            navigate("/signin");
+          }}
+        >
+          Ir para o login
+        </Button>
+      </div>
+    </Container>
+  );
+};
 
-                <Button size="buttonSizeSuccessModal" color="buttonColorBlueLogin" type="button" onClick={ () => {
-                    
-                    setOpenModalSuccess(false)
-                    navigate("/signin")
-                    
-                } }>Ir para o login</Button>
-            </div>
-        </Container>
-    )
-}
-
-export { ModalSucessUser }
+export { ModalSucessUser };

@@ -20,10 +20,10 @@ const Container = styled.header`
     display: flex;
     align-items: center;
     img {
-    width: 153.02px;
-    height: 26.34px;
-    margin: auto 0;
-  }
+      width: 153.02px;
+      height: 26.34px;
+      margin: auto 0;
+    }
   }
 
   .divLogged {

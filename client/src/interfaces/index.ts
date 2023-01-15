@@ -1,5 +1,5 @@
-import { MouseEventHandler } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { MouseEventHandler } from "react";
 
 export interface InputProps {
   type?: string;
@@ -45,7 +45,8 @@ export interface IButtonProps {
     | "buttonSizeShowProduct"
     | "buttonSizeShowAdvertiser"
     | "buttonSizeModalEditProduct"
-    | "buttonSizeModalDeleteProduct";
+    | "buttonSizeModalDeleteProduct"
+    | "buttonSizeSellBid";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
@@ -56,7 +57,8 @@ export interface IButtonProps {
     | "buttonColorGrayModalEditAddress"
     | "buttonColorWhiteUserDetails"
     | "buttonColorWhiteEditAndShowProduct"
-    | "buttonColorRedModalDeleteProduct";
+    | "buttonColorRedModalDeleteProduct"
+    | "buttonColorGraySellBid";
   className?: string;
   style?: React.CSSProperties | undefined;
 }
@@ -108,7 +110,7 @@ export interface IProductProps {
 
 export interface IAuctionProps {
   id: string;
-  product: IProductProps
+  product: IProductProps;
   user: IUserProps;
   time_limit: string;
   bids: [];

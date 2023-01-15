@@ -1,14 +1,14 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
-import * as yup from "yup";
-import { api } from "../../services/api";
-import { Button } from "../Button";
-import { Input } from "../Input";
-import { ModalBackground } from "../ModalBackground";
 import { ModalSucessNewPassword } from "../ModalSucessNewPassword";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ModalBackground } from "../ModalBackground";
+import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { api } from "../../services/api";
 import { Container } from "./style";
+import { Button } from "../Button";
+import { useState } from "react";
+import { Input } from "../Input";
+import * as yup from "yup";
 
 const FormEmail = () => {
   let { userId } = useParams();

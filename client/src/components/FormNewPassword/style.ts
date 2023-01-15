@@ -74,7 +74,7 @@ const Container = styled.form`
         &:focus::-webkit-input-placeholder {
           color: transparent;
         }
-        
+
         &:focus::-moz-placeholder {
           color: transparent;
         }

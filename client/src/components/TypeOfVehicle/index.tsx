@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { IAuctionProps, IProductProps } from "../../interfaces";
+import { useState } from "react";
 import { Button } from "../Button";
 import { Container } from "./style";
 

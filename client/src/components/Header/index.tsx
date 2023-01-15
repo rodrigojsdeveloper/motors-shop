@@ -1,22 +1,22 @@
-import logo from "../../assets/Motors shop.svg";
-import menu from "../../assets/bars.svg";
-import close from "../../assets/xmark.svg";
-import { Button } from "../Button";
-import { Container } from "./style";
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AvatarUser } from "../AvatarUser";
-import { api } from "../../services/api";
-import { Link } from "react-router-dom";
-import { ModalBackground } from "../ModalBackground";
 import { ModalEditAddress } from "../ModalEditAddress";
+import { ModalBackground } from "../ModalBackground";
 import { ModalEditUser } from "../ModalEditUser";
+import logo from "../../assets/Motors shop.svg";
 import { IUserProps } from "../../interfaces";
+import { useEffect, useState } from "react";
+import { AvatarUser } from "../AvatarUser";
+import close from "../../assets/xmark.svg";
+import { api } from "../../services/api";
+import menu from "../../assets/bars.svg";
+import { Link } from "react-router-dom";
+import { Container } from "./style";
+import { Button } from "../Button";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  let advertiserId = useParams()
+  let advertiserId = useParams();
 
   const token = sessionStorage.getItem("Motors shop: token");
 
@@ -60,8 +60,8 @@ const Header = () => {
           },
         })
         .then((res) => {
-          setUser(res.data)
-          advertiserId = res.data.id
+          setUser(res.data);
+          advertiserId = res.data.id;
         })
         .catch((error) => console.error(error));
     }, []);
@@ -98,7 +98,9 @@ const Header = () => {
           >
             Editar endereço
           </p>
-          <a onClick={ () => navigate(`myadvertiser/${advertiserId}`) }>Meus Anúncios</a>
+          <a onClick={() => navigate(`myadvertiser/${advertiserId}`)}>
+            Meus Anúncios
+          </a>
           <Link to="">Sair</Link>
         </div>
       ) : (
@@ -144,7 +146,7 @@ const Header = () => {
                 setMenuOpenLogged(true);
               }
 
-              if(!user.is_seller) {
+              if (!user.is_seller) {
                 setMenuOpenLoggedNotAnnouncement(true);
               }
 
@@ -157,7 +159,7 @@ const Header = () => {
               }
             }}
           >
-						<AvatarUser userName={ user.name } />
+            <AvatarUser userName={user.name} />
             <h2>{user.name}</h2>
           </div>
         ) : (

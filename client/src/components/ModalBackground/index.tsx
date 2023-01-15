@@ -1,17 +1,12 @@
-import { FC, ReactNode } from "react"
-import { Container } from "./style"
+import { FC, ReactNode } from "react";
+import { Container } from "./style";
 
 interface ModalBackgroundProps {
-    children: ReactNode 
+  children: ReactNode;
 }
 
 const ModalBackground: FC<ModalBackgroundProps> = ({ children }) => {
+  return <Container>{children}</Container>;
+};
 
-    return (
-        <Container>
-            { children }
-        </Container>
-    )
-}
-
-export { ModalBackground }
+export { ModalBackground };

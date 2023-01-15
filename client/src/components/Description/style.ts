@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 
   width: 100%;
@@ -18,18 +18,23 @@ const Container = styled.section`
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
-
     color: #212529;
 
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   }
 
-  & > p {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 28px;
+  & > div {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    & > p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      color: #495057;
 
-    color: #495057;
+      overflow-y: auto;
+    }
   }
 
   @media (max-width: 720px) {

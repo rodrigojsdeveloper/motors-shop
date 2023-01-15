@@ -23,7 +23,7 @@ const Container = styled.div`
       font-size: 16px;
       line-height: 20px;
       color: #212529;
-      
+
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
