@@ -17,7 +17,7 @@ const AllRoutes = () => {
       <Route path="/resetpassword" element={<PageEmail />} />
       <Route path="/products/:productId" element={<PageProductDetails />} />
       <Route path="/auctions/:auctionId" element={<PageAuctionDetails />} />
-      <Route path="/myadvertiser/:advertiserId" element={<PageAdvertiser />} />
+      <Route path="/myadvertiser" element={<PageAdvertiser />} />
       <Route index element={<Home />} />
     </Routes>
   );

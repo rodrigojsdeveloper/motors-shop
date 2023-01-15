@@ -1,5 +1,5 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
-import { ModalEditProduct } from "../ModalEditProduct";
+import { ModalEditAuction } from "../ModalEditAuction";
 import { ModalBackground } from "../ModalBackground";
 import { IAuctionProps } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -25,22 +25,22 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
 
   const [closeModalDeleteProduct, setCloseModalDeleteProduct] =
     useState<boolean>(false);
-  
+
   useEffect(() => {
-    api.get(`/auctions/${auction.id}`)
-    .then(res => setAuctionRequest(res.data))
-    .catch(error => console.error(error))
-  }, [])
+    api
+      .get(`/auctions/${auction?.id}`)
+      .then((res) => setAuctionRequest(res.data))
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <>
       {openModalEditProduct && (
         <ModalBackground>
-          <ModalEditProduct
-            product={auctionRequest}
+          <ModalEditAuction
+            auction={auctionRequest}
             setOpenModalEditProduct={setOpenModalEditProduct}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
-            link="auctions"
           />
         </ModalBackground>
       )}

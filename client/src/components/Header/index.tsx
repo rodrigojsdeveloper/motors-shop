@@ -81,7 +81,7 @@ const Header = () => {
           >
             Editar endereço
           </p>
-          <a onClick={() => navigate(`myadvertiser/${advertiserId}`)}>
+          <a onClick={() => navigate("/myadvertiser")}>
             Meus Anúncios
           </a>
           <p

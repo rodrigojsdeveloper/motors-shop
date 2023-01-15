@@ -30,6 +30,7 @@ const createUserService = async (user: IUser): Promise<User> => {
   newUser.bids = [];
   newUser.comments = [];
   newUser.products = [];
+  newUser.auctions = [];
 
   userRepository.create(newUser);
   await userRepository.save(newUser);
@@ -139,7 +140,7 @@ const specificUserWithEmailService = async (email: string): Promise<User> => {
       from: process.env.SMTP_EMAIL,
       to: user.email,
       subject: "Change the password",
-      html: `Reset your password at this link: http://localhost:5173/newpassword/${ user.id }`,
+      html: `Reset your password at this link: http://localhost:5173/newpassword/${user.id}`,
     })
     .catch((err) => {
       console.error(err);

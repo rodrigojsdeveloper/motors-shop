@@ -11,7 +11,7 @@ const listAuctionsController = async (req: Request, res: Response) => {
 };
 
 const specificAuctionController = async (req: Request, res: Response) => {
-  const auction_id: string = req.params.id;
+  const auction_id: string = req.params.auction_id;
 
   const auction = await specificAuctionService(auction_id);
 

@@ -58,37 +58,37 @@ const AdvertiserProduct = ({ product }: IProduct) => {
           alt={product?.title}
           title={product?.title}
         />
+        <div>
+          <h4>{product?.title}</h4>
 
-        <h4>{product?.title}</h4>
+          <p>{product?.description}</p>
+          <div className="divKmYearPrice">
+            <div>
+              <p>{product?.year}</p>
+              <p>{product?.kilometers} KM</p>
+            </div>
 
-        <p>{product?.description}</p>
-
-        <div className="divKmYearPrice">
-          <div>
-            <p>{product?.year}</p>
-            <p>{product?.kilometers} KM</p>
+            <span>{product?.price}</span>
           </div>
 
-          <span>{product?.price}</span>
-        </div>
-
-        <div className="divButtons">
-          <Button
-            color="buttonColorWhiteEditAndShowProduct"
-            size="buttonSizeEditProduct"
-            type="button"
-            onClick={() => setOpenModalEditProduct(true)}
-          >
-            Editar
-          </Button>
-          <Button
-            color="buttonColorWhiteEditAndShowProduct"
-            size="buttonSizeShowProduct"
-            type="button"
-            onClick={() => navigate(`/products/${product.id}`)}
-          >
-            Ver como
-          </Button>
+          <div className="divButtons">
+            <Button
+              color="buttonColorWhiteEditAndShowProduct"
+              size="buttonSizeEditProduct"
+              type="button"
+              onClick={() => setOpenModalEditProduct(true)}
+            >
+              Editar
+            </Button>
+            <Button
+              color="buttonColorWhiteEditAndShowProduct"
+              size="buttonSizeShowProduct"
+              type="button"
+              onClick={() => navigate(`/products/${product.id}`)}
+            >
+              Ver como
+            </Button>
+          </div>
         </div>
       </Container>
     </>

@@ -1,20 +1,15 @@
 import { AdvertiserMotorcyclesList } from "../../components/AdvertiserMotorcyclesList";
 import { AdvertiserAuctionsList } from "../../components/AdvertiserAuctionsList";
+import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
 import { AdvertiserCarsList } from "../../components/AdvertiserCarsList";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
-import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { useParams } from "react-router-dom";
 
 const PageAdvertiser = () => {
-  const { advertiserId } = useParams();
-
-  console.log(advertiserId);
-
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [cars, setCars] = useState<IProductProps[]>([]);
@@ -28,7 +23,7 @@ const PageAdvertiser = () => {
   } as IUserProps);
 
   token &&
-    useState(() => {
+    useEffect(() => {
       api
         .get("/users/profile", {
           headers: {
@@ -53,25 +48,11 @@ const PageAdvertiser = () => {
               (product: IProductProps) => product.vehicle_type == "motorbike"
             )
           );
+
+          setAuctions(res.data.auctions);
         })
         .catch((error) => console.error(error));
     });
-
-  /*
-  token && useEffect(() => {
-    api
-      .get(`/users/products/${ advertiserId }`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
-      .then((res) => {
-        console.log(res.data)
-        
-      })
-      .catch((error) => console.error(error));
-  }, []);
-  */
 
   return (
     <Container>
