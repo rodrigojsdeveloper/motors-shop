@@ -23,10 +23,13 @@ const ModalEditProduct = ({
   setOpenModalEditProduct,
   setCloseModalDeleteProduct,
 }: IModalEditProduct) => {
+  const token = sessionStorage.getItem("Motors shop: token")
 
   const [changePostedToYes, setChangPostedToYes] = useState<boolean>(true);
 
   const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
+
+  const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
@@ -47,10 +50,17 @@ const ModalEditProduct = ({
   });
 
   const onSubmitFunction = (data: any) => {
+    setLoad(true);
+
     api
-      .patch(`/products/${product?.id}`, data)
+      .patch(`/products/${product?.id}`, data, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
       .then((_) => setOpenModalEditProduct(false))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
   };
 
   return (
@@ -220,9 +230,10 @@ const ModalEditProduct = ({
           <Button
             color="buttonColorBlueLogin"
             size="buttonSizeModalEditAddressMedium"
-            type="button"
+            type="submit"
+            disabled={load}
           >
-            Salvar alterações
+            {load ? "Salvando..." : "Salvar alterações"}
           </Button>
         </div>
       </form>

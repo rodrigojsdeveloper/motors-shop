@@ -4,14 +4,46 @@ const Container = styled.div`
   width: 312px;
   margin-right: 40px;
 
-  & > img {
-    width: 312px;
-    height: 152px;
-    background: #E9ECEF;
-    object-fit: contain;
+  & > div:nth-child(1) {
+    .active,
+    .deactive {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      color: #ffffff;
+
+      margin: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+    }
+
+    .active {
+      width: 51px;
+      height: 24px;
+      padding: 0px 8px;
+      background: #4529e6;
+    }
+
+    .deactive {
+      width: 61px;
+      height: 24px;
+      padding: 0px 8px;
+      background: #adb5bd;
+    }
+
+    & > img {
+      width: 312px;
+      height: 152px;
+      background: #e9ecef;
+      object-fit: contain;
+    }
   }
 
-  & > div {
+  & > div:nth-child(2) {
     height: 198px;
     display: flex;
     flex-direction: column;
@@ -47,6 +79,20 @@ const Container = styled.div`
       text-overflow: ellipsis;
     }
 
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      h6 {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #495057;
+        margin-left: 8px;
+      }
+    }
+
     span {
       font-weight: 500;
       font-size: 16px;
@@ -78,19 +124,6 @@ const Container = styled.div`
 
         margin-right: 5px;
       }
-    }
-  }
-
-  .divButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-    max-width: 201px;
-
-    & > button {
-      padding: 0;
     }
   }
 

@@ -1,3 +1,4 @@
+import { useNavigate, useParams } from "react-router-dom";
 import { IUserProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
@@ -8,6 +9,12 @@ interface ICardSeller {
 }
 
 const CardSeller = ({ user }: ICardSeller) => {
+  const navigate = useNavigate();
+
+  let { userProductId } = useParams();
+
+  userProductId = user.id;
+
   return (
     <Container>
       <div>
@@ -19,6 +26,7 @@ const CardSeller = ({ user }: ICardSeller) => {
           size="buttonSizeProductDetails"
           color="buttonColorBlackProductDetails"
           type="button"
+          onClick={() => navigate(`/users/${userProductId}`)}
         >
           Ver todos anuncios
         </Button>

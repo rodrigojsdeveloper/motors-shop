@@ -52,7 +52,7 @@ const AdvertiserProduct = ({ product }: IProduct) => {
           />
         </ModalBackground>
       )}
-      <Container onClick={() => navigate(`/products/${product.id}`)}>
+      <Container>
         <img
           src={product?.cover_image}
           alt={product?.title}

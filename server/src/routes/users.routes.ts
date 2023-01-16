@@ -27,7 +27,7 @@ const usersRoutes = (): Router => {
 
   routes.get("/profile", tokenMiddleware, profileController);
 
-  routes.get("/products/:id", tokenMiddleware, listProductsUserController);
+  routes.get("/products/:id", listProductsUserController);
 
   routes.patch("/:id", tokenMiddleware, updateUserController);
 

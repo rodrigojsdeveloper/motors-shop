@@ -17,6 +17,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
 
   const [user, setUser] = useState<any>();
 
+  const [load, setLoad] = useState<boolean>(false);
+
   const schema = yup.object().shape({
     zip_code: yup.number().required("CEP obrigatória"),
     country: yup.string().required("País obrigatório"),
@@ -36,7 +38,21 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
     resolver: yupResolver(schema),
   });
 
+  token &&
+    useEffect(() => {
+      api
+        .get("/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => setUser(res.data))
+        .catch((error) => console.error(error));
+    }, []);
+
   const onSubmitFunction = (data: any) => {
+    setLoad(true);
+
     const address = {
       zip_code: data.zip_code,
       country: data.country,
@@ -49,19 +65,13 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
     };
 
     data.address = address;
-  };
 
-  token &&
-    useEffect(() => {
-      api
-        .get("/users/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => setUser(res.data))
-        .catch((error) => console.error(error));
-    }, []);
+    api
+      .patch(`/users/${user.id}`, data)
+      .then((_) => setOpenModalEditAddress(false))
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
 
   return (
     <Container>
@@ -192,9 +202,10 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
           <Button
             color="buttonColorBlueLogin"
             size="buttonSizeModalEditAddressMedium"
-            type="button"
+            type="submit"
+            disabled={load}
           >
-            Salvar alteração
+            {load ? "Salvando..." : "Salvar alteração"}
           </Button>
         </div>
       </form>

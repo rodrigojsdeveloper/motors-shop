@@ -29,7 +29,7 @@ class Product {
   price: string;
 
   @Column({ default: true })
-  is_active: boolean;
+  is_published: boolean;
 
   @Column()
   ad_type: string;

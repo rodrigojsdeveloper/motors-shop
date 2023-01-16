@@ -1,5 +1,6 @@
 import { PageProductDetails } from "../pages/PageProductDetails";
 import { PageAuctionDetails } from "../pages/PageAuctionDetails";
+import { PageProductsUser } from "../pages/PageProductsUser";
 import { PageNewPassword } from "../pages/PageNewPassword";
 import { PageAdvertiser } from "../pages/PageAdvertiser";
 import { Routes, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ const AllRoutes = () => {
       <Route path="/products/:productId" element={<PageProductDetails />} />
       <Route path="/auctions/:auctionId" element={<PageAuctionDetails />} />
       <Route path="/myadvertiser" element={<PageAdvertiser />} />
+      <Route path="/users/:userProductId" element={<PageProductsUser />} />
       <Route index element={<Home />} />
     </Routes>
   );

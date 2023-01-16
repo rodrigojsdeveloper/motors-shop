@@ -8,6 +8,7 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
+import { IUserProps } from "../../interfaces";
 
 interface IModalEditUser {
   setOpenModalEditUser: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,7 +17,9 @@ interface IModalEditUser {
 const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+
+  const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     name: yup.string().required("Name obrigatório"),
@@ -43,8 +46,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {};
-
   token &&
     useEffect(() => {
       api
@@ -56,6 +57,16 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
         .then((res) => setUser(res.data))
         .catch((error) => console.error(error));
     }, []);
+
+  const onSubmitFunction = (data: any) => {
+    setLoad(true);
+
+    api
+      .patch(`/users/${user.id}`, data)
+      .then((_) => setOpenModalEditUser(false))
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
 
   return (
     <Container>
@@ -140,9 +151,10 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
           <Button
             color="buttonColorBlueLogin"
             size="buttonSizeModalEditAddressMedium"
-            type="button"
+            type="submit"
+            disabled={load}
           >
-            Salvar alteração
+            {load ? "Salvando..." : "Salvar alteração"}
           </Button>
         </div>
       </form>
