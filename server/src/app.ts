@@ -1,7 +1,7 @@
 import { handleErrorMiddleware } from "./middlewares/handleError.middleware";
 import { appRoutes } from "./routes";
 import express from "express";
-import "express-async-error";
+import "express-async-errors";
 import cors from "cors";
 import "dotenv/config";
 

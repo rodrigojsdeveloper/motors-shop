@@ -1,4 +1,4 @@
-const ApiError = class ApiError extends Error {
+class ApiError extends Error {
   public statusCode: number;
 
   constructor(message: string, statusCode: number) {
@@ -6,6 +6,6 @@ const ApiError = class ApiError extends Error {
     this.message = message;
     this.statusCode = statusCode;
   }
-};
+}
 
 export { ApiError };

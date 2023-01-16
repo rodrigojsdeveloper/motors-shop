@@ -5,12 +5,17 @@ import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
 import { Product } from "../entities/product.entity";
+import { BadRequestError } from "../errors/badRequest.error";
 
 const createProductService = async (
   product: IProduct,
   email: string
 ): Promise<Product | Auction> => {
   const user = await userRepository.findOneBy({ email });
+
+  if (!user?.is_seller) {
+    throw new BadRequestError("User is not seller");
+  }
 
   const newProduct = new Product();
   newProduct.title = product.title;
@@ -32,8 +37,8 @@ const createProductService = async (
     const newAuction = new Auction();
     newAuction.bids = [];
     newAuction.time_limit = "1:00:00";
-    newAuction.product = newProduct
-    newAuction.user = user!
+    newAuction.product = newProduct;
+    newAuction.user = user!;
 
     auctionRepository.create(newAuction);
     await auctionRepository.save(newAuction);

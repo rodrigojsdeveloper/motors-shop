@@ -45,18 +45,6 @@ const createUserService = async (user: IUser): Promise<User> => {
     },
   });
 
-  await transporter
-    .sendMail({
-      from: "rodrigojsdeveloper@outlook.com",
-      to: user.email,
-      subject: "Created user",
-      html: "You just created this user",
-    })
-    .catch((err) => {
-      console.error(err);
-      throw new BadRequestError("Error sending email, try again later");
-    });
-
   Reflect.deleteProperty(newUser, "password");
 
   return newUser;
