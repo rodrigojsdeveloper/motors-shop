@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
+import Helmet from "react-helmet";
 
 const PageProductsUser = () => {
   const { userProductId } = useParams();
@@ -47,6 +48,7 @@ const PageProductsUser = () => {
 
   return (
     <Container>
+      <Helmet title={`${user.name} | Motors shop`} />
       <Header />
 
       <div className="divBlue"></div>

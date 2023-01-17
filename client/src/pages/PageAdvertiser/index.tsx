@@ -8,6 +8,7 @@ import { Header } from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
+import Helmet from "react-helmet";
 
 const PageAdvertiser = () => {
   const token = sessionStorage.getItem("Motors shop: token");
@@ -56,6 +57,7 @@ const PageAdvertiser = () => {
 
   return (
     <Container>
+      <Helmet title="Meus Anúncios - Motors shop" />
       <Header />
 
       <div className="divBlue"></div>

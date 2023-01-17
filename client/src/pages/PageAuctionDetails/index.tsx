@@ -10,6 +10,7 @@ import { ModalPhoto } from "../../components/ModalPhoto";
 import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
+import Helmet from "react-helmet";
 
 const PageAuctionDetails = () => {
   const { auctionId } = useParams();
@@ -82,6 +83,7 @@ const PageAuctionDetails = () => {
 
   return (
     <>
+      <Helmet title={`${auctionRequest.product.title} | Motors shop`} />
       {openModalPhoto && (
         <ModalBackground>
           <ModalPhoto

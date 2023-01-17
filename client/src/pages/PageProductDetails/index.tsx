@@ -10,6 +10,7 @@ import { IComment, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { ModalBackground } from "../../components/ModalBackground";
 import { ModalPhoto } from "../../components/ModalPhoto";
+import Helmet from "react-helmet";
 
 const PageProductDetails = () => {
   const { productId } = useParams();
@@ -69,6 +70,7 @@ const PageProductDetails = () => {
 
   return (
     <>
+      <Helmet title={`${productRequest.title} | Motors shop`} />
       {openModalPhoto && (
         <ModalBackground>
           <ModalPhoto

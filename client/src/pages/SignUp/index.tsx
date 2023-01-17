@@ -4,6 +4,7 @@ import { FormSignUp } from "../../components/FormSignUp";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Container } from "./style";
+import Helmet from "react-helmet";
 import { useState } from "react";
 
 const SignUp = () => {
@@ -11,6 +12,7 @@ const SignUp = () => {
 
   return (
     <>
+      <Helmet title="Cadastro - Motors shop" />
       {openModalSuccess && (
         <ModalBackground>
           <ModalSucessUser setOpenModalSuccess={setOpenModalSuccess} />
