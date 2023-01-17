@@ -1,8 +1,7 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import "reflect-metadata";
 import path from "path";
-
-require("dotenv").config();
+import "dotenv/config";
 
 const port = process.env.POSTGRES_PORT as number | undefined;
 
