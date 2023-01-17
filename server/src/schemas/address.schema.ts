@@ -5,17 +5,19 @@ import * as yup from "yup";
 const addressSchema: SchemaOf<IAddress> = yup.object().shape({
   zip_code: yup
     .string()
-    .required("zip_code required")
+    .required("zip_code is a required field")
     .max(8, "Maximum 8 caracters"),
-  country: yup.string().required("country required"),
-  state: yup.string().required("state required"),
-  city: yup.string().required("city required"),
-  district: yup.string().required("district required"),
-  street: yup.string().required("street required"),
+  country: yup.string().required("country is a required field"),
+  state: yup.string().required("state is a required field"),
+  city: yup.string().required("city is a required field"),
+  district: yup.string().required("district is a required field"),
+  street: yup.string().required("street is a required field"),
   number: yup
     .number()
-    .required("number required")
-    .typeError("number must be a number"),
+    .required("number is a required field")
+    .typeError("number must be a number")
+    .positive()
+    .integer(),
   complement: yup.string(),
 });
 

@@ -1,7 +1,7 @@
 import { auctionRepository } from "../repositories/auction.repository";
 import { productRepository } from "../repositories/product.repository";
 import { userRepository } from "../repositories/user.repository";
-import { BadRequestError } from "../errors/badRequest.error";
+import { ForbiddenError } from "../errors/forbidden.error";
 import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
@@ -12,7 +12,7 @@ class ProductsServices {
     const user = await userRepository.findOneBy({ email });
 
     if (!user?.is_seller) {
-      throw new BadRequestError("User is not seller");
+      throw new ForbiddenError("User is not seller");
     }
 
     const newProduct = new Product();
