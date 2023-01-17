@@ -2,22 +2,27 @@ import { auctionRepository } from "../repositories/auction.repository";
 import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
 
-const listAuctionsService = async (): Promise<ReadonlyArray<Auction>> => {
-  const auctions = await auctionRepository.find({
-    relations: ["bids", "user"],
-  });
+class AuctionsServices {
+  async listAll(): Promise<ReadonlyArray<Auction>> {
+    const auctions = await auctionRepository.find({
+      relations: ["bids", "user"],
+    });
 
-  return auctions;
-};
-
-const specificAuctionService = async (auction_id: string): Promise<Auction> => {
-  const auction = await auctionRepository.findOne({ where: { id: auction_id }, relations: ["product", "user"] });
-
-  if (!auction) {
-    throw new NotFoundError("Auction");
+    return auctions;
   }
 
-  return auction;
-};
+  async specific(auction_id: string): Promise<Auction> {
+    const auction = await auctionRepository.findOne({
+      where: { id: auction_id },
+      relations: ["product", "user"],
+    });
 
-export { listAuctionsService, specificAuctionService };
+    if (!auction) {
+      throw new NotFoundError("Auction");
+    }
+
+    return auction;
+  }
+}
+
+export { AuctionsServices };

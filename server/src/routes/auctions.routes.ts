@@ -1,16 +1,13 @@
 import { Router } from "express";
 
-import {
-  listAuctionsController,
-  specificAuctionController,
-} from "../controllers/auctions.controller";
+import { AuctionControllers } from "../controllers/auctions.controller";
 
 const routes = Router();
 
 const auctionsRoutes = (): Router => {
-  routes.get("", listAuctionsController);
+  routes.get("", new AuctionControllers().listAll);
 
-  routes.get("/:id", specificAuctionController);
+  routes.get("/:id", new AuctionControllers().specific);
 
   return routes;
 };

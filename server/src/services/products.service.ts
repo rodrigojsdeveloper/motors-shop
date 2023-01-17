@@ -1,128 +1,118 @@
 import { auctionRepository } from "../repositories/auction.repository";
 import { productRepository } from "../repositories/product.repository";
 import { userRepository } from "../repositories/user.repository";
+import { BadRequestError } from "../errors/badRequest.error";
 import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Auction } from "../entities/auction.entity";
 import { Product } from "../entities/product.entity";
-import { BadRequestError } from "../errors/badRequest.error";
 
-const createProductService = async (
-  product: IProduct,
-  email: string
-): Promise<Product | Auction> => {
-  const user = await userRepository.findOneBy({ email });
+class ProductsServices {
+  async create(product: IProduct, email: string): Promise<Product | Auction> {
+    const user = await userRepository.findOneBy({ email });
 
-  if (!user?.is_seller) {
-    throw new BadRequestError("User is not seller");
+    if (!user?.is_seller) {
+      throw new BadRequestError("User is not seller");
+    }
+
+    const newProduct = new Product();
+    newProduct.title = product.title;
+    newProduct.description = product.description;
+    newProduct.year = product.year;
+    newProduct.kilometers = product.kilometers;
+    newProduct.ad_type = product.ad_type;
+    newProduct.price = product.price;
+    newProduct.vehicle_type = product.vehicle_type;
+    newProduct.cover_image = product.cover_image;
+    newProduct.gallery_image = product.gallery_image;
+    newProduct.comments = [];
+    newProduct.user = user!;
+
+    productRepository.create(newProduct);
+    await productRepository.save(newProduct);
+
+    if (newProduct.ad_type == "auction") {
+      const newAuction = new Auction();
+      newAuction.bids = [];
+      newAuction.time_limit = "1:00:00";
+      newAuction.product = newProduct;
+      newAuction.user = user!;
+
+      auctionRepository.create(newAuction);
+      await auctionRepository.save(newAuction);
+
+      return newAuction;
+    } else {
+      return newProduct;
+    }
   }
 
-  const newProduct = new Product();
-  newProduct.title = product.title;
-  newProduct.description = product.description;
-  newProduct.year = product.year;
-  newProduct.kilometers = product.kilometers;
-  newProduct.ad_type = product.ad_type;
-  newProduct.price = product.price;
-  newProduct.vehicle_type = product.vehicle_type;
-  newProduct.cover_image = product.cover_image;
-  newProduct.gallery_image = product.gallery_image;
-  newProduct.comments = [];
-  newProduct.user = user!;
+  async listAll(): Promise<ReadonlyArray<Product>> {
+    const products = await productRepository.find({
+      relations: ["user", "comments"],
+    });
 
-  productRepository.create(newProduct);
-  await productRepository.save(newProduct);
-
-  if (newProduct.ad_type == "auction") {
-    const newAuction = new Auction();
-    newAuction.bids = [];
-    newAuction.time_limit = "1:00:00";
-    newAuction.product = newProduct;
-    newAuction.user = user!;
-
-    auctionRepository.create(newAuction);
-    await auctionRepository.save(newAuction);
-
-    return newAuction;
-  } else {
-    return newProduct;
-  }
-};
-
-const listProductsService = async (): Promise<ReadonlyArray<Product>> => {
-  const products = await productRepository.find({
-    relations: ["user", "comments"],
-  });
-
-  return products;
-};
-
-const specificProductService = async (id: string): Promise<Product> => {
-  const product = await productRepository.findOne({
-    where: { id },
-    relations: ["user", "comments"],
-  });
-
-  if (!product) {
-    throw new NotFoundError("Product");
+    return products;
   }
 
-  return product;
-};
+  async specific(id: string): Promise<Product> {
+    const product = await productRepository.findOne({
+      where: { id },
+      relations: ["user", "comments"],
+    });
 
-const updateProductService = async (
-  product: Partial<IProduct>,
-  id: string
-): Promise<Product> => {
-  const findProduct = await productRepository.findOneBy({ id });
+    if (!product) {
+      throw new NotFoundError("Product");
+    }
 
-  if (!findProduct) {
-    throw new NotFoundError("Product");
+    return product;
   }
 
-  await productRepository.update(findProduct.id, {
-    title: product.title ? product.title : findProduct.title,
-    description: product.description
-      ? product.description
-      : findProduct.description,
-    year: product.year ? product.year : findProduct.year,
-    kilometers: product.kilometers
-      ? product.kilometers
-      : findProduct.kilometers,
-    ad_type: product.ad_type ? product.ad_type : findProduct.ad_type,
-    price: product.price ? product.price : findProduct.price,
-    vehicle_type: product.vehicle_type
-      ? product.vehicle_type
-      : findProduct.vehicle_type,
-    cover_image: product.cover_image
-      ? product.cover_image
-      : findProduct.cover_image,
-    gallery_image: product.gallery_image
-      ? product.gallery_image
-      : findProduct.gallery_image,
-  });
+  async update(product: Partial<IProduct>, id: string): Promise<Product> {
+    const findProduct = await productRepository.findOneBy({ id });
 
-  const updatedProduct = await productRepository.findOneBy({
-    id: findProduct.id,
-  });
+    if (!findProduct) {
+      throw new NotFoundError("Product");
+    }
 
-  return updatedProduct!;
-};
+    await productRepository.update(findProduct.id, {
+      title: product.title ? product.title : findProduct.title,
+      description: product.description
+        ? product.description
+        : findProduct.description,
+      year: product.year ? product.year : findProduct.year,
+      kilometers: product.kilometers
+        ? product.kilometers
+        : findProduct.kilometers,
+      ad_type: product.ad_type ? product.ad_type : findProduct.ad_type,
+      price: product.price ? product.price : findProduct.price,
+      vehicle_type: product.vehicle_type
+        ? product.vehicle_type
+        : findProduct.vehicle_type,
+      cover_image: product.cover_image
+        ? product.cover_image
+        : findProduct.cover_image,
+      gallery_image: product.gallery_image
+        ? product.gallery_image
+        : findProduct.gallery_image,
+    });
 
-const deleteProductService = async (id: string): Promise<void> => {
-  const product = await productRepository.findOneBy({ id });
+    const updatedProduct = await productRepository.findOneBy({
+      id: findProduct.id,
+    });
 
-  if (!product) {
-    throw new NotFoundError("Product");
+    return updatedProduct!;
   }
 
-  await productRepository.delete(product.id);
-};
+  async delete(id: string): Promise<void> {
+    const product = await productRepository.findOneBy({ id });
 
-export {
-  createProductService,
-  listProductsService,
-  specificProductService,
-  updateProductService,
-  deleteProductService,
-};
+    if (!product) {
+      throw new NotFoundError("Product");
+    }
+
+    await productRepository.delete(product.id);
+  }
+}
+
+export { ProductsServices };

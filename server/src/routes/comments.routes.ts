@@ -1,9 +1,6 @@
 import { Router } from "express";
 
-import {
-  createCommentController,
-  listCommentsProductController,
-} from "../controllers/comments.controller";
+import { CommentsControllers } from "../controllers/comments.controller";
 
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
@@ -17,10 +14,10 @@ const commentsRoutes = (): Router => {
     "/:product_id",
     schemaValidationMiddleware(commentSchema),
     tokenMiddleware,
-    createCommentController
+    new CommentsControllers().create
   );
 
-  routes.get("/:product_id", listCommentsProductController);
+  routes.get("/:product_id", new CommentsControllers().listCommentsProduct);
 
   return routes;
 };

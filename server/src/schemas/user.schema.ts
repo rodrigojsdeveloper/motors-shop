@@ -1,4 +1,5 @@
 import { IUser } from "../interfaces/user.interface";
+import { addressSchema } from "./address.schema";
 import { SchemaOf } from "yup";
 import * as yup from "yup";
 
@@ -25,7 +26,7 @@ const userSchema: SchemaOf<IUser> = yup.object().shape({
       /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/,
       "Invalid cpf"
     ),
-  address: yup.object().required("address required"),
+  address: addressSchema,
 });
 
 export { userSchema };

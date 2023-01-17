@@ -9,13 +9,13 @@ const productSchema: SchemaOf<IProduct> = yup.object().shape({
   kilometers: yup
     .number()
     .required("kilometers required")
-    .typeError("Amount must be a number"),
+    .typeError("kilometers must be a number"),
   price: yup.string().required("price required"),
   vehicle_type: yup.string().required("vehicle_type required"),
   year: yup
     .number()
     .required("year required")
-    .typeError("Amount must be a number"),
+    .typeError("year must be a number"),
   cover_image: yup.string().required("cover_image required"),
   gallery_image: yup.string().required("gallery_image required"),
 });

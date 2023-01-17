@@ -5,7 +5,7 @@ interface IUser {
   email: string;
   password: string;
   cellphone: string;
-  address: IAddress | object | Partial<IAddress>;
+  address: IAddress | Partial<IAddress>;
   cpf: string;
   birthdate: string;
   is_seller: boolean;

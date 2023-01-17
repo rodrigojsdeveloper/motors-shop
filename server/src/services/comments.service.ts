@@ -5,41 +5,48 @@ import { IComment } from "../interfaces/comment.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Comment } from "../entities/comment.entity";
 
-const createCommentService = async (
-  comment: IComment,
-  email: string,
-  product_id: string
-): Promise<Comment> => {
-  const user = await userRepository.findOneBy({ email });
+class CommentsServices {
+  async create(
+    comment: IComment,
+    email: string,
+    product_id: string
+  ): Promise<Comment> {
+    const user = await userRepository.findOneBy({ email });
 
-  const product = await productRepository.findOneBy({ id: product_id });
+    const product = await productRepository.findOneBy({ id: product_id });
 
-  if (!product) {
-    throw new NotFoundError("Product");
+    if (!product) {
+      throw new NotFoundError("Product");
+    }
+
+    const newComment = new Comment();
+    newComment.content = comment.content;
+    newComment.user = user!;
+    newComment.product = product;
+
+    commentRepository.create(newComment);
+    await commentRepository.save(newComment);
+
+    return newComment;
   }
 
-  const newComment = new Comment();
-  newComment.content = comment.content;
-  newComment.user = user!;
-  newComment.product = product;
+  async listCommentsProduct(
+    product_id: string
+  ): Promise<ReadonlyArray<Comment>> {
+    const product = await productRepository.findOne({
+      where: { id: product_id },
+      relations: ["comments"],
+    });
 
-  commentRepository.create(newComment);
-  await commentRepository.save(newComment);
+    const comments = await commentRepository.find({
+      relations: ["user", "product"],
+    });
 
-  return newComment;
-};
+    if (!product) {
+      throw new NotFoundError("Product");
+    }
 
-const listCommentsProductService = async (product_id: string): Promise<ReadonlyArray<Comment>> => {
-
-  const product = await productRepository.findOne({ where: {  id: product_id }, relations: ["comments"] })
-
-  const comments = await commentRepository.find({ relations: ["user", "product"] })
-
-  if(!product) {
-    throw new NotFoundError("Product")
+    return comments.filter((comment) => comment.product.id == product.id);
   }
-
-  return comments.filter(comment => comment.product.id == product.id);
-};
-
-export { createCommentService, listCommentsProductService };
+}
+export { CommentsServices };

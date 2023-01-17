@@ -1,9 +1,6 @@
 import { Router } from "express";
 
-import {
-  createBidController,
-  listBidsAuctionController,
-} from "../controllers/bids.controller";
+import { BidsControllers } from "../controllers/bids.controller";
 
 import { schemaValidationMiddleware } from "../middlewares/schemaValidation.middleware";
 import { tokenMiddleware } from "../middlewares/token.middleware";
@@ -17,10 +14,10 @@ const bidsRoutes = (): Router => {
     "/:auction_id",
     schemaValidationMiddleware(bidSchema),
     tokenMiddleware,
-    createBidController
+    new BidsControllers().create
   );
 
-  routes.get("/:auction_id", listBidsAuctionController);
+  routes.get("/:auction_id", new BidsControllers().listBidsAuction);
 
   return routes;
 };

@@ -8,10 +8,8 @@ const tokenMiddleware = (req: Request, res: Response, next: NextFunction) => {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  token = token.split(" ")[1];
-
   verify(
-    token,
+    token.split(" ")[1],
     process.env.SECRET_KEY as string,
     (error: any, decoded: any) => {
       if (error) {

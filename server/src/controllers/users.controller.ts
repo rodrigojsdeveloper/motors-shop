@@ -1,68 +1,55 @@
-import {
-  createUserService,
-  listUsersService,
-  listProductsUserService,
-  profileService,
-  updateUserService,
-  specificUserWithEmailService
-} from "../services/users.service";
+import { UsersServices } from "../services/users.service";
 import { IUser } from "../interfaces/user.interface";
 import { Request, Response } from "express";
 
-const createUserController = async (req: Request, res: Response) => {
-  const data: IUser = req.body;
+class UsersControllers {
+  async create(req: Request, res: Response) {
+    const data: IUser = req.body;
 
-  const newUser = await createUserService(data);
+    const newUser = await new UsersServices().create(data);
 
-  return res.status(201).json(newUser);
-};
+    return res.status(201).json(newUser);
+  }
 
-const listUsersController = async (req: Request, res: Response) => {
-  const users = await listUsersService();
+  async listAll(req: Request, res: Response) {
+    const users = await new UsersServices().listAll();
 
-  return res.json(users);
-};
+    return res.json(users);
+  }
 
-const listProductsUserController = async (req: Request, res: Response) => {
-  const id: string = req.params.id;
+  async listProductsUser(req: Request, res: Response) {
+    const id: string = req.params.id;
 
-  const listProducts = await listProductsUserService(id);
+    const listProducts = await new UsersServices().listProductsUser(id);
 
-  return res.json(listProducts);
-};
+    return res.json(listProducts);
+  }
 
-const profileController = async (req: Request, res: Response) => {
-  const email: string = req.email;
+  async profile(req: Request, res: Response) {
+    const email: string = req.email;
 
-  const profile = await profileService(email);
+    const profile = await new UsersServices().profile(email);
 
-  return res.json(profile);
-};
+    return res.json(profile);
+  }
 
-const updateUserController = async (req: Request, res: Response) => {
-  const id: string = req.params.id;
+  async update(req: Request, res: Response) {
+    const id: string = req.params.id;
 
-  const data: Partial<IUser> = req.body;
+    const data: Partial<IUser> = req.body;
 
-  const updatedUser = await updateUserService(data, id);
+    const updatedUser = await new UsersServices().update(data, id);
 
-  return res.json(updatedUser);
-};
+    return res.json(updatedUser);
+  }
 
-const specificUserWithEmailController = async (req: Request, res: Response) => {
+  async specificUserWithEmail(req: Request, res: Response) {
+    const email: string = req.params.email;
 
-  const email: string = req.params.email
+    const user = await new UsersServices().specificUserWithEmail(email);
 
-  const user = await specificUserWithEmailService(email)
-
-  return res.json(user)
+    return res.json(user);
+  }
 }
 
-export {
-  createUserController,
-  listUsersController,
-  listProductsUserController,
-  profileController,
-  updateUserController,
-  specificUserWithEmailController
-};
+export { UsersControllers };
