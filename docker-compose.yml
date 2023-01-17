@@ -1,9 +1,23 @@
 version: "3.9"
 
 services:
+  backend:
+    container_name: motors-shop-server
+    build:
+      dockerfile: Dockerfile
+      context: "./server"
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    command: bash -c "yarn typeorm migration:run -d src/data-source && yarn dev"
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+
   frontend:
     stdin_open: true
-    container_name: motors-shop-frontend
+    container_name: motors-shop-client
     build:
       dockerfile: Dockerfile
       context: "./client"
@@ -12,3 +26,11 @@ services:
       - ./client:/app
     ports:
       - 5173:5173
+
+  postgres:
+    container_name: motors_shop_db
+    image: postgres:latest
+    ports:
+      - 5434:5432
+    env_file:
+      - ./server/.env
