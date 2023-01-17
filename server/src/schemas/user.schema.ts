@@ -22,10 +22,7 @@ const userSchema: SchemaOf<IUser> = yup.object().shape({
     .string()
     .required("cpf required")
     .max(11, "Maximum 11 caracters")
-    .matches(
-      /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/,
-      "Invalid cpf"
-    ),
+    .matches(/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/, "Invalid cpf"),
   address: addressSchema,
 });
 
