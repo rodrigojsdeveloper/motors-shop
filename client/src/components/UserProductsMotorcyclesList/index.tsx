@@ -5,7 +5,7 @@ import { Container } from "./style";
 const UserProductsMotorcyclesList = ({ products }: IListProducts) => {
   return (
     <Container>
-      <h2>Carros</h2>
+      <h2>Motos</h2>
 
       <menu>
         {products.map((product) => (
