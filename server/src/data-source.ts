@@ -3,6 +3,8 @@ import "reflect-metadata";
 import path from "path";
 import "dotenv/config";
 
+const port = process.env.POSTGRES_PORT as number | undefined;
+
 const dataSourceConfig = (): DataSourceOptions => {
   const entitiesPath: string = path.join(__dirname, "./entities/*.{ts,js}");
   const migrationsPath: string = path.join(__dirname, "./migrations/*.{ts,js}");
@@ -20,7 +22,7 @@ const dataSourceConfig = (): DataSourceOptions => {
   return {
     type: "postgres",
     host: process.env.POSTGRES_HOST,
-    port: parseInt(process.env.POSTGRES_PORT),
+    port: port,
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,

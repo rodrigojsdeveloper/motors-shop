@@ -9,8 +9,8 @@
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/migrations/default",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run",
     "type": "module",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "build": "rm -rf ./dist && tsc",
+    "start": "node ./dist/server.js"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
