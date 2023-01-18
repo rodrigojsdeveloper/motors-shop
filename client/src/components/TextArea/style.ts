@@ -9,7 +9,11 @@ const Container = styled.div`
   & > label {
     font-size: 14px;
     font-weight: 500;
-    line-height: 25px;
+    line-height: 30px;
+
+    & > span {
+      color: #c20707;
+    }
   }
 
   & > textarea {

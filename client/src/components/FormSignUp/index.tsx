@@ -34,24 +34,27 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    name: yup.string().required("Name obrigatório"),
-    email: yup.string().required("Email obrigatória").email("Email inválido"),
+    name: yup.string().required("Nome obrigatório"),
+    email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup
       .string()
       .required("Senha obrigatória")
-      .min(8, "Minimum 8 caracters")
+      .min(8, "Mínimo 8 caracteres")
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        "Password must contain uppercase and lowercase letters, numbers and special characters"
+        "A senha deve conter letras maiúsculas e minúsculas, números e caracteres especiais"
       ),
-    cpf: yup.string().required("CPF obrigatória"),
-    cellphone: yup.string().required("Celular obrigatória"),
+    cpf: yup.string().required("CPF obrigatório"),
+    cellphone: yup.string().required("Celular obrigatório"),
     birthdate: yup.string().required("Data obrigatória"),
     description: yup.string().required("Descrição obrigatória"),
-    zip_code: yup.string().required("CEP obrigatória"),
+    zip_code: yup
+      .string()
+      .required("CEP obrigatório")
+      .max(8, "Máximo 8 caracteres"),
     country: yup.string().required("País obrigatório"),
     state: yup.string().required("Estado obrigatório"),
-    city: yup.string().required("Cidade obrigatório"),
+    city: yup.string().required("Cidade obrigatória"),
     district: yup.string().required("Bairro obrigatório"),
     street: yup.string().required("Rua obrigatória"),
     number: yup.number().required("Número obrigatório"),
@@ -59,10 +62,10 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
     repeat_password: yup
       .string()
       .required("Senha obrigatória")
-      .min(8, "Minimum 8 caracters")
+      .min(8, "Mínimo 8 caracteres")
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        "Password must contain uppercase and lowercase letters, numbers and special characters"
+        "A senha deve conter letras maiúsculas e minúsculas, números e caracteres especiais"
       )
       .oneOf([yup.ref("password"), null], "Passwords must match"),
   });
@@ -163,7 +166,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         required={true}
         size="inputSignIn"
       />
-      <TextArea />
+      <TextArea register={register} name="description" error={ errors.description?.message } />
 
       <h3>Informações de endereço</h3>
 
@@ -197,7 +200,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           placeholder="Digitar estado"
           autoComplete="off"
           type="text"
-          error={errors.state?.message}
           required={true}
           size="inputSignUpSmall"
           className="changeInput"
@@ -209,7 +211,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           placeholder="Digitar cidade"
           autoComplete="off"
           type="text"
-          error={errors.city?.message}
           required={true}
           size="inputSignUpSmall"
           className="changeInput"
@@ -246,7 +247,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           placeholder="Digitar número"
           autoComplete="off"
           type="number"
-          error={errors.number?.message}
           required={true}
           size="inputSignUpSmall"
         />
@@ -258,7 +258,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           placeholder="Ex: Apart 307"
           autoComplete="off"
           type="text"
-          error={errors.complement?.message}
           required={true}
           size="inputSignUpSmall"
         />

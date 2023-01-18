@@ -20,7 +20,7 @@ const AllRoutes = () => {
       <Route path="/auctions/:auctionId" element={<PageAuctionDetails />} />
       <Route path="/myadvertiser" element={<PageAdvertiser />} />
       <Route path="/users/:userProductId" element={<PageProductsUser />} />
-      <Route index element={<Home />} />
+      <Route path="/" index element={<Home />} />
     </Routes>
   );
 };

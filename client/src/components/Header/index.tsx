@@ -1,4 +1,3 @@
-import { useNavigate, useParams } from "react-router-dom";
 import { ModalEditAddress } from "../ModalEditAddress";
 import { ModalBackground } from "../ModalBackground";
 import { ModalEditUser } from "../ModalEditUser";
@@ -11,20 +10,15 @@ import { api } from "../../services/api";
 import menu from "../../assets/bars.svg";
 import { Link } from "react-router-dom";
 import { Container } from "./style";
-import { Button } from "../Button";
 
 const Header = () => {
-  const navigate = useNavigate();
-
-  let advertiserId = useParams();
-
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
-  const [menuOpenLogged, setMenuOpenLogged] = useState<boolean>(false);
+  const [openNavAdvertiserLogged, setOpenNavAdvertiserLogged] = useState<boolean>(false);
 
-  const [menuOpenLoggedNotAnnouncement, setMenuOpenLoggedNotAnnouncement] =
+  const [openNavNonAdvertiserLogged, setOpenNavNonAdvertiserLogged] =
     useState<boolean>(false);
 
   const [user, setUser] = useState<IUserProps>({ name: "" } as IUserProps);
@@ -42,10 +36,7 @@ const Header = () => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => {
-          setUser(res.data);
-          advertiserId = res.data.id;
-        })
+        .then((res) => setUser(res.data))
         .catch((error) => console.error(error));
     }, []);
 
@@ -61,13 +52,13 @@ const Header = () => {
           <ModalEditUser setOpenModalEditUser={setOpenModalEditUser} />
         </ModalBackground>
       )}
-      {menuOpenLogged && user?.is_seller ? (
-        <div className="menuOpenLoggedAnnouncement">
+      {openNavAdvertiserLogged && user?.is_seller ? (
+        <nav className="navAdvertiser">
           <p
             onClick={() => {
               setOpenModalEditUser(true);
 
-              setMenuOpenLogged(false);
+              setOpenNavAdvertiserLogged(false);
             }}
           >
             Editar perfil
@@ -76,34 +67,31 @@ const Header = () => {
             onClick={() => {
               setOpenModalEditAddress(true);
 
-              setMenuOpenLogged(false);
+              setOpenNavAdvertiserLogged(false);
             }}
           >
             Editar endereço
           </p>
-          <a onClick={() => navigate("/myadvertiser")}>
-            Meus Anúncios
-          </a>
-          <p
+          <Link to="/myadvertiser">Meus Anúncios</Link>
+          <Link
+            to="/signin"
             onClick={() => {
-              setMenuOpenLogged(false);
+              setOpenNavAdvertiserLogged(false);
 
               sessionStorage.removeItem("Motors shop: token");
-
-              navigate("/signin");
             }}
           >
             Sair
-          </p>
-        </div>
+          </Link>
+        </nav>
       ) : (
-        menuOpenLoggedNotAnnouncement && (
-          <div className="menuOpenLoggedNotAnnouncement">
+        openNavNonAdvertiserLogged && (
+          <nav className="navNonAdvertiser">
             <p
               onClick={() => {
                 setOpenModalEditUser(true);
 
-                setMenuOpenLoggedNotAnnouncement(false);
+                setOpenNavNonAdvertiserLogged(false);
               }}
             >
               Editar perfil
@@ -112,23 +100,22 @@ const Header = () => {
               onClick={() => {
                 setOpenModalEditAddress(true);
 
-                setMenuOpenLoggedNotAnnouncement(false);
+                setOpenNavNonAdvertiserLogged(false);
               }}
             >
               Editar endereço
             </p>
-            <p
+            <Link
+              to="/signin"
               onClick={() => {
-                setMenuOpenLoggedNotAnnouncement(false);
+                setOpenNavNonAdvertiserLogged(false);
 
                 sessionStorage.removeItem("Motors shop: token");
-
-                navigate("/signin");
               }}
             >
               Sair
-            </p>
-          </div>
+            </Link>
+          </nav>
         )
       )}
       <Link to="/">
@@ -146,19 +133,19 @@ const Header = () => {
           <div
             onClick={() => {
               if (user?.is_seller) {
-                setMenuOpenLogged(true);
+                setOpenNavAdvertiserLogged(true);
               }
 
               if (!user?.is_seller) {
-                setMenuOpenLoggedNotAnnouncement(true);
+                setOpenNavNonAdvertiserLogged(true);
               }
 
-              if (menuOpenLogged) {
-                setMenuOpenLogged(false);
+              if (openNavAdvertiserLogged) {
+                setOpenNavAdvertiserLogged(false);
               }
 
-              if (menuOpenLoggedNotAnnouncement) {
-                setMenuOpenLoggedNotAnnouncement(false);
+              if (openNavNonAdvertiserLogged) {
+                setOpenNavNonAdvertiserLogged(false);
               }
             }}
           >
@@ -166,17 +153,10 @@ const Header = () => {
             <h2>{user?.name}</h2>
           </div>
         ) : (
-          <div>
+          <nav>
             <Link to="/signin">Fazer Login</Link>
-            <Button
-              size="buttonSizeHeader"
-              color="buttonColorWhiteHeader"
-              type="button"
-              onClick={() => navigate("/signup")}
-            >
-              Cadastrar
-            </Button>
-          </div>
+            <Link to="/signup">Cadastrar</Link>
+          </nav>
         )}
       </div>
 
@@ -190,13 +170,29 @@ const Header = () => {
             if (menuOpen) {
               setMenuOpen(false);
             }
+
+            if (user?.is_seller) {
+              setOpenNavAdvertiserLogged(true);
+            }
+
+            if (openNavAdvertiserLogged) {
+              setOpenNavAdvertiserLogged(false);
+            }
+
+            if (!user?.is_seller) {
+              setOpenNavNonAdvertiserLogged(true);
+            }
+
+            if (openNavNonAdvertiserLogged) {
+              setOpenNavNonAdvertiserLogged(false);
+            }
           }}
         />
 
         {token ? (
-          menuOpen && user?.is_seller ? (
-            <nav className="navLogged">
-              <div>
+          openNavAdvertiserLogged && user?.is_seller ? (
+            <div className="divAdvertiserLogged">
+              <nav>
                 <a href="/#cars" onClick={() => setMenuOpen(false)}>
                   Carros
                 </a>
@@ -206,14 +202,14 @@ const Header = () => {
                 <a href="/#auctions" onClick={() => setMenuOpen(false)}>
                   Leilão
                 </a>
-              </div>
+              </nav>
               <hr />
-              <div>
+              <nav>
                 <p
                   onClick={() => {
                     setOpenModalEditUser(true);
 
-                    setMenuOpenLogged(false);
+                    setOpenNavAdvertiserLogged(false);
 
                     setMenuOpen(false);
                   }}
@@ -224,108 +220,95 @@ const Header = () => {
                   onClick={() => {
                     setOpenModalEditAddress(true);
 
-                    setMenuOpenLogged(false);
+                    setOpenNavAdvertiserLogged(false);
 
                     setMenuOpen(false);
                   }}
                 >
                   Editar endereço
                 </p>
-                <p
-                  onClick={() => {
-                    setMenuOpen(false);
-
-                    navigate("/myadvertiser");
-                  }}
-                >
+                <Link to="/myadvertiser" onClick={() => setMenuOpen(false)}>
                   Meus Anúncios
-                </p>
-                <p
+                </Link>
+                <Link
+                  to="/signin"
                   onClick={() => {
                     setMenuOpen(false);
 
                     sessionStorage.removeItem("Motors shop: token");
-
-                    navigate("/signin");
                   }}
                 >
                   Sair
-                </p>
-              </div>
-            </nav>
+                </Link>
+              </nav>
+            </div>
           ) : (
-            <nav className="navLogged">
-              <div>
-                <a href="/#cars" onClick={() => setMenuOpen(false)}>
-                  Carros
-                </a>
-                <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
-                  Motos
-                </a>
-                <a href="/#auctions" onClick={() => setMenuOpen(false)}>
-                  Leilão
-                </a>
+            openNavNonAdvertiserLogged && (
+              <div className="divNonAdvertiserLogged">
+                <nav>
+                  <a href="/#cars" onClick={() => setMenuOpen(false)}>
+                    Carros
+                  </a>
+                  <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
+                    Motos
+                  </a>
+                  <a href="/#auctions" onClick={() => setMenuOpen(false)}>
+                    Leilão
+                  </a>
+                </nav>
+                <hr />
+                <nav>
+                  <p
+                    onClick={() => {
+                      setOpenModalEditUser(true);
+
+                      setOpenNavAdvertiserLogged(false);
+
+                      setMenuOpen(false);
+                    }}
+                  >
+                    Editar perfil
+                  </p>
+                  <p
+                    onClick={() => {
+                      setOpenModalEditAddress(true);
+
+                      setOpenNavAdvertiserLogged(false);
+
+                      setMenuOpen(false);
+                    }}
+                  >
+                    Editar endereço
+                  </p>
+                  <Link
+                    to="/signin"
+                    onClick={() => {
+                      setMenuOpen(false);
+
+                      sessionStorage.removeItem("Motors shop: token");
+                    }}
+                  >
+                    Sair
+                  </Link>
+                </nav>
               </div>
-              <hr />
-              <div>
-                <p
-                  onClick={() => {
-                    setOpenModalEditUser(true);
-
-                    setMenuOpenLogged(false);
-
-                    setMenuOpen(false);
-                  }}
-                >
-                  Editar perfil
-                </p>
-                <p
-                  onClick={() => {
-                    setOpenModalEditAddress(true);
-
-                    setMenuOpenLogged(false);
-
-                    setMenuOpen(false);
-                  }}
-                >
-                  Editar endereço
-                </p>
-                <p
-                  onClick={() => {
-                    setMenuOpen(false);
-
-                    navigate("/signin");
-
-                    sessionStorage.removeItem("Motors shop: token");
-                  }}
-                >
-                  Sair
-                </p>
-              </div>
-            </nav>
+            )
           )
         ) : (
           menuOpen && (
-            <nav className="navNotLogged">
+            <div className="navNotLogged">
               <hr />
-              <div>
+              <nav>
                 <a href="/#cars">Carros</a>
                 <a href="/#motorcycles">Motos</a>
                 <a href="/#auctions">Leilão</a>
-              </div>
+              </nav>
               <hr />
-              <div>
+              <nav>
                 <Link to="/signin">Fazer Login</Link>
-                <Button
-                  size="buttonSizeHeader"
-                  color="buttonColorWhiteHeader"
-                  type="button"
-                  onClick={() => navigate("/signup")}
-                >
-                  Cadastrar
-                </Button>
-              </div>
-            </nav>
+                <Link to="/signup">Cadastrar</Link>
+              </nav>
+            </div>
           )
         )}
       </div>

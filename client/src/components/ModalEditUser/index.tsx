@@ -136,7 +136,12 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             size="inputModalEditAddressLarge"
             value={user?.birthdate}
           />
-          <TextArea value={user?.description} />
+          <TextArea
+            value={user?.description}
+            register={register}
+            name="description"
+            error={errors.description?.message}
+          />
         </div>
 
         <div className="divButtons">
