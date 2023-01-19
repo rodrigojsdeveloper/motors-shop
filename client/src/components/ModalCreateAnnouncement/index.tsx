@@ -22,16 +22,8 @@ const ModalCreateAnnouncement = ({
 }: IModalCreateAnnouncement) => {
   const [product, setProduct] = useState<IProductProps>({} as IProductProps);
 
-  const [changeColorBuyerVehicleType, setChangeColorBuyerVehicleType] =
-    useState<boolean>(true);
-
-  const [
-    changeColorAdvertiserVehicleType,
-    setChangeColorAdvertiserVehicleType,
-  ] = useState<boolean>(false);
-
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
-    useState<boolean>(true);
+    useState<string>("");
 
   const schema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
@@ -51,7 +43,7 @@ const ModalCreateAnnouncement = ({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {};
+  const onSubmitFunction = (data: any) => {console.log(data)};
 
   return (
     <Container>
@@ -112,10 +104,10 @@ const ModalCreateAnnouncement = ({
             required={true}
             size="inputModalCreateAnnouncementSmall"
           />
-        </div>
-        <TextArea />
+        </div> 
+        <TextArea register={ register } name="description" error={ errors.description?.message } />
 
-        <TypeOfVehicle product={product} />
+        <TypeOfVehicle setBuyerOrAdvertiserVehicleType={ setBuyerOrAdvertiserVehicleType } />
 
         <Input
           label="Imagem da capa"
@@ -152,7 +144,7 @@ const ModalCreateAnnouncement = ({
           <Button
             color="buttonColorBlueLogin"
             size="buttonSizeModalEditAddressMedium"
-            type="button"
+            type="submit"
           >
             Criar anúncio
           </Button>

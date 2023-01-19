@@ -1,22 +1,23 @@
 import { FormNewPassword } from "../../components/FormNewPassword";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-
 
 const PageNewPassword = () => {
   return (
-    <Container>
+    <HelmetProvider>
       <Helmet title="Recuperação de senha - Motors shop" />
-      <Header />
+      <Container>
+        <Header />
 
-      <main>
-        <FormNewPassword />
-      </main>
+        <main>
+          <FormNewPassword />
+        </main>
 
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </HelmetProvider>
   );
 };
 

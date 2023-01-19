@@ -1,6 +1,7 @@
 import { UserProductsMotorcyclesList } from "../../components/UserProductsMotorcyclesList";
 import { UserProductsCarsList } from "../../components/UserProductsCarsList";
 import { IProductProps, IUserProps } from "../../interfaces";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ShowUser } from "../../components/ShowUser";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
@@ -8,8 +9,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-
 
 const PageProductsUser = () => {
   const { userProductId } = useParams();
@@ -48,20 +47,22 @@ const PageProductsUser = () => {
   });
 
   return (
-    <Container>
+    <HelmetProvider>
       <Helmet title={`${user.name} | Motors shop`} />
-      <Header />
+      <Container>
+        <Header />
 
-      <div className="divBlue"></div>
-      <div className="divWhite">
-        <div>
-          <ShowUser user={user} />
-          <UserProductsCarsList products={cars} />
-          <UserProductsMotorcyclesList products={motorcycles} />
+        <div className="divBlue"></div>
+        <div className="divWhite">
+          <div>
+            <ShowUser user={user} />
+            <UserProductsCarsList products={cars} />
+            <UserProductsMotorcyclesList products={motorcycles} />
+          </div>
         </div>
-      </div>
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </HelmetProvider>
   );
 };
 

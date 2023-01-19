@@ -1,13 +1,12 @@
-import { IAuctionProps, IProductProps } from "../../interfaces";
 import { useState } from "react";
 import { Button } from "../Button";
 import { Container } from "./style";
 
 interface ITypeOfVehicle {
-  product: IProductProps | IAuctionProps;
+  setBuyerOrAdvertiserVehicleType: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TypeOfVehicle = ({ product }: ITypeOfVehicle) => {
+const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
   const [changeColorBuyerVehicleType, setChangeColorBuyerVehicleType] =
     useState<boolean>(true);
 
@@ -16,24 +15,15 @@ const TypeOfVehicle = ({ product }: ITypeOfVehicle) => {
     setChangeColorAdvertiserVehicleType,
   ] = useState<boolean>(false);
 
-  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
-    useState<boolean>(true);
-
   return (
     <Container>
       <h4>Tipo de veículo</h4>
       <div>
         <Button
           onClick={() => {
-            if (product.vehicle_type == "car") {
-              setChangeColorBuyerVehicleType(true);
-              setChangeColorAdvertiserVehicleType(false);
-              setBuyerOrAdvertiserVehicleType(true);
-            }
-
             setChangeColorBuyerVehicleType(true);
             setChangeColorAdvertiserVehicleType(false);
-            setBuyerOrAdvertiserVehicleType(true);
+            setBuyerOrAdvertiserVehicleType("car");
           }}
           style={
             changeColorBuyerVehicleType
@@ -49,15 +39,9 @@ const TypeOfVehicle = ({ product }: ITypeOfVehicle) => {
         </Button>
         <Button
           onClick={() => {
-            if (product.vehicle_type == "motorbike") {
-              setChangeColorBuyerVehicleType(false);
-              setChangeColorAdvertiserVehicleType(true);
-              setBuyerOrAdvertiserVehicleType(false);
-            }
-
             setChangeColorBuyerVehicleType(false);
             setChangeColorAdvertiserVehicleType(true);
-            setBuyerOrAdvertiserVehicleType(false);
+            setBuyerOrAdvertiserVehicleType("motorbike");
           }}
           style={
             changeColorAdvertiserVehicleType

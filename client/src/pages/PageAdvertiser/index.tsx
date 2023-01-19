@@ -3,12 +3,12 @@ import { AdvertiserAuctionsList } from "../../components/AdvertiserAuctionsList"
 import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
 import { AdvertiserCarsList } from "../../components/AdvertiserCarsList";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const PageAdvertiser = () => {
   const token = sessionStorage.getItem("Motors shop: token");
@@ -56,21 +56,23 @@ const PageAdvertiser = () => {
     });
 
   return (
-    <Container>
+    <HelmetProvider>
       <Helmet title="Meus Anúncios - Motors shop" />
-      <Header />
+      <Container>
+        <Header />
 
-      <div className="divBlue"></div>
-      <div className="divWhite">
-        <div>
-          <ShowAdvertiser user={user} />
-          <AdvertiserAuctionsList auctions={auctions} />
-          <AdvertiserCarsList products={cars} />
-          <AdvertiserMotorcyclesList products={motorcycles} />
+        <div className="divBlue"></div>
+        <div className="divWhite">
+          <div>
+            <ShowAdvertiser user={user} />
+            <AdvertiserAuctionsList auctions={auctions} />
+            <AdvertiserCarsList products={cars} />
+            <AdvertiserMotorcyclesList products={motorcycles} />
+          </div>
         </div>
-      </div>
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </HelmetProvider>
   );
 };
 

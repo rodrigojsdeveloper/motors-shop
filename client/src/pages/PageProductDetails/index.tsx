@@ -1,16 +1,16 @@
+import { ModalBackground } from "../../components/ModalBackground";
 import { ProductDetails } from "../../components/ProductDetails";
 import { CreateComment } from "../../components/CreateComment";
 import { ListComments } from "../../components/ListComments";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { IComment, IProductProps } from "../../interfaces";
+import { ModalPhoto } from "../../components/ModalPhoto";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { Container } from "./style";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IComment, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
-import { ModalBackground } from "../../components/ModalBackground";
-import { ModalPhoto } from "../../components/ModalPhoto";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Container } from "./style";
 
 const PageProductDetails = () => {
   const { productId } = useParams();
@@ -69,7 +69,7 @@ const PageProductDetails = () => {
     setCommentsList([comment, ...commentsList]);
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet title={`${productRequest.title} | Motors shop`} />
       {openModalPhoto && (
         <ModalBackground>
@@ -102,7 +102,7 @@ const PageProductDetails = () => {
 
         <Footer />
       </Container>
-    </>
+    </HelmetProvider>
   );
 };
 

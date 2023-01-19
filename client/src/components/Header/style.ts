@@ -9,8 +9,8 @@ const Container = styled.header`
   height: 80px;
   padding: 0 60px;
 
-  background-color: #fdfdfd;
-  border-bottom: 2px solid #dee2e6;
+  background-color: #FDFDFD;
+  border-bottom: 2px solid #DEE2E6;
 
   display: flex;
   flex-direction: row;
@@ -58,7 +58,7 @@ const Container = styled.header`
     & > hr {
       border: none;
       width: 2px;
-      background-color: #dee2e6;
+      background-color: #dEE2E6;
     }
 
     & > div {

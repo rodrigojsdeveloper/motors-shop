@@ -1,10 +1,10 @@
 import { ModalBackground } from "../../components/ModalBackground";
 import { ModalSucessUser } from "../../components/ModalSucessUser";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FormSignUp } from "../../components/FormSignUp";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import { useState } from "react";
 

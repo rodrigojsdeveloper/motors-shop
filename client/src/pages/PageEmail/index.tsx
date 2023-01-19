@@ -1,21 +1,23 @@
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FormEmail } from "../../components/FormEmail";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const PageEmail = () => {
   return (
-    <Container>
+    <HelmetProvider>
       <Helmet title="Recuperação de senha - Motors shop" />
-      <Header />
+      <Container>
+        <Header />
 
-      <main>
-        <FormEmail />
-      </main>
+        <main>
+          <FormEmail />
+        </main>
 
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </HelmetProvider>
   );
 };
 

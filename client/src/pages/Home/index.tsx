@@ -1,5 +1,6 @@
 import { ListMotorcycles } from "../../components/ListMotorcycles";
 import { IAuctionProps, IProductProps } from "../../interfaces";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ListAuction } from "../../components/ListAuction";
 import { ListCars } from "../../components/ListCars";
 import { Header } from "../../components/Header";
@@ -8,7 +9,6 @@ import { Footer } from "../../components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Home = () => {
   const [cars, setCars] = useState<IProductProps[]>([]);

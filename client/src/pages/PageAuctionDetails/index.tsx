@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { ModalBackground } from "../../components/ModalBackground";
+import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
 import { AuctionDetails } from "../../components/AuctionDetails";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { ModalPhoto } from "../../components/ModalPhoto";
 import { CreateBid } from "../../components/CreateBid";
+import { ListBids } from "../../components/ListBids";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { ListBids } from "../../components/ListBids";
-import { ModalBackground } from "../../components/ModalBackground";
-import { ModalPhoto } from "../../components/ModalPhoto";
-import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const PageAuctionDetails = () => {
   const { auctionId } = useParams();
@@ -82,7 +82,7 @@ const PageAuctionDetails = () => {
   const ListBidsFunc = (bid: IBid) => setBidsList([bid, ...bidsList]);
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet title={`${auctionRequest.product.title} | Motors shop`} />
       {openModalPhoto && (
         <ModalBackground>
@@ -117,7 +117,7 @@ const PageAuctionDetails = () => {
 
         <Footer />
       </Container>
-    </>
+    </HelmetProvider>
   );
 };
 
