@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   .divBlue {
     height: 350px;
-    background: #4529e6;
+    background-color: var(--brand1);
     margin-top: 80px;
 
     @media (max-width: 425px) {
@@ -12,7 +12,7 @@ const Container = styled.div`
   }
 
   .divWhite {
-    background: #f1f3f5;
+    background-color: var(--grey8);
 
     & > div {
       width: 100%;

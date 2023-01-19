@@ -4,7 +4,7 @@ const Container = styled.div`
   & > main {
     width: 100%;
 
-    background-color: #f1f3f5;
+    background-color: var(--grey8);
 
     display: flex;
     justify-content: center;

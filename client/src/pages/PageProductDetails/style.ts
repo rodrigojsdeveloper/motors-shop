@@ -3,12 +3,12 @@ import styled from "styled-components";
 const Container = styled.div`
   .divBlue {
     height: 650px;
-    background: #4529e6;
+    background-color: var(--brand1);
   }
 
   .divWhite {
     height: 1350px;
-    background: #e9ecef;
+    background-color: var(--grey7);
 
     display: flex;
     flex-direction: column;
