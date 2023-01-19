@@ -10,7 +10,7 @@ import { ModalPhoto } from "../../components/ModalPhoto";
 import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const PageAuctionDetails = () => {
   const { auctionId } = useParams();

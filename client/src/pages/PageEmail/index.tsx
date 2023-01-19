@@ -2,7 +2,7 @@ import { FormEmail } from "../../components/FormEmail";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Container } from "./style";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const PageEmail = () => {
   return (

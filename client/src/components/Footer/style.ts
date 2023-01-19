@@ -16,22 +16,32 @@ const Container = styled.footer`
   & > small {
     font-weight: 400;
     font-size: 14px;
+    line-height: 24px;
 
     color: #ffffff;
   }
 
   & > a {
-    max-width: 53px;
+    height: 50px;
     width: 100%;
+    max-width: 53px;
+
+    background-color: #212529;
+    border-radius: 4px;
+
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   @media (max-width: 1024px) {
     height: 310.34px;
     flex-direction: column;
-
-    & > small {
-      line-height: 24px;
-    }
   }
 
   @media (max-width: 375px) {

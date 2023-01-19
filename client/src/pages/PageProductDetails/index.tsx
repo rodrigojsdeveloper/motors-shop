@@ -10,7 +10,7 @@ import { IComment, IProductProps } from "../../interfaces";
 import { api } from "../../services/api";
 import { ModalBackground } from "../../components/ModalBackground";
 import { ModalPhoto } from "../../components/ModalPhoto";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const PageProductDetails = () => {
   const { productId } = useParams();

@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+
 
 const PageProductsUser = () => {
   const { userProductId } = useParams();

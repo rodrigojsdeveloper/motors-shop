@@ -1,5 +1,5 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { InputPassword } from "../InputPassword";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
@@ -62,48 +62,24 @@ const FormSignIn = () => {
         size="inputSignIn"
       />
 
-      <div>
-        <label>
-          Senha{" "}
-          {!!errors.password && (
-            <span> - {errors.password?.message as string}</span>
-          )}
-        </label>
-        <div className="inputPassword">
-          <input
-            {...register("password")}
-            placeholder="Digitar senha"
-            required={true}
-            type={typeInput ? "text" : "password"}
-            onChange={(e: any) => {
-              if (e.target.value == "") {
-                setShowOutlineShow(true);
+      <InputPassword
+        register={register}
+        label="Senha"
+        name="password"
+        placeholder="Digitar senha"
+        required={true}
+        type={typeInput ? "text" : "password"}
+        onChange={(e: any) => {
+          if (e.target.value == "") {
+            setShowOutlineShow(true);
 
-                setTypeInput(false);
-              }
-            }}
-          />
-          {showOutlineShow ? (
-            <AiOutlineEyeInvisible
-              className="biShow"
-              onClick={() => {
-                setTypeInput(true);
-
-                setShowOutlineShow(false);
-              }}
-            />
-          ) : (
-            <AiOutlineEye
-              className="biShow"
-              onClick={() => {
-                setTypeInput(false);
-
-                setShowOutlineShow(true);
-              }}
-            />
-          )}
-        </div>
-      </div>
+            setTypeInput(false);
+          }
+        }}
+        setTypeInput={setTypeInput}
+        showOutlineShow={showOutlineShow}
+        setShowOutlineShow={setShowOutlineShow}
+      />
 
       <Link to="/resetpassword">Esqueci minha senha</Link>
 
@@ -116,14 +92,7 @@ const FormSignIn = () => {
         {load ? "Entrando..." : "Entrar"}
       </Button>
       <small>Ainda não possui conta?</small>
-      <Button
-        size="buttonSizeLogin"
-        color="buttonColorWhiteHeader"
-        type="button"
-        onClick={() => navigate("/signup")}
-      >
-        Cadastrar
-      </Button>
+      <Link to="/signup">Cadastrar</Link>
     </Container>
   );
 };
