@@ -8,7 +8,7 @@ const Container = styled.div`
   max-width: 751px;
   height: 557px;
 
-  background: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   margin-top: 15px;
@@ -18,7 +18,7 @@ const Container = styled.div`
     font-size: 20px;
     line-height: 25px;
 
-    color: #212529;
+    color: var(--grey1);
     padding-bottom: 18px;
   }
 
@@ -41,7 +41,7 @@ const Container = styled.div`
       & > p {
         text-align: center;
         font-size: 25px;
-        color: #868e96;
+        color: var(--grey3);
         font-weight: bold;
         padding: 0 20px;
       }
@@ -64,7 +64,7 @@ const Container = styled.div`
         animation: ${AnimateLoading} 1s infinite;
         border: 4px solid transparent;
         border-radius: 50%;
-        border-top-color: #000;
+        border-top-color: var(--black-fixed);
         height: 50px;
         width: 50px;
       }

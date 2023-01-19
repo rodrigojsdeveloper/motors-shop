@@ -5,7 +5,7 @@ const Container = styled.div`
   max-width: 751px;
   height: 214px;
 
-  background: #fdfdfd;
+  background: var(--grey10);
   border-radius: 4px;
 
   padding: 15px 15px 15px 40px;
@@ -27,7 +27,7 @@ const Container = styled.div`
         font-size: 14px;
         line-height: 24px;
 
-        color: #212529;
+        color: var(--grey1);
         margin-left: 10px;
       }
     }

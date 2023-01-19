@@ -26,7 +26,7 @@ const Container = styled.div`
         font-size: 14px;
         line-height: 24px;
 
-        color: #212529;
+        color: var(--grey1);
         margin-left: 10px;
       }
     }
@@ -36,7 +36,7 @@ const Container = styled.div`
       height: 4px;
       border-radius: 50%;
 
-      background: #adb5bd;
+      background: var(--grey4);
 
       margin: 0 12px 0 8px;
     }
@@ -46,7 +46,7 @@ const Container = styled.div`
       font-size: 12px;
       line-height: 24px;
 
-      color: #868e96;
+      color: var(--grey3);
     }
   }
 
@@ -54,7 +54,7 @@ const Container = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: #495057;
+    color: var(--grey2);
     line-height: 1.2rem;
   }
 `;

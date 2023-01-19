@@ -5,7 +5,7 @@ const Container = styled.div`
   max-width: 1240px;
   height: 406px;
 
-  background-color: #fff;
+  background-color: var(--white-fixed);
   padding: 44px;
 
   & > div {
@@ -17,20 +17,20 @@ const Container = styled.div`
       font-weight: 600;
       font-size: 20px;
       line-height: 25px;
-      color: #212529;
+      color: var(--grey1);
 
       margin-right: 10px;
     }
 
     & > p {
-      background: #edeafd;
+      background: var(--brand4);
       border-radius: 4px;
       padding: 4px 8px;
 
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      color: #4529e6;
+      color: var(--brand1);
     }
   }
 
@@ -38,7 +38,7 @@ const Container = styled.div`
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
-    color: #495057;
+    color: var(--grey2);
 
     padding-bottom: 20px;
   }

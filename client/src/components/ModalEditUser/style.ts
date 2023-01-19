@@ -6,7 +6,7 @@ const Container = styled.div`
   max-width: 520px;
   height: 823px;
 
-  background: #ffffff;
+  background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 16px 24px;
   animation: ${animationModal} 1s;
@@ -18,7 +18,7 @@ const Container = styled.div`
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      color: #212529;
+      color: var(--grey1);
 
       padding-bottom: 10px;
     }

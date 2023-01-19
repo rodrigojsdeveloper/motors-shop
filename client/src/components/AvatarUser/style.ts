@@ -17,7 +17,7 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 14px;
 
-    color: #ffffff;
+    color: var(--white-fixed);
   }
 `;
 

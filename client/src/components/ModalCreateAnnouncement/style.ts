@@ -5,7 +5,7 @@ const Container = styled.div`
   max-width: 520px;
   height: 985px;
 
-  background: #ffffff;
+  background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 16px 24px;
 

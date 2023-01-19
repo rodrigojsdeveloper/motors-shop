@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   height: 581px;
-  background-color: #5126ea;
+  background-color: var(--brand2);
 
   margin-top: 80px;
 
@@ -23,7 +23,7 @@ const Container = styled.div`
     max-width: 748px;
     text-align: center;
 
-    color: #fdfdfd;
+    color: var(--grey10);
 
     @media (max-width: 768px) {
       font-weight: 600;
@@ -42,7 +42,7 @@ const Container = styled.div`
     padding-bottom: 40px;
     text-align: center;
 
-    color: #f8f9fa;
+    color: var(--grey9);
   }
 
   & > div {

@@ -5,7 +5,7 @@ const Container = styled.div`
   max-width: 520px;
   height: min-content;
 
-  background: #ffffff;
+  background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 20px;
 
@@ -17,7 +17,7 @@ const Container = styled.div`
       font-size: 16px;
       line-height: 20px;
 
-      color: #000;
+      color: var(--black-fixed);
       font-weight: bold;
 
       padding-bottom: 40px;
@@ -27,7 +27,7 @@ const Container = styled.div`
       font-weight: 400;
       font-size: 16px;
       line-height: 28px;
-      color: #495057;
+      color: var(--grey2);
 
       padding-bottom: 40px;
     }

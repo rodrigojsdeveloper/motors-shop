@@ -9,8 +9,8 @@ const Container = styled.header`
   height: 80px;
   padding: 0 60px;
 
-  background-color: #FDFDFD;
-  border-bottom: 2px solid #DEE2E6;
+  background-color: var(--grey10);
+  border-bottom: 2px solid var(--grey6);
 
   display: flex;
   flex-direction: row;
@@ -45,11 +45,11 @@ const Container = styled.header`
       & > a {
         font-weight: 600;
         font-size: 16px;
-        color: #495057;
+        color: var(--grey2);
         cursor: pointer;
 
         :hover {
-          color: #000;
+          color: var(--black-fixed);
           text-decoration: underline;
         }
       }
@@ -58,7 +58,7 @@ const Container = styled.header`
     & > hr {
       border: none;
       width: 2px;
-      background-color: #dEE2E6;
+      background-color: var(--grey6);
     }
 
     & > div {
@@ -73,7 +73,7 @@ const Container = styled.header`
         line-height: 28px;
         padding-left: 10px;
 
-        color: #495057;
+        color: var(--grey2);
       }
     }
   }
@@ -98,11 +98,11 @@ const Container = styled.header`
       & > a {
         font-weight: 600;
         font-size: 16px;
-        color: #495057;
+        color: var(--grey2);
         cursor: pointer;
 
         :hover {
-          color: #000;
+          color: var(--black-fixed);
           text-decoration: underline;
         }
       }
@@ -110,7 +110,7 @@ const Container = styled.header`
       & > a:nth-child(4) {
         font-weight: 600;
         font-size: 16px;
-        color: #4529e6;
+        color: var(--brand1);
 
         padding-right: 30px;
         cursor: pointer;
@@ -124,7 +124,7 @@ const Container = styled.header`
     & > hr {
       border: none;
       width: 2px;
-      background-color: #dee2e6;
+      background-color: var(--grey6);
     }
 
     & > nav:nth-child(3) {
@@ -136,7 +136,7 @@ const Container = styled.header`
       & > a:nth-child(1) {
         font-weight: 600;
         font-size: 16px;
-        color: #4529e6;
+        color: var(--brand1);
 
         padding-right: 45px;
         cursor: pointer;
@@ -162,19 +162,19 @@ const Container = styled.header`
 
         transition: 0.5s;
 
-        background-color: #fdfdfd;
-        border: 2px solid #adb5bd;
+        background-color: var(--grey10);
+        border: 2px solid var(--grey4);
 
-        color: #0b0d0d;
+        color: var(--grey0);
         padding: 12px 28px;
 
         font-weight: 600;
         font-size: 16px;
 
         :hover {
-          border-color: rgba(0, 0, 0, 0.15);
-          box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-          color: rgba(0, 0, 0, 0.65);
+          border-color: var(--shadow3);
+          box-shadow: var(--shadow1) 0 4px 12px;
+          color: var(--shadow5);
           transform: translateY(-1px);
         }
       }
@@ -195,13 +195,13 @@ const Container = styled.header`
       left: 0;
       top: 77px;
 
-      background-color: #fdfdfd;
-      filter: drop-shadow(0px 60px 40px rgba(0, 0, 0, 0.09));
+      background-color: var(--grey10);
+      filter: drop-shadow(0px 60px 40px var(--shadow2));
 
       & > hr {
         border: none;
         height: 2px;
-        background: #dee2e6;
+        background: var(--grey6);
       }
 
       & > nav {
@@ -213,12 +213,12 @@ const Container = styled.header`
         & > p {
           font-weight: 600;
           font-size: 16px;
-          color: #495057;
+          color: var(--grey2);
 
           padding: 20px 0;
 
           :focus {
-            color: #0b0d0d;
+            color: var(--grey0);
             text-decoration: underline;
           }
         }
@@ -238,10 +238,10 @@ const Container = styled.header`
 
           transition: 0.5s;
 
-          background-color: #fdfdfd;
-          border: 2px solid #adb5bd;
+          background-color: var(--grey10);
+          border: 2px solid var(--grey4);
 
-          color: #0b0d0d;
+          color: var(--grey0);
           padding: 12px 28px;
 
           font-weight: 600;
@@ -268,10 +268,10 @@ const Container = styled.header`
 
           transition: 0.5s;
 
-          background-color: #fdfdfd;
-          border: 2px solid #adb5bd;
+          background-color: var(--grey10);
+          border: 2px solid var(--grey4);
 
-          color: #0b0d0d;
+          color: var(--grey0);
           padding: 12px 28px;
 
           font-weight: 600;
@@ -287,13 +287,13 @@ const Container = styled.header`
       left: 0;
       top: 77px;
 
-      background-color: #fdfdfd;
-      filter: drop-shadow(0px 60px 40px rgba(0, 0, 0, 0.09));
+      background-color: var(--grey10);
+      filter: drop-shadow(0px 60px 40px var(--shadow2));
 
       & > hr {
         border: none;
         height: 2px;
-        background: #dee2e6;
+        background-color: var(--grey6);
       }
 
       & > nav:nth-child(2) {
@@ -309,10 +309,10 @@ const Container = styled.header`
         & > a {
           font-weight: 600;
           font-size: 16px;
-          color: #495057;
+          color: var(--grey2);
 
           :hover {
-            color: #000;
+            color: var(--black-fixed);
             text-decoration: underline;
           }
         }
@@ -330,7 +330,7 @@ const Container = styled.header`
         & > a:nth-child(1) {
           font-weight: 600;
           font-size: 16px;
-          color: #4529e6;
+          color: var(--brand1);
 
           padding-right: 45px;
           cursor: pointer;
@@ -355,10 +355,10 @@ const Container = styled.header`
 
           transition: 0.5s;
 
-          background-color: #fdfdfd;
-          border: 2px solid #adb5bd;
+          background-color: var(--grey10);
+          border: 2px solid var(--grey4);
 
-          color: #0b0d0d;
+          color: var(--grey0);
           padding: 12px 28px;
 
           font-weight: 600;
@@ -374,8 +374,8 @@ const Container = styled.header`
     margin-right: 10px;
 
     border-radius: 4px;
-    background: #f8f9fa;
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+    background-color: var(--grey9);
+    box-shadow: 0px 4px 40px -10px var(--shadow4);
 
     position: absolute;
     top: 90%;
@@ -395,11 +395,11 @@ const Container = styled.header`
 
       padding: 11.5px 0;
 
-      color: #495057;
+      color: var(--grey2);
       cursor: pointer;
 
       &:hover {
-        background: #dbe1e7;
+        background-color: var(--grey7);
         border-radius: 4px;
       }
     }
@@ -414,8 +414,8 @@ const Container = styled.header`
     margin-right: 10px;
 
     border-radius: 4px;
-    background: #f8f9fa;
-    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+    background-color: var(--grey9);
+    box-shadow: 0px 4px 40px -10px var(--shadow4);
 
     position: absolute;
     top: 90%;
@@ -435,11 +435,11 @@ const Container = styled.header`
 
       padding: 11.5px 0;
 
-      color: #495057;
+      color: var(--grey2);
       cursor: pointer;
 
       &:hover {
-        background: #dbe1e7;
+        background-color: var(--grey7);
         border-radius: 4px;
       }
     }

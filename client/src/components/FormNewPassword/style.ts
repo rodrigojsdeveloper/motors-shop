@@ -4,7 +4,7 @@ const Container = styled.form`
   width: 100%;
   max-width: 412px;
 
-  background-color: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   padding: 44px 50px;
@@ -31,7 +31,7 @@ const Container = styled.form`
       line-height: 25px;
 
       span {
-        color: #c20707;
+        color: var(--alert1);
       }
     }
 
@@ -47,7 +47,7 @@ const Container = styled.form`
       margin-right: 10px;
       align-items: center;
 
-      border: 2px solid #e9ecef;
+      border: 2px solid var(--grey7);
       border-radius: 4px;
 
       padding-right: 15px;
@@ -55,7 +55,7 @@ const Container = styled.form`
       transition: 0.5s;
 
       &:hover {
-        border-color: #000;
+        border-color: var(--black-fixed);
         .biShow {
           display: block;
         }
@@ -80,17 +80,17 @@ const Container = styled.form`
         }
 
         &::placeholder {
-          color: #868e96;
+          color: var(--grey3);
         }
       }
 
       .biShow {
-        color: #868e96;
+        color: var(--grey3);
         display: none;
         &:hover {
           cursor: pointer;
 
-          color: #000;
+          color: var(--black-fixed);
           transition: 1s;
         }
       }

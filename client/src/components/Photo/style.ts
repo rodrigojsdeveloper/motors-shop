@@ -5,7 +5,7 @@ const Container = styled.section`
   max-width: 752px;
   height: 355px;
 
-  background: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   display: flex;

@@ -4,7 +4,7 @@ const Container = styled.footer`
   width: 100%;
   height: 140px;
 
-  background-color: #0b0d0d;
+  background-color: var(--grey1);
 
   display: flex;
   flex-direction: row;
@@ -18,7 +18,7 @@ const Container = styled.footer`
     font-size: 14px;
     line-height: 24px;
 
-    color: #ffffff;
+    color: var(--white-fixed);
   }
 
   & > a {
@@ -26,10 +26,10 @@ const Container = styled.footer`
     width: 100%;
     max-width: 53px;
 
-    background-color: #212529;
+    background-color: var(--grey1);
     border-radius: 4px;
 
-    color: #ffffff;
+    color: var(--white-fixed);
     font-weight: 900;
     font-size: 16px;
     line-height: 18px;

@@ -15,19 +15,21 @@ export default createGlobalStyle`
 		--brand2: #5126EA;
 		--brand3: #B0A6F0;
 		--brand4: #EDEAFD;
+		--brand5: #7f6fd9;
 
 		// Grey Scale
+		--black-fixed: #000000;
 		--grey0: #0B0D0D;
-		--grey1: #212529:
-		--grey2: #495057:
-		--grey3: #868E96:
-		--grey4: #ADB5BD:
-		--grey5: #CED4DA:
-		--grey6: #DEE2E6:
-		--grey7: #E9ECEF:
-		--grey8: #F1F3F5:
-		--grey9: #F8F9FA:
-		--grey10: #FDFDFD:
+		--grey1: #212529;
+		--grey2: #495057;
+		--grey3: #868E96;
+		--grey4: #ADB5BD;
+		--grey5: #CED4DA;
+		--grey6: #DEE2E6;
+		--grey7: #E9ECEF;
+		--grey8: #F1F3F5;
+		--grey9: #F8F9FA;
+		--grey10: #FDFDFD;
 		--white-fixed: #FFFFFF;
 
 		// FeedBack
@@ -51,6 +53,16 @@ export default createGlobalStyle`
 		--random10: #6100FF;
 		--random11: #5700E3;
 		--random12: #30007D;
+
+		// Shadow
+		--shadow1: rgba(0, 0, 0, 0.1);
+		--shadow2: rgba(0, 0, 0, 0.09);
+		--shadow3: rgba(0, 0, 0, 0.15);
+		--shadow4: rgba(0, 0, 0, 0.25);
+		--shadow5: rgba(0, 0, 0, 0.65);
+		--shadow6: rgba(0, 0, 0, 1);
+		--shadow7: rgba(255, 255, 255, 0.1);
+		--shadow8: rgba(0, 0, 0, 0.5);
 	}
 
 	body {

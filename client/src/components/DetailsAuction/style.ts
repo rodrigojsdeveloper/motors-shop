@@ -6,7 +6,7 @@ const Container = styled.section`
   height: 239.39px;
   
   padding: 28px 44px;
-  background: #fdfdfd;
+  background: var(--grey10);
   border-radius: 4px;
 
   margin-top: 20px;
@@ -19,7 +19,7 @@ const Container = styled.section`
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
-    color: #212529;
+    color: var(--grey1);
   }
 
   & > div {
@@ -41,13 +41,13 @@ const Container = styled.section`
         height: 32px;
 
         padding: 4px 8px;
-        background: #edeafd;
+        background: var(--brand4);
         border-radius: 4px;
 
         font-weight: 500;
         font-size: 14px;
         line-height: 24px;
-        color: #4529e6;
+        color: var(--brand1);
       }
     }
 
@@ -56,7 +56,7 @@ const Container = styled.section`
       font-size: 16px;
       line-height: 20px;
 
-      color: #212529;
+      color: var(--grey1);
       font-weight: bold;
     }
   }

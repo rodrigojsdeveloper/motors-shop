@@ -4,7 +4,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 751px;
 
-  background: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   padding: 44px 48px;
@@ -29,7 +29,7 @@ const Container = styled.div`
       font-size: 14px;
       line-height: 24px;
 
-      color: #212529;
+      color: var(--grey1);
       margin-left: 8px;
     }
   }
@@ -44,14 +44,14 @@ const Container = styled.div`
     max-width: 672px;
     height: 128px;
 
-    border: 2px solid #e9ecef;
+    border: 2px solid var(--grey7);
     border-radius: 4px;
 
     padding: 10px;
     transition: 0.5s;
 
     &:hover {
-      border-color: #000;
+      border-color: var(--black-fixed);
     }
 
     & > textarea {
@@ -69,7 +69,7 @@ const Container = styled.div`
         font-weight: 400;
         font-size: 16px;
         line-height: 0px;
-        color: #868e96;
+        color: var(--grey3);
 
         padding: 10px 10px 0 0;
       }
@@ -93,7 +93,7 @@ const Container = styled.div`
       padding: 0;
 
       & > textarea {
-        border: 2px solid #e9ecef;
+        border: 2px solid var(--grey7);
         border-radius: 4px;
 
         width: 100%;
@@ -103,13 +103,13 @@ const Container = styled.div`
         padding: 15px 0 15px 15px;
 
         &:hover {
-          border-color: #000;
+          border-color: var(--black-fixed);
         }
         &::placeholder {
           font-weight: 400;
           font-size: 16px;
           line-height: 0px;
-          color: #868e96;
+          color: var(--grey3);
 
           padding: 10px 10px 0 0;
         }
@@ -128,12 +128,12 @@ const Container = styled.div`
     margin-top: 15px;
 
     & > p {
-      color: #868e96;
+      color: var(--grey3);
       font-weight: 500;
       font-size: 12px;
       line-height: 24px;
 
-      background: #e9ecef;
+      background-color: var(--grey7);
       border-radius: 24px;
 
       cursor: pointer;
@@ -143,7 +143,7 @@ const Container = styled.div`
       transition: 0.5s;
 
       &:hover {
-        color: #000;
+        color: var(--black-fixed);
       }
     }
 

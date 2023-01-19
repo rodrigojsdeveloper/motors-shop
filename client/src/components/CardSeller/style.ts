@@ -12,7 +12,7 @@ const Container = styled.aside`
   padding: 36px 44px;
   border-radius: 4px;
 
-  background: #fff;
+  background-color: var(--white-fixed);
 
   & > div {
     width: 100%;
@@ -41,7 +41,7 @@ const Container = styled.aside`
 
       padding: 30px 0 15px 0;
 
-      color: #212529;
+      color: var(--grey1);
     }
 
     & > p {
@@ -49,7 +49,7 @@ const Container = styled.aside`
       font-size: 16px;
       line-height: 28px;
 
-      color: #495057;
+      color: var(--grey2);
       padding-bottom: 15px;
     }
 

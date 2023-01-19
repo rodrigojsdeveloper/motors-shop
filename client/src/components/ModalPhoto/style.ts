@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 520px;
   height: 354px;
-  background: #ffffff;
+  background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 20px;
 
@@ -20,7 +20,7 @@ const Container = styled.div`
     height: 255px;
     padding: 27px 7px;
 
-    background: #e9ecef;
+    background: var(--grey7);
     border-radius: 4px;
     object-fit: contain;
   }

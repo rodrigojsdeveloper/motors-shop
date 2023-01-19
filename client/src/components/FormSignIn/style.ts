@@ -5,7 +5,7 @@ const Container = styled.form`
   max-width: 412px;
   height: 542px;
 
-  background-color: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   padding: 44px 48px;
@@ -23,7 +23,7 @@ const Container = styled.form`
 
   & > a,
   & > small {
-    color: #495057;
+    color: var(--grey2);
     font-weight: 500;
     font-size: 14px;
   }
@@ -65,10 +65,10 @@ const Container = styled.form`
     height: 48px;
     max-width: 315px;
     width: 100%;
-    background-color: #fdfdfd;
-    border: 2px solid #adb5bd;
+    background-color: var(--grey10);
+    border: 2px solid var(--grey4);
 
-    color: #0b0d0d;
+    color: var(--grey0);
     padding: 12px 28px;
 
     font-weight: 600;
@@ -76,9 +76,9 @@ const Container = styled.form`
     text-decoration: none;
 
     :hover {
-      border-color: rgba(0, 0, 0, 0.15);
-      box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-      color: rgba(0, 0, 0, 0.65);
+      border-color: var(--shadow3);
+      box-shadow: var(--shadow1) 0 4px 12px;
+      color: var(--shadow5);
       transform: translateY(-1px);
     }
   }

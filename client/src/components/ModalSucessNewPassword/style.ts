@@ -6,7 +6,7 @@ const Container = styled.div`
   max-width: 520px;
   height: fit-content;
 
-  background: #ffffff;
+  background-color: var(--white-fixed);
   border-radius: 8px;
   animation: ${animationModal} 1s;
   padding: 16px 24px;
@@ -19,7 +19,7 @@ const Container = styled.div`
       font-weight: 500;
       font-size: 16px;
       line-height: 20px;
-      color: #212529;
+      color: var(--grey1);
 
       padding-bottom: 30px;
       font-weight: bold;
@@ -29,7 +29,7 @@ const Container = styled.div`
       font-weight: 400;
       font-size: 16px;
       line-height: 28px;
-      color: #495057;
+      color: var(--grey2);
 
       width: 100%;
       max-width: 462px;

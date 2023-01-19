@@ -11,7 +11,7 @@ const Container = styled.aside`
   max-width: 440px;
   height: 377px;
 
-  background: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
   margin-top: 15px;
 
@@ -20,7 +20,7 @@ const Container = styled.aside`
     font-size: 20px;
     line-height: 25px;
 
-    color: #212529;
+    color: var(--grey1);
     padding-bottom: 20px;
   }
 
@@ -46,7 +46,7 @@ const Container = styled.aside`
         height: 108px;
         padding: 27px 7px;
 
-        background: #e9ecef;
+        background-color: var(--grey7);
         border-radius: 4px;
 
         & > img {

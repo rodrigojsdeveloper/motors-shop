@@ -4,7 +4,7 @@ const Container = styled.form`
   width: 100%;
   max-width: 412px;
 
-  background-color: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   padding: 44px 50px;

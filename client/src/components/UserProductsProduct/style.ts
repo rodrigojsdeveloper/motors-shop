@@ -10,7 +10,7 @@ const Container = styled.div`
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      color: #ffffff;
+      color: var(--white-fixed);
 
       margin: 10px;
       display: flex;
@@ -25,20 +25,20 @@ const Container = styled.div`
       width: 51px;
       height: 24px;
       padding: 0px 8px;
-      background: #4529e6;
+      background-color: var(--brand1);
     }
 
     .deactive {
       width: 61px;
       height: 24px;
       padding: 0px 8px;
-      background: #adb5bd;
+      background-color: var(--grey4);
     }
 
     & > img {
       width: 312px;
       height: 152px;
-      background: #e9ecef;
+      background-color: var(--grey7);
       object-fit: contain;
     }
   }
@@ -54,7 +54,7 @@ const Container = styled.div`
       font-weight: 600;
       font-size: 16px;
       line-height: 20px;
-      color: #212529;
+      color: var(--grey1);
 
       display: -webkit-box;
       -webkit-line-clamp: 1;
@@ -88,7 +88,7 @@ const Container = styled.div`
         font-weight: 500;
         font-size: 14px;
         line-height: 24px;
-        color: #495057;
+        color: var(--grey2);
         margin-left: 8px;
       }
     }
@@ -97,7 +97,7 @@ const Container = styled.div`
       font-weight: 500;
       font-size: 16px;
       line-height: 20px;
-      color: #212529;
+      color: var(--grey1);
     }
 
     .divKmYearPrice {
@@ -112,7 +112,7 @@ const Container = styled.div`
       }
 
       p {
-        background: #edeafd;
+        background: var(--brand4);
         border-radius: 4px;
         padding: 4px 8px;
         height: 32px;
@@ -120,7 +120,7 @@ const Container = styled.div`
         font-weight: 500;
         font-size: 14px;
         line-height: 24px;
-        color: #4529e6;
+        color: var(--brand1);
 
         margin-right: 5px;
       }

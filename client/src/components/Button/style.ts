@@ -140,162 +140,162 @@ const Container = styled.button<IButtonStyledProps>`
     switch (color) {
       case "buttonColorBlueLogin":
         return css`
-          background-color: #4529e6;
-          border: 1.5px solid #4529e6;
+          background-color: var(--brand1);
+          border: 1.5px solid var(--brand1);
 
-          color: #ffffff;
+          color: var(--white-fixed);
           padding: 12px 28px;
 
           :hover {
-            background-color: #7f6fd9;
-            border-color: #7f6fd9;
+            background-color: var(--brand5);
+            border-color: var(--brand5);
           }
         `;
 
       case "buttonColorWhiteHeader":
         return css`
-          background-color: #fdfdfd;
-          border: 2px solid #adb5bd;
+          background-color: var(--grey10);
+          border: 2px solid var(--grey4);
 
-          color: #0b0d0d;
+          color: var(--grey0);
           padding: 12px 28px;
 
           font-weight: 600;
           font-size: 16px;
 
           :hover {
-            border-color: rgba(0, 0, 0, 0.15);
-            box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-            color: rgba(0, 0, 0, 0.65);
+            border-color: var(--shadow3);
+            box-shadow: var(--shadow1) 0 4px 12px;
+            color: var(--shadow5);
             transform: translateY(-1px);
           }
         `;
 
       case "buttonColorWhiteSignUp":
         return css`
-          background-color: #fdfdfd;
-          border: 1.5px solid #adb5bd;
+          background-color: var(--grey10);
+          border: 1.5px solid var(--grey4);
 
-          color: #0b0d0d;
+          color: var(--grey0);
           padding: 12px 28px;
 
           :hover {
-            border-color: #4529e6;
-            background-color: #4529e6;
+            border-color: var(--brand1);
+            background-color: var(--brand1);
 
-            color: #fdfdfd;
+            color: var(--grey10);
           }
         `;
 
       case "buttonColorGrayFooter":
         return css`
-          background-color: #212529;
+          background-color: var(--grey1);
 
-          color: #ffffff;
+          color: var(--white-fixed);
           font-weight: 900;
         `;
 
       case "buttonColorBlueBanner":
         return css`
-          border: 1.5px solid #fdfdfd;
+          border: 1.5px solid var(--grey10);
           background-color: transparent;
           padding: 12px 28px;
 
-          color: #fdfdfd;
+          color: var(--grey10);
 
           :hover {
-            background-color: #fdfdfd;
-            color: #5126ea;
+            background-color: var(--grey10);
+            color: var(--brand2);
           }
         `;
 
       case "buttonColorBlackProductDetails":
         return css`
-          background-color: #0b0d0d;
-          border: 1.5px solid #0b0d0d;
+          background-color: var(--grey0);
+          border: 1.5px solid var(--grey0);
 
           padding: 12px 28px;
           font-weight: 600;
           font-size: 15px;
-          color: #fff;
+          color: var(--white-fixed);
         `;
 
       case "buttonColorGrayModalEditAddress":
         return css`
-          background-color: #dee2e6;
-          border: 1.5px solid #dee2e6;
+          background-color: var(--grey6);
+          border: 1.5px solid var(--grey6);
 
           padding: 12px 28px;
           font-weight: 600;
           font-size: 16px;
-          color: #495057;
+          color: var(--grey2);
 
           :hover {
-            background-color: #edf4fb;
+            background-color: var(--brand4);
           }
         `;
 
       case "buttonColorWhiteUserDetails":
         return css`
-          background-color: #fdfdfd;
-          border: 1.5px solid #4529e6;
+          background-color: var(--grey10);
+          border: 1.5px solid var(--brand1);
 
           padding: 12px 28px;
           font-weight: 600;
           font-size: 16px;
-          color: #4529e6;
+          color: var(--brand1);
 
           :hover {
-            background-color: #4529e6;
-            color: #fdfdfd;
+            background-color: var(--brand1);
+            color: var(--grey10);
           }
         `;
 
       case "buttonColorWhiteEditAndShowProduct":
         return css`
           padding: 12px 20px;
-          border: 1.5px solid #212529;
+          border: 1.5px solid var(--grey1);
 
           font-weight: 600;
           font-size: 14px;
-          color: #212529;
+          color: var(--grey1);
 
           background-color: transparent;
 
           :hover {
-            background-color: #212529;
-            color: #fff;
+            background-color: var(--grey1);
+            color: var(--white-fixed);
           }
         `;
 
       case "buttonColorRedModalDeleteProduct":
         return css`
           padding: 12px 15px;
-          background-color: #fdd8d8;
-          border: 1.5px solid #fdd8d8;
+          background-color: var(--alert2);
+          border: 1.5px solid var(--alert2);
 
           font-weight: 600;
           font-size: 16px;
-          color: #cd2b31;
+          color: var(--alert1);
 
           :hover {
-            border-color: #cd2b31;
+            border-color: var(--alert1);
           }
         `;
 
       case "buttonColorGraySellBid":
         return css`
           padding: 4px 8px;
-          background-color: #edeafd;
+          background-color: var(--brand4);
           border-radius: 4px;
 
           font-weight: 500;
           font-size: 14px;
           line-height: 24px;
-          color: #4529e6;
+          color: var(--brand1);
 
           :hover {
-            background-color: #dee2e6;
+            background-color: var(--grey6);
           }
         `;
 

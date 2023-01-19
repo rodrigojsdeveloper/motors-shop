@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  color: #fdfdfd;
+  color: var(--grey10);
 
   width: 735px;
   height: 388px;
@@ -19,7 +19,7 @@ const Container = styled.div`
       height: 326px;
       object-fit: contain;
 
-      background-color: #e9ecef;
+      background-color: var(--grey7);
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
     }
@@ -33,14 +33,14 @@ const Container = styled.div`
       position: absolute;
       top: 0;
 
-      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 1));
+      background-color: linear-gradient(var(--shadow7), var(--shadow6));
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 25px 40px;
 
       .divTimeAuction {
-        background: #ffffff;
+        background-color: var(--white-fixed);
         border-radius: 32px;
         padding: 5px;
         width: 123px;
@@ -54,7 +54,7 @@ const Container = styled.div`
         time {
           font-weight: 500;
           font-size: 16px;
-          color: #212529;
+          color: var(--grey1);
         }
       }
 
@@ -72,7 +72,7 @@ const Container = styled.div`
         & > p {
           font-weight: 400;
           font-size: 16px;
-          color: #ced4da;
+          color: var(--grey5);
 
           padding-bottom: 20px;
         }
@@ -90,9 +90,9 @@ const Container = styled.div`
             & > p {
               font-weight: 500;
               font-size: 14px;
-              color: #4529e6;
+              color: var(--brand1);
 
-              background: #edeafd;
+              background-color: var(--brand4);
               border-radius: 4px;
               padding: 4px 8px;
 
@@ -115,7 +115,7 @@ const Container = styled.div`
     align-items: center;
     padding: 15px;
 
-    background: #4529e6;
+    background-color: var(--brand1);
     height: 62px;
     padding: 12px 36px;
     border-bottom-right-radius: 4px;

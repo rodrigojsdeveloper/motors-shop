@@ -4,7 +4,7 @@ const Container = styled.section`
   width: 100%;
   max-width: 1240px;
 
-  background: #fdfdfd;
+  background-color: var(--grey10);
   border-radius: 4px;
 
   padding: 36px 44px;
@@ -29,7 +29,7 @@ const Container = styled.section`
       font-weight: 600;
       font-size: 20px;
       line-height: 25px;
-      color: #212529;
+      color: var(--grey1);
 
       margin-right: 15px;
     }
@@ -37,13 +37,13 @@ const Container = styled.section`
     & > p {
       padding: 4px 8px;
 
-      background: #edeafd;
+      background-color: var(--brand4);
       border-radius: 4px;
 
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      color: #4529e6;
+      color: var(--brand1);
     }
   }
 
@@ -51,7 +51,7 @@ const Container = styled.section`
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
-    color: #495057;
+    color: var(--grey2);
 
     margin-bottom: 50px;
   }

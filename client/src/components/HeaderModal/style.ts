@@ -13,22 +13,13 @@ const Container = styled.header`
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    color: #212529;
+    color: var(--grey1);
 
     font-weight: bold;
   }
 
   & > img {
     cursor: pointer;
-
-    :hover {
-      padding: 2.5px;
-
-      border-radius: 8px;
-      border-color: rgba(0, 0, 0, 0.15);
-      box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-      color: rgba(0, 0, 0, 0.65);
-    }
   }
 `;
 

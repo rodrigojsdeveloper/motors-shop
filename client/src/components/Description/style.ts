@@ -11,14 +11,14 @@ const Container = styled.section`
   height: 239.39px;
 
   padding: 36px 44px;
-  background: #fdfdfd;
+  background-color: var(--white-fixed);
   border-radius: 4px;
 
   & > h4 {
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
-    color: #212529;
+    color: var(--grey1);
 
     padding-bottom: 25px;
   }
@@ -31,7 +31,7 @@ const Container = styled.section`
       font-weight: 400;
       font-size: 16px;
       line-height: 28px;
-      color: #495057;
+      color: var(--grey2);
 
       overflow-y: auto;
     }
