@@ -1,6 +1,7 @@
 import { IBid } from "../../interfaces";
 import { Container } from "./style";
 import { Bid } from "../Bid";
+import { EmptyMessage } from "../EmptyMessage";
 
 interface IListBids {
   bids: IBid[];
@@ -20,9 +21,7 @@ const ListBids = ({ bids, loaded }: IListBids) => {
         ) : bids.length > 0 ? (
           bids.map((bid) => <Bid bid={bid} key={bid.id} />)
         ) : (
-          <section>
-            <p>Não há comentários</p>
-          </section>
+          <EmptyMessage message="Não há lances" />
         )}
       </menu>
     </Container>

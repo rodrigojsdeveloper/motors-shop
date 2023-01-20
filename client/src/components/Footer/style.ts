@@ -26,7 +26,7 @@ const Container = styled.footer`
     width: 100%;
     max-width: 53px;
 
-    background-color: var(--grey1);
+    background-color: var(--grey2);
     border-radius: 4px;
 
     color: var(--white-fixed);

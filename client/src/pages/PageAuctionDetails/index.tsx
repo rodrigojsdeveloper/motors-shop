@@ -83,7 +83,7 @@ const PageAuctionDetails = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title={`${auctionRequest.product.title} | Motors shop`} />
+      <Helmet title={`${auctionRequest.product?.title} | Motors shop`} />
       {openModalPhoto && (
         <ModalBackground>
           <ModalPhoto

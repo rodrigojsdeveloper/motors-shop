@@ -9,6 +9,11 @@ const Container = styled.div`
     height: 152px;
     background-color: var(--grey7);
     object-fit: contain;
+
+    &:hover {
+      border: 2px solid var(--brand1);
+      cursor: pointer;
+    }
   }
 
   & > div {

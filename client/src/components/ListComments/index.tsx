@@ -1,4 +1,5 @@
 import { IComment } from "../../interfaces";
+import { EmptyMessage } from "../EmptyMessage";
 import { Comment } from "../Comment";
 import { Container } from "./style";
 
@@ -22,9 +23,7 @@ const ListComments = ({ comments, loaded }: IListComments) => {
             <Comment comment={comment} key={comment.id} />
           ))
         ) : (
-          <section>
-            <p>Não há comentários</p>
-          </section>
+          <EmptyMessage message="Não há comentários" />
         )}
       </menu>
     </Container>

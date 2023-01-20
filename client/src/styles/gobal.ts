@@ -15,7 +15,7 @@ export default createGlobalStyle`
 		--brand2: #5126EA;
 		--brand3: #B0A6F0;
 		--brand4: #EDEAFD;
-		--brand5: #7f6fd9;
+		--brand5: #B0A6F0;
 
 		// Grey Scale
 		--black-fixed: #000000;

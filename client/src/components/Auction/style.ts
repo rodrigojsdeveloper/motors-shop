@@ -33,7 +33,7 @@ const Container = styled.div`
       position: absolute;
       top: 0;
 
-      background-color: linear-gradient(180deg, var(--shadow4) 0%, var(--black-fixed) 100%);
+      background: linear-gradient(180deg, var(--shadow4) 0%, var(--black-fixed) 100%);
       display: flex;
       flex-direction: column;
       justify-content: space-between;

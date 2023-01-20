@@ -1,5 +1,6 @@
-import { AdvertiserProduct } from "../AdvertiserProduct";
 import { IListProducts, IProductProps } from "../../interfaces";
+import { AdvertiserProduct } from "../AdvertiserProduct";
+import { EmptyMessage } from "../EmptyMessage";
 import { Container } from "./style";
 
 const AdvertiserMotorcyclesList = ({ products }: IListProducts) => {
@@ -8,9 +9,13 @@ const AdvertiserMotorcyclesList = ({ products }: IListProducts) => {
       <h2>Motos</h2>
 
       <menu>
-        {products.map((product: IProductProps) => (
-          <AdvertiserProduct product={product} />
-        ))}
+        {products.length > 0 ? (
+          products.map((product: IProductProps) => (
+            <AdvertiserProduct product={product} />
+          ))
+        ) : (
+          <EmptyMessage message="Não há motos" />
+        )}
       </menu>
     </Container>
   );
