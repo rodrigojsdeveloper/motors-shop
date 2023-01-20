@@ -55,6 +55,11 @@ const PageAdvertiser = () => {
         .catch((error) => console.error(error));
     });
 
+  const listCarsFunc = (car: IProductProps) => setCars([car, ...cars]);
+
+  const listMotorcyclesFunc = (motorcycle: IProductProps) =>
+    setCars([motorcycle, ...motorcycles]);
+
   return (
     <HelmetProvider>
       <Helmet title="Meus Anúncios - Motors shop" />
@@ -64,7 +69,7 @@ const PageAdvertiser = () => {
         <div className="divBlue"></div>
         <div className="divWhite">
           <div>
-            <ShowAdvertiser user={user} />
+            <ShowAdvertiser listCarsFunc={ listCarsFunc } listMotorcyclesFunc={ listMotorcyclesFunc } user={user} />
             <AdvertiserAuctionsList auctions={auctions} />
             <AdvertiserCarsList products={cars} />
             <AdvertiserMotorcyclesList products={motorcycles} />

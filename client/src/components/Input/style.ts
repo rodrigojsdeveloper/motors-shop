@@ -32,13 +32,12 @@ const InputContainer = styled.input<InputStyledProps>`
 
   &:hover {
     background-color: var(--grey8);
-    border-color: var(--grey8);
   }
 
   &::placeholder {
     color: var(--grey3);
   }
-  
+
   &:focus {
     background-color: var(--white-fixed);
     border-color: var(--brand2);

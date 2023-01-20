@@ -20,16 +20,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
   const [buyerOrAdvertiser, setBuyerOrAdvertiser] = useState<boolean>(true);
 
-  const [typeInput, setTypeInput] = useState<boolean>(false);
-
-  const [showOutlineShow, setShowOutlineShow] = useState<boolean>(true);
-
-  const [typeInputRepeatPassword, setTypeInputRepeatPassword] =
-    useState<boolean>(false);
-
-  const [showOutlineShowRepeatPassword, setShowOutlineShowRepeatPassword] =
-    useState<boolean>(true);
-
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
@@ -277,8 +267,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           }}
           style={
             changeColorBuyer
-              ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
-              : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
+              ? { background: "#4529E6", color: "#FFF", borderColor: "#4529E6", borderWidth: 2 }
+              : { background: "#FFF", color: "#0B0D0D", borderColor: "#ADB5BD", borderWidth: 2 }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"
@@ -295,8 +285,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           }}
           style={
             changeColorAdvertiser
-              ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
-              : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
+              ? { background: "#4529E6", color: "#FFF", borderColor: "#4529E6", borderWidth: 2 }
+              : { background: "#FFF", color: "#0B0D0D", borderColor: "#ADB5BD", borderWidth: 2 }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"

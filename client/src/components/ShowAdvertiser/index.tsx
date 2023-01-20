@@ -1,6 +1,6 @@
 import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
 import { ModalBackground } from "../ModalBackground";
-import { IUserProps } from "../../interfaces";
+import { IProductProps, IUserProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
 import { Button } from "../Button";
@@ -8,9 +8,11 @@ import { useState } from "react";
 
 interface IShowAdvertiser {
   user: IUserProps;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
+  listCarsFunc: (car: IProductProps) => void;
 }
 
-const ShowAdvertiser = ({ user }: IShowAdvertiser) => {
+const ShowAdvertiser = ({ user, listCarsFunc, listMotorcyclesFunc }: IShowAdvertiser) => {
   const [openModalCreateAnnouncement, setOpenModalCreateAnnouncement] =
     useState<boolean>(false);
 
@@ -20,6 +22,8 @@ const ShowAdvertiser = ({ user }: IShowAdvertiser) => {
         <ModalBackground>
           <ModalCreateAnnouncement
             setCloseModalCreateAnnouncement={setOpenModalCreateAnnouncement}
+            listMotorcyclesFunc={ listMotorcyclesFunc }
+            listCarsFunc={ listCarsFunc }
           />
         </ModalBackground>
       )}

@@ -7,7 +7,6 @@ interface IProduct {
 }
 
 const UserProductsProduct = ({ product }: IProduct) => {
-  console.log(product);
   return (
     <Container>
       <div>
@@ -39,7 +38,11 @@ const UserProductsProduct = ({ product }: IProduct) => {
             <p>{product.kilometers} KM</p>
           </div>
 
-          <span>{product.price}</span>
+          <span>
+            {product.price.split(" ").length > 0
+              ? product.price
+              : `R$ ${product.price}`}
+          </span>
         </div>
       </div>
     </Container>

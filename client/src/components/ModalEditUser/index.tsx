@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { IUserProps } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -8,7 +9,6 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
-import { IUserProps } from "../../interfaces";
 
 interface IModalEditUser {
   setOpenModalEditUser: React.Dispatch<React.SetStateAction<boolean>>;

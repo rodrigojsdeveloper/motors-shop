@@ -38,10 +38,18 @@ const Container = styled.div`
     }
 
     &:hover {
-      border-color: var(--black-fixed);
+      background-color: var(--grey8);
     }
 
-    &:focus::-webkit-input-placeholder,
+    &:focus {
+      border-color: var(--brand2);
+      background-color: var(--white-fixed);
+    }
+
+    &:focus::-webkit-input-placeholder {
+      color: transparent;
+    }
+
     &:focus::-moz-placeholder {
       color: transparent;
     }

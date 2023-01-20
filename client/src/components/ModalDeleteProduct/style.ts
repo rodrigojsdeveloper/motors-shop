@@ -1,3 +1,4 @@
+import { animationModal } from "../../animations";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,6 +9,7 @@ const Container = styled.div`
   background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 20px;
+  animation: ${animationModal} 1s;
 
   & > div {
     padding: 20px 0;

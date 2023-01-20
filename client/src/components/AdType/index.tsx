@@ -1,19 +1,16 @@
-import { IProductProps } from "../../interfaces";
 import { useState } from "react";
 import { Button } from "../Button";
 import { Container } from "./style";
 
 interface IAdType {
-  product: IProductProps;
+  setBuyerOrAdvertiser: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AdType = ({ product }: IAdType) => {
+const AdType = ({ setBuyerOrAdvertiser }: IAdType) => {
   const [changeColorBuyer, setChangeColorBuyer] = useState<boolean>(true);
 
   const [changeColorAdvertiser, setChangeColorAdvertiser] =
     useState<boolean>(false);
-
-  const [buyerOrAdvertiser, setBuyerOrAdvertiser] = useState<boolean>(true);
 
   return (
     <Container>
@@ -21,12 +18,6 @@ const AdType = ({ product }: IAdType) => {
       <div>
         <Button
           onClick={() => {
-            if (product?.ad_type == "sale") {
-              setChangeColorBuyer(true);
-              setChangeColorAdvertiser(false);
-              setBuyerOrAdvertiser(true);
-            }
-
             setChangeColorBuyer(true);
             setChangeColorAdvertiser(false);
             setBuyerOrAdvertiser(true);
@@ -45,12 +36,6 @@ const AdType = ({ product }: IAdType) => {
         </Button>
         <Button
           onClick={() => {
-            if (product?.ad_type == "auction") {
-              setChangeColorBuyer(false);
-              setChangeColorAdvertiser(true);
-              setBuyerOrAdvertiser(false);
-            }
-
             setChangeColorBuyer(false);
             setChangeColorAdvertiser(true);
             setBuyerOrAdvertiser(false);

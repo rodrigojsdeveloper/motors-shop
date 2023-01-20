@@ -29,6 +29,8 @@ const ModalEditProduct = ({
 
   const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
 
+  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] = useState<string>("")
+
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
@@ -127,9 +129,9 @@ const ModalEditProduct = ({
             value={product?.price}
           />
         </div>
-        <TextArea value={product?.description} />
+        <TextArea value={product?.description} register={ register } name="description" error={ errors.description?.message } />
 
-        <TypeOfVehicle product={product} />
+        <TypeOfVehicle setBuyerOrAdvertiserVehicleType={ setBuyerOrAdvertiserVehicleType } />
         <div>
           <h4>Publicado</h4>
           <div className="divButtons">

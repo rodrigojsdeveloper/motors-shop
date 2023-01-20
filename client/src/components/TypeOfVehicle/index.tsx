@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import { Container } from "./style";
 
 interface ITypeOfVehicle {
-  setBuyerOrAdvertiserVehicleType: React.Dispatch<React.SetStateAction<string>>;
+  setBuyerOrAdvertiserVehicleType: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
@@ -23,7 +23,7 @@ const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
           onClick={() => {
             setChangeColorBuyerVehicleType(true);
             setChangeColorAdvertiserVehicleType(false);
-            setBuyerOrAdvertiserVehicleType("car");
+            setBuyerOrAdvertiserVehicleType(true);
           }}
           style={
             changeColorBuyerVehicleType
@@ -41,7 +41,7 @@ const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
           onClick={() => {
             setChangeColorBuyerVehicleType(false);
             setChangeColorAdvertiserVehicleType(true);
-            setBuyerOrAdvertiserVehicleType("motorbike");
+            setBuyerOrAdvertiserVehicleType(false);
           }}
           style={
             changeColorAdvertiserVehicleType

@@ -8,8 +8,8 @@ const Container = styled.div`
 
   background-color: var(--white-fixed);
   border-radius: 8px;
-  animation: ${animationModal} 1s;
   padding: 16px 24px;
+  animation: ${animationModal} 1s;
 
   & > div {
     text-align: start;

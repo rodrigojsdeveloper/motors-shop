@@ -144,10 +144,15 @@ const Container = styled.div`
     border-bottom-left-radius: 4px;
 
     cursor: pointer;
+    transition: .5s;
 
     p {
       font-weight: 600;
       font-size: 16px;
+    }
+
+    &:hover {
+      background-color: var(--brand5);
     }
   }
 

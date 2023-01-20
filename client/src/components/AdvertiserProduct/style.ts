@@ -48,16 +48,19 @@ const Container = styled.div`
     }
 
     span {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 16px;
       line-height: 20px;
       color: var(grey1);
+
+      letter-spacing: .5px;
     }
 
     .divKmYearPrice {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
 
       div {
         display: flex;

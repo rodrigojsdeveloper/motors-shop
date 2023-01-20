@@ -1,3 +1,4 @@
+import { animationModal } from "../../animations";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,6 +9,8 @@ const Container = styled.div`
   background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 16px 24px;
+  animation: ${animationModal} 1s;
+
   & > form {
     h4 {
       font-weight: 500;

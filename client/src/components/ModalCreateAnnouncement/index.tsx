@@ -10,20 +10,29 @@ import { AdType } from "../AdType";
 import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
+import { api } from "../../services/api";
 
 interface IModalCreateAnnouncement {
   setCloseModalCreateAnnouncement: React.Dispatch<
     React.SetStateAction<boolean>
   >;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
+  listCarsFunc: (car: IProductProps) => void;
 }
 
 const ModalCreateAnnouncement = ({
   setCloseModalCreateAnnouncement,
+  listMotorcyclesFunc,
+  listCarsFunc,
 }: IModalCreateAnnouncement) => {
-  const [product, setProduct] = useState<IProductProps>({} as IProductProps);
+  const token = sessionStorage.getItem("Motors shop: token");
 
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
-    useState<string>("");
+    useState<boolean>(true);
+    
+  const [buyerOrAdvertiser, setBuyerOrAdvertiser] = useState<boolean>(true);
+
+  const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
@@ -43,7 +52,34 @@ const ModalCreateAnnouncement = ({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {console.log(data)};
+  const onSubmitFunction = (data: any) => {
+    setLoad(true);
+
+    buyerOrAdvertiser ? (data.ad_type = "sale") : (data.ad_type = "auction");
+    buyerOrAdvertiserVehicleType
+      ? (data.vehicle_type = "car")
+      : (data.vehicle_type = "motorcycle");
+
+    api
+      .post("/products", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.vehicle_type == "car") {
+          listCarsFunc(res.data);
+        }
+
+        if (res.data.vehicle_type == "motorcycle") {
+          listMotorcyclesFunc(res.data);
+        }
+
+        setCloseModalCreateAnnouncement(false)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
 
   return (
     <Container>
@@ -53,7 +89,7 @@ const ModalCreateAnnouncement = ({
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdType product={product} />
+        <AdType setBuyerOrAdvertiser={setBuyerOrAdvertiser} />
 
         <h4>Informações do veículo</h4>
 
@@ -104,10 +140,16 @@ const ModalCreateAnnouncement = ({
             required={true}
             size="inputModalCreateAnnouncementSmall"
           />
-        </div> 
-        <TextArea register={ register } name="description" error={ errors.description?.message } />
+        </div>
+        <TextArea
+          register={register}
+          name="description"
+          error={errors.description?.message}
+        />
 
-        <TypeOfVehicle setBuyerOrAdvertiserVehicleType={ setBuyerOrAdvertiserVehicleType } />
+        <TypeOfVehicle
+          setBuyerOrAdvertiserVehicleType={setBuyerOrAdvertiserVehicleType}
+        />
 
         <Input
           label="Imagem da capa"
@@ -145,8 +187,9 @@ const ModalCreateAnnouncement = ({
             color="buttonColorBlueLogin"
             size="buttonSizeModalEditAddressMedium"
             type="submit"
+            disabled={load}
           >
-            Criar anúncio
+            {load ? "Criando..." : "Criar anúncio"}
           </Button>
         </div>
       </form>

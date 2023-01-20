@@ -68,7 +68,11 @@ const AdvertiserProduct = ({ product }: IProduct) => {
               <p>{product?.kilometers} KM</p>
             </div>
 
-            <span>{product?.price}</span>
+            <span>
+            {product?.price.split(" ").length > 1
+              ? product?.price
+              : `R$ ${product?.price}`}
+          </span>
           </div>
 
           <div className="divButtons">

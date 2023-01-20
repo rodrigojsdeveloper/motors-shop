@@ -7,9 +7,9 @@ const Container = styled.div`
   height: 388px;
 
   border-radius: 4px;
-  margin-right: 24px;
-
   position: relative;
+
+  margin-right: 24px;
 
   .divCardDescription {
     height: 326px;
@@ -33,11 +33,23 @@ const Container = styled.div`
       position: absolute;
       top: 0;
 
-      background-color: linear-gradient(var(--shadow7), var(--shadow6));
+      background: linear-gradient(
+        180deg,
+        var(--shadow4) 0%,
+        var(--black-fixed) 100%
+      );
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 25px 40px;
+
+      :hover {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.71) 0%,
+          #000000 100%
+        );
+      }
 
       .divTimeAuction {
         background-color: var(--white-fixed);
@@ -60,7 +72,7 @@ const Container = styled.div`
 
       & > div {
         width: 100%;
-        height: 177px;
+        height: 125px;
 
         & > h4 {
           font-weight: 600;
@@ -76,34 +88,38 @@ const Container = styled.div`
 
           padding-bottom: 20px;
         }
+      }
 
-        .divYearKMPrice {
+      .divYearKMPrice {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        & > div {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
 
-          & > div {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-
-            & > p {
-              font-weight: 500;
-              font-size: 14px;
-              color: var(--brand1);
-
-              background-color: var(--brand4);
-              border-radius: 4px;
-              padding: 4px 8px;
-
-              margin-right: 5px;
-            }
-          }
-
-          span {
+          & > p {
             font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
+            color: var(--brand1);
+
+            background-color: var(--brand4);
+            border-radius: 4px;
+            padding: 4px 8px;
+
+            margin-right: 5px;
           }
+        }
+
+        span {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+
+          letter-spacing: 0.5px;
         }
       }
     }
