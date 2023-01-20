@@ -27,7 +27,7 @@ const Container = styled.form`
     font-size: 14px;
     line-height: 24px;
 
-    padding: 20px 0 15px 0;
+    padding: 20px 0;
   }
 
   .divInputs {
@@ -49,78 +49,6 @@ const Container = styled.form`
 
       input {
         max-width: 155.5px;
-      }
-    }
-  }
-
-  .labelPassword {
-    text-align: left;
-    padding-top: 20px;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 25px;
-
-    span {
-      color: var(--alert1);
-    }
-  }
-
-  .divInputPassword {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
-    max-width: 315px;
-    height: 48px;
-    margin-right: 10px;
-    align-items: center;
-
-    border: 2px solid var(--grey7);
-    border-radius: 4px;
-
-    padding-right: 15px;
-
-    transition: 0.5s;
-
-    &:hover {
-      border-color: var(--black-fixed);
-      .biShow {
-        display: block;
-      }
-    }
-    input {
-      height: 100%;
-
-      padding: 15px;
-      width: 100%;
-      border: none;
-      background-color: transparent;
-
-      font-weight: 400;
-      font-size: 16px;
-      &:focus::-webkit-input-placeholder {
-        color: transparent;
-      }
-
-      &:focus::-moz-placeholder {
-        color: transparent;
-      }
-
-      &::placeholder {
-        color: var(--grey3);
-      }
-    }
-    .biShow {
-      color: var(--grey3);
-      display: none;
-      &:hover {
-        cursor: pointer;
-
-        color: var(--black-fixed);
-        transition: 1s;
       }
     }
   }

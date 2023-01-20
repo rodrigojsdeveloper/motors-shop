@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { InputPassword } from "../InputPassword";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
@@ -12,10 +11,6 @@ import * as yup from "yup";
 
 const FormSignIn = () => {
   const navigate = useNavigate();
-
-  const [showOutlineShow, setShowOutlineShow] = useState<boolean>(true);
-
-  const [typeInput, setTypeInput] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -61,24 +56,16 @@ const FormSignIn = () => {
         required={true}
         size="inputSignIn"
       />
-
-      <InputPassword
-        register={register}
+      <Input
         label="Senha"
         name="password"
+        register={register}
         placeholder="Digitar senha"
+        autoComplete="off"
+        type="password"
+        error={errors.password?.message}
         required={true}
-        type={typeInput ? "text" : "password"}
-        onChange={(e: any) => {
-          if (e.target.value == "") {
-            setShowOutlineShow(true);
-
-            setTypeInput(false);
-          }
-        }}
-        setTypeInput={setTypeInput}
-        showOutlineShow={showOutlineShow}
-        setShowOutlineShow={setShowOutlineShow}
+        size="inputSignIn"
       />
 
       <Link to="/resetpassword">Esqueci minha senha</Link>

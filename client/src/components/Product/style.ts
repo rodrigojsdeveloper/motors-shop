@@ -12,7 +12,7 @@ const Container = styled.div`
 
     &:hover {
       border: 2px solid var(--brand1);
-      cursor: pointer;
+      cursor: pointer;      
     }
   }
 
@@ -67,10 +67,12 @@ const Container = styled.div`
     }
 
     span {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 16px;
       line-height: 20px;
       color: var(--grey1);
+
+      letter-spacing: .5px;
     }
 
     .divKmYearPrice {

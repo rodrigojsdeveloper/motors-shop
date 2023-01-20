@@ -39,6 +39,10 @@ const Container = styled.div`
       justify-content: space-between;
       padding: 25px 40px;
 
+      :hover {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.71) 0%, #000000 100%);
+      }
+
       .divTimeAuction {
         background-color: var(--white-fixed);
         border-radius: 32px;
@@ -94,6 +98,7 @@ const Container = styled.div`
           display: flex;
           flex-direction: row;
           justify-content: space-between;
+          align-items: flex-end;
 
           & > div {
             display: flex;
@@ -114,8 +119,11 @@ const Container = styled.div`
           }
 
           span {
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
+            line-height: 20px;
+
+            letter-spacing: .5px;
           }
         }
       }

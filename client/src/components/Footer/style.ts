@@ -4,7 +4,7 @@ const Container = styled.footer`
   width: 100%;
   height: 140px;
 
-  background-color: var(--grey1);
+  background-color: var(--grey0);
 
   display: flex;
   flex-direction: row;
@@ -26,7 +26,7 @@ const Container = styled.footer`
     width: 100%;
     max-width: 53px;
 
-    background-color: var(--grey2);
+    background-color: var(--grey1);
     border-radius: 4px;
 
     color: var(--white-fixed);

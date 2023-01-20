@@ -1,4 +1,3 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
@@ -126,7 +125,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         label="Email"
         name="email"
         register={register}
-        placeholder="Ex: johndoe@org.com"
+        placeholder="Ex: rodrigo@gmail.com"
         autoComplete="off"
         type="email"
         error={errors.email?.message}
@@ -148,7 +147,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         label="Celular"
         name="cellphone"
         register={register}
-        placeholder="(DDD) 9 9999-9999"
+        placeholder="(DDD) 90000-0000"
         autoComplete="off"
         type="text"
         error={errors.cellphone?.message}
@@ -166,7 +165,11 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         required={true}
         size="inputSignIn"
       />
-      <TextArea register={register} name="description" error={ errors.description?.message } />
+      <TextArea
+        register={register}
+        name="description"
+        error={errors.description?.message}
+      />
 
       <h3>Informações de endereço</h3>
 
@@ -255,7 +258,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           label="Complemento"
           name="complement"
           register={register}
-          placeholder="Ex: Apart 307"
+          placeholder="Ex: apart 307"
           autoComplete="off"
           type="text"
           required={true}
@@ -304,91 +307,26 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         </Button>
       </div>
 
-      <label className="labelPassword">
-        Senha{" "}
-        {!!errors.password && (
-          <span> - {errors.password?.message as string}</span>
-        )}
-      </label>
-      <div className="divInputPassword">
-        <input
-          placeholder="Senha"
-          type={typeInput ? "text" : "password"}
-          {...register("password")}
-          required={true}
-          onChange={(e: any) => {
-            if (e.target.value == "") {
-              setShowOutlineShow(false);
-
-              setTypeInput(false);
-            }
-          }}
-        />
-        {showOutlineShow ? (
-          <AiOutlineEyeInvisible
-            size={20}
-            className="biShow"
-            onClick={() => {
-              setTypeInput(true);
-
-              setShowOutlineShow(false);
-            }}
-          />
-        ) : (
-          <AiOutlineEye
-            size={20}
-            className="biShow"
-            onClick={() => {
-              setTypeInput(false);
-
-              setShowOutlineShow(true);
-            }}
-          />
-        )}
-      </div>
-
-      <label className="labelPassword">
-        Repetir senha{" "}
-        {!!errors.password && (
-          <span> - {errors.password?.message as string}</span>
-        )}
-      </label>
-      <div className="divInputPassword">
-        <input
-          placeholder="Repita a senha"
-          type={typeInputRepeatPassword ? "text" : "password"}
-          {...register("repeat_password")}
-          required={true}
-          onChange={(e: any) => {
-            if (e.target.value == "") {
-              setShowOutlineShowRepeatPassword(false);
-
-              setTypeInputRepeatPassword(false);
-            }
-          }}
-        />
-        {showOutlineShowRepeatPassword ? (
-          <AiOutlineEyeInvisible
-            size={20}
-            className="biShow"
-            onClick={() => {
-              setTypeInputRepeatPassword(true);
-
-              setShowOutlineShowRepeatPassword(false);
-            }}
-          />
-        ) : (
-          <AiOutlineEye
-            size={20}
-            className="biShow"
-            onClick={() => {
-              setTypeInputRepeatPassword(false);
-
-              setShowOutlineShowRepeatPassword(true);
-            }}
-          />
-        )}
-      </div>
+      <Input
+        label="Senha"
+        name="password"
+        register={register}
+        placeholder="Digitar senha"
+        autoComplete="off"
+        type="password"
+        required={true}
+        size="inputSignIn"
+      />
+      <Input
+        label="Repetir a senha"
+        name="repeat_password"
+        register={register}
+        placeholder="Repetir senha"
+        autoComplete="off"
+        type="password"
+        required={true}
+        size="inputSignIn"
+      />
 
       <Button
         className="buttonSubmit"

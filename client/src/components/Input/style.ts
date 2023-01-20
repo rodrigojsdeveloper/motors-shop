@@ -30,12 +30,18 @@ const InputContainer = styled.input<InputStyledProps>`
   transition: 0.5s;
   background: transparent;
 
+  &:hover {
+    background-color: var(--grey8);
+    border-color: var(--grey8);
+  }
+
   &::placeholder {
     color: var(--grey3);
   }
-
-  &:hover {
-    border-color: var(--black-fixed);
+  
+  &:focus {
+    background-color: var(--white-fixed);
+    border-color: var(--brand2);
   }
 
   &:focus::-webkit-input-placeholder {

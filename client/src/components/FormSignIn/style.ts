@@ -14,11 +14,7 @@ const Container = styled.form`
     font-weight: 600;
     font-size: 24px;
     text-align: start;
-  }
-
-  & > div:nth-child(2) {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    line-height: 30px;
   }
 
   & > a,

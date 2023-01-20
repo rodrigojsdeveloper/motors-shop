@@ -33,7 +33,7 @@ const Home = () => {
 
         setMotorcycles(
           products.filter(
-            (product: IProductProps) => product.vehicle_type == "motorbike"
+            (product: IProductProps) => product.vehicle_type == "motorcycle"
           )
         );
       })

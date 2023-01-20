@@ -34,8 +34,8 @@ const Product = ({ product }: IProduct) => {
 
         <div className="divKmYearPrice">
           <div>
-            <p>{product.year}</p>
             <p>{product.kilometers} KM</p>
+            <p>{product.year}</p>
           </div>
 
           <span>{product.price}</span>
