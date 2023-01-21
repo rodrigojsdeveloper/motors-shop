@@ -46,19 +46,19 @@ const PageAdvertiser = () => {
 
           setMotorcycles(
             products.filter(
-              (product: IProductProps) => product.vehicle_type == "motorbike"
+              (product: IProductProps) => product.vehicle_type == "motorcycle"
             )
           );
 
           setAuctions(res.data.auctions);
         })
         .catch((error) => console.error(error));
-    });
+    }, []);
 
   const listCarsFunc = (car: IProductProps) => setCars([car, ...cars]);
 
   const listMotorcyclesFunc = (motorcycle: IProductProps) =>
-    setCars([motorcycle, ...motorcycles]);
+    setMotorcycles([motorcycle, ...motorcycles]);
 
   return (
     <HelmetProvider>
@@ -69,10 +69,22 @@ const PageAdvertiser = () => {
         <div className="divBlue"></div>
         <div className="divWhite">
           <div>
-            <ShowAdvertiser listCarsFunc={ listCarsFunc } listMotorcyclesFunc={ listMotorcyclesFunc } user={user} />
+            <ShowAdvertiser
+              listCarsFunc={listCarsFunc}
+              listMotorcyclesFunc={listMotorcyclesFunc}
+              user={user}
+            />
             <AdvertiserAuctionsList auctions={auctions} />
-            <AdvertiserCarsList products={cars} />
-            <AdvertiserMotorcyclesList products={motorcycles} />
+            <AdvertiserCarsList 
+            products={cars}
+            listCarsFunc={ listCarsFunc }
+            listMotorcyclesFunc={ listMotorcyclesFunc }
+            />
+            <AdvertiserMotorcyclesList
+            products={motorcycles}
+            listCarsFunc={ listCarsFunc }
+            listMotorcyclesFunc={ listMotorcyclesFunc }
+            />
           </div>
         </div>
         <Footer />

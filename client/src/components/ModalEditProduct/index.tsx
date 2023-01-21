@@ -29,7 +29,7 @@ const ModalEditProduct = ({
 
   const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
 
-  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] = useState<string>("")
+  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] = useState<boolean>(false)
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -73,7 +73,7 @@ const ModalEditProduct = ({
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdType product={product} />
+        <AdType setBuyerOrAdvertiser={ setBuyerOrAdvertiserVehicleType } />
 
         <h4>Informações do veículo</h4>
 

@@ -1,4 +1,4 @@
-import { IAuctionProps, IProductProps } from "../../interfaces";
+import { IProductProps } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { api } from "../../services/api";
 import { Container } from "./style";
@@ -6,15 +6,19 @@ import { Button } from "../Button";
 
 interface IModalDeleteProduct {
   setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  product: IAuctionProps | IProductProps;
-  link: string;
+  product: IProductProps;
+  listCarsFunc: (car: IProductProps) => void;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
 }
 
 const ModalDeleteProduct = ({
   setCloseModalDeleteProduct,
   product,
-  link,
+  listCarsFunc,
+  listMotorcyclesFunc,
 }: IModalDeleteProduct) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
   return (
     <Container>
       <HeaderModal
@@ -44,10 +48,26 @@ const ModalDeleteProduct = ({
             color="buttonColorRedModalDeleteProduct"
             type="button"
             onClick={() => {
-              api
-                .delete(`/${link}/${product.id}`)
-                .then((_) => setCloseModalDeleteProduct(false))
-                .catch((error) => console.error(error));
+              product.vehicle_type == "car"
+                ? api
+                    .delete(`/products/${product.id}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    })
+                    .then((_) => {
+                      setCloseModalDeleteProduct(false)
+                      listCarsFunc()
+                    })
+                    .catch((error) => console.error(error))
+                : api
+                    .delete(`/products/${product.id}`, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                    })
+                    .then((_) => setCloseModalDeleteProduct(false))
+                    .catch((error) => console.error(error));
             }}
           >
             Sim, excluir anúncio

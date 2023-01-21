@@ -10,9 +10,11 @@ import { Button } from "../Button";
 
 interface IProduct {
   product: IProductProps;
+  listCarsFunc: (car: IProductProps) => void;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
 }
 
-const AdvertiserProduct = ({ product }: IProduct) => {
+const AdvertiserProduct = ({ product, listCarsFunc, listMotorcyclesFunc }: IProduct) => {
   const navigate = useNavigate();
 
   const [openModalEditProduct, setOpenModalEditProduct] =
@@ -48,7 +50,8 @@ const AdvertiserProduct = ({ product }: IProduct) => {
           <ModalDeleteProduct
             product={productRequest}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
-            link="products"
+            listCarsFunc={listCarsFunc}
+            listMotorcyclesFunc={listMotorcyclesFunc}
           />
         </ModalBackground>
       )}

@@ -111,7 +111,7 @@ class ProductsServices {
       throw new NotFoundError("Product");
     }
 
-    await productRepository.delete(product.id);
+    await productRepository.update(product.id, { is_published: false });
   }
 }
 

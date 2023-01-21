@@ -122,6 +122,8 @@ export interface IListAuctions {
 
 export interface IListProducts {
   products: IProductProps[];
+  listCarsFunc: (car: IProductProps) => void;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
 }
 
 export interface IBid {

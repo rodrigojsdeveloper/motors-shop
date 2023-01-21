@@ -3,7 +3,11 @@ import { AdvertiserProduct } from "../AdvertiserProduct";
 import { EmptyMessage } from "../EmptyMessage";
 import { Container } from "./style";
 
-const AdvertiserMotorcyclesList = ({ products }: IListProducts) => {
+const AdvertiserMotorcyclesList = ({
+  products,
+  listCarsFunc,
+  listMotorcyclesFunc,
+}: IListProducts) => {
   return (
     <Container id="cars">
       <h2>Motos</h2>
@@ -11,7 +15,7 @@ const AdvertiserMotorcyclesList = ({ products }: IListProducts) => {
       <menu>
         {products.length > 0 ? (
           products.map((product: IProductProps) => (
-            <AdvertiserProduct product={product} />
+            <AdvertiserProduct listCarsFunc={listCarsFunc} listMotorcyclesFunc={listMotorcyclesFunc} product={product} />
           ))
         ) : (
           <EmptyMessage message="Não há motos" />
