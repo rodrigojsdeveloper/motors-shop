@@ -9,10 +9,11 @@ const Container = styled.div`
     height: 152px;
     background-color: var(--grey7);
     object-fit: contain;
+    mix-blend-mode: multiply;
 
     &:hover {
       border: 2px solid var(--brand1);
-      cursor: pointer;      
+      cursor: pointer;
     }
   }
 
@@ -72,7 +73,7 @@ const Container = styled.div`
       line-height: 20px;
       color: var(--grey1);
 
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
     }
 
     .divKmYearPrice {

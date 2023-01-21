@@ -31,6 +31,8 @@ const Container = styled.div`
 
     height: 436px;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     .loadScreen {
       display: flex;

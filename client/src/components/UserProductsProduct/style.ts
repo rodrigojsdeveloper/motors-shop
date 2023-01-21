@@ -17,8 +17,9 @@ const Container = styled.div`
       flex-direction: row;
       justify-content: center;
       align-items: center;
-
-      position: absolute;
+      
+      position: relative;
+      margin-bottom: -32px;
     }
 
     .active {

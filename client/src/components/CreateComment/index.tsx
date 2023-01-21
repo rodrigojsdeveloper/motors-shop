@@ -57,11 +57,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <textarea
-          placeholder={
-            disable
-              ? "Digitar comentário"
-              : "Carro muito confortável, foi uma ótima experiência de compra..."
-          }
+          placeholder="Digitar comentário"
           {...register("content")}
           name="content"
           disabled={disable ? disable : load}

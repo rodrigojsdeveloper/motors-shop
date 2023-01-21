@@ -63,6 +63,7 @@ export default createGlobalStyle`
 		--shadow6: rgba(0, 0, 0, 1);
 		--shadow7: rgba(255, 255, 255, 0.1);
 		--shadow8: rgba(0, 0, 0, 0.5);
+		--shadow9: rgba(0, 0, 0, 0.71);
 	}
 
 	body {

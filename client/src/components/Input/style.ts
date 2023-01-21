@@ -41,6 +41,7 @@ const InputContainer = styled.input<InputStyledProps>`
   &:focus {
     background-color: var(--white-fixed);
     border-color: var(--brand2);
+    caret-color: var(--brand2);
   }
 
   &:focus::-webkit-input-placeholder {

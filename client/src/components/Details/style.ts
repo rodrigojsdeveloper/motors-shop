@@ -106,6 +106,7 @@ const Container = styled.section`
 
       & > div {
         padding-bottom: 20px;
+        justify-content: flex-start;
       }
     }
   }

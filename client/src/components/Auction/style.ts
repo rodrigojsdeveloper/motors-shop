@@ -22,6 +22,7 @@ const Container = styled.div`
       background-color: var(--grey7);
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
+      mix-blend-mode: multiply;
     }
 
     .divDescription {
@@ -33,14 +34,22 @@ const Container = styled.div`
       position: absolute;
       top: 0;
 
-      background: linear-gradient(180deg, var(--shadow4) 0%, var(--black-fixed) 100%);
+      background: linear-gradient(
+        180deg,
+        var(--shadow4) 0%,
+        var(--black-fixed) 100%
+      );
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 25px 40px;
 
       :hover {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.71) 0%, #000000 100%);
+        background: linear-gradient(
+          180deg,
+          var(--shadow9) 0%,
+          var(--black-fixed) 100%
+        );
       }
 
       .divTimeAuction {
@@ -123,7 +132,7 @@ const Container = styled.div`
             font-size: 16px;
             line-height: 20px;
 
-            letter-spacing: .5px;
+            letter-spacing: 0.5px;
           }
         }
       }
@@ -144,7 +153,7 @@ const Container = styled.div`
     border-bottom-left-radius: 4px;
 
     cursor: pointer;
-    transition: .5s;
+    transition: 0.5s;
 
     p {
       font-weight: 600;

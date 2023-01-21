@@ -14,6 +14,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   @media (max-width: 1024px) {
