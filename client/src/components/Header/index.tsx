@@ -16,7 +16,8 @@ const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
-  const [openNavAdvertiserLogged, setOpenNavAdvertiserLogged] = useState<boolean>(false);
+  const [openNavAdvertiserLogged, setOpenNavAdvertiserLogged] =
+    useState<boolean>(false);
 
   const [openNavNonAdvertiserLogged, setOpenNavNonAdvertiserLogged] =
     useState<boolean>(false);
@@ -299,14 +300,24 @@ const Header = () => {
             <div className="navNotLogged">
               <hr />
               <nav>
-                <a href="/#cars">Carros</a>
-                <a href="/#motorcycles">Motos</a>
-                <a href="/#auctions">Leilão</a>
+                <a href="/#cars" onClick={() => setMenuOpen(false)}>
+                  Carros
+                </a>
+                <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
+                  Motos
+                </a>
+                <a href="/#auctions" onClick={() => setMenuOpen(false)}>
+                  Leilão
+                </a>
               </nav>
               <hr />
               <nav>
-                <Link to="/signin">Fazer Login</Link>
-                <Link to="/signup">Cadastrar</Link>
+                <Link to="/signin" onClick={() => setMenuOpen(false)}>
+                  Fazer Login
+                </Link>
+                <Link to="/signup" onClick={() => setMenuOpen(false)}>
+                  Cadastrar
+                </Link>
               </nav>
             </div>
           )
