@@ -1,4 +1,5 @@
 import logo from "../../assets/Motors shop footer.svg";
+import { Button } from "../Button";
 import { Container } from "./style";
 
 const Footer = () => {
@@ -8,9 +9,14 @@ const Footer = () => {
 
       <small>© 2022 - Todos os direitos reservados.</small>
 
-      <a href="#top" onClick={() => (window.scrollY = 0)}>
+      <Button
+        size="buttonSizeFooter"
+        color="buttonColorGrayFooter"
+        type="button"
+        onClick={() => window.scroll({ top: 0 })}
+      >
         ^
-      </a>
+      </Button>
     </Container>
   );
 };
