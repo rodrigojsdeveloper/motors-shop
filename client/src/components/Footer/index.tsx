@@ -1,6 +1,6 @@
 import logo from "../../assets/Motors shop footer.svg";
-import { Button } from "../Button";
 import { Container } from "./style";
+import { Button } from "../Button";
 
 const Footer = () => {
   return (

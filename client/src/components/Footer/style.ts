@@ -5,6 +5,7 @@ const Container = styled.footer`
   height: 140px;
 
   background-color: var(--grey0);
+  color: var(--white-fixed);
 
   display: flex;
   flex-direction: row;
@@ -17,8 +18,6 @@ const Container = styled.footer`
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-
-    color: var(--white-fixed);
   }
   
   @media (max-width: 1024px) {
