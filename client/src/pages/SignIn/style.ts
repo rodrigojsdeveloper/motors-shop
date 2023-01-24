@@ -4,13 +4,13 @@ const Container = styled.div`
   & > main {
     width: 100%;
     height: 790px;
-    
+
     background-color: var(--grey8);
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     padding: 15px;
     margin-top: 50px;
   }

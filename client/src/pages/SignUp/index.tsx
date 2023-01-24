@@ -5,7 +5,6 @@ import { FormSignUp } from "../../components/FormSignUp";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Container } from "./style";
-
 import { useState } from "react";
 
 const SignUp = () => {
