@@ -1,10 +1,12 @@
-import { IProductProps } from "../../interfaces";
+import { DescriptionProduct } from "../DescriptionProduct";
+import { ImageProduct } from "../ImageProduct";
+import { PriceProduct } from "../PriceProduct";
+import { TitleProduct } from "../TitleProduct";
+import { YearProduct } from "../YearProduct";
+import { IProduct } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
+import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
-
-interface IProduct {
-  product: IProductProps;
-}
 
 const UserProductsProduct = ({ product }: IProduct) => {
   return (
@@ -15,35 +17,21 @@ const UserProductsProduct = ({ product }: IProduct) => {
         ) : (
           <p className="deactive">Inativo</p>
         )}
-        <img
-          src={product.cover_image}
-          alt={product.title}
-          title={product.title}
-        />
+        <ImageProduct src={product.cover_image} alt={product.title} />
       </div>
 
-      <div>
-        <h4>{product.title}</h4>
+      <TitleProduct title={product.title} />
+      <DescriptionProduct description={product.description} />
 
-        <p>{product.description}</p>
+      <AvatarUser username={product.user?.name ? product.user?.name : ""} />
 
+      <div className="divKmYearPrice">
         <div>
-          <AvatarUser userName={product.user?.name ? product.user?.name : ""} />
-          <h6>{product.user?.name}</h6>
+          <YearProduct year={product.year} />
+          <KmProduct km={product.kilometers} />
         </div>
 
-        <div className="divKmYearPrice">
-          <div>
-            <p>{product.year}</p>
-            <p>{product.kilometers} KM</p>
-          </div>
-
-          <span>
-            {product.price.split(" ").length > 0
-              ? product.price
-              : `R$ ${product.price}`}
-          </span>
-        </div>
+        <PriceProduct price={product.price} />
       </div>
     </Container>
   );

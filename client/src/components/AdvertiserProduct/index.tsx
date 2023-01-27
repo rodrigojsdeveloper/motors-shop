@@ -7,6 +7,12 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
+import { PriceProduct } from "../PriceProduct";
+import { KmProduct } from "../KmProduct";
+import { YearProduct } from "../YearProduct";
+import { DescriptionProduct } from "../DescriptionProduct";
+import { TitleProduct } from "../TitleProduct";
+import { ImageProduct } from "../ImageProduct";
 
 interface IProduct {
   product: IProductProps;
@@ -14,7 +20,11 @@ interface IProduct {
   listMotorcyclesFunc: (motorcycle: IProductProps) => void;
 }
 
-const AdvertiserProduct = ({ product, listCarsFunc, listMotorcyclesFunc }: IProduct) => {
+const AdvertiserProduct = ({
+  product,
+  listCarsFunc,
+  listMotorcyclesFunc,
+}: IProduct) => {
   const navigate = useNavigate();
 
   const [openModalEditProduct, setOpenModalEditProduct] =
@@ -56,46 +66,37 @@ const AdvertiserProduct = ({ product, listCarsFunc, listMotorcyclesFunc }: IProd
         </ModalBackground>
       )}
       <Container>
-        <img
-          src={product?.cover_image}
-          alt={product?.title}
-          title={product?.title}
-        />
-        <div>
-          <h4>{product?.title}</h4>
+        <ImageProduct src={product?.cover_image} alt={product?.title} />
 
-          <p>{product?.description}</p>
-          <div className="divKmYearPrice">
-            <div>
-              <p>{product?.year}</p>
-              <p>{product?.kilometers} KM</p>
-            </div>
+        <TitleProduct title={product?.title} />
 
-            <span>
-            {product?.price.split(" ").length > 1
-              ? product?.price
-              : `R$ ${product?.price}`}
-          </span>
+        <DescriptionProduct description={product?.description} />
+        <div className="divKmYearPrice">
+          <div>
+            <YearProduct year={product?.year} />
+            <KmProduct km={product?.kilometers} />
           </div>
 
-          <div className="divButtons">
-            <Button
-              color="buttonColorWhiteEditAndShowProduct"
-              size="buttonSizeEditProduct"
-              type="button"
-              onClick={() => setOpenModalEditProduct(true)}
-            >
-              Editar
-            </Button>
-            <Button
-              color="buttonColorWhiteEditAndShowProduct"
-              size="buttonSizeShowProduct"
-              type="button"
-              onClick={() => navigate(`/products/${product.id}`)}
-            >
-              Ver como
-            </Button>
-          </div>
+          <PriceProduct price={product?.price} />
+        </div>
+
+        <div className="divButtons">
+          <Button
+            color="buttonColorWhiteEditAndShowProduct"
+            size="buttonSizeEditProduct"
+            type="button"
+            onClick={() => setOpenModalEditProduct(true)}
+          >
+            Editar
+          </Button>
+          <Button
+            color="buttonColorWhiteEditAndShowProduct"
+            size="buttonSizeShowProduct"
+            type="button"
+            onClick={() => navigate(`/products/${product.id}`)}
+          >
+            Ver como
+          </Button>
         </div>
       </Container>
     </>

@@ -1,7 +1,7 @@
 import { ListMotorcycles } from "../../components/ListMotorcycles";
 import { IAuctionProps, IProductProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { ListAuction } from "../../components/ListAuction";
+import { ListAuction } from "../../components/ListAuctions";
 import { ListCars } from "../../components/ListCars";
 import { Header } from "../../components/Header";
 import { Banner } from "../../components/Banner";

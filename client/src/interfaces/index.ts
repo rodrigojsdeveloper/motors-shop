@@ -169,3 +169,7 @@ export interface IimageProduct {
 export interface IAvatarUser {
   username: string;
 }
+
+export interface IProduct {
+  product: IProductProps;
+}

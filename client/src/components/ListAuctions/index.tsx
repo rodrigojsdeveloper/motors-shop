@@ -2,11 +2,12 @@ import { IListAuctions } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { Auction } from "../Auction";
 import { Container } from "./style";
+import { TitleList } from "../TitleList";
 
 const ListAuction = ({ auctions }: IListAuctions) => {
   return (
     <Container id="auctions">
-      <h2>Leilão</h2>
+      <TitleList title="Leilão" />
 
       <menu>
         {auctions.length > 0 ? (
