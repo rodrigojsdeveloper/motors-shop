@@ -140,3 +140,32 @@ export interface IComment {
   user: IUserProps;
   created_at: string;
 }
+
+export interface ITitleProduct {
+  title: string;
+}
+
+export interface IDescriptionProduct {
+  description: string;
+}
+
+export interface IYearProduct {
+  year: number;
+}
+
+export interface IKmProduct {
+  km: number;
+}
+
+export interface IPriceProduct {
+  price: string;
+}
+
+export interface IimageProduct {
+  src: string;
+  alt: string;
+}
+
+export interface IAvatarUser {
+  username: string;
+}

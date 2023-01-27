@@ -1,20 +1,21 @@
-import { Container } from "./style";
+import { IAvatarUser } from "../../interfaces";
+import { Container, Content } from "./style";
 
-interface IAvatarUserProps {
-  userName: string;
-}
-
-const AvatarUser = ({ userName }: IAvatarUserProps) => {
+const AvatarUser = ({ username }: IAvatarUser) => {
   return (
     <Container>
-      {userName.split(" ").length == 1 ? (
-        <p>{userName[0]}</p>
-      ) : (
-        <>
-          <p>{userName[0]}</p>
-          <p>{userName.split(" ")[1][0]}</p>
-        </>
-      )}
+      <Content>
+        {username.split(" ").length == 1 ? (
+          <p>{username[0]}</p>
+        ) : (
+          <>
+            <p>{username[0]}</p>
+            <p>{username.split(" ")[1][0]}</p>
+          </>
+        )}
+      </Content>
+
+      <h5>{username}</h5>
     </Container>
   );
 };

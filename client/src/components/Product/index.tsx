@@ -1,6 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { IProductProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
+import { DescriptionProduct } from "../DescriptionProduct";
+import { ImageProduct } from "../ImageProduct";
+import { KmProduct } from "../KmProduct";
+import { PriceProduct } from "../PriceProduct";
+import { TitleProduct } from "../TitleProduct";
+import { YearProduct } from "../YearProduct";
 import { Container } from "./style";
 
 interface IProduct {
@@ -16,30 +22,20 @@ const Product = ({ product }: IProduct) => {
 
   return (
     <Container onClick={() => navigate(`/products/${productId}`)}>
-      <img
-        src={product.cover_image}
-        alt={product.title}
-        title={product.title}
-      />
+      <ImageProduct src={product.cover_image} alt={product.title} />
 
-      <div>
-        <h4>{product.title}</h4>
+      <TitleProduct title={product.title} />
+      <DescriptionProduct description={product.description} />
 
-        <p>{product.description}</p>
+      <AvatarUser username={product.user.name} />
 
+      <div className="divKmYearPrice">
         <div>
-          <AvatarUser userName={product.user.name} />
-          <h6>{product.user.name}</h6>
+          <KmProduct km={product.kilometers} />
+          <YearProduct year={product.year} />
         </div>
 
-        <div className="divKmYearPrice">
-          <div>
-            <p>{product.kilometers} KM</p>
-            <p>{product.year}</p>
-          </div>
-
-          <span>{product.price}</span>
-        </div>
+        <PriceProduct price={product.price} />
       </div>
     </Container>
   );

@@ -16,6 +16,21 @@ const colors = [
 ];
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 0;
+
+  & > h5 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--grey2);
+    margin-left: 10px;
+  }
+`;
+
+const Content = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 150px;
@@ -23,15 +38,15 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 
   background-color: ${colors[Math.floor(Math.random() * colors.length)]};
 
   & > p {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 14px;
-
     color: var(--white-fixed);
   }
 `;
 
-export { Container };
+export { Container, Content };

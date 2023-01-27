@@ -96,7 +96,7 @@ const Container = styled.div`
           padding-bottom: 20px;
           align-items: center;
 
-          h6 {
+          & > h5 {
             font-weight: 500;
             font-size: 14px;
             margin-left: 8px;

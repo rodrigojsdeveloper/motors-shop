@@ -23,7 +23,7 @@ const Auction = ({ auction }: IAuction) => {
 
         <div className="divDescription">
           <div className="divTimeAuction">
-            <img src={clock} />
+            <img src={clock} alt="clock" />
             <time>{auction?.time_limit}</time>
           </div>
 
@@ -31,11 +31,7 @@ const Auction = ({ auction }: IAuction) => {
             <h4>{auction.product?.title}</h4>
 
             <p>{auction.product?.description}</p>
-
-            <div className="divUser">
-              <AvatarUser userName={auction.user.name} />
-              <h6>{auction.user.name}</h6>
-            </div>
+            <AvatarUser username={auction.user.name} />
 
             <div className="divYearKMPrice">
               <div>
