@@ -8,7 +8,6 @@ const Container = styled.div`
 
   border-radius: 4px;
   position: relative;
-
   margin-right: 24px;
 
   .divCardDescription {
@@ -26,48 +25,43 @@ const Container = styled.div`
     }
 
     .divDescription {
-      border-top-right-radius: 4px;
-      border-top-left-radius: 4px;
-
       width: 100%;
       height: 326px;
       position: absolute;
       top: 0;
+
+      border-radius: 4px 4px 0 0;
 
       background: linear-gradient(
         180deg,
         var(--shadow4) 0%,
         var(--black-fixed) 100%
       );
+      
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 25px 40px;
-
-      :hover {
-        background: linear-gradient(
-          180deg,
-          var(--shadow9) 0%,
-          var(--black-fixed) 100%
-        );
-      }
+      padding: 25px 40px 15px 40px;
 
       .divTimeAuction {
         background-color: var(--white-fixed);
         border-radius: 32px;
-        padding: 5px;
         width: 123px;
         height: 36px;
+        padding: 10px;
 
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+        justify-content: flex-start;
 
         time {
           font-weight: 500;
           font-size: 16px;
+          line-height: 20px;
           color: var(--grey1);
+
+          padding-left: 15px;
         }
       }
 
@@ -75,65 +69,22 @@ const Container = styled.div`
         width: 100%;
         height: 177px;
 
-        & > h4 {
-          font-weight: 600;
-          font-size: 20px;
-
-          padding-bottom: 15px;
-        }
-
-        & > p {
-          font-weight: 400;
-          font-size: 16px;
-          color: var(--grey5);
-
-          padding-bottom: 20px;
-        }
-
-        .divUser {
-          display: flex;
-          flex-direction: row;
-          padding-bottom: 20px;
-          align-items: center;
+        & > div:nth-child(3) {
+          padding: 20px 0;
 
           & > h5 {
-            font-weight: 500;
-            font-size: 14px;
-            margin-left: 8px;
+            color: var(--white-fixed);
           }
         }
 
-        .divYearKMPrice {
+        .divYearKmAndPrice,
+        .divYearKmAndPrice :where(div) {
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
           align-items: flex-end;
-
-          & > div {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-
-            & > p {
-              font-weight: 500;
-              font-size: 14px;
-              color: var(--brand1);
-
-              background-color: var(--brand4);
-              border-radius: 4px;
-              padding: 4px 8px;
-
-              margin-right: 5px;
-            }
-          }
-
-          span {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 20px;
-
-            letter-spacing: 0.5px;
-          }
+        }
+        .divYearKmAndPrice {
+          justify-content: space-between;
         }
       }
     }
@@ -144,18 +95,16 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
 
     background-color: var(--brand1);
     height: 62px;
     padding: 24px 36px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-radius: 0 0 4px 4px;
 
     cursor: pointer;
     transition: 0.5s;
 
-    p {
+    & > p {
       font-weight: 600;
       font-size: 16px;
     }
@@ -163,39 +112,39 @@ const Container = styled.div`
     &:hover {
       background-color: var(--brand5);
     }
+
+    @media (max-width: 768px) {
+      padding: 24px;
+    }
   }
 
   @media (max-width: 768px) {
     width: 328px;
-
-    margin-right: 10px;
+    margin-right: 8px;
+    height: 496px;
 
     .divCardDescription {
-      height: 500px;
+      height: 435px;
 
       & > img {
         width: 328px;
-        height: 500px;
-
-        object-fit: contain;
+        height: 435px;
       }
 
       .divDescription {
-        padding: 20px 15px;
-        height: 500px;
-        justify-content: unset;
-
-        .divTimeAuction {
-          margin-bottom: 60px;
-        }
+        height: 435px;
+        padding: 30px 20px 20px 20px;
 
         & > div {
-          .divYearKMPrice {
+          width: 275px;
+          height: 298px;
+
+          .divYearKmAndPrice {
             flex-direction: column;
+            align-items: flex-start;
 
             & > div {
-              justify-content: unset;
-              padding-bottom: 15px;
+              padding-bottom: 20px;
             }
           }
         }

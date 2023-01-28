@@ -4,6 +4,11 @@ import { IAuctionProps } from "../../interfaces";
 import clock from "../../assets/Group 13.svg";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
+import { TitleAuction } from "../TitleAuction";
+import { YearProduct } from "../YearProduct";
+import { KmProduct } from "../KmProduct";
+import { PriceAuction } from "../PriceAuction";
+import { DescriptionAuction } from "../DescriptionAuction";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -28,18 +33,18 @@ const Auction = ({ auction }: IAuction) => {
           </div>
 
           <div>
-            <h4>{auction.product?.title}</h4>
+            <TitleAuction title={auction.product?.title} />
 
-            <p>{auction.product?.description}</p>
+            <DescriptionAuction description={auction.product?.description} />
             <AvatarUser username={auction.user.name} />
 
-            <div className="divYearKMPrice">
+            <div className="divYearKmAndPrice">
               <div>
-                <p>{auction.product?.year}</p>
-                <p>{auction.product?.kilometers} KM</p>
+                <KmProduct km={auction.product?.kilometers} />
+                <YearProduct year={auction.product?.year} />
               </div>
 
-              <span>{auction.product?.price}</span>
+              <PriceAuction price={auction.product?.price} />
             </div>
           </div>
         </div>
