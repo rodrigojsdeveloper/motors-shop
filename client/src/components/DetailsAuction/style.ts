@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 const Container = styled.section`
   width: 100%;
-  max-width: 752px;
+  max-width: 751px;
   height: 239.39px;
-  
+
   padding: 28px 44px;
-  background: var(--grey10);
+  background-color: var(--grey10);
   border-radius: 4px;
 
-  margin-top: 20px;
+  margin-top: 10px;
 
   display: flex;
   flex-direction: column;
@@ -20,50 +20,65 @@ const Container = styled.section`
     font-size: 20px;
     line-height: 25px;
     color: var(--grey1);
+
+    margin-bottom: 55px;
+    height: 32.39px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 768px) {
+      -webkit-line-clamp: 3;
+      height: 75px;
+    }
+  }
+
+  & > div,
+  & > div :where(div) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   & > div {
     width: 100%;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
 
-    & > div {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    margin-bottom: 30px;
+  }
 
-      & > p:nth-child(1) {
-        margin-right: 5px;
-      }
+  & > a {
+    width: 100%;
+    max-width: 100px;
+    height: 38px;
 
-      & > p {
-        height: 32px;
+    padding: 12px 20px;
+    background-color: var(--brand1);
+    border: 1.5px solid var(--brand1);
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white-fixed);
 
-        padding: 4px 8px;
-        background: var(--brand4);
-        border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 24px;
-        color: var(--brand1);
-      }
-    }
+    transition: 0.5s;
 
-    & > span {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 20px;
-
-      color: var(--grey1);
-      font-weight: bold;
+    &:hover {
+      background-color: var(--brand5);
+      border-color: var(--brand5);
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     padding: 30px;
-    height: unset;
+    height: 326.91px;
 
     & > h3 {
       margin-bottom: 20px;
@@ -71,7 +86,7 @@ const Container = styled.section`
 
     & > div {
       flex-direction: column;
-      align-items: unset;
+      align-items: flex-start;
       margin-bottom: 15px;
 
       & > div {

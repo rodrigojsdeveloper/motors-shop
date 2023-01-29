@@ -1,3 +1,4 @@
+import { DetailsNotLogged } from "../DetailsNotLogged";
 import { DetailsAuction } from "../DetailsAuction";
 import { PhotosGallery } from "../PhotosGallery";
 import { IAuctionProps } from "../../interfaces";
@@ -12,16 +13,26 @@ interface IAuctionDetails {
 }
 
 const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
   return (
     <Container>
       <article>
-        <div className="divCarPhotoAndDetails">
+        <div
+          className={
+            token ? "divCarPhotoAndDetails" : "divCarPhotoAndDetailsNotLogged"
+          }
+        >
           <Photo
             image={auction.product?.cover_image}
             setOpenModalPhoto={setOpenModalPhoto}
           />
 
-          <DetailsAuction auction={auction} />
+          {token ? (
+            <DetailsAuction auction={auction} />
+          ) : (
+            <DetailsNotLogged product={auction.product} />
+          )}
         </div>
 
         <Description description={auction.product?.description} />

@@ -50,12 +50,7 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
   return (
     <Container>
       <div>
-        {token && (
-          <div className="divUser">
-            <AvatarUser userName={auction.user.name} />
-            <h3>{auction.user.name}</h3>
-          </div>
-        )}
+        {token && <AvatarUser username={auction.user.name} />}
 
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input

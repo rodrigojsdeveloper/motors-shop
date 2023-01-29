@@ -1,8 +1,9 @@
+import { DetailsNotLogged } from "../DetailsNotLogged";
+import { DetailsProduct } from "../DetailsProduct";
 import { PhotosGallery } from "../PhotosGallery";
 import { IProductProps } from "../../interfaces";
 import { Description } from "../Description";
 import { CardSeller } from "../CardSeller";
-import { Details } from "../Details";
 import { Container } from "./style";
 import { Photo } from "../Photo";
 
@@ -12,16 +13,26 @@ interface IAuctionDetails {
 }
 
 const ProductDetails = ({ product, setOpenModalPhoto }: IAuctionDetails) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
   return (
     <Container>
       <article>
-        <div className="divCarPhotoAndDetails">
+        <div
+          className={
+            token ? "divCarPhotoAndDetails" : "divCarPhotoAndDetailsNotLogged"
+          }
+        >
           <Photo
             image={product?.cover_image}
             setOpenModalPhoto={setOpenModalPhoto}
           />
 
-          <Details product={product} />
+          {token ? (
+            <DetailsProduct product={product} />
+          ) : (
+            <DetailsNotLogged product={product} />
+          )}
         </div>
 
         <Description description={product?.description} />

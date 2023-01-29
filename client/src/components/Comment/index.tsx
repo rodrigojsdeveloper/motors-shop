@@ -7,22 +7,37 @@ interface ICommentComponent {
 }
 
 const Comment = ({ comment }: ICommentComponent) => {
-  const date = new Date();
+  const ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
 
-  const day = String(date.getDate()).padStart(2, "0");
+  const showDate = () => {
+    const currentDate = new Date();
+    const diffInTime = +currentDate - +new Date(comment.created_at);
+    const diffInDays = diffInTime / ONE_DAY_IN_MS;
+    const postedAt = Math.floor(diffInDays);
 
-  const newDate = comment.created_at.split("T")[0].split("-")[2];
+    if (diffInDays >= 365) {
+      const years = Math.floor(diffInDays / 365);
 
-  const showDate = (): number => Number(day) - Number(newDate) + 1;
+      return `há ${years} ${years > 1 ? "anos" : "ano"}`;
+    } else if (diffInDays >= 30) {
+      const months = Math.floor(diffInDays / 30);
+
+      return `há ${months} ${months > 1 ? "meses" : "mês"}`;
+    } else if (postedAt > 1) {
+      return `há ${postedAt} dias`;
+    } else if (postedAt === 0) {
+      return "Postado hoje";
+    }
+
+    return `há ${postedAt} dia`;
+  };
 
   return (
     <Container>
       <div>
         <AvatarUser username={comment.user.name} />
 
-        <p>
-          há {showDate()} {[0, 1].includes(showDate()) ? "dia" : "dias"}
-        </p>
+        <p>{showDate()}</p>
       </div>
 
       <p>{comment.content}</p>

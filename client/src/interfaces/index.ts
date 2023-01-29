@@ -90,6 +90,7 @@ export interface IUserProps {
   street: string;
   number: number;
   complement: string;
+  products: [];
 }
 
 export interface IProductProps {

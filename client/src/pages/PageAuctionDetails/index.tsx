@@ -104,7 +104,7 @@ const PageAuctionDetails = () => {
                 auction={auctionRequest}
                 setOpenModalPhoto={setOpenModalPhoto}
               />
-              <ListBids bids={bidsList} loaded={loaded} />
+              <ListBids bids={bidsList} loaded={loaded} auction={auctionRequest} />
               {user.id == auctionRequest.user.id ? null : (
                 <CreateBid
                   ListBidsFunc={ListBidsFunc}

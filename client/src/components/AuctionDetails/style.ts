@@ -29,6 +29,16 @@ const Container = styled.div`
       flex-direction: column;
       justify-content: space-between;
     }
+
+    .divCarPhotoAndDetailsNotLogged {
+      width: 100%;
+      max-width: 751px;
+      height: 510px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 
   .divPhotosAndUserDetails {
@@ -36,6 +46,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 15px;
   }
 
   @media (max-width: 1440px) {

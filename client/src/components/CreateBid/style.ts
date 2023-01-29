@@ -17,21 +17,6 @@ const Container = styled.div`
   & > div {
     width: 100%;
 
-    .divUser {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      & > h3 {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 24px;
-
-        color: var(--grey1);
-        margin-left: 10px;
-      }
-    }
-
     & > form {
       width: 100%;
       display: flex;

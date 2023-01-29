@@ -113,7 +113,7 @@ const Container = styled.div`
     padding-top: 0;
   }
 
-  & > div:nth-child(3) {
+  & > div:nth-child(2) {
     width: 401px;
     margin-top: 15px;
 

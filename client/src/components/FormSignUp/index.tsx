@@ -18,7 +18,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
   const [changeColorAdvertiser, setChangeColorAdvertiser] =
     useState<boolean>(false);
 
-  const [buyerOrAdvertiser, setBuyerOrAdvertiser] = useState<boolean>(true);
+  const [buyerOrAdvertiser, setBuyerOrAdvertiser] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -263,7 +263,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           onClick={() => {
             setChangeColorBuyer(true);
             setChangeColorAdvertiser(false);
-            setBuyerOrAdvertiser(true);
+            setBuyerOrAdvertiser(false);
           }}
           style={
             changeColorBuyer
@@ -281,7 +281,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           onClick={() => {
             setChangeColorBuyer(false);
             setChangeColorAdvertiser(true);
-            setBuyerOrAdvertiser(false);
+            setBuyerOrAdvertiser(true);
           }}
           style={
             changeColorAdvertiser
