@@ -1,5 +1,6 @@
 import { IUserProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
+import { DescriptionProduct } from "../DescriptionProduct";
 import { Container } from "./style";
 
 interface IShowAdvertiser {
@@ -9,14 +10,14 @@ interface IShowAdvertiser {
 const ShowUser = ({ user }: IShowAdvertiser) => {
   return (
     <Container>
-      <AvatarUser userName={user?.name} />
+      <AvatarUser username={user?.name} />
 
       <div>
         <h3>{user?.name}</h3>
-        <p>{user?.is_seller ? "Anunciante" : "Comprador"}</p>
+        <p>Anunciante</p>
       </div>
 
-      <p>{user?.description}</p>
+      <DescriptionProduct description={user?.description} />
     </Container>
   );
 };

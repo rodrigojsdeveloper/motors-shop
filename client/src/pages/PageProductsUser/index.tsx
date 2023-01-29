@@ -56,8 +56,8 @@ const PageProductsUser = () => {
         <div className="divWhite">
           <div>
             <ShowUser user={user} />
-            <UserProductsCarsList products={cars} />
-            <UserProductsMotorcyclesList products={motorcycles} />
+            <UserProductsCarsList products={cars} user={user} />
+            <UserProductsMotorcyclesList products={motorcycles} user={user} />
           </div>
         </div>
         <Footer />

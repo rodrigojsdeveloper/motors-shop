@@ -8,7 +8,7 @@ import { AvatarUser } from "../AvatarUser";
 import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
 
-const UserProductsProduct = ({ product }: IProduct) => {
+const UserProductsProduct = ({ product, user }: IProduct) => {
   return (
     <Container>
       <div>
@@ -23,12 +23,12 @@ const UserProductsProduct = ({ product }: IProduct) => {
       <TitleProduct title={product.title} />
       <DescriptionProduct description={product.description} />
 
-      <AvatarUser username={product.user?.name ? product.user?.name : ""} />
+      <AvatarUser username={user.name} />
 
       <div className="divKmYearPrice">
         <div>
-          <YearProduct year={product.year} />
           <KmProduct km={product.kilometers} />
+          <YearProduct year={product.year} />
         </div>
 
         <PriceProduct price={product.price} />

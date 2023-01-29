@@ -1,12 +1,13 @@
 import { IListProducts, IProductProps } from "../../interfaces";
 import { AdvertiserProduct } from "../AdvertiserProduct";
 import { EmptyMessage } from "../EmptyMessage";
+import { TitleList } from "../TitleList";
 import { Container } from "./style";
 
 const AdvertiserCarsList = ({ products }: IListProducts) => {
   return (
     <Container id="cars">
-      <h2>Carros</h2>
+    <TitleList title="Carros" />
 
       <menu>
         {products.length > 0 ? (

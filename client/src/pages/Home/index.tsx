@@ -25,14 +25,18 @@ const Home = () => {
           (product: IProductProps) => product.ad_type == "sale"
         );
 
+        const productsActives = products.filter(
+          (product: IProductProps) => product.is_published == true
+        );
+
         setCars(
-          products.filter(
+          productsActives.filter(
             (product: IProductProps) => product.vehicle_type == "car"
           )
         );
 
         setMotorcycles(
-          products.filter(
+          productsActives.filter(
             (product: IProductProps) => product.vehicle_type == "motorcycle"
           )
         );
@@ -43,7 +47,13 @@ const Home = () => {
   useEffect(() => {
     api
       .get("/auctions")
-      .then((res) => setAuctions(res.data))
+      .then((res) => {
+        const auctionsActives = res.data.filter(
+          (auction: IAuctionProps) => auction.product.is_published == true
+        );
+
+        setAuctions(auctionsActives);
+      })
       .catch((error) => console.error(error));
   }, []);
 

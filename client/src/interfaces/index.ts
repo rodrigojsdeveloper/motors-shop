@@ -125,6 +125,7 @@ export interface IListProducts {
   products: IProductProps[];
   listCarsFunc: (car: IProductProps) => void;
   listMotorcyclesFunc: (motorcycle: IProductProps) => void;
+  user: IUserProps;
 }
 
 export interface IBid {
@@ -173,4 +174,5 @@ export interface IAvatarUser {
 
 export interface IProduct {
   product: IProductProps;
+  user: IUserProps;
 }
