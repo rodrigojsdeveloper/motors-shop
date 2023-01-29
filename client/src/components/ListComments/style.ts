@@ -56,8 +56,13 @@ const Container = styled.div`
     margin: 20px auto 0 auto;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     padding: 30px;
+    height: 845px;
+
+    & > menu {
+      height: 724px;
+    }
   }
 `;
 

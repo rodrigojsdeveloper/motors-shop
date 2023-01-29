@@ -18,12 +18,7 @@ const Comment = ({ comment }: ICommentComponent) => {
   return (
     <Container>
       <div>
-        <div>
-          <AvatarUser userName={comment.user.name} />
-          <h5>{comment.user.name}</h5>
-        </div>
-
-        <hr />
+        <AvatarUser username={comment.user.name} />
 
         <p>
           há {showDate()} {[0, 1].includes(showDate()) ? "dia" : "dias"}

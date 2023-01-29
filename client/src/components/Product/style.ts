@@ -16,7 +16,7 @@ const Container = styled.div`
     justify-content: space-between;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 768px) {
     margin-right: 12px;
   }
 `;

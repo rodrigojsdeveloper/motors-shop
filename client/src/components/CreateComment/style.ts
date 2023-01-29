@@ -3,36 +3,13 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 751px;
+  height: 289px;
 
   background-color: var(--grey10);
   border-radius: 4px;
 
-  padding: 44px 48px;
-  margin-top: 40px;
-
-  .divUserPhotoAndName {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    padding-bottom: 10px;
-
-    & > img {
-      width: 32px;
-      height: 32px;
-      border-radius: 150px;
-      object-fit: contain;
-    }
-
-    & > h4 {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 24px;
-
-      color: var(--grey1);
-      margin-left: 8px;
-    }
-  }
+  padding: 40px 30px 40px 48px;
+  margin-top: 35px;
 
   & > form {
     display: flex;
@@ -51,7 +28,7 @@ const Container = styled.div`
     transition: 0.5s;
 
     &:hover {
-      border-color: var(--black-fixed);
+      border-color: var(--brand2);
     }
 
     & > textarea {
@@ -74,6 +51,10 @@ const Container = styled.div`
         padding: 10px 10px 0 0;
       }
 
+      &:focus {
+        caret-color: var(--brand2);
+      }
+
       &:focus::-webkit-input-placeholder {
         color: transparent;
       }
@@ -85,12 +66,12 @@ const Container = styled.div`
       max-width: 120px;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       border: none;
       flex-direction: column;
       align-items: flex-start;
-      height: 100%;
       padding: 0;
+      height: 185px;
 
       & > textarea {
         border: 2px solid var(--grey7);
@@ -102,9 +83,6 @@ const Container = styled.div`
         margin-bottom: 20px;
         padding: 15px 0 15px 15px;
 
-        &:hover {
-          border-color: var(--black-fixed);
-        }
         &::placeholder {
           font-weight: 400;
           font-size: 16px;
@@ -114,31 +92,46 @@ const Container = styled.div`
           padding: 10px 10px 0 0;
         }
 
+        &:focus {
+          background-color: var(--white-fixed);
+          border-color: var(--brand2);
+          caret-color: var(--brand2);
+        }
+
         &:focus::-webkit-input-placeholder {
+          color: transparent;
+        }
+
+        &:focus::-moz-placeholder {
           color: transparent;
         }
       }
     }
   }
 
-  .divReadyComments {
-    display: flex;
-    flex-direction: row;
+  & > div:nth-child(1) {
+    padding-top: 0;
+  }
 
+  & > div:nth-child(3) {
+    width: 401px;
     margin-top: 15px;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
     & > p {
-      color: var(--grey3);
       font-weight: 500;
       font-size: 12px;
       line-height: 24px;
+      color: var(--grey3);
 
       background-color: var(--grey7);
       border-radius: 24px;
 
       cursor: pointer;
-
-      margin-right: 10px;
       padding: 0px 12px;
       transition: 0.5s;
 
@@ -147,22 +140,24 @@ const Container = styled.div`
       }
     }
 
-    @media (max-width: 720px) {
-      flex-direction: column;
+    @media (max-width: 768px) {
+      height: 110px;
+      width: 100%;
+      max-width: 218px;
 
-      & > p {
-        margin: 10px 0;
-        width: fit-content;
-      }
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
     }
   }
 
   @media (max-width: 1440px) {
-    margin: 50px auto;
+    margin: 35px auto 50px auto;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     padding: 30px;
+    height: 414px;
   }
 `;
 

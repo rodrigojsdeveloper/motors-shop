@@ -37,6 +37,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 15px;
   }
 
   @media (max-width: 1440px) {
@@ -49,7 +50,7 @@ const Container = styled.div`
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     & > article {
       height: auto;
     }

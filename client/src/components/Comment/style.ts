@@ -4,7 +4,11 @@ const Container = styled.div`
   width: 100%;
   max-width: 663px;
 
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
 
   & > div {
     display: flex;
@@ -12,33 +16,16 @@ const Container = styled.div`
     align-items: center;
     justify-content: start;
 
-    width: 100%;
-    padding-bottom: 10px;
-
     & > div {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
+      &::after {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
 
-      & > h5 {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 24px;
-
-        color: var(--grey1);
-        margin-left: 10px;
+        background-color: var(--grey4);
+        margin: 0 12px 0 8px;
       }
-    }
-
-    & > hr {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-
-      background: var(--grey4);
-
-      margin: 0 12px 0 8px;
     }
 
     & > p {
@@ -51,11 +38,23 @@ const Container = styled.div`
   }
 
   & > p {
+    height: 72px;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: var(--grey2);
-    line-height: 1.2rem;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 768px) {
+      height: 168px;
+      -webkit-line-clamp: 7;
+    }
   }
 `;
 

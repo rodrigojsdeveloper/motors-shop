@@ -67,13 +67,23 @@ const Container = styled.header`
       align-items: center;
       cursor: pointer;
 
-      & > h2 {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 28px;
-        padding-left: 10px;
+      & > div {
+        & > div {
+          & > p {
+            font-weight: 700;
+            font-size: 14px;
 
-        color: var(--grey2);
+            color: var(--white-fixed);
+          }
+        }
+
+        & > h5 {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 28px;
+
+          color: var(--grey2);
+        }
       }
     }
   }

@@ -1,15 +1,14 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { IUserProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
-import { Button } from "../Button";
+import { Link } from "react-router-dom";
 
 interface ICardSeller {
   user: IUserProps;
 }
 
 const CardSeller = ({ user }: ICardSeller) => {
-  const navigate = useNavigate();
 
   let { userProductId } = useParams();
 
@@ -18,18 +17,11 @@ const CardSeller = ({ user }: ICardSeller) => {
   return (
     <Container>
       <div>
-        <AvatarUser userName={user.name} />
+        <AvatarUser username={user.name} />
         <h4>{user.name}</h4>
         <p>{user.description}</p>
 
-        <Button
-          size="buttonSizeProductDetails"
-          color="buttonColorBlackProductDetails"
-          type="button"
-          onClick={() => navigate(`/users/${userProductId}`)}
-        >
-          Ver todos anuncios
-        </Button>
+        <Link to={`/users/${userProductId}`}>Ver todos anuncios</Link>
       </div>
     </Container>
   );

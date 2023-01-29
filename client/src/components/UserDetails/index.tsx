@@ -10,7 +10,7 @@ interface IUserDetails {
 const UserDetails = ({ user }: IUserDetails) => {
   return (
     <Container>
-      <AvatarUser userName={user.name} />
+      <AvatarUser username={user.name} />
 
       <div>
         <h2>{user.name}</h2>

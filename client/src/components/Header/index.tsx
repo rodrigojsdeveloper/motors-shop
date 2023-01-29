@@ -150,8 +150,7 @@ const Header = () => {
               }
             }}
           >
-            <AvatarUser userName={user.name} />
-            <h2>{user?.name}</h2>
+            <AvatarUser username={user.name} />
           </div>
         ) : (
           <nav>

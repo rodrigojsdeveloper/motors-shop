@@ -5,7 +5,7 @@ const Container = styled.h4`
   font-size: 16px;
   line-height: 20px;
   color: var(--grey1);
-  padding: 15px 0;
+  margin: 15px 0;
 
   display: -webkit-box;
   -webkit-line-clamp: 1;

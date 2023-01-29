@@ -6,7 +6,7 @@ const Container = styled.h4`
   line-height: 25px;
   color: var(--grey10);
   max-width: 663px;
-  padding-bottom: 15px;
+  margin-bottom: 15px;
 
   display: -webkit-box;
   -webkit-line-clamp: 1;

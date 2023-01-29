@@ -2,6 +2,11 @@ import { IAvatarUser } from "../../interfaces";
 import { Container, Content } from "./style";
 
 const AvatarUser = ({ username }: IAvatarUser) => {
+  
+  if(typeof username !== "string") {
+    username = "a"
+  }
+  
   return (
     <Container>
       <Content>

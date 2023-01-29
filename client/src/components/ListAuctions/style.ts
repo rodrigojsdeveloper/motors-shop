@@ -12,11 +12,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 1024px) {
-    padding-left: 25px;
-
-    & > menu {
-      height: 580px;
-    }
+    padding-left: 15px;
   }
 `;
 

@@ -23,7 +23,7 @@ const Container = styled.section`
     cursor: pointer;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     margin-bottom: 5px;
   }
 `;

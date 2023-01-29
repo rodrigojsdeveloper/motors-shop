@@ -48,12 +48,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   return (
     <Container>
-      {token && (
-        <div className="divUserPhotoAndName">
-          <AvatarUser userName={product.user.name} />
-          <h4>{product.user.name}</h4>
-        </div>
-      )}
+      {token && <AvatarUser username={product.user.name} />}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <textarea
@@ -72,7 +67,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
         </Button>
       </form>
 
-      <div className="divReadyComments">
+      <div>
         <p>Gostei muito!</p>
         <p>Incrível</p>
         <p>Recomendarei para meus amigos!</p>

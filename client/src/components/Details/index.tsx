@@ -1,4 +1,7 @@
 import { IProductProps } from "../../interfaces";
+import { PriceProduct } from "../PriceProduct";
+import { YearProduct } from "../YearProduct";
+import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
 
 interface IDetails {
@@ -16,11 +19,11 @@ const Details = ({ product }: IDetails) => {
 
       <div>
         <div>
-          <p>{product?.year}</p>
-          <p>{product?.kilometers} KM</p>
+          <KmProduct km={product?.kilometers} />
+          <YearProduct year={product?.year} />
         </div>
 
-        <span>{product?.price}</span>
+        <PriceProduct price={String(product?.price)} />
       </div>
 
       {token && <a href={link}>Comprar</a>}
