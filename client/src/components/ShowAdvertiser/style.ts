@@ -11,11 +11,16 @@ const Container = styled.section`
   margin: -210px auto 0 auto;
 
   & > div:nth-child(1) {
-    width: 104px;
-    height: 104px;
+    & > div {
+      width: 104px;
+      height: 104px;
 
-    & > p {
-      font-size: 36px;
+      & > p {
+        font-size: 36px;
+      }
+    }
+    & > h5 {
+      display: none;
     }
   }
 

@@ -9,7 +9,6 @@ interface ICardSeller {
 }
 
 const CardSeller = ({ user }: ICardSeller) => {
-
   let { userProductId } = useParams();
 
   userProductId = user.id;
@@ -21,7 +20,12 @@ const CardSeller = ({ user }: ICardSeller) => {
         <h4>{user.name}</h4>
         <p>{user.description}</p>
 
-        <Link to={`/users/${userProductId}`}>Ver todos anuncios</Link>
+        <Link
+          to={`/users/${userProductId}`}
+          onClick={() => window.scroll({ top: 0 })}
+        >
+          Ver todos anuncios
+        </Link>
       </div>
     </Container>
   );

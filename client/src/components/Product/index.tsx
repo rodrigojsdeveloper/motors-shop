@@ -21,7 +21,12 @@ const Product = ({ product }: IProduct) => {
   const navigate = useNavigate();
 
   return (
-    <Container onClick={() => navigate(`/products/${productId}`)}>
+    <Container
+      onClick={() => {
+        navigate(`/products/${productId}`);
+        window.scroll({ top: 0 });
+      }}
+    >
       <ImageProduct src={product.cover_image} alt={product.title} />
 
       <TitleProduct title={product.title} />

@@ -29,8 +29,6 @@ const Container = styled.div`
       line-height: 25px;
       color: var(--grey1);
 
-      height: 32.39px;
-
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;

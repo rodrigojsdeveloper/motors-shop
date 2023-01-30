@@ -1,11 +1,13 @@
 import { DetailsNotLogged } from "../DetailsNotLogged";
 import { DetailsAuction } from "../DetailsAuction";
 import { PhotosGallery } from "../PhotosGallery";
-import { IAuctionProps } from "../../interfaces";
+import { IAuctionProps, IUserProps } from "../../interfaces";
 import { Description } from "../Description";
 import { CardSeller } from "../CardSeller";
 import { Container, Content } from "./style";
 import { Photo } from "../Photo";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 interface IAuctionDetails {
   auction: IAuctionProps;
@@ -13,32 +15,63 @@ interface IAuctionDetails {
 }
 
 const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+
   const token = sessionStorage.getItem("Motors shop: token");
 
+  useEffect(() => {
+    api
+      .get("/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setUser(res.data))
+      .catch((error) => console.error(error));
+  });
+
   return token ? (
-    <Container>
-      <article>
-        <div className="divCarPhotoAndDetails">
-          <Photo
-            image={auction.product?.cover_image}
-            setOpenModalPhoto={setOpenModalPhoto}
-          />
+    user.id == auction.user.id ? (
+      <Content>
+        <article>
+          <div className="divCarPhotoAndDetails">
+            <Photo
+              image={auction.product?.cover_image}
+              setOpenModalPhoto={setOpenModalPhoto}
+            />
 
-          {token ? (
-            <DetailsAuction auction={auction} />
-          ) : (
             <DetailsNotLogged product={auction.product} />
-          )}
+          </div>
+
+          <Description description={auction.product?.description} />
+        </article>
+
+        <div className="divPhotosAndUserDetails">
+          <PhotosGallery gallery_image={auction.product?.gallery_image} />
+          <CardSeller user={auction.user} />
         </div>
+      </Content>
+    ) : (
+      <Container>
+        <article>
+          <div className="divCarPhotoAndDetails">
+            <Photo
+              image={auction.product?.cover_image}
+              setOpenModalPhoto={setOpenModalPhoto}
+            />
 
-        <Description description={auction.product?.description} />
-      </article>
+            <DetailsAuction auction={auction} />
+          </div>
 
-      <div className="divPhotosAndUserDetails">
-        <PhotosGallery gallery_image={auction.product?.gallery_image} />
-        <CardSeller user={auction.user} />
-      </div>
-    </Container>
+          <Description description={auction.product?.description} />
+        </article>
+
+        <div className="divPhotosAndUserDetails">
+          <PhotosGallery gallery_image={auction.product?.gallery_image} />
+          <CardSeller user={auction.user} />
+        </div>
+      </Container>
+    )
   ) : (
     <Content>
       <article>
@@ -48,11 +81,7 @@ const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
             setOpenModalPhoto={setOpenModalPhoto}
           />
 
-          {token ? (
-            <DetailsAuction auction={auction} />
-          ) : (
-            <DetailsNotLogged product={auction.product} />
-          )}
+          <DetailsNotLogged product={auction.product} />
         </div>
 
         <Description description={auction.product?.description} />

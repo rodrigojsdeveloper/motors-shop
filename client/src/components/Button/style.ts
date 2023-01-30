@@ -193,6 +193,7 @@ const Container = styled.button<IButtonStyledProps>`
 
           color: var(--white-fixed);
           font-weight: 900;
+          line-height: 18px;
         `;
 
       case "buttonColorBlueBanner":

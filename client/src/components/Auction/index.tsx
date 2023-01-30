@@ -17,7 +17,7 @@ interface IAuction {
 const Auction = ({ auction }: IAuction) => {
   let { auctionId } = useParams();
 
-  auctionId = auction?.id;
+  auctionId = auction.id;
 
   const navigate = useNavigate();
 
@@ -52,7 +52,10 @@ const Auction = ({ auction }: IAuction) => {
 
       <div
         className="divRedirectsToAuction"
-        onClick={() => navigate(`/auctions/${auctionId}`)}
+        onClick={() => {
+          navigate(`/auctions/${auctionId}`);
+          window.scroll({ top: 0 });
+        }}
       >
         <p>Acessar página do leilão</p>
 

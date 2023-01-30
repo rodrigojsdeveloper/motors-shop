@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 312px;
-  height: 350px;
+  height: 356px;
   margin-right: 40px;
 
   .divKmYearPrice,
@@ -13,6 +13,7 @@ const Container = styled.div`
   }
   .divKmYearPrice {
     justify-content: space-between;
+    margin: 15px 0;
   }
 
   .divButtons {
@@ -25,6 +26,37 @@ const Container = styled.div`
 
     & > button {
       padding: 0;
+    }
+
+    & > a {
+      width: 100%;
+      height: 38px;
+      max-width: 105px;
+
+      background-color: transparent;
+      border: 1.5px solid var(--grey1);
+
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--grey1);
+
+      border-radius: 4px;
+      font-weight: 600;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition: 0.5s;
+
+      :disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      :hover {
+        background-color: var(--grey1);
+        color: var(--white-fixed);
+      }
     }
   }
 

@@ -90,6 +90,11 @@ const Container = styled.aside`
         opacity: 0.5;
         cursor: not-allowed;
       }
+
+      :hover {
+        background-color: var(--grey2);
+        border-color: var(--grey2);
+      }
     }
   }
 

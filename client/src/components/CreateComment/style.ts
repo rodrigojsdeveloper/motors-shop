@@ -113,7 +113,7 @@ const Container = styled.div`
     padding-top: 0;
   }
 
-  & > div:nth-child(2) {
+  .divTexts {
     width: 401px;
     margin-top: 15px;
 

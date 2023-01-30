@@ -5,6 +5,7 @@ import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { useState } from "react";
+import { DescriptionProduct } from "../DescriptionProduct";
 
 interface IShowAdvertiser {
   user: IUserProps;
@@ -28,14 +29,14 @@ const ShowAdvertiser = ({ user, listCarsFunc, listMotorcyclesFunc }: IShowAdvert
         </ModalBackground>
       )}
       <Container>
-        <AvatarUser userName={user?.name} />
+        <AvatarUser username={user?.name} />
 
         <div>
           <h3>{user?.name}</h3>
           <p>{user?.is_seller && "Anunciante"}</p>
         </div>
 
-        <p>{user?.description}</p>
+        <DescriptionProduct description={user?.description} />
 
         <Button
           color="buttonColorWhiteUserDetails"

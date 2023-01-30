@@ -7,7 +7,7 @@ const routes = Router();
 const auctionsRoutes = (): Router => {
   routes.get("", new AuctionControllers().listAll);
 
-  routes.get("/:id", new AuctionControllers().specific);
+  routes.get("/:auction_id", new AuctionControllers().specific);
 
   return routes;
 };

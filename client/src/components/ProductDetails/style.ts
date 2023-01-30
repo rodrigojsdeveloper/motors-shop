@@ -28,6 +28,10 @@ const Container = styled.div`
       flex-direction: column;
       justify-content: space-between;
     }
+
+    & > p {
+      background-color: red;
+    }
   }
 
   .divPhotosAndUserDetails {

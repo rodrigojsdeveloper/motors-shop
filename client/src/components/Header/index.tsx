@@ -73,7 +73,7 @@ const Header = () => {
           >
             Editar endereço
           </p>
-          <Link to="/myadvertiser">Meus Anúncios</Link>
+          <Link to="/myadvertiser" onClick={() => window.scroll({ top: 0 })}>Meus Anúncios</Link>
           <Link
             to="/signin"
             onClick={() => {
@@ -119,7 +119,7 @@ const Header = () => {
           </nav>
         )
       )}
-      <Link to="/">
+      <Link to="/" onClick={() => window.scroll({ top: 0 })}>
         <img src={logo} alt="Motors shop" />
       </Link>
 
@@ -155,7 +155,9 @@ const Header = () => {
         ) : (
           <nav>
             <Link to="/signin">Fazer Login</Link>
-            <Link to="/signup">Cadastrar</Link>
+            <Link to="/signup" onClick={() => window.scroll({ top: 0 })}>
+              Cadastrar
+            </Link>
           </nav>
         )}
       </div>

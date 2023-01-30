@@ -13,6 +13,7 @@ import { YearProduct } from "../YearProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
 import { TitleProduct } from "../TitleProduct";
 import { ImageProduct } from "../ImageProduct";
+import { Link } from "react-router-dom";
 
 interface IProduct {
   product: IProductProps;
@@ -73,8 +74,8 @@ const AdvertiserProduct = ({
         <DescriptionProduct description={product?.description} />
         <div className="divKmYearPrice">
           <div>
-            <YearProduct year={product?.year} />
             <KmProduct km={product?.kilometers} />
+            <YearProduct year={product?.year} />
           </div>
 
           <PriceProduct price={product?.price} />
@@ -89,14 +90,12 @@ const AdvertiserProduct = ({
           >
             Editar
           </Button>
-          <Button
-            color="buttonColorWhiteEditAndShowProduct"
-            size="buttonSizeShowProduct"
-            type="button"
-            onClick={() => navigate(`/products/${product.id}`)}
+          <Link
+            to={`/products/${product.id}`}
+            onClick={() => window.scroll({ top: 0 })}
           >
             Ver como
-          </Button>
+          </Link>
         </div>
       </Container>
     </>
