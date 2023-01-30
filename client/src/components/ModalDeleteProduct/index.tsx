@@ -7,15 +7,11 @@ import { Button } from "../Button";
 interface IModalDeleteProduct {
   setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
   product: IProductProps;
-  listCarsFunc: (car: IProductProps) => void;
-  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
 }
 
 const ModalDeleteProduct = ({
   setCloseModalDeleteProduct,
   product,
-  listCarsFunc,
-  listMotorcyclesFunc,
 }: IModalDeleteProduct) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
@@ -48,26 +44,14 @@ const ModalDeleteProduct = ({
             color="buttonColorRedModalDeleteProduct"
             type="button"
             onClick={() => {
-              product.vehicle_type == "car"
-                ? api
-                    .delete(`/products/${product.id}`, {
-                      headers: {
-                        Authorization: `Bearer ${token}`,
-                      },
-                    })
-                    .then((_) => {
-                      setCloseModalDeleteProduct(false)
-                      listCarsFunc()
-                    })
-                    .catch((error) => console.error(error))
-                : api
-                    .delete(`/products/${product.id}`, {
-                      headers: {
-                        Authorization: `Bearer ${token}`,
-                      },
-                    })
-                    .then((_) => setCloseModalDeleteProduct(false))
-                    .catch((error) => console.error(error));
+              api
+                .delete(`/products/${product.id}`, {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                })
+                .then((_) => setCloseModalDeleteProduct(false))
+                .catch((error) => console.error(error));
             }}
           >
             Sim, excluir anúncio

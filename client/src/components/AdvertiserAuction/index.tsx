@@ -8,6 +8,11 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
+import { TitleAuction } from "../TitleAuction";
+import { DescriptionAuction } from "../DescriptionAuction";
+import { KmProduct } from "../KmProduct";
+import { YearProduct } from "../YearProduct";
+import { PriceAuction } from "../PriceAuction";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -47,9 +52,8 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
       {closeModalDeleteProduct && (
         <ModalBackground>
           <ModalDeleteProduct
-            product={auctionRequest}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
-            link="auctions"
+            product={auction.product}
           />
         </ModalBackground>
       )}
@@ -67,17 +71,17 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
             </div>
 
             <div>
-              <h4>{auction?.product?.title}</h4>
+              <TitleAuction title={auction?.product?.title} />
 
-              <p>{auction?.product?.description}</p>
+              <DescriptionAuction description={auction?.product?.description} />
 
-              <div className="divYearKMPrice">
+              <div className="divYearKmAndPrice">
                 <div>
-                  <p>{auction?.product?.year}</p>
-                  <p>{auction?.product?.kilometers} KM</p>
+                  <KmProduct km={auction?.product?.kilometers} />
+                  <YearProduct year={auction?.product?.year} />
                 </div>
 
-                <span>{auction?.product?.price}</span>
+                <PriceAuction price={auction?.product?.price} />
               </div>
             </div>
           </div>

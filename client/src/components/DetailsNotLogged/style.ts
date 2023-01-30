@@ -38,7 +38,7 @@ const Container = styled.div`
 
       @media (max-width: 768px) {
         -webkit-line-clamp: 3;
-        height: 75px;
+        height: 50px;
       }
     }
 
@@ -59,17 +59,15 @@ const Container = styled.div`
     padding: 30px;
     height: 300px;
 
-    & > div {
-      & > h3 {
-        margin-bottom: 20px;
-      }
+    margin-top: 10px;
 
+    & > div {
       & > div {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 15px;
 
         & > div {
+          margin-bottom: 15px;
           justify-content: flex-start;
         }
       }

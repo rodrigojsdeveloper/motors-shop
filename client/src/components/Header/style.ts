@@ -381,7 +381,7 @@ const Container = styled.header`
   .navAdvertiser {
     width: 200px;
     height: 202px;
-    margin-right: 10px;
+    margin-right: 20px;
 
     border-radius: 4px;
     background-color: var(--grey9);
@@ -394,6 +394,7 @@ const Container = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 
     & > p,
     & > a {

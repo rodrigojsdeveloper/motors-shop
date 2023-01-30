@@ -9,7 +9,7 @@ const Container = styled.div`
   background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 20px;
-  animation: ${animationModal} 1s;
+  animation: ${animationModal} .5s;
 
   & > div {
     padding: 20px 0;
@@ -35,20 +35,23 @@ const Container = styled.div`
     }
 
     & > div {
+      width: 100%;
+      max-width: 347px;
+
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
+      justify-content: space-between;
+      float: right;
 
       & > button:nth-child(1) {
         margin-right: 10px;
       }
 
       @media (max-width: 425px) {
-        flex-direction: column;
-
-        button:nth-child(1) {
-          margin-bottom: 7px;
-        }
+        
+        height: 106px;
+        flex-direction: column-reverse;
+        justify-content: space-between;
 
         button {
           max-width: unset;

@@ -37,7 +37,7 @@ const Container = styled.div`
         var(--shadow4) 0%,
         var(--black-fixed) 100%
       );
-      
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;

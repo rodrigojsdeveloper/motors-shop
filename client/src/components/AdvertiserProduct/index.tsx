@@ -17,17 +17,9 @@ import { Link } from "react-router-dom";
 
 interface IProduct {
   product: IProductProps;
-  listCarsFunc: (car: IProductProps) => void;
-  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
 }
 
-const AdvertiserProduct = ({
-  product,
-  listCarsFunc,
-  listMotorcyclesFunc,
-}: IProduct) => {
-  const navigate = useNavigate();
-
+const AdvertiserProduct = ({ product }: IProduct) => {
   const [openModalEditProduct, setOpenModalEditProduct] =
     useState<boolean>(false);
 
@@ -61,8 +53,6 @@ const AdvertiserProduct = ({
           <ModalDeleteProduct
             product={productRequest}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
-            listCarsFunc={listCarsFunc}
-            listMotorcyclesFunc={listMotorcyclesFunc}
           />
         </ModalBackground>
       )}

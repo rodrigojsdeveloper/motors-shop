@@ -34,11 +34,11 @@ const Container = styled.div`
       max-width: 105px;
 
       background-color: transparent;
-      border: 1.5px solid var(--grey1);
+      border: 1.5px solid var(--grey0);
 
       font-weight: 600;
       font-size: 14px;
-      color: var(--grey1);
+      color: var(--grey0);
 
       border-radius: 4px;
       font-weight: 600;
@@ -55,7 +55,8 @@ const Container = styled.div`
       }
       :hover {
         background-color: var(--grey1);
-        color: var(--white-fixed);
+        border-color: var(--grey1);
+        color: var(--grey10);
       }
     }
   }

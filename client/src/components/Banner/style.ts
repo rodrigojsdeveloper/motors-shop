@@ -81,7 +81,7 @@ const Container = styled.div`
 
         :hover {
           background-color: var(--grey10);
-          color: var(--brand2);
+          color: var(--grey1);
         }
       }
 

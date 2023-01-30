@@ -206,7 +206,7 @@ const Container = styled.button<IButtonStyledProps>`
 
           :hover {
             background-color: var(--grey10);
-            color: var(--brand2);
+            color: var(--grey1);
           }
         `;
 
@@ -232,7 +232,8 @@ const Container = styled.button<IButtonStyledProps>`
           color: var(--grey2);
 
           :hover {
-            background-color: var(--brand4);
+            background-color: var(--grey5);
+            border-color: var(--grey5);
           }
         `;
 
@@ -247,40 +248,41 @@ const Container = styled.button<IButtonStyledProps>`
           color: var(--brand1);
 
           :hover {
-            background-color: var(--brand1);
-            color: var(--grey10);
+            background-color: var(--brand4);
           }
         `;
 
       case "buttonColorWhiteEditAndShowProduct":
         return css`
           padding: 12px 20px;
-          border: 1.5px solid var(--grey1);
+          border: 1.5px solid var(--grey0);
 
           font-weight: 600;
           font-size: 14px;
-          color: var(--grey1);
+          color: var(--grey0);
 
           background-color: transparent;
 
           :hover {
             background-color: var(--grey1);
-            color: var(--white-fixed);
+            border-color: var(--grey1);
+            color: var(--grey10);
           }
         `;
 
       case "buttonColorRedModalDeleteProduct":
         return css`
           padding: 12px 15px;
-          background-color: var(--alert2);
-          border: 1.5px solid var(--alert2);
+          background-color: var(--alert3);
+          border: 1.5px solid var(--alert3);
 
           font-weight: 600;
           font-size: 16px;
           color: var(--alert1);
 
           :hover {
-            border-color: var(--alert1);
+            border-color: var(--alert2);
+            background-color: var(--alert2);
           }
         `;
 

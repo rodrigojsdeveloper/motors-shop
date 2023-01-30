@@ -92,8 +92,8 @@ const Container = styled.aside`
       }
 
       :hover {
-        background-color: var(--grey2);
-        border-color: var(--grey2);
+        background-color: var(--grey1);
+        border-color: var(--grey1);
       }
     }
   }

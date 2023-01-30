@@ -75,16 +75,8 @@ const PageAdvertiser = () => {
               user={user}
             />
             <AdvertiserAuctionsList auctions={auctions} />
-            <AdvertiserCarsList 
-            products={cars}
-            listCarsFunc={ listCarsFunc }
-            listMotorcyclesFunc={ listMotorcyclesFunc }
-            />
-            <AdvertiserMotorcyclesList
-            products={motorcycles}
-            listCarsFunc={ listCarsFunc }
-            listMotorcyclesFunc={ listMotorcyclesFunc }
-            />
+            <AdvertiserCarsList products={cars} />
+            <AdvertiserMotorcyclesList products={motorcycles} />
           </div>
         </div>
         <Footer />
