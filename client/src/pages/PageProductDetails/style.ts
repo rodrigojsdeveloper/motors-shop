@@ -7,24 +7,19 @@ const Container = styled.div`
   }
 
   .divWhite {
-    height: 1350px;
     background-color: var(--grey7);
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    padding-bottom: 80px;
+    
     & > div {
       width: 100%;
       max-width: 1250px;
 
       padding: 10px;
-    }
-  }
-
-  @media (max-width: 1440px) {
-    .divWhite {
-      height: auto;
     }
   }
 `;

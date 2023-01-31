@@ -3,6 +3,7 @@ import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
 import { AuctionDetails } from "../../components/AuctionDetails";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ModalPhoto } from "../../components/ModalPhoto";
+import { Container } from "../PageProductDetails/style";
 import { CreateBid } from "../../components/CreateBid";
 import { ListBids } from "../../components/ListBids";
 import { Footer } from "../../components/Footer";
@@ -10,7 +11,6 @@ import { Header } from "../../components/Header";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { Container } from "./style";
 
 const PageAuctionDetails = () => {
   const { auctionId } = useParams();

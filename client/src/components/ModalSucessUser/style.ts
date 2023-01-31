@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 520px;
-  height: 287px;
+  height: min-content;
 
   background-color: var(--white-fixed);
   border-radius: 8px;
@@ -13,6 +13,7 @@ const Container = styled.div`
 
   & > div {
     text-align: start;
+    padding-bottom: 20px;
 
     & > h5 {
       font-weight: 500;
