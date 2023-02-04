@@ -5,6 +5,7 @@ import { PageNewPassword } from "../pages/PageNewPassword";
 import { PageAdvertiser } from "../pages/PageAdvertiser";
 import { Routes, Route } from "react-router-dom";
 import { PageEmail } from "../pages/PageEmail";
+import { NotFound } from "../pages/NotFound";
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
 import { Home } from "../pages/Home";
@@ -21,6 +22,7 @@ const AllRoutes = () => {
       <Route path="/myadvertiser" element={<PageAdvertiser />} />
       <Route path="/users/:userProductId" element={<PageProductsUser />} />
       <Route path="/" index element={<Home />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

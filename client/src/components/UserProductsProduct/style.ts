@@ -48,6 +48,13 @@ const Container = styled.div`
     justify-content: space-between;
   }
 
+  img {
+    :hover {
+      border: none;
+      cursor: default;
+    }
+  }
+
   @media (max-width: 425px) {
     margin-right: 12px;
   }

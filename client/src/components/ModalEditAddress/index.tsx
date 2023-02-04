@@ -67,7 +67,11 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
     data.address = address;
 
     api
-      .patch(`/users/${user.id}`, data)
+      .patch(`/users/${user.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((_) => setOpenModalEditAddress(false))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
@@ -91,7 +95,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             placeholder="00000-000"
             autoComplete="off"
             type="number"
-            error={errors.zip_code?.message}
             required={true}
             size="inputModalEditAddressLarge"
             value={user?.address.zip_code}
@@ -169,7 +172,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
               placeholder="Digitar número"
               autoComplete="off"
               type="number"
-              error={errors.number?.message}
               required={true}
               size="inputModalEditAddressMedium"
               value={user?.address.number}
@@ -182,8 +184,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
               placeholder="Ex: Apart 307"
               autoComplete="off"
               type="text"
-              error={errors.complement?.message}
-              required={true}
               size="inputModalEditAddressMedium"
               value={user?.address.complement}
             />

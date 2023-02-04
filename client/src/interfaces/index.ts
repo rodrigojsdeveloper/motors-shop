@@ -3,10 +3,10 @@ import { MouseEventHandler } from "react";
 
 export interface InputProps {
   type?: string;
-  name?: string;
+  name: string;
   autoComplete?: string;
   placeholder?: string;
-  register?: UseFormRegister<FieldValues>;
+  register: UseFormRegister<FieldValues>;
   label?: string;
   error?: any;
   required?: boolean | undefined;
@@ -19,7 +19,7 @@ export interface InputProps {
     | "inputModalEditAddressMedium"
     | "inputModalCreateAnnouncementSmall";
   className?: string;
-  value?: any;
+  value?: string | number | readonly string[];
   disabled?: boolean;
 }
 

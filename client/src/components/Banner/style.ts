@@ -19,31 +19,44 @@ const Container = styled.div`
 
     height: 261px;
 
-    & > h1 {
-      font-weight: 700;
-      font-size: 44px;
-      line-height: 56px;
-
+    & > hgroup {
       width: 100%;
-      max-width: 748px;
-      text-align: center;
+      height: 167px;
 
-      color: var(--grey10);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
 
-      @media (max-width: 768px) {
-        font-weight: 600;
-        font-size: 32px;
-        line-height: 40px;
+      & > h1 {
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 56px;
+
+        width: 100%;
+        max-width: 748px;
+        text-align: center;
+        color: var(--grey10);
+
+        @media (max-width: 768px) {
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 40px;
+        }
       }
-    }
 
-    & > p {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 28px;
-      color: var(--grey9);
+      & > h2 {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        color: var(--grey9);
 
-      text-align: center;
+        text-align: center;
+      }
+
+      @media (max-width: 425px) {
+        height: 200px;
+      }
     }
 
     & > div {

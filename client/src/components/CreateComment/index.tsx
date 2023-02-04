@@ -1,4 +1,4 @@
-import { IComment, IProductProps } from "../../interfaces";
+import { IComment, IProductProps, IUserProps } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
@@ -14,6 +14,8 @@ interface ICreateComment {
 }
 
 const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+
   const [disable, setDisable] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
@@ -22,6 +24,15 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
+
+    api
+      .get("/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setUser(res.data))
+      .catch((error) => console.error(error));
   }, []);
 
   const schema = yup.object().shape({
@@ -48,7 +59,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   return (
     <Container>
-      {token && <AvatarUser username={product.user.name} />}
+      {token && <AvatarUser username={user.name} />}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <textarea

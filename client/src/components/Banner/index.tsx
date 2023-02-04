@@ -4,9 +4,11 @@ const Banner = () => {
   return (
     <Container>
       <div>
-        <h1>Velocidade e experiência em um lugar feito para você</h1>
+        <hgroup>
+          <h1>Velocidade e experiência em um lugar feito para você</h1>
 
-        <p>Um ambiente feito para você explorar o seu melhor</p>
+          <h2>Um ambiente feito para você explorar o seu melhor</h2>
+        </hgroup>
 
         <div>
           <a href="#cars">Carros</a>
