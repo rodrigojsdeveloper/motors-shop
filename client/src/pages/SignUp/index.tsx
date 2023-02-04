@@ -4,11 +4,22 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FormSignUp } from "../../components/FormSignUp";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Container } from "./style";
-import { useState } from "react";
 
 const SignUp = () => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
+  const navigate = useNavigate();
+
   const [openModalSuccess, setOpenModalSuccess] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (token) {
+      return navigate("/");
+    }
+  }, [token]);
 
   return (
     <HelmetProvider>
