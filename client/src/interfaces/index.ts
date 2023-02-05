@@ -162,7 +162,6 @@ export interface IBid {
 
 export interface IListProducts {
   products: IProductProps[];
-  user?: IUserProps;
 }
 
 export interface IListAuctions {
@@ -251,7 +250,6 @@ export interface IModalCreateAnnouncement {
 export interface IModalDelete {
   setOpenModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
   productId: string;
-  url: string;
 }
 
 export interface IModalEdit {
@@ -305,6 +303,11 @@ export interface IShowAdvertiser {
 
 export interface IUserProductsProduct {
   product: IProductProps;
+  user: IUserProps;
+}
+
+export interface IUserProductsListCars {
+  products: IProductProps[];
   user: IUserProps;
 }
 

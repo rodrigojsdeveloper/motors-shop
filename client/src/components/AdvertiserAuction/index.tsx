@@ -36,7 +36,6 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
           <ModalDeleteProduct
             setOpenModalDelete={setOpenModalDelete}
             productId={auction.id}
-            url="auctions"
           />
         </ModalBackground>
       )}

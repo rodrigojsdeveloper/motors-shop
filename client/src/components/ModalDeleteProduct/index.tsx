@@ -7,7 +7,6 @@ import { Button } from "../Button";
 const ModalDeleteProduct = ({
   setOpenModalDelete,
   productId,
-  url,
 }: IModalDelete) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
@@ -38,7 +37,7 @@ const ModalDeleteProduct = ({
             type="button"
             onClick={() => {
               api
-                .delete(`/${url}/${productId}`, {
+                .delete(`/products/${productId}`, {
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },

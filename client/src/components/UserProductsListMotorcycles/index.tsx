@@ -1,10 +1,13 @@
 import { UserProductsProduct } from "../UserProductsProduct";
-import { IListProducts } from "../../interfaces";
+import { IUserProductsListCars } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { Container } from "../ListCars/style";
 import { TitleList } from "../TitleList";
 
-const UserProductsListMotorcycles = ({ products, user }: IListProducts) => {
+const UserProductsListMotorcycles = ({
+  products,
+  user,
+}: IUserProductsListCars) => {
   return (
     <Container>
       <TitleList title="Motos" />

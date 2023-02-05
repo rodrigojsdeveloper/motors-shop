@@ -14,11 +14,9 @@ import { Button } from "../Button";
 import { useState } from "react";
 
 const AdvertiserProduct = ({ product }: IProduct) => {
-  const [openModalEdit, setOpenModalEdit] =
-    useState<boolean>(false);
+  const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
 
-  const [openModalDelete, setOpenModalDelete] =
-    useState<boolean>(false);
+  const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
 
   return (
     <>
@@ -36,7 +34,6 @@ const AdvertiserProduct = ({ product }: IProduct) => {
           <ModalDeleteProduct
             setOpenModalDelete={setOpenModalDelete}
             productId={product.id}
-            url="products"
           />
         </ModalBackground>
       )}
