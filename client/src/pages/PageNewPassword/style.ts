@@ -14,7 +14,7 @@ const Container = styled.div`
 
     padding: 15px;
   }
-  
+
   @media (min-width: 1921px) {
     & > main {
       height: 100vh;

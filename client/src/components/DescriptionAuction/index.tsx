@@ -1,7 +1,7 @@
-import { IDescriptionProduct } from "../../interfaces";
+import { IDescription } from "../../interfaces";
 import { Container } from "./style";
 
-const DescriptionAuction = ({ description }: IDescriptionProduct) => (
+const DescriptionAuction = ({ description }: IDescription) => (
   <Container>{description}</Container>
 );
 

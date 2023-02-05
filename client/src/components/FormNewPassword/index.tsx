@@ -1,27 +1,16 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { useState } from "react";
+import { Input } from "../Input";
 import * as yup from "yup";
 
 const FormNewPassword = () => {
   const { userId } = useParams();
 
   const navigate = useNavigate();
-
-  const [typeInput, setTypeInput] = useState<boolean>(false);
-
-  const [showOutlineShow, setShowOutlineShow] = useState<boolean>(true);
-
-  const [typeInputRepeatPassword, setTypeInputRepeatPassword] =
-    useState<boolean>(false);
-
-  const [showOutlineShowRepeatPassword, setShowOutlineShowRepeatPassword] =
-    useState<boolean>(true);
 
   const schema = yup.object().shape({
     password: yup
@@ -65,93 +54,28 @@ const FormNewPassword = () => {
       <h2>Nova Senha</h2>
 
       <div>
-        <label>
-          Senha{" "}
-          {!!errors.password && (
-            <span> - {errors.password?.message as string}</span>
-          )}
-        </label>
-        <div>
-          <input
-            placeholder="Senha"
-            type={typeInput ? "text" : "password"}
-            {...register("password")}
-            required={true}
-            onChange={(e: any) => {
-              if (e.target.value == "") {
-                setShowOutlineShow(false);
-
-                setTypeInput(false);
-              }
-            }}
-          />
-          {showOutlineShow ? (
-            <AiOutlineEyeInvisible
-              size={20}
-              className="biShow"
-              onClick={() => {
-                setTypeInput(true);
-
-                setShowOutlineShow(false);
-              }}
-            />
-          ) : (
-            <AiOutlineEye
-              size={20}
-              className="biShow"
-              onClick={() => {
-                setTypeInput(false);
-
-                setShowOutlineShow(true);
-              }}
-            />
-          )}
-        </div>
-      </div>
-
-      <div>
-        <label>
-          Repetir senha{" "}
-          {!!errors.password && (
-            <span> - {errors.password?.message as string}</span>
-          )}
-        </label>
-        <div>
-          <input
-            placeholder="Repita a senha"
-            type={typeInputRepeatPassword ? "text" : "password"}
-            {...register("repeat_password")}
-            required={true}
-            onChange={(e: any) => {
-              if (e.target.value == "") {
-                setShowOutlineShowRepeatPassword(false);
-
-                setTypeInputRepeatPassword(false);
-              }
-            }}
-          />
-          {showOutlineShowRepeatPassword ? (
-            <AiOutlineEyeInvisible
-              size={20}
-              className="biShow"
-              onClick={() => {
-                setTypeInputRepeatPassword(true);
-
-                setShowOutlineShowRepeatPassword(false);
-              }}
-            />
-          ) : (
-            <AiOutlineEye
-              size={20}
-              className="biShow"
-              onClick={() => {
-                setTypeInputRepeatPassword(false);
-
-                setShowOutlineShowRepeatPassword(true);
-              }}
-            />
-          )}
-        </div>
+        <Input
+          label="Senha"
+          name="password"
+          register={register}
+          placeholder="Digitar senha"
+          autoComplete="off"
+          type="password"
+          error={errors.password?.message}
+          required={true}
+          size="inputSignIn"
+        />
+        <Input
+          label="Repetir senha"
+          name="repeat_password"
+          register={register}
+          placeholder="Digitar senha"
+          autoComplete="off"
+          type="password"
+          error={errors.repeat_password?.message}
+          required={true}
+          size="inputSignIn"
+        />
       </div>
 
       <Button

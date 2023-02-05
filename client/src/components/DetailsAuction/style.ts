@@ -71,8 +71,8 @@ const Container = styled.section`
     transition: 0.5s;
 
     &:hover {
-      background-color: var(--brand5);
-      border-color: var(--brand5);
+      background-color: var(--brand3);
+      border-color: var(--brand3);
     }
   }
 

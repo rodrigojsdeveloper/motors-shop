@@ -9,7 +9,7 @@ const Container = styled.div`
   background-color: var(--white-fixed);
   border-radius: 8px;
   padding: 20px;
-  animation: ${animationModal} .5s;
+  animation: ${animationModal} 0.5s;
 
   & > div {
     padding: 20px 0;
@@ -48,7 +48,6 @@ const Container = styled.div`
       }
 
       @media (max-width: 425px) {
-        
         height: 106px;
         flex-direction: column-reverse;
         justify-content: space-between;

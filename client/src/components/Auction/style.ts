@@ -110,7 +110,7 @@ const Container = styled.div`
     }
 
     &:hover {
-      background-color: var(--brand5);
+      background-color: var(--brand3);
     }
 
     @media (max-width: 768px) {

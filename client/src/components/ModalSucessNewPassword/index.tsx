@@ -1,11 +1,8 @@
+import { IModalSuccess } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { Container } from "./style";
 
-interface IFormSignUp {
-  setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const ModalSucessNewPassword = ({ setOpenModalSuccess }: IFormSignUp) => {
+const ModalSucessNewPassword = ({ setOpenModalSuccess }: IModalSuccess) => {
   return (
     <Container>
       <HeaderModal title="Sucesso!" setCloseModal={setOpenModalSuccess} />

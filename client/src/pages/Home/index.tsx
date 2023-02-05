@@ -8,7 +8,6 @@ import { Banner } from "../../components/Banner";
 import { Footer } from "../../components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { Container } from "./style";
 
 const Home = () => {
   const [cars, setCars] = useState<IProductProps[]>([]);
@@ -60,14 +59,14 @@ const Home = () => {
   return (
     <HelmetProvider>
       <Helmet title="Motors shop" />
-      <Container>
+      <>
         <Header />
         <Banner />
         <ListAuction auctions={auctions} />
         <ListCars products={cars} />
         <ListMotorcycles products={motorcycles} />
         <Footer />
-      </Container>
+      </>
     </HelmetProvider>
   );
 };

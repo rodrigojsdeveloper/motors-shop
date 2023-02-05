@@ -1,8 +1,5 @@
+import { IEmptyMessage } from "../../interfaces";
 import { Container } from "./style";
-
-interface IEmptyMessage {
-  message: string;
-}
 
 const EmptyMessage = ({ message }: IEmptyMessage) => {
   return (

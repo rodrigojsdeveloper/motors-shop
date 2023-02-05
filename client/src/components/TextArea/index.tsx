@@ -1,14 +1,7 @@
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { ITextAreaProps } from "../../interfaces";
 import { Container } from "./style";
 
-interface ITextArea {
-  value?: string;
-  register?: UseFormRegister<FieldValues>;
-  name?: string;
-  error?: any;
-}
-
-const TextArea = ({ value, name, register, error }: ITextArea) => {
+const TextArea = ({ value, name, register, error }: ITextAreaProps) => {
   return (
     <Container>
       <label>

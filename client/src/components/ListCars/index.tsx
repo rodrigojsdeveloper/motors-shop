@@ -1,7 +1,7 @@
-import { IListProducts } from "../../interfaces";
+import { IListProducts, IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
-import { Product } from "../Product";
 import { TitleList } from "../TitleList";
+import { Product } from "../Product";
 import { Container } from "./style";
 
 const ListCars = ({ products }: IListProducts) => {
@@ -11,7 +11,7 @@ const ListCars = ({ products }: IListProducts) => {
 
       <menu>
         {products.length > 0 ? (
-          products.map((product) => (
+          products.map((product: IProductProps) => (
             <Product product={product} key={product.id} />
           ))
         ) : (

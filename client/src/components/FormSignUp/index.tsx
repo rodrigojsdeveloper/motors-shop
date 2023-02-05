@@ -267,8 +267,18 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           }}
           style={
             changeColorBuyer
-              ? { background: "#4529E6", color: "#FFF", borderColor: "#4529E6", borderWidth: 2 }
-              : { background: "#FFF", color: "#0B0D0D", borderColor: "#ADB5BD", borderWidth: 2 }
+              ? {
+                  background: "#4529E6",
+                  color: "#FFF",
+                  borderColor: "#4529E6",
+                  borderWidth: 2,
+                }
+              : {
+                  background: "#FFF",
+                  color: "#0B0D0D",
+                  borderColor: "#ADB5BD",
+                  borderWidth: 2,
+                }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"
@@ -285,8 +295,18 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           }}
           style={
             changeColorAdvertiser
-              ? { background: "#4529E6", color: "#FFF", borderColor: "#4529E6", borderWidth: 2 }
-              : { background: "#FFF", color: "#0B0D0D", borderColor: "#ADB5BD", borderWidth: 2 }
+              ? {
+                  background: "#4529E6",
+                  color: "#FFF",
+                  borderColor: "#4529E6",
+                  borderWidth: 2,
+                }
+              : {
+                  background: "#FFF",
+                  color: "#0B0D0D",
+                  borderColor: "#ADB5BD",
+                  borderWidth: 2,
+                }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"

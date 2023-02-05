@@ -1,13 +1,10 @@
+import { IModalSuccess } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 import { HeaderModal } from "../HeaderModal";
 import { Container } from "./style";
 import { Button } from "../Button";
 
-interface IFormSignUp {
-  setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const ModalSucessUser = ({ setOpenModalSuccess }: IFormSignUp) => {
+const ModalSucessUser = ({ setOpenModalSuccess }: IModalSuccess) => {
   const navigate = useNavigate();
 
   return (

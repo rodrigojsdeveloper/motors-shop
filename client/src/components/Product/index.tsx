@@ -1,17 +1,13 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { IProductProps } from "../../interfaces";
-import { AvatarUser } from "../AvatarUser";
 import { DescriptionProduct } from "../DescriptionProduct";
+import { useNavigate, useParams } from "react-router-dom";
 import { ImageProduct } from "../ImageProduct";
-import { KmProduct } from "../KmProduct";
 import { PriceProduct } from "../PriceProduct";
 import { TitleProduct } from "../TitleProduct";
 import { YearProduct } from "../YearProduct";
+import { IProduct } from "../../interfaces";
+import { AvatarUser } from "../AvatarUser";
+import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
-
-interface IProduct {
-  product: IProductProps;
-}
 
 const Product = ({ product }: IProduct) => {
   let { productId } = useParams();

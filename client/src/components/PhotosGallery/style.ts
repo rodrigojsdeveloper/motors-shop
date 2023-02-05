@@ -27,7 +27,7 @@ const Container = styled.aside`
     width: 100%;
     max-width: 352px;
     height: 248px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -46,7 +46,7 @@ const Container = styled.aside`
         max-width: 108px;
 
         padding: 27px 7px;
-        
+
         background-color: var(--grey7);
         border-radius: 4px;
 

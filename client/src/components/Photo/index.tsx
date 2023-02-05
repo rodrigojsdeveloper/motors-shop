@@ -1,9 +1,5 @@
+import { IPhoto } from "../../interfaces";
 import { Container } from "./style";
-
-interface IPhoto {
-  image: string;
-  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const Photo = ({ image, setOpenModalPhoto }: IPhoto) => {
   return (

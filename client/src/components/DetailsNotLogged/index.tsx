@@ -1,14 +1,10 @@
-import { IProductProps } from "../../interfaces";
 import { PriceProduct } from "../PriceProduct";
 import { YearProduct } from "../YearProduct";
+import { IProduct } from "../../interfaces";
 import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
 
-interface IDetailsNotLoggedProduct {
-  product: IProductProps;
-}
-
-const DetailsNotLogged = ({ product }: IDetailsNotLoggedProduct) => {
+const DetailsNotLogged = ({ product }: IProduct) => {
   return (
     <Container>
       <div>

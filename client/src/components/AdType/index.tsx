@@ -1,16 +1,12 @@
-import { useState } from "react";
-import { Button } from "../Button";
+import { IAdType } from "../../interfaces";
 import { Container } from "./style";
+import { Button } from "../Button";
+import { useState } from "react";
 
-interface IAdType {
-  setBuyerOrAdvertiser: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const AdType = ({ setSaleOrAuctionAdType }: IAdType) => {
+  const [changeColorSale, setChangeColorSale] = useState<boolean>(true);
 
-const AdType = ({ setBuyerOrAdvertiser }: IAdType) => {
-  const [changeColorBuyer, setChangeColorBuyer] = useState<boolean>(true);
-
-  const [changeColorAdvertiser, setChangeColorAdvertiser] =
-    useState<boolean>(false);
+  const [changeColorAuction, setChangeColorAuction] = useState<boolean>(false);
 
   return (
     <Container>
@@ -18,12 +14,12 @@ const AdType = ({ setBuyerOrAdvertiser }: IAdType) => {
       <div>
         <Button
           onClick={() => {
-            setChangeColorBuyer(true);
-            setChangeColorAdvertiser(false);
-            setBuyerOrAdvertiser(true);
+            setChangeColorSale(true);
+            setChangeColorAuction(false);
+            setSaleOrAuctionAdType(true);
           }}
           style={
-            changeColorBuyer
+            changeColorSale
               ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
               : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
@@ -36,12 +32,12 @@ const AdType = ({ setBuyerOrAdvertiser }: IAdType) => {
         </Button>
         <Button
           onClick={() => {
-            setChangeColorBuyer(false);
-            setChangeColorAdvertiser(true);
-            setBuyerOrAdvertiser(false);
+            setChangeColorSale(false);
+            setChangeColorAuction(true);
+            setSaleOrAuctionAdType(false);
           }}
           style={
-            changeColorAdvertiser
+            changeColorAuction
               ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
               : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }

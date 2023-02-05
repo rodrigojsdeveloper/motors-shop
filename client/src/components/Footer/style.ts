@@ -19,7 +19,7 @@ const Container = styled.footer`
     font-size: 14px;
     line-height: 24px;
   }
-  
+
   @media (max-width: 1024px) {
     height: 310.34px;
     flex-direction: column;

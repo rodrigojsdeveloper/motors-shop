@@ -1,4 +1,4 @@
-import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
+import { ICreateBid, IUserProps } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
@@ -9,15 +9,14 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-interface ICreateBid {
-  auction: IAuctionProps;
-  ListBidsFunc: (bid: IBid) => void;
-}
-
 const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
+
+  const [disable, setDisable] = useState<boolean>(false);
+
+  const [load, setLoad] = useState<boolean>(false);
 
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
@@ -32,12 +31,8 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
       .catch((error) => console.error(error));
   }, []);
 
-  const [disable, setDisable] = useState<boolean>(false);
-
-  const [load, setLoad] = useState<boolean>(false);
-
   const schema = yup.object().shape({
-    value: yup.string().required("value required"),
+    value: yup.string().required(""),
   });
 
   const { register, handleSubmit } = useForm({

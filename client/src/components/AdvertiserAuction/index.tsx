@@ -1,58 +1,40 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
+import { DescriptionAuction } from "../DescriptionAuction";
 import { ModalBackground } from "../ModalBackground";
-import { IAuctionProps } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
+import { TitleAuction } from "../TitleAuction";
+import { PriceAuction } from "../PriceAuction";
 import clock from "../../assets/Group 13.svg";
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { YearProduct } from "../YearProduct";
+import { IAuction } from "../../interfaces";
+import { KmProduct } from "../KmProduct";
+import { ModalEdit } from "../ModalEdit";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { TitleAuction } from "../TitleAuction";
-import { DescriptionAuction } from "../DescriptionAuction";
-import { KmProduct } from "../KmProduct";
-import { YearProduct } from "../YearProduct";
-import { PriceAuction } from "../PriceAuction";
-import { ModalEdit } from "../ModalEdit";
-
-interface IAuction {
-  auction: IAuctionProps;
-}
+import { useState } from "react";
 
 const AdvertiserAuction = ({ auction }: IAuction) => {
   const navigate = useNavigate();
 
-  const [openModalEditProduct, setOpenModalEditProduct] =
-    useState<boolean>(false);
+  const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
 
-  const [auctionRequest, setAuctionRequest] = useState<IAuctionProps>(
-    {} as IAuctionProps
-  );
-
-  const [closeModalDeleteProduct, setCloseModalDeleteProduct] =
-    useState<boolean>(false);
-
-  useEffect(() => {
-    api
-      .get(`/auctions/${auction?.id}`)
-      .then((res) => setAuctionRequest(res.data))
-      .catch((error) => console.error(error));
-  }, []);
+  const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
 
   return (
     <>
-      {openModalEditProduct && (
+      {openModalEdit && (
         <ModalBackground>
           <ModalEdit
-            product={auctionRequest.product}
-            setOpenModalEditProduct={setOpenModalEditProduct}
-            setCloseModalDeleteProduct={setCloseModalDeleteProduct}
+            product={auction.product}
+            setOpenModalEdit={setOpenModalEdit}
+            setOpenModalDelete={setOpenModalDelete}
           />
         </ModalBackground>
       )}
-      {closeModalDeleteProduct && (
+      {openModalDelete && (
         <ModalBackground>
           <ModalDeleteProduct
-            setCloseModalDeleteProduct={setCloseModalDeleteProduct}
+            setOpenModalDelete={setOpenModalDelete}
             productId={auction.id}
             url="auctions"
           />
@@ -93,7 +75,7 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
             color="buttonColorBlueBanner"
             size="buttonSizeEditProduct"
             type="button"
-            onClick={() => setOpenModalEditProduct(true)}
+            onClick={() => setOpenModalEdit(true)}
           >
             Editar
           </Button>

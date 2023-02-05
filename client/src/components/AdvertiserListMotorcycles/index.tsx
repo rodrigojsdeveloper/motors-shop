@@ -1,13 +1,13 @@
 import { IListProducts, IProductProps } from "../../interfaces";
 import { AdvertiserProduct } from "../AdvertiserProduct";
 import { EmptyMessage } from "../EmptyMessage";
+import { Container } from "../ListCars/style";
 import { TitleList } from "../TitleList";
-import { Container } from "./style";
 
-const AdvertiserCarsList = ({ products }: IListProducts) => {
+const AdvertiserListMotorcycles = ({ products }: IListProducts) => {
   return (
     <Container id="cars">
-    <TitleList title="Carros" />
+      <TitleList title="Motos" />
 
       <menu>
         {products.length > 0 ? (
@@ -15,11 +15,11 @@ const AdvertiserCarsList = ({ products }: IListProducts) => {
             <AdvertiserProduct product={product} />
           ))
         ) : (
-          <EmptyMessage message="Não há carros" />
+          <EmptyMessage message="Não há motos" />
         )}
       </menu>
     </Container>
   );
 };
 
-export { AdvertiserCarsList };
+export { AdvertiserListMotorcycles };

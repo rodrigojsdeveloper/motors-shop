@@ -1,36 +1,29 @@
-import { IAuctionProps, IProductProps } from "../../interfaces";
+import { TypeOfVehicleEdit } from "../TypeOfVehicleEdit";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TypeOfVehicle } from "../TypeOfVehicle";
+import { IModalEdit } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
+import { useEffect, useState } from "react";
+import { AdTypeEdit } from "../AdTypeEdit";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { useEffect, useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
-import { AdTypeEdit } from "../AdTypeEdit";
-import { TypeOfVehicleEdit } from "../TypeOfVehicleEdit";
-
-interface IModalEditProduct {
-  setOpenModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  product: IProductProps;
-  setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const ModalEdit = ({
   product,
-  setOpenModalEditProduct,
-  setCloseModalDeleteProduct,
-}: IModalEditProduct) => {
+  setOpenModalEdit,
+  setOpenModalDelete,
+}: IModalEdit) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [changePostedToYes, setChangPostedToYes] = useState<boolean>(true);
 
   const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
 
-  const [buyerOrAdvertiserAdType, setBuyerOrAdvertiserAdType] =
+  const [saleOrAuctionAdType, setSaleOrAuctionAdType] =
     useState<boolean>(false);
 
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
@@ -59,9 +52,7 @@ const ModalEdit = ({
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
-    buyerOrAdvertiserAdType
-      ? (data.ad_type = "sale")
-      : (data.ad_type = "auction");
+    saleOrAuctionAdType ? (data.ad_type = "sale") : (data.ad_type = "auction");
 
     buyerOrAdvertiserVehicleType
       ? (data.ad_type = "car")
@@ -73,7 +64,7 @@ const ModalEdit = ({
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => setOpenModalEditProduct(false))
+      .then((_) => setOpenModalEdit(false))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };
@@ -90,14 +81,11 @@ const ModalEdit = ({
 
   return (
     <Container>
-      <HeaderModal
-        title="Editar anúncio"
-        setCloseModal={setOpenModalEditProduct}
-      />
+      <HeaderModal title="Editar anúncio" setCloseModal={setOpenModalEdit} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <AdTypeEdit
-          setBuyerOrAdvertiserAdType={setBuyerOrAdvertiserAdType}
+          setSaleOrAuctionAdType={setSaleOrAuctionAdType}
           ad_type={product.ad_type}
         />
 
@@ -254,8 +242,8 @@ const ModalEdit = ({
             size="buttonSizeModalEditProduct"
             type="button"
             onClick={() => {
-              setOpenModalEditProduct(false);
-              setCloseModalDeleteProduct(true);
+              setOpenModalEdit(false);
+              setOpenModalDelete(true);
             }}
           >
             Excluir anúncio

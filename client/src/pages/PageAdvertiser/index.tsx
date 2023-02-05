@@ -1,7 +1,7 @@
-import { AdvertiserMotorcyclesList } from "../../components/AdvertiserMotorcyclesList";
-import { AdvertiserAuctionsList } from "../../components/AdvertiserAuctionsList";
+import { AdvertiserListMotorcycles } from "../../components/AdvertiserListMotorcycles";
+import { AdvertiserListAuctions } from "../../components/AdvertiserListAuctions";
 import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
-import { AdvertiserCarsList } from "../../components/AdvertiserCarsList";
+import { AdvertiserListCars } from "../../components/AdvertiserListCars";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Footer } from "../../components/Footer";
@@ -74,9 +74,9 @@ const PageAdvertiser = () => {
               listMotorcyclesFunc={listMotorcyclesFunc}
               user={user}
             />
-            <AdvertiserAuctionsList auctions={auctions} />
-            <AdvertiserCarsList products={cars} />
-            <AdvertiserMotorcyclesList products={motorcycles} />
+            <AdvertiserListAuctions auctions={auctions} />
+            <AdvertiserListCars products={cars} />
+            <AdvertiserListMotorcycles products={motorcycles} />
           </div>
         </div>
         <Footer />

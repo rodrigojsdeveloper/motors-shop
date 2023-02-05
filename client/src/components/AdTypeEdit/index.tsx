@@ -1,17 +1,12 @@
-import { useState } from "react";
+import { Container } from "../AdType/style";
+import { IAdType } from "../../interfaces";
 import { Button } from "../Button";
-import { Container } from "./style";
+import { useState } from "react";
 
-interface IAdTypeEdit {
-  setBuyerOrAdvertiserAdType: React.Dispatch<React.SetStateAction<boolean>>;
-  ad_type: string;
-}
+const AdTypeEdit = ({ setSaleOrAuctionAdType, ad_type }: IAdType) => {
+  const [changeColorSale, setChangeColorSale] = useState<boolean>(true);
 
-const AdTypeEdit = ({ setBuyerOrAdvertiserAdType, ad_type }: IAdTypeEdit) => {
-  const [changeColorBuyer, setChangeColorBuyer] = useState<boolean>(true);
-
-  const [changeColorAdvertiser, setChangeColorAdvertiser] =
-    useState<boolean>(false);
+  const [changeColorAuction, setChangeColorAuction] = useState<boolean>(false);
 
   return (
     <Container>
@@ -19,9 +14,9 @@ const AdTypeEdit = ({ setBuyerOrAdvertiserAdType, ad_type }: IAdTypeEdit) => {
       <div>
         <Button
           onClick={() => {
-            setChangeColorBuyer(true);
-            setChangeColorAdvertiser(false);
-            setBuyerOrAdvertiserAdType(true);
+            setChangeColorSale(true);
+            setChangeColorAuction(false);
+            setSaleOrAuctionAdType(true);
           }}
           style={
             ad_type == "sale"
@@ -37,9 +32,9 @@ const AdTypeEdit = ({ setBuyerOrAdvertiserAdType, ad_type }: IAdTypeEdit) => {
         </Button>
         <Button
           onClick={() => {
-            setChangeColorBuyer(false);
-            setChangeColorAdvertiser(true);
-            setBuyerOrAdvertiserAdType(false);
+            setChangeColorSale(false);
+            setChangeColorAuction(true);
+            setSaleOrAuctionAdType(false);
           }}
           style={
             ad_type == "auction"

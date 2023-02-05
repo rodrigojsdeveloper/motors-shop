@@ -1,5 +1,5 @@
-import { UserProductsMotorcyclesList } from "../../components/UserProductsMotorcyclesList";
-import { UserProductsCarsList } from "../../components/UserProductsCarsList";
+import { UserProductsListMotorcycles } from "../../components/UserProductsListMotorcycles";
+import { UserProductsListCars } from "../../components/UserProductsListCars";
 import { IProductProps, IUserProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ShowUser } from "../../components/ShowUser";
@@ -56,8 +56,8 @@ const PageProductsUser = () => {
         <div className="divWhite">
           <div>
             <ShowUser user={user} />
-            <UserProductsCarsList products={cars} user={user} />
-            <UserProductsMotorcyclesList products={motorcycles} user={user} />
+            <UserProductsListCars products={cars} user={user} />
+            <UserProductsListMotorcycles products={motorcycles} user={user} />
           </div>
         </div>
         <Footer />

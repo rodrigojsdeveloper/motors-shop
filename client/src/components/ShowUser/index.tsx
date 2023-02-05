@@ -1,13 +1,9 @@
-import { IUserProps } from "../../interfaces";
-import { AvatarUser } from "../AvatarUser";
 import { DescriptionProduct } from "../DescriptionProduct";
+import { AvatarUser } from "../AvatarUser";
+import { IUser } from "../../interfaces";
 import { Container } from "./style";
 
-interface IShowAdvertiser {
-  user: IUserProps;
-}
-
-const ShowUser = ({ user }: IShowAdvertiser) => {
+const ShowUser = ({ user }: IUser) => {
   return (
     <Container>
       <AvatarUser username={user?.name} />

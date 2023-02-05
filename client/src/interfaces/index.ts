@@ -1,5 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 export interface InputProps {
   type?: string;
@@ -63,13 +63,20 @@ export interface IButtonProps {
   style?: React.CSSProperties | undefined;
 }
 
-export interface IButtonStyledProps {
-  size: string;
-  color: string;
+export interface ITextAreaProps {
+  value?: string;
+  register: UseFormRegister<FieldValues>;
+  name: string;
+  error?: any;
 }
 
 export interface InputStyledProps {
   size: string;
+}
+
+export interface IButtonStyledProps {
+  size: string;
+  color: string;
 }
 
 export interface IUserProps {
@@ -117,16 +124,14 @@ export interface IAuctionProps {
   bids: [];
 }
 
-export interface IListAuctions {
-  auctions: IAuctionProps[];
+export interface ICommentProps {
+  id: string;
+  content: string;
+  user: IUserProps;
+  created_at: string;
 }
 
-export interface IListProducts {
-  products: IProductProps[];
-  user?: IUserProps;
-}
-
-export interface IBid {
+export interface IBidProps {
   id: string;
   value: string;
   created_at: string;
@@ -134,19 +139,84 @@ export interface IBid {
   auction: IAuctionProps;
 }
 
-export interface IComment {
-  id: string;
-  content: string;
+export interface IUser {
   user: IUserProps;
-  created_at: string;
+}
+
+export interface IProduct {
+  product: IProductProps;
+}
+
+export interface IAuction {
+  auction: IAuctionProps;
+}
+
+export interface IComment {
+  comment: ICommentProps;
+}
+
+export interface IBid {
+  bid: IBidProps;
+  auction: IAuctionProps;
+}
+
+export interface IListProducts {
+  products: IProductProps[];
+  user?: IUserProps;
+}
+
+export interface IListAuctions {
+  auctions: IAuctionProps[];
+}
+
+export interface IListComments {
+  comments: ICommentProps[];
+  loaded: boolean;
+}
+
+export interface IListBids {
+  bids: IBidProps[];
+  loaded: boolean;
+  auction: IAuctionProps;
+}
+
+export interface ICreateComment {
+  product: IProductProps;
+  ListCommentsFunc: (comment: ICommentProps) => void;
+}
+
+export interface ICreateBid {
+  auction: IAuctionProps;
+  ListBidsFunc: (bid: IBidProps) => void;
+}
+
+export interface IimageProduct {
+  src: string;
+  alt: string;
 }
 
 export interface ITitleProduct {
   title: string;
 }
 
-export interface IDescriptionProduct {
+export interface IDescription {
   description: string;
+}
+
+export interface IAdType {
+  setSaleOrAuctionAdType: React.Dispatch<React.SetStateAction<boolean>>;
+  ad_type?: string;
+}
+
+export interface ITypeOfVehicle {
+  setBuyerOrAdvertiserVehicleType: React.Dispatch<
+    React.SetStateAction<boolean>
+  >;
+  vehicle_type?: string;
+}
+
+export interface IAvatarUser {
+  username: string;
 }
 
 export interface IYearProduct {
@@ -161,16 +231,83 @@ export interface IPriceProduct {
   price: string;
 }
 
-export interface IimageProduct {
-  src: string;
-  alt: string;
+export interface IModalBackground {
+  children: ReactNode;
 }
 
-export interface IAvatarUser {
-  username: string;
+export interface IHeaderModal {
+  title: string;
+  setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface IProduct {
+export interface IModalCreateAnnouncement {
+  setCloseModalCreateAnnouncement: React.Dispatch<
+    React.SetStateAction<boolean>
+  >;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
+  listCarsFunc: (car: IProductProps) => void;
+}
+
+export interface IModalDelete {
+  setOpenModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  productId: string;
+  url: string;
+}
+
+export interface IModalEdit {
+  setOpenModalEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  product: IProductProps;
+  setOpenModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IModalEditAddress {
+  setOpenModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IModalEditUser {
+  setOpenModalEditUser: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IModalPhoto {
+  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
+  cover_image: string;
+  title: string;
+}
+
+export interface IModalSuccess {
+  setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IPhoto {
+  image: string;
+  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IPhotosGallery {
+  gallery_image: string;
+}
+
+export interface IProductDetails {
+  product: IProductProps;
+  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IAuctionDetails {
+  auction: IAuctionProps;
+  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IShowAdvertiser {
+  user: IUserProps;
+  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
+  listCarsFunc: (car: IProductProps) => void;
+}
+
+export interface IUserProductsProduct {
   product: IProductProps;
   user: IUserProps;
+}
+
+export interface IEmptyMessage {
+  message: string;
 }

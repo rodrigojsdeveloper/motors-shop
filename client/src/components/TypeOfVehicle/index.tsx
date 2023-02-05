@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { Button } from "../Button";
+import { ITypeOfVehicle } from "../../interfaces";
 import { Container } from "./style";
-
-interface ITypeOfVehicle {
-  setBuyerOrAdvertiserVehicleType: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { Button } from "../Button";
+import { useState } from "react";
 
 const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
   const [changeColorBuyerVehicleType, setChangeColorBuyerVehicleType] =

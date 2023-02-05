@@ -147,8 +147,8 @@ const Container = styled.button<IButtonStyledProps>`
           padding: 12px 28px;
 
           :hover {
-            background-color: var(--brand5);
-            border-color: var(--brand5);
+            background-color: var(--brand3);
+            border-color: var(--brand3);
           }
         `;
 

@@ -1,5 +1,5 @@
-import { InputProps } from "../../interfaces";
 import { Container, InputContainer } from "./style";
+import { InputProps } from "../../interfaces";
 
 const Input = ({
   type,

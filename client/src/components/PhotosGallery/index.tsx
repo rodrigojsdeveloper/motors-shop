@@ -1,8 +1,5 @@
+import { IPhotosGallery } from "../../interfaces";
 import { Container } from "./style";
-
-interface IPhotosGallery {
-  gallery_image: string;
-}
 
 const PhotosGallery = ({ gallery_image }: IPhotosGallery) => {
   return (

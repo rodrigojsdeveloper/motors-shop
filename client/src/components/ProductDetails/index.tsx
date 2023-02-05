@@ -1,23 +1,18 @@
+import { IProductDetails, IUserProps } from "../../interfaces";
 import { DetailsNotLogged } from "../DetailsNotLogged";
 import { DetailsProduct } from "../DetailsProduct";
 import { PhotosGallery } from "../PhotosGallery";
-import { IProductProps, IUserProps } from "../../interfaces";
 import { Description } from "../Description";
 import { Container, Content } from "./style";
-import { CardSeller } from "../CardSeller";
-import { Photo } from "../Photo";
 import { useEffect, useState } from "react";
+import { CardSeller } from "../CardSeller";
 import { api } from "../../services/api";
+import { Photo } from "../Photo";
 
-interface IAuctionDetails {
-  product: IProductProps;
-  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const ProductDetails = ({ product, setOpenModalPhoto }: IAuctionDetails) => {
-  const [user, setUser] = useState<IUserProps>({} as IUserProps);
-
+const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
   const token = sessionStorage.getItem("Motors shop: token");
+
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
   useEffect(() => {
     api

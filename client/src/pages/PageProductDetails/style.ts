@@ -14,7 +14,7 @@ const Container = styled.div`
     align-items: center;
 
     padding-bottom: 80px;
-    
+
     & > div {
       width: 100%;
       max-width: 1250px;

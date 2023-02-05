@@ -1,8 +1,9 @@
+import { IModalCreateAnnouncement } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IProductProps } from "../../interfaces";
 import { TypeOfVehicle } from "../TypeOfVehicle";
 import { HeaderModal } from "../HeaderModal";
 import { useForm } from "react-hook-form";
+import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
@@ -10,15 +11,6 @@ import { AdType } from "../AdType";
 import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
-import { api } from "../../services/api";
-
-interface IModalCreateAnnouncement {
-  setCloseModalCreateAnnouncement: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
-  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
-  listCarsFunc: (car: IProductProps) => void;
-}
 
 const ModalCreateAnnouncement = ({
   setCloseModalCreateAnnouncement,
@@ -29,8 +21,8 @@ const ModalCreateAnnouncement = ({
 
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
     useState<boolean>(true);
-    
-  const [buyerOrAdvertiser, setBuyerOrAdvertiser] = useState<boolean>(true);
+
+  const [saleOrAuctionAdType, setSaleOrAuctionAdType] = useState<boolean>(true);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -55,7 +47,8 @@ const ModalCreateAnnouncement = ({
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
-    buyerOrAdvertiser ? (data.ad_type = "sale") : (data.ad_type = "auction");
+    saleOrAuctionAdType ? (data.ad_type = "sale") : (data.ad_type = "auction");
+
     buyerOrAdvertiserVehicleType
       ? (data.vehicle_type = "car")
       : (data.vehicle_type = "motorcycle");
@@ -75,7 +68,7 @@ const ModalCreateAnnouncement = ({
           listMotorcyclesFunc(res.data);
         }
 
-        setCloseModalCreateAnnouncement(false)
+        setCloseModalCreateAnnouncement(false);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
@@ -89,7 +82,7 @@ const ModalCreateAnnouncement = ({
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdType setBuyerOrAdvertiser={setBuyerOrAdvertiser} />
+        <AdType setSaleOrAuctionAdType={setSaleOrAuctionAdType} />
 
         <h4>Informações do veículo</h4>
 

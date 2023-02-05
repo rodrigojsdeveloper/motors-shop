@@ -1,11 +1,8 @@
-import { FC, ReactNode } from "react";
+import { IModalBackground } from "../../interfaces";
 import { Container } from "./style";
+import { FC } from "react";
 
-interface ModalBackgroundProps {
-  children: ReactNode;
-}
-
-const ModalBackground: FC<ModalBackgroundProps> = ({ children }) => {
+const ModalBackground: FC<IModalBackground> = ({ children }) => {
   return <Container>{children}</Container>;
 };
 

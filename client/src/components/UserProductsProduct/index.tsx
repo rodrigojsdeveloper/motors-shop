@@ -1,14 +1,14 @@
 import { DescriptionProduct } from "../DescriptionProduct";
+import { IUserProductsProduct } from "../../interfaces";
 import { ImageProduct } from "../ImageProduct";
 import { PriceProduct } from "../PriceProduct";
 import { TitleProduct } from "../TitleProduct";
 import { YearProduct } from "../YearProduct";
-import { IProduct } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
 
-const UserProductsProduct = ({ product, user }: IProduct) => {
+const UserProductsProduct = ({ product, user }: IUserProductsProduct) => {
   return (
     <Container>
       <div>

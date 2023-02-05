@@ -1,14 +1,10 @@
 import { useParams } from "react-router-dom";
-import { IUserProps } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
-import { Container } from "./style";
+import { IUser } from "../../interfaces";
 import { Link } from "react-router-dom";
+import { Container } from "./style";
 
-interface ICardSeller {
-  user: IUserProps;
-}
-
-const CardSeller = ({ user }: ICardSeller) => {
+const CardSeller = ({ user }: IUser) => {
   let { userProductId } = useParams();
 
   userProductId = user.id;

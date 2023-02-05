@@ -1,12 +1,13 @@
 import { IAuctionProps, IListAuctions } from "../../interfaces";
 import { AdvertiserAuction } from "../AdvertiserAuction";
+import { Container } from "../ListAuctions/style";
 import { EmptyMessage } from "../EmptyMessage";
-import { Container } from "./style";
+import { TitleList } from "../TitleList";
 
-const AdvertiserAuctionsList = ({ auctions }: IListAuctions) => {
+const AdvertiserListAuctions = ({ auctions }: IListAuctions) => {
   return (
     <Container>
-      <h2>Leilão</h2>
+      <TitleList title="Leilão" />
 
       <menu>
         {auctions.length > 0 ? (
@@ -21,4 +22,4 @@ const AdvertiserAuctionsList = ({ auctions }: IListAuctions) => {
   );
 };
 
-export { AdvertiserAuctionsList };
+export { AdvertiserListAuctions };

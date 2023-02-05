@@ -1,9 +1,9 @@
 import { ModalBackground } from "../../components/ModalBackground";
 import { ProductDetails } from "../../components/ProductDetails";
+import { ICommentProps, IProductProps } from "../../interfaces";
 import { CreateComment } from "../../components/CreateComment";
 import { ListComments } from "../../components/ListComments";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { IComment, IProductProps } from "../../interfaces";
 import { ModalPhoto } from "../../components/ModalPhoto";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
@@ -49,7 +49,7 @@ const PageProductDetails = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const [commentsList, setCommentsList] = useState<IComment[]>([]);
+  const [commentsList, setCommentsList] = useState<ICommentProps[]>([]);
 
   useEffect(() => {
     setLoaded(true);
@@ -65,7 +65,7 @@ const PageProductDetails = () => {
       .finally(() => setLoaded(false));
   }, []);
 
-  const ListCommentsFunc = (comment: IComment) =>
+  const ListCommentsFunc = (comment: ICommentProps) =>
     setCommentsList([comment, ...commentsList]);
 
   return (

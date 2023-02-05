@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { IModalEditAddress } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -7,10 +8,6 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
-
-interface IModalEditAddress {
-  setOpenModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
   const token = sessionStorage.getItem("Motors shop: token");

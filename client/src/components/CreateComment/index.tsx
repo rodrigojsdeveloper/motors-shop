@@ -1,4 +1,4 @@
-import { IComment, IProductProps, IUserProps } from "../../interfaces";
+import { ICreateComment, IUserProps } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
@@ -8,19 +8,14 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import * as yup from "yup";
 
-interface ICreateComment {
-  product: IProductProps;
-  ListCommentsFunc: (comment: IComment) => void;
-}
-
 const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
   const [disable, setDisable] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
-
-  const token = sessionStorage.getItem("Motors shop: token");
 
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
@@ -36,7 +31,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
   }, []);
 
   const schema = yup.object().shape({
-    content: yup.string().required("content required"),
+    content: yup.string().required(""),
   });
 
   const { register, handleSubmit } = useForm({

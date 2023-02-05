@@ -1,27 +1,19 @@
+import { IModalDelete } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
 
-interface IModalDeleteProduct {
-  setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  productId: string;
-  url: string;
-}
-
 const ModalDeleteProduct = ({
-  setCloseModalDeleteProduct,
+  setOpenModalDelete,
   productId,
   url,
-}: IModalDeleteProduct) => {
+}: IModalDelete) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   return (
     <Container>
-      <HeaderModal
-        title="Excluir anúncio"
-        setCloseModal={setCloseModalDeleteProduct}
-      />
+      <HeaderModal title="Excluir anúncio" setCloseModal={setOpenModalDelete} />
 
       <div>
         <h3>Tem certeza que deseja remover este anúncio?</h3>
@@ -36,7 +28,7 @@ const ModalDeleteProduct = ({
             size="buttonSizeUserDetailsMedium"
             color="buttonColorGrayModalEditAddress"
             type="button"
-            onClick={() => setCloseModalDeleteProduct(false)}
+            onClick={() => setOpenModalDelete(false)}
           >
             Cancelar
           </Button>
@@ -51,7 +43,7 @@ const ModalDeleteProduct = ({
                     Authorization: `Bearer ${token}`,
                   },
                 })
-                .then((_) => setCloseModalDeleteProduct(false))
+                .then((_) => setOpenModalDelete(false))
                 .catch((error) => console.error(error));
             }}
           >

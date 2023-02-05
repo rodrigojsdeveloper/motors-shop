@@ -1,18 +1,14 @@
+import { DescriptionAuction } from "../DescriptionAuction";
 import { useNavigate, useParams } from "react-router-dom";
 import rightArrow from "../../assets/Group 29.svg";
-import { IAuctionProps } from "../../interfaces";
-import clock from "../../assets/Group 13.svg";
-import { AvatarUser } from "../AvatarUser";
-import { Container } from "./style";
 import { TitleAuction } from "../TitleAuction";
-import { YearProduct } from "../YearProduct";
-import { KmProduct } from "../KmProduct";
 import { PriceAuction } from "../PriceAuction";
-import { DescriptionAuction } from "../DescriptionAuction";
-
-interface IAuction {
-  auction: IAuctionProps;
-}
+import clock from "../../assets/Group 13.svg";
+import { YearProduct } from "../YearProduct";
+import { IAuction } from "../../interfaces";
+import { AvatarUser } from "../AvatarUser";
+import { KmProduct } from "../KmProduct";
+import { Container } from "./style";
 
 const Auction = ({ auction }: IAuction) => {
   let { auctionId } = useParams();

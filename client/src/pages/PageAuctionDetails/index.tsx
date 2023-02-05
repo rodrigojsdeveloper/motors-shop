@@ -1,5 +1,5 @@
+import { IAuctionProps, IBidProps, IUserProps } from "../../interfaces";
 import { ModalBackground } from "../../components/ModalBackground";
-import { IAuctionProps, IBid, IUserProps } from "../../interfaces";
 import { AuctionDetails } from "../../components/AuctionDetails";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ModalPhoto } from "../../components/ModalPhoto";
@@ -41,7 +41,7 @@ const PageAuctionDetails = () => {
     },
   } as IAuctionProps);
 
-  const [bidsList, setBidsList] = useState<IBid[]>([]);
+  const [bidsList, setBidsList] = useState<IBidProps[]>([]);
 
   const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
 
@@ -79,7 +79,7 @@ const PageAuctionDetails = () => {
       .finally(() => setLoaded(false));
   }, []);
 
-  const ListBidsFunc = (bid: IBid) => setBidsList([bid, ...bidsList]);
+  const ListBidsFunc = (bid: IBidProps) => setBidsList([bid, ...bidsList]);
 
   return (
     <HelmetProvider>
@@ -104,7 +104,11 @@ const PageAuctionDetails = () => {
                 auction={auctionRequest}
                 setOpenModalPhoto={setOpenModalPhoto}
               />
-              <ListBids bids={bidsList} loaded={loaded} auction={auctionRequest} />
+              <ListBids
+                bids={bidsList}
+                loaded={loaded}
+                auction={auctionRequest}
+              />
               {user.id == auctionRequest.user.id ? null : (
                 <CreateBid
                   ListBidsFunc={ListBidsFunc}

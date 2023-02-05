@@ -1,57 +1,41 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
-import { ModalEdit } from "../ModalEdit";
-import { ModalBackground } from "../ModalBackground";
-import { IProductProps } from "../../interfaces";
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { Container } from "./style";
-import { Button } from "../Button";
-import { PriceProduct } from "../PriceProduct";
-import { KmProduct } from "../KmProduct";
-import { YearProduct } from "../YearProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
+import { ModalBackground } from "../ModalBackground";
+import { PriceProduct } from "../PriceProduct";
 import { TitleProduct } from "../TitleProduct";
 import { ImageProduct } from "../ImageProduct";
+import { YearProduct } from "../YearProduct";
+import { IProduct } from "../../interfaces";
+import { ModalEdit } from "../ModalEdit";
+import { KmProduct } from "../KmProduct";
 import { Link } from "react-router-dom";
-
-interface IProduct {
-  product: IProductProps;
-}
+import { Container } from "./style";
+import { Button } from "../Button";
+import { useState } from "react";
 
 const AdvertiserProduct = ({ product }: IProduct) => {
-  const [openModalEditProduct, setOpenModalEditProduct] =
+  const [openModalEdit, setOpenModalEdit] =
     useState<boolean>(false);
 
-  const [productRequest, setProductRequest] = useState<IProductProps>(
-    {} as IProductProps
-  );
-
-  const [closeModalDeleteProduct, setCloseModalDeleteProduct] =
+  const [openModalDelete, setOpenModalDelete] =
     useState<boolean>(false);
-
-  useEffect(() => {
-    api
-      .get(`/products/${product.id}`)
-      .then((res) => setProductRequest(res.data))
-      .catch((error) => console.error(error));
-  }, []);
 
   return (
     <>
-      {openModalEditProduct && (
+      {openModalEdit && (
         <ModalBackground>
           <ModalEdit
-            product={productRequest}
-            setOpenModalEditProduct={setOpenModalEditProduct}
-            setCloseModalDeleteProduct={setCloseModalDeleteProduct}
+            product={product}
+            setOpenModalEdit={setOpenModalEdit}
+            setOpenModalDelete={setOpenModalDelete}
           />
         </ModalBackground>
       )}
-      {closeModalDeleteProduct && (
+      {openModalDelete && (
         <ModalBackground>
           <ModalDeleteProduct
-            setCloseModalDeleteProduct={setCloseModalDeleteProduct}
-            productId={productRequest.id}
+            setOpenModalDelete={setOpenModalDelete}
+            productId={product.id}
             url="products"
           />
         </ModalBackground>
@@ -76,7 +60,7 @@ const AdvertiserProduct = ({ product }: IProduct) => {
             color="buttonColorWhiteEditAndShowProduct"
             size="buttonSizeEditProduct"
             type="button"
-            onClick={() => setOpenModalEditProduct(true)}
+            onClick={() => setOpenModalEdit(true)}
           >
             Editar
           </Button>

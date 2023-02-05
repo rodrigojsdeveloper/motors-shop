@@ -1,12 +1,7 @@
-import { IComment } from "../../interfaces";
+import { ICommentProps, IListComments } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { Comment } from "../Comment";
 import { Container } from "./style";
-
-interface IListComments {
-  comments: any;
-  loaded: boolean;
-}
 
 const ListComments = ({ comments, loaded }: IListComments) => {
   return (
@@ -19,7 +14,7 @@ const ListComments = ({ comments, loaded }: IListComments) => {
             <div></div>
           </div>
         ) : comments.length > 0 ? (
-          comments.map((comment: IComment) => (
+          comments.map((comment: ICommentProps) => (
             <Comment comment={comment} key={comment.id} />
           ))
         ) : (

@@ -1,10 +1,6 @@
 import close from "../../assets/x.svg";
+import { IHeaderModal } from "../../interfaces";
 import { Container } from "./style";
-
-interface IHeaderModal {
-  title: string;
-  setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const HeaderModal = ({ title, setCloseModal }: IHeaderModal) => {
   return (

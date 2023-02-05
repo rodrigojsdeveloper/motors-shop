@@ -1,8 +1,8 @@
-import { IListProducts } from "../../interfaces";
+import { IListProducts, IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
-import { Product } from "../Product";
+import { Container } from "../ListCars/style";
 import { TitleList } from "../TitleList";
-import { Container } from "./style";
+import { Product } from "../Product";
 
 const ListMotorcycles = ({ products }: IListProducts) => {
   return (
@@ -11,7 +11,7 @@ const ListMotorcycles = ({ products }: IListProducts) => {
 
       <menu>
         {products.length > 0 ? (
-          products.map((product) => (
+          products.map((product: IProductProps) => (
             <Product product={product} key={product.id} />
           ))
         ) : (

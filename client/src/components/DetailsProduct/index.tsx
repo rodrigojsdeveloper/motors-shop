@@ -1,14 +1,10 @@
-import { IProductProps } from "../../interfaces";
 import { PriceProduct } from "../PriceProduct";
 import { YearProduct } from "../YearProduct";
+import { IProduct } from "../../interfaces";
 import { KmProduct } from "../KmProduct";
 import { Container } from "./style";
 
-interface IDetails {
-  product: IProductProps;
-}
-
-const DetailsProduct = ({ product }: IDetails) => {
+const DetailsProduct = ({ product }: IProduct) => {
   const link = `https://api.whatsapp.com/send?phone=${product.user.cellphone}&text=Olá%2C%20%20estou%20interessado%20em%20seu%20veículo%2C%20estou%20entrando%20em%20contato%20para%20negociar%20valores`;
 
   return (

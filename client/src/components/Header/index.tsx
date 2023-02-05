@@ -73,7 +73,9 @@ const Header = () => {
           >
             Editar endereço
           </p>
-          <Link to="/myadvertiser" onClick={() => window.scroll({ top: 0 })}>Meus Anúncios</Link>
+          <Link to="/myadvertiser" onClick={() => window.scroll({ top: 0 })}>
+            Meus Anúncios
+          </Link>
           <Link
             to="/signin"
             onClick={() => {
