@@ -1,8 +1,8 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export interface InputProps {
-  type?: string;
+  type?: React.HTMLInputTypeAttribute;
   name: string;
   autoComplete?: string;
   placeholder?: string;
@@ -10,8 +10,14 @@ export interface InputProps {
   label?: string;
   error?: any;
   required?: boolean | undefined;
-  onChange?: any;
-  size: never;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  size:
+    | "inputSignIn"
+    | "inputSignUp"
+    | "inputSignUpSmall"
+    | "inputModalEditAddressLarge"
+    | "inputModalEditAddressMedium"
+    | "inputModalCreateAnnouncementSmall";
   className?: string;
   value?: string | number | readonly string[];
   disabled?: boolean;
@@ -19,9 +25,9 @@ export interface InputProps {
 
 export interface IButtonProps {
   children: React.ReactNode;
-  onClick?: MouseEventHandler;
-  disabled?: boolean | undefined;
-  type?: "button" | "submit" | "reset" | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
   size:
     | "buttonSizeLogin"
     | "buttonSizeHeader"
@@ -65,7 +71,7 @@ export interface ITextAreaProps {
 }
 
 export interface InputStyledProps {
-  size: string;
+  size: any;
 }
 
 export interface IButtonStyledProps {
