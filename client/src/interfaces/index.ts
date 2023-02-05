@@ -11,13 +11,7 @@ export interface InputProps {
   error?: any;
   required?: boolean | undefined;
   onChange?: any;
-  size:
-    | "inputSignIn"
-    | "inputSignUp"
-    | "inputSignUpSmall"
-    | "inputModalEditAddressLarge"
-    | "inputModalEditAddressMedium"
-    | "inputModalCreateAnnouncementSmall";
+  size: never;
   className?: string;
   value?: string | number | readonly string[];
   disabled?: boolean;
