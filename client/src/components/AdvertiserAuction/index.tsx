@@ -1,5 +1,4 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
-import { ModalEditAuction } from "../ModalEditAuction";
 import { ModalBackground } from "../ModalBackground";
 import { IAuctionProps } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +12,7 @@ import { DescriptionAuction } from "../DescriptionAuction";
 import { KmProduct } from "../KmProduct";
 import { YearProduct } from "../YearProduct";
 import { PriceAuction } from "../PriceAuction";
+import { ModalEdit } from "../ModalEdit";
 
 interface IAuction {
   auction: IAuctionProps;
@@ -42,8 +42,8 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
     <>
       {openModalEditProduct && (
         <ModalBackground>
-          <ModalEditAuction
-            auction={auctionRequest}
+          <ModalEdit
+            product={auctionRequest.product}
             setOpenModalEditProduct={setOpenModalEditProduct}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
           />
@@ -53,7 +53,8 @@ const AdvertiserAuction = ({ auction }: IAuction) => {
         <ModalBackground>
           <ModalDeleteProduct
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
-            product={auction.product}
+            productId={auction.id}
+            url="auctions"
           />
         </ModalBackground>
       )}

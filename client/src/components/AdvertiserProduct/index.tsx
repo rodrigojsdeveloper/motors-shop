@@ -1,8 +1,7 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
-import { ModalEditProduct } from "../ModalEditProduct";
+import { ModalEdit } from "../ModalEdit";
 import { ModalBackground } from "../ModalBackground";
 import { IProductProps } from "../../interfaces";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
@@ -41,7 +40,7 @@ const AdvertiserProduct = ({ product }: IProduct) => {
     <>
       {openModalEditProduct && (
         <ModalBackground>
-          <ModalEditProduct
+          <ModalEdit
             product={productRequest}
             setOpenModalEditProduct={setOpenModalEditProduct}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
@@ -51,8 +50,9 @@ const AdvertiserProduct = ({ product }: IProduct) => {
       {closeModalDeleteProduct && (
         <ModalBackground>
           <ModalDeleteProduct
-            product={productRequest}
             setCloseModalDeleteProduct={setCloseModalDeleteProduct}
+            productId={productRequest.id}
+            url="products"
           />
         </ModalBackground>
       )}

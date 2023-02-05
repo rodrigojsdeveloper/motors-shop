@@ -1,4 +1,3 @@
-import { IProductProps } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { api } from "../../services/api";
 import { Container } from "./style";
@@ -6,12 +5,14 @@ import { Button } from "../Button";
 
 interface IModalDeleteProduct {
   setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  product: IProductProps;
+  productId: string;
+  url: string;
 }
 
 const ModalDeleteProduct = ({
   setCloseModalDeleteProduct,
-  product,
+  productId,
+  url,
 }: IModalDeleteProduct) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
@@ -45,7 +46,7 @@ const ModalDeleteProduct = ({
             type="button"
             onClick={() => {
               api
-                .delete(`/products/${product.id}`, {
+                .delete(`/${url}/${productId}`, {
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },

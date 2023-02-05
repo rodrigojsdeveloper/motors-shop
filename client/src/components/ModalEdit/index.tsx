@@ -7,27 +7,34 @@ import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { AdType } from "../AdType";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
+import { AdTypeEdit } from "../AdTypeEdit";
+import { TypeOfVehicleEdit } from "../TypeOfVehicleEdit";
 
 interface IModalEditProduct {
   setOpenModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>;
-  auction: IAuctionProps;
+  product: IProductProps;
   setCloseModalDeleteProduct: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ModalEditAuction = ({
-  auction,
+const ModalEdit = ({
+  product,
   setOpenModalEditProduct,
   setCloseModalDeleteProduct,
 }: IModalEditProduct) => {
-  const token = sessionStorage.getItem("Motors shop: token")
+  const token = sessionStorage.getItem("Motors shop: token");
 
   const [changePostedToYes, setChangPostedToYes] = useState<boolean>(true);
 
   const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
+
+  const [buyerOrAdvertiserAdType, setBuyerOrAdvertiserAdType] =
+    useState<boolean>(false);
+
+  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
+    useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -52,16 +59,34 @@ const ModalEditAuction = ({
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
+    buyerOrAdvertiserAdType
+      ? (data.ad_type = "sale")
+      : (data.ad_type = "auction");
+
+    buyerOrAdvertiserVehicleType
+      ? (data.ad_type = "car")
+      : (data.ad_type = "motorcycle");
+
     api
-      .patch(`/products/${auction?.product?.id}`, data, {
+      .patch(`/products/${product?.id}`, data, {
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((_) => setOpenModalEditProduct(false))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };
+
+  useEffect(() => {
+    if (product?.is_published) {
+      setChangPostedToYes(true);
+      setChangPostedToNo(false);
+    } else {
+      setChangPostedToYes(false);
+      setChangPostedToNo(true);
+    }
+  }, []);
 
   return (
     <Container>
@@ -71,7 +96,10 @@ const ModalEditAuction = ({
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdType product={auction?.product} />
+        <AdTypeEdit
+          setBuyerOrAdvertiserAdType={setBuyerOrAdvertiserAdType}
+          ad_type={product.ad_type}
+        />
 
         <h4>Informações do veículo</h4>
 
@@ -85,7 +113,7 @@ const ModalEditAuction = ({
           error={errors.title?.message}
           required={true}
           size="inputModalEditAddressLarge"
-          value={auction?.product?.title}
+          value={product?.title}
         />
 
         <div>
@@ -99,7 +127,7 @@ const ModalEditAuction = ({
             error={errors.year?.message}
             required={true}
             size="inputModalCreateAnnouncementSmall"
-            value={auction?.product?.year}
+            value={product?.year}
           />
           <Input
             label="Quilometragem"
@@ -112,7 +140,7 @@ const ModalEditAuction = ({
             required={true}
             size="inputModalCreateAnnouncementSmall"
             className="inputKilometers"
-            value={auction?.product?.kilometers}
+            value={product?.kilometers}
           />
           <Input
             label="Preço"
@@ -124,22 +152,26 @@ const ModalEditAuction = ({
             error={errors.price?.message}
             required={true}
             size="inputModalCreateAnnouncementSmall"
-            value={auction?.product?.price}
+            value={product?.price}
           />
         </div>
-        <TextArea value={auction?.product?.description} />
+        <TextArea
+          value={product?.description}
+          register={register}
+          name="description"
+          error={errors.description?.message}
+        />
 
-        <TypeOfVehicle product={auction?.product} />
+        <TypeOfVehicleEdit
+          setBuyerOrAdvertiserVehicleType={setBuyerOrAdvertiserVehicleType}
+          vehicle_type={product.vehicle_type}
+        />
+
         <div>
           <h4>Publicado</h4>
           <div className="divButtons">
             <Button
               onClick={() => {
-                if (auction?.product?.is_published) {
-                  setChangPostedToYes(true);
-                  setChangPostedToNo(false);
-                }
-
                 setChangPostedToYes(true);
                 setChangPostedToNo(false);
               }}
@@ -165,10 +197,6 @@ const ModalEditAuction = ({
             </Button>
             <Button
               onClick={() => {
-                if (!auction?.product?.is_published) {
-                  setChangPostedToNo(true);
-                  setChangPostedToYes(false);
-                }
                 setChangPostedToNo(true);
                 setChangPostedToYes(false);
               }}
@@ -205,7 +233,7 @@ const ModalEditAuction = ({
           error={errors.cover_image?.message}
           required={true}
           size="inputModalEditAddressLarge"
-          value={auction?.product?.cover_image}
+          value={product?.cover_image}
         />
         <Input
           label="1º Imagem da galeria"
@@ -217,7 +245,7 @@ const ModalEditAuction = ({
           error={errors.gallery_image?.message}
           required={true}
           size="inputModalEditAddressLarge"
-          value={auction?.product?.gallery_image}
+          value={product?.gallery_image}
         />
 
         <div>
@@ -246,4 +274,4 @@ const ModalEditAuction = ({
   );
 };
 
-export { ModalEditAuction };
+export { ModalEdit };
