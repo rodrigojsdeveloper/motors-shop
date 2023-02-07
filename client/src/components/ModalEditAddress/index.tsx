@@ -19,8 +19,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
   const schema = yup.object().shape({
     zip_code: yup.number().required("CEP obrigatória"),
     country: yup.string().required("País obrigatório"),
-    state: yup.string().required("Estado obrigatório"),
-    city: yup.string().required("Cidade obrigatório"),
+    state: yup.string().required(""),
+    city: yup.string().required(""),
     district: yup.string().required("Bairro obrigatório"),
     street: yup.string().required("Rua obrigatória"),
     number: yup.number().required("Número obrigatório"),

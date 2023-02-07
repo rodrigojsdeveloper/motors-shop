@@ -62,7 +62,7 @@ const Container = styled.div`
 
       @media (max-width: 425px) {
         padding-top: 20px;
-        flex-direction: column;
+        flex-direction: column-reverse;
 
         & > button:nth-child(1) {
           margin-right: 0;
@@ -70,7 +70,7 @@ const Container = styled.div`
         }
 
         & > button:nth-child(2) {
-          margin-top: 10px;
+          margin-bottom: 10px;
           max-width: unset;
         }
       }
@@ -78,7 +78,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 425px) {
-    height: 870px;
+    height: 875px;
   }
 `;
 

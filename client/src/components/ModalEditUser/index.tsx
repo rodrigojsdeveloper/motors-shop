@@ -127,7 +127,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             placeholder="00/00/0000"
             autoComplete="off"
             type="text"
-            error={errors.birthdate?.message}
             required={true}
             size="inputModalEditAddressLarge"
             value={user?.birthdate}

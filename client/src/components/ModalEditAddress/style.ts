@@ -44,11 +44,6 @@ const Container = styled.div`
           max-width: 228px;
         }
       }
-
-      @media (max-width: 425px) {
-        height: 510px;
-        overflow-y: auto;
-      }
     }
 
     .divButtons {
@@ -66,20 +61,24 @@ const Container = styled.div`
 
       @media (max-width: 425px) {
         padding-top: 20px;
-        flex-direction: column;
+        flex-direction: column-reverse;
 
         & > button:nth-child(1) {
           max-width: unset;
         }
 
         & > button:nth-child(2) {
-          margin-top: 10px;
+          margin-bottom: 10px;
           margin-right: 0;
           margin-left: 0;
           max-width: unset;
         }
       }
     }
+  }
+
+  @media (max-width: 425px) {
+    height: 845px;
   }
 `;
 
