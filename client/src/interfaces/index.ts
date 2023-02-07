@@ -245,6 +245,7 @@ export interface IModalCreateAnnouncement {
   >;
   listMotorcyclesFunc: (motorcycle: IProductProps) => void;
   listCarsFunc: (car: IProductProps) => void;
+  listAuctionsFunc: (auction: IAuctionProps) => void;
 }
 
 export interface IModalDelete {
@@ -299,6 +300,7 @@ export interface IShowAdvertiser {
   user: IUserProps;
   listMotorcyclesFunc: (motorcycle: IProductProps) => void;
   listCarsFunc: (car: IProductProps) => void;
+  listAuctionsFunc: (auction: IAuctionProps) => void;
 }
 
 export interface IUserProductsProduct {

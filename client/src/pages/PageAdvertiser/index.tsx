@@ -54,6 +54,9 @@ const PageAdvertiser = () => {
 
   token && useEffect(() => getUser(), []);
 
+  const listAuctionsFunc = (auction: IAuctionProps) =>
+    setAuctions([auction, ...auctions]);
+
   const listCarsFunc = (car: IProductProps) => setCars([car, ...cars]);
 
   const listMotorcyclesFunc = (motorcycle: IProductProps) =>
@@ -71,6 +74,7 @@ const PageAdvertiser = () => {
             <ShowAdvertiser
               listCarsFunc={listCarsFunc}
               listMotorcyclesFunc={listMotorcyclesFunc}
+              listAuctionsFunc={listAuctionsFunc}
               user={user}
             />
             <AdvertiserListAuctions auctions={auctions} />

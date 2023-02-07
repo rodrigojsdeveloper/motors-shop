@@ -16,6 +16,7 @@ const ModalCreateAnnouncement = ({
   setCloseModalCreateAnnouncement,
   listMotorcyclesFunc,
   listCarsFunc,
+  listAuctionsFunc,
 }: IModalCreateAnnouncement) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
@@ -60,6 +61,12 @@ const ModalCreateAnnouncement = ({
         },
       })
       .then((res) => {
+        console.log(res.data);
+
+        if (res.data.product.ad_type == "auction") {
+          listAuctionsFunc(res.data);
+        }
+
         if (res.data.vehicle_type == "car") {
           listCarsFunc(res.data);
         }
