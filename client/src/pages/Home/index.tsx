@@ -16,7 +16,7 @@ const Home = () => {
 
   const [auctions, setAuctions] = useState<IAuctionProps[]>([]);
 
-  useEffect(() => {
+  const getProducts = () => {
     api
       .get("/products")
       .then((res) => {
@@ -41,9 +41,9 @@ const Home = () => {
         );
       })
       .catch((error) => console.error(error));
-  }, []);
+  };
 
-  useEffect(() => {
+  const getAuctions = () => {
     api
       .get("/auctions")
       .then((res) => {
@@ -54,6 +54,11 @@ const Home = () => {
         setAuctions(auctionsActives);
       })
       .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    getProducts();
+    getAuctions();
   }, []);
 
   return (

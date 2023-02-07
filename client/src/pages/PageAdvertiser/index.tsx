@@ -19,41 +19,40 @@ const PageAdvertiser = () => {
 
   const [auctions, setAuctions] = useState<IAuctionProps[]>([]);
 
-  const [user, setUser] = useState<IUserProps>({
-    name: "",
-  } as IUserProps);
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
-  token &&
-    useEffect(() => {
-      api
-        .get("/users/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setUser(res.data);
+  const getUser = () => {
+    api
+      .get("/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setUser(res.data);
 
-          const products = res.data.products.filter(
-            (product: IProductProps) => product.ad_type == "sale"
-          );
+        const products = res.data.products.filter(
+          (product: IProductProps) => product.ad_type == "sale"
+        );
 
-          setCars(
-            products.filter(
-              (product: IProductProps) => product.vehicle_type == "car"
-            )
-          );
+        setCars(
+          products.filter(
+            (product: IProductProps) => product.vehicle_type == "car"
+          )
+        );
 
-          setMotorcycles(
-            products.filter(
-              (product: IProductProps) => product.vehicle_type == "motorcycle"
-            )
-          );
+        setMotorcycles(
+          products.filter(
+            (product: IProductProps) => product.vehicle_type == "motorcycle"
+          )
+        );
 
-          setAuctions(res.data.auctions);
-        })
-        .catch((error) => console.error(error));
-    }, []);
+        setAuctions(res.data.auctions);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  token && useEffect(() => getUser(), []);
 
   const listCarsFunc = (car: IProductProps) => setCars([car, ...cars]);
 

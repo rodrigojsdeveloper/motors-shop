@@ -47,7 +47,7 @@ const PageAuctionDetails = () => {
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  useEffect(() => {
+  const getUser = () => {
     api
       .get("/users/profile", {
         headers: {
@@ -56,16 +56,16 @@ const PageAuctionDetails = () => {
       })
       .then((res) => setUser(res.data))
       .catch((error) => console.error(error));
-  }, []);
+  };
 
-  useEffect(() => {
+  const getAucton = () => {
     api
       .get(`/auctions/${auctionId}`)
       .then((res) => setAuctionRequest(res.data))
       .catch((error) => console.error(error));
-  }, []);
+  };
 
-  useEffect(() => {
+  const getBids = () => {
     setLoaded(true);
 
     api
@@ -77,6 +77,12 @@ const PageAuctionDetails = () => {
       .then((res) => setBidsList(res.data))
       .catch((error) => console.error(error))
       .finally(() => setLoaded(false));
+  };
+
+  useEffect(() => {
+    getUser();
+    getAucton();
+    getBids();
   }, []);
 
   const ListBidsFunc = (bid: IBidProps) => setBidsList([bid, ...bidsList]);

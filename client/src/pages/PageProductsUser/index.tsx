@@ -17,11 +17,9 @@ const PageProductsUser = () => {
 
   const [motorcycles, setMotorcycles] = useState<IProductProps[]>([]);
 
-  const [user, setUser] = useState<IUserProps>({
-    name: "",
-  } as IUserProps);
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
-  useEffect(() => {
+  const getUser = () => {
     api
       .get(`/users/products/${userProductId}`)
       .then((res) => {
@@ -44,7 +42,9 @@ const PageProductsUser = () => {
         );
       })
       .catch((error) => console.error(error));
-  });
+  };
+
+  useEffect(() => getUser(), []);
 
   return (
     <HelmetProvider>

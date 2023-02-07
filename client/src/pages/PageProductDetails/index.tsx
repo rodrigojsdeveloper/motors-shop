@@ -42,16 +42,16 @@ const PageProductDetails = () => {
     },
   } as IProductProps);
 
-  useEffect(() => {
+  const getProduct = () => {
     api
       .get(`/products/${productId}`)
       .then((res) => setProductnRequest(res.data))
       .catch((error) => console.error(error));
-  }, []);
+  };
 
   const [commentsList, setCommentsList] = useState<ICommentProps[]>([]);
 
-  useEffect(() => {
+  const getComments = () => {
     setLoaded(true);
 
     api
@@ -63,6 +63,11 @@ const PageProductDetails = () => {
       .then((res) => setCommentsList(res.data))
       .catch((error) => console.error(error))
       .finally(() => setLoaded(false));
+  };
+
+  useEffect(() => {
+    getProduct();
+    getComments();
   }, []);
 
   const ListCommentsFunc = (comment: ICommentProps) =>
