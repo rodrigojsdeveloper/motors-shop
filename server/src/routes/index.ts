@@ -7,6 +7,9 @@ import { usersRoutes } from "./users.routes";
 import { loginRoutes } from "./login.routes";
 import { bidsRoutes } from "./bids.routes";
 
+import SwaggerDocs from "../../docs/swagger.json";
+import SwaggerUi from "swagger-ui-express";
+
 const appRoutes = (app: Express): void => {
   app.use("/products", productsRoutes());
   app.use("/comments", commentsRoutes());
@@ -14,6 +17,7 @@ const appRoutes = (app: Express): void => {
   app.use("/signin", loginRoutes());
   app.use("/users", usersRoutes());
   app.use("/bids", bidsRoutes());
+  app.use("/docs", SwaggerUi.serve, SwaggerUi.setup(SwaggerDocs));
 };
 
 export { appRoutes };
