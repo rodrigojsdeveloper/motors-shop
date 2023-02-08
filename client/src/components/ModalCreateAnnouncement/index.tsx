@@ -30,11 +30,14 @@ const ModalCreateAnnouncement = ({
   const schema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
     description: yup.string().required("Descrição obrigatória"),
-    year: yup.number().required("Ano obrigatório"),
-    kilometers: yup.number().required("Kilometros obrigatório"),
+    year: yup.number().positive().integer().required("Ano obrigatório"),
+    kilometers: yup.number().integer().required("Kilometros obrigatório"),
     price: yup.string().required("Preço obrigatório"),
-    cover_image: yup.string().required("Imagem da capa obrigatória"),
-    gallery_image: yup.string().required("1º Imagem da galeria obrigatória"),
+    cover_image: yup.string().required("Imagem da capa obrigatória").url(),
+    gallery_image: yup
+      .string()
+      .required("1º Imagem da galeria obrigatória")
+      .url(),
   });
 
   const {

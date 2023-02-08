@@ -10,7 +10,6 @@ const productSchema: SchemaOf<IProduct> = yup.object().shape({
     .number()
     .required()
     .typeError("kilometers must be a number")
-    .positive()
     .integer(),
   price: yup.string().required(),
   vehicle_type: yup.mixed().oneOf(["car", "motorcycle"]).required(),
