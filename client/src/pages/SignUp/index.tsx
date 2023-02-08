@@ -1,5 +1,5 @@
+import { ModalSucessRegister } from "../../components/ModalSucessRegister";
 import { ModalBackground } from "../../components/ModalBackground";
-import { ModalSucessUser } from "../../components/ModalSucessUser";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FormSignUp } from "../../components/FormSignUp";
 import { Header } from "../../components/Header";
@@ -26,7 +26,7 @@ const SignUp = () => {
       <Helmet title="Cadastro - Motors shop" />
       {openModalSuccess && (
         <ModalBackground>
-          <ModalSucessUser setOpenModalSuccess={setOpenModalSuccess} />
+          <ModalSucessRegister setOpenModalSuccess={setOpenModalSuccess} />
         </ModalBackground>
       )}
       <Container>

@@ -14,16 +14,17 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
-  useEffect(() => {
-    api
-      .get("/users/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setUser(res.data))
-      .catch((error) => console.error(error));
-  });
+  token &&
+    useEffect(() => {
+      api
+        .get("/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => setUser(res.data))
+        .catch((error) => console.error(error));
+    }, []);
 
   return token ? (
     user.id == product.user.id ? (

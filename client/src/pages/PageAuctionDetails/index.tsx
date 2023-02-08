@@ -47,17 +47,6 @@ const PageAuctionDetails = () => {
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  const getUser = () => {
-    api
-      .get("/users/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setUser(res.data))
-      .catch((error) => console.error(error));
-  };
-
   const getAucton = () => {
     api
       .get(`/auctions/${auctionId}`)
@@ -79,8 +68,19 @@ const PageAuctionDetails = () => {
       .finally(() => setLoaded(false));
   };
 
+  token &&
+    useEffect(() => {
+      api
+        .get("/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => setUser(res.data))
+        .catch((error) => console.error(error));
+    }, []);
+
   useEffect(() => {
-    getUser();
     getAucton();
     getBids();
   }, []);
