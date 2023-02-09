@@ -16,7 +16,7 @@ https://motors-shop-beta.vercel.app/
 
 Back-end:
 ```
-https://motors-shop-cx41.onrender.com/
+https://motors-shop-z6i7.onrender.com/
 ```
 
 --- 
@@ -122,7 +122,7 @@ a flag `-d` é para rodar o projeto em 'background' deixando o terminal livre pa
 
 ### 4. Documentação
 
-Com o projeto rodando acesse `http://localhost:3000/docs` ou `https://motors-shop-cx41.onrender.com/docs` para ver a documentação do projeto no swagger
+Com o projeto rodando acesse `http://localhost:3000/docs` ou `https://motors-shop-z6i7.onrender.com/docs` para ver a documentação do projeto no swagger
 
 ## Desenvolvedor
 
