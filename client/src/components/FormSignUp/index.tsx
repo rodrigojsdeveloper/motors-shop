@@ -22,12 +22,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
   const [load, setLoad] = useState<boolean>(false);
 
-  const [resetInput, setResetInput] = useState("");
-
-  const handleChange = (event: any) => {
-    setResetInput(event.target.value);
-  };
-
   const schema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
@@ -75,7 +69,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
   const onSubmitFunction = (data: any) => {
     setLoad(true);
-    setResetInput("");
 
     data.is_seller = buyerOrAdvertiser;
 
@@ -117,8 +110,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.name?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="Email"
@@ -130,8 +121,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.email?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="CPF"
@@ -143,8 +132,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.cpf?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="Celular"
@@ -156,8 +143,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.cellphone?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="Data de nascimento"
@@ -169,8 +154,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.birthdate?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <TextArea
         register={register}
@@ -190,8 +173,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.zip_code?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="País"
@@ -203,8 +184,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.country?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <div className="divInputs">
         <Input
@@ -217,8 +196,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           required={true}
           size="inputSignUpSmall"
           className="changeInput"
-          onChange={handleChange}
-          value={resetInput}
         />
         <Input
           label="Cidade"
@@ -230,8 +207,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           required={true}
           size="inputSignUpSmall"
           className="changeInput"
-          onChange={handleChange}
-          value={resetInput}
         />
       </div>
       <Input
@@ -244,8 +219,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.district?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="Rua"
@@ -257,8 +230,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         error={errors.street?.message}
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <div className="divInputs">
         <Input
@@ -271,8 +242,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           type="number"
           required={true}
           size="inputSignUpSmall"
-          onChange={handleChange}
-          value={resetInput}
         />
         <Input
           className="inputComplement"
@@ -284,8 +253,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           type="text"
           required={true}
           size="inputSignUpSmall"
-          onChange={handleChange}
-          value={resetInput}
         />
       </div>
 
@@ -359,8 +326,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         type="password"
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
       <Input
         label="Repetir a senha"
@@ -371,8 +336,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         type="password"
         required={true}
         size="inputSignIn"
-        onChange={handleChange}
-        value={resetInput}
       />
 
       <Button
