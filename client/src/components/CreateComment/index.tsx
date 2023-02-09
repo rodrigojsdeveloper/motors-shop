@@ -17,6 +17,12 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   const [load, setLoad] = useState<boolean>(false);
 
+  const [resetInput, setResetInput] = useState("");
+
+  const handleChange = (event: any) => {
+    setResetInput(event.target.value);
+  };
+
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
 
@@ -40,6 +46,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   const onSubmitFunction = (data: any) => {
     setLoad(true);
+    setResetInput("");
 
     api
       .post(`/comments/${product?.id}`, data, {
@@ -62,6 +69,9 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           {...register("content")}
           name="content"
           disabled={disable ? disable : load}
+          onChange={handleChange}
+          value={resetInput}
+          required={true}
         />
         <Button
           size="buttonSizeProductCarDetails"

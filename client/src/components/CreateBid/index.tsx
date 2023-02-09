@@ -18,6 +18,12 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
 
   const [load, setLoad] = useState<boolean>(false);
 
+  const [resetInput, setResetInput] = useState("");
+
+  const handleChange = (event: any) => {
+    setResetInput(event.target.value);
+  };
+
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
 
@@ -41,6 +47,7 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
 
   const onSubmitFunction = (data: any) => {
     setLoad(true);
+    setResetInput("");
 
     api
       .post(`/bids/${auction?.id}`, data, {
@@ -69,6 +76,8 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
             register={register}
             name="value"
             disabled={disable ? disable : load}
+            onChange={handleChange}
+            value={resetInput}
           />
 
           <Button
