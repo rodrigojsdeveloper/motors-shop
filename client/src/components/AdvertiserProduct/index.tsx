@@ -61,12 +61,7 @@ const AdvertiserProduct = ({ product }: IProduct) => {
           >
             Editar
           </Button>
-          <Link
-            to={`/products/${product.id}`}
-            onClick={() => window.scroll({ top: 0 })}
-          >
-            Ver como
-          </Link>
+          <Link to={`/products/${product.id}`}>Ver como</Link>
         </div>
       </Container>
     </>

@@ -48,10 +48,7 @@ const Auction = ({ auction }: IAuction) => {
 
       <div
         className="divRedirectsToAuction"
-        onClick={() => {
-          navigate(`/auctions/${auctionId}`);
-          window.scroll({ top: 0 });
-        }}
+        onClick={() => navigate(`/auctions/${auctionId}`)}
       >
         <p>Acessar página do leilão</p>
 

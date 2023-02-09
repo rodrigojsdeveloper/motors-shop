@@ -16,12 +16,7 @@ const CardSeller = ({ user }: IUser) => {
         <h4>{user.name}</h4>
         <p>{user.description}</p>
 
-        <Link
-          to={`/users/${userProductId}`}
-          onClick={() => window.scroll({ top: 0 })}
-        >
-          Ver todos anuncios
-        </Link>
+        <Link to={`/users/${userProductId}`}>Ver todos anuncios</Link>
       </div>
     </Container>
   );
