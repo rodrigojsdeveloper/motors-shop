@@ -64,11 +64,6 @@ const ModalCreateAnnouncement = ({
         },
       })
       .then((res) => {
-        console.log(res.data);
-
-        if (res.data.product.ad_type == "auction") {
-          listAuctionsFunc(res.data);
-        }
 
         if (res.data.vehicle_type == "car") {
           listCarsFunc(res.data);
@@ -76,6 +71,10 @@ const ModalCreateAnnouncement = ({
 
         if (res.data.vehicle_type == "motorcycle") {
           listMotorcyclesFunc(res.data);
+        }
+
+        if (res.data.product?.ad_type == "auction") {
+          listAuctionsFunc(res.data);
         }
 
         setCloseModalCreateAnnouncement(false);
