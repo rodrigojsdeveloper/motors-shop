@@ -2,16 +2,21 @@ import { AdvertiserListMotorcycles } from "../../components/AdvertiserListMotorc
 import { AdvertiserListAuctions } from "../../components/AdvertiserListAuctions";
 import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
 import { AdvertiserListCars } from "../../components/AdvertiserListCars";
+import { ModalBackground } from "../../components/ModalBackground";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { Loaded } from "../../components/Loaded";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
 const PageAdvertiser = () => {
   const token = sessionStorage.getItem("Motors shop: token");
+
+  const navigate = useNavigate();
 
   const [cars, setCars] = useState<IProductProps[]>([]);
 
@@ -21,7 +26,11 @@ const PageAdvertiser = () => {
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
+  const [loaded, setLoaded] = useState<boolean>(false);
+
   const getUser = () => {
+    setLoaded(true);
+
     api
       .get("/users/profile", {
         headers: {
@@ -49,7 +58,8 @@ const PageAdvertiser = () => {
 
         setAuctions(res.data.auctions);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setLoaded(false));
   };
 
   token && useEffect(() => getUser(), []);
@@ -62,9 +72,20 @@ const PageAdvertiser = () => {
   const listMotorcyclesFunc = (motorcycle: IProductProps) =>
     setMotorcycles([motorcycle, ...motorcycles]);
 
+  useEffect(() => {
+    if (!token) {
+      return navigate("/");
+    }
+  }, [token]);
+
   return (
     <HelmetProvider>
-      <Helmet title="Meus Anúncios - Motors shop" />
+      <Helmet title="Meus Anúncios - Motors Shop" />
+      {loaded && (
+        <ModalBackground>
+          <Loaded />
+        </ModalBackground>
+      )}
       <Container>
         <Header />
 

@@ -19,7 +19,7 @@ const PageEmail = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title="Recuperação de senha - Motors shop" />
+      <Helmet title="Recuperação de senha - Motors Shop" />
       <Container>
         <Header />
 

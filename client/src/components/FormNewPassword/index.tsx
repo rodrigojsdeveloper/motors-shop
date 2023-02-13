@@ -44,7 +44,7 @@ const FormNewPassword = () => {
     Reflect.deleteProperty(data, "repeat_password");
 
     api
-      .patch(`/users/${userId}`)
+      .patch(`/users/${userId}`, data)
       .then((_) => navigate("/signin"))
       .catch((error) => console.error(error));
   };

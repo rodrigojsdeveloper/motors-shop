@@ -23,7 +23,7 @@ const SignUp = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title="Cadastro - Motors shop" />
+      <Helmet title="Cadastro - Motors Shop" />
       {openModalSuccess && (
         <ModalBackground>
           <ModalSucessRegister setOpenModalSuccess={setOpenModalSuccess} />

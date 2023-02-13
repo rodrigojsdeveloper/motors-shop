@@ -32,7 +32,7 @@ const Header = () => {
   token &&
     useEffect(() => {
       api
-        .get("users/profile", {
+        .get("/users/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

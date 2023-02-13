@@ -7,6 +7,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ModalPhoto } from "../../components/ModalPhoto";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { Loaded } from "../../components/Loaded";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
@@ -19,34 +20,24 @@ const PageProductDetails = () => {
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
+  const [loadedProduct, setLoadedProduct] = useState<boolean>(false);
+
   const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
 
   const [productRequest, setProductnRequest] = useState<IProductProps>({
     user: {
-      name: "rodrigo",
-      email: "rodrigonohype@gmail.com",
-      password: "Johndoe@123",
-      cellphone: "99 99999-9999",
-      cpf: "99999999999",
-      birthdate: "99/99/9999",
-      is_seller: true,
-      description: "description",
-      country: "United State",
-      state: "Califórnia",
-      city: "Mountain View",
-      district: "Amphitheatre Pkwy",
-      street: "Amphitheatre Pkwy",
-      number: 1600,
-      complement: "Googleplex",
-      zip_code: "9098",
+      name: "",
     },
   } as IProductProps);
 
   const getProduct = () => {
+    setLoadedProduct(true);
+
     api
       .get(`/products/${productId}`)
       .then((res) => setProductnRequest(res.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setLoadedProduct(false));
   };
 
   const [commentsList, setCommentsList] = useState<ICommentProps[]>([]);
@@ -75,7 +66,12 @@ const PageProductDetails = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title={`${productRequest.title} | Motors shop`} />
+      <Helmet title={`${productRequest.title} | Motors Shop`} />
+      {loadedProduct && (
+        <ModalBackground>
+          <Loaded />
+        </ModalBackground>
+      )}
       {openModalPhoto && (
         <ModalBackground>
           <ModalPhoto

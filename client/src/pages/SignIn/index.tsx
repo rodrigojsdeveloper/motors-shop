@@ -19,7 +19,7 @@ const SignIn = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title="Iniciar Sessão - Motors shop" />
+      <Helmet title="Iniciar Sessão - Motors Shop" />
       <Container>
         <Header />
 

@@ -9,7 +9,7 @@ const NotFound = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title="Página não encontrada - Motors shop" />
+      <Helmet title="Página não encontrada - Motors Shop" />
       <Container>
         <div>
           <div>

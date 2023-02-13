@@ -8,6 +8,7 @@ import { CreateBid } from "../../components/CreateBid";
 import { ListBids } from "../../components/ListBids";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { Loaded } from "../../components/Loaded";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
@@ -22,22 +23,7 @@ const PageAuctionDetails = () => {
   const [auctionRequest, setAuctionRequest] = useState<IAuctionProps>({
     bids: [],
     user: {
-      name: "rodrigo",
-      email: "rodrigonohype@gmail.com",
-      password: "Johndoe@123",
-      cellphone: "99 99999-9999",
-      cpf: "99999999999",
-      birthdate: "99/99/9999",
-      is_seller: true,
-      description: "description",
-      country: "United State",
-      state: "Califórnia",
-      city: "Mountain View",
-      district: "Amphitheatre Pkwy",
-      street: "Amphitheatre Pkwy",
-      number: 1600,
-      complement: "Googleplex",
-      zip_code: "9098",
+      name: "",
     },
   } as IAuctionProps);
 
@@ -47,11 +33,16 @@ const PageAuctionDetails = () => {
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
+  const [loadedAuction, setLoadedAuction] = useState<boolean>(false);
+
   const getAucton = () => {
+    setLoadedAuction(true);
+
     api
       .get(`/auctions/${auctionId}`)
       .then((res) => setAuctionRequest(res.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setLoadedAuction(false));
   };
 
   const getBids = () => {
@@ -89,7 +80,12 @@ const PageAuctionDetails = () => {
 
   return (
     <HelmetProvider>
-      <Helmet title={`${auctionRequest.product?.title} | Motors shop`} />
+      <Helmet title={`${auctionRequest.product?.title} | Motors Shop`} />
+      {loadedAuction && (
+        <ModalBackground>
+          <Loaded />
+        </ModalBackground>
+      )}
       {openModalPhoto && (
         <ModalBackground>
           <ModalPhoto
