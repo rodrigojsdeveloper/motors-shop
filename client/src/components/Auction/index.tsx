@@ -1,6 +1,7 @@
 import { DescriptionAuction } from "../DescriptionAuction";
 import { useNavigate, useParams } from "react-router-dom";
 import rightArrow from "../../assets/Group 29.svg";
+import { countDown } from "../../utils/countDown";
 import { TitleAuction } from "../TitleAuction";
 import { PriceAuction } from "../PriceAuction";
 import clock from "../../assets/Group 13.svg";
@@ -25,7 +26,7 @@ const Auction = ({ auction }: IAuction) => {
         <div className="divDescription">
           <div className="divTimeAuction">
             <img src={clock} alt="clock" />
-            <time>{auction?.time_limit}</time>
+            <time>{countDown(auction.time_limit)}</time>
           </div>
 
           <div>
