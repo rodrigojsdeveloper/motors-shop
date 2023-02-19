@@ -5,11 +5,11 @@ import { AdvertiserListCars } from "../../components/AdvertiserListCars";
 import { ModalBackground } from "../../components/ModalBackground";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Loaded } from "../../components/Loaded";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
@@ -26,10 +26,10 @@ const PageAdvertiser = () => {
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const getUser = () => {
-    setLoaded(true);
+  const getUserData = () => {
+    setIsLoading(true);
 
     api
       .get("/users/profile", {
@@ -41,51 +41,53 @@ const PageAdvertiser = () => {
         setUser(res.data);
 
         const products = res.data.products.filter(
-          (product: IProductProps) => product.ad_type == "sale"
+          (product: IProductProps) => product.ad_type === "sale"
         );
 
         setCars(
           products.filter(
-            (product: IProductProps) => product.vehicle_type == "car"
+            (product: IProductProps) => product.vehicle_type === "car"
           )
         );
 
         setMotorcycles(
           products.filter(
-            (product: IProductProps) => product.vehicle_type == "motorcycle"
+            (product: IProductProps) => product.vehicle_type === "motorcycle"
           )
         );
 
         setAuctions(res.data.auctions);
       })
       .catch((error) => console.error(error))
-      .finally(() => setLoaded(false));
+      .finally(() => setIsLoading(false));
   };
 
-  token && useEffect(() => getUser(), []);
+  useEffect(() => {
+    if (token) getUserData();
+  }, [token]);
 
-  const listAuctionsFunc = (auction: IAuctionProps) =>
+  const handleListAuctions = (auction: IAuctionProps) =>
     setAuctions([auction, ...auctions]);
 
-  const listCarsFunc = (car: IProductProps) => setCars([car, ...cars]);
+  const handleListCars = (car: IProductProps) => setCars([car, ...cars]);
 
-  const listMotorcyclesFunc = (motorcycle: IProductProps) =>
+  const handleListMotorcycles = (motorcycle: IProductProps) =>
     setMotorcycles([motorcycle, ...motorcycles]);
 
   useEffect(() => {
-    if (!token) {
-      return navigate("/");
-    }
+    if (!token) return navigate("/");
   }, [token]);
 
   return (
-    <HelmetProvider>
-      <Helmet title="Meus Anúncios - Motors Shop" />
-      {loaded && (
-        <ModalBackground>
-          <Loaded />
-        </ModalBackground>
-      )}
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet title="Meus Anúncios - Motors Shop" />
+        {isLoading ? (
+          <ModalBackground>
+            <Loaded />
+          </ModalBackground>
+        ) : null}
+      </HelmetProvider>
       <Container>
         <Header />
 
@@ -93,9 +95,9 @@ const PageAdvertiser = () => {
         <div className="divWhite">
           <div>
             <ShowAdvertiser
-              listCarsFunc={listCarsFunc}
-              listMotorcyclesFunc={listMotorcyclesFunc}
-              listAuctionsFunc={listAuctionsFunc}
+              listCarsFunc={handleListCars}
+              listMotorcyclesFunc={handleListMotorcycles}
+              listAuctionsFunc={handleListAuctions}
               user={user}
             />
             <AdvertiserListAuctions auctions={auctions} />
@@ -105,7 +107,7 @@ const PageAdvertiser = () => {
         </div>
         <Footer />
       </Container>
-    </HelmetProvider>
+    </React.Fragment>
   );
 };
 

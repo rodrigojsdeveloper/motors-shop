@@ -4,11 +4,11 @@ import { ModalBackground } from "../../components/ModalBackground";
 import { IProductProps, IUserProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ShowUser } from "../../components/ShowUser";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Loaded } from "../../components/Loaded";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
@@ -23,15 +23,14 @@ const PageProductsUser = () => {
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  const getUser = () => {
-    setLoaded(true);
+  useEffect(() => {
+    const fetchUser = async () => {
+      setLoaded(true);
 
-    api
-      .get(`/users/products/${userProductId}`)
-      .then((res) => {
-        setUser(res.data);
-
-        const products = res.data.products.filter(
+      try {
+        const { data } = await api.get(`/users/products/${userProductId}`);
+        setUser(data);
+        const products = data.products.filter(
           (product: IProductProps) => product.ad_type == "sale"
         );
 
@@ -46,21 +45,26 @@ const PageProductsUser = () => {
             (product: IProductProps) => product.vehicle_type == "motorcycle"
           )
         );
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setLoaded(false));
-  };
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoaded(false);
+      }
+    };
 
-  useEffect(() => getUser(), []);
+    fetchUser();
+  }, [userProductId]);
 
   return (
-    <HelmetProvider>
-      <Helmet title={`${user.name} | Motors Shop`} />
-      {loaded && (
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet title={`${user.name} - Motors Shop`} />
+      </HelmetProvider>
+      {loaded ? (
         <ModalBackground>
           <Loaded />
         </ModalBackground>
-      )}
+      ) : null}
       <Container>
         <Header />
 
@@ -74,7 +78,7 @@ const PageProductsUser = () => {
         </div>
         <Footer />
       </Container>
-    </HelmetProvider>
+    </React.Fragment>
   );
 };
 

@@ -4,11 +4,11 @@ import { IAuctionProps, IProductProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ListAuction } from "../../components/ListAuctions";
 import { ListCars } from "../../components/ListCars";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Banner } from "../../components/Banner";
 import { Footer } from "../../components/Footer";
 import { Loaded } from "../../components/Loaded";
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 const Home = () => {
@@ -18,78 +18,71 @@ const Home = () => {
 
   const [auctions, setAuctions] = useState<IAuctionProps[]>([]);
 
-  const [loadedProducts, setLoadedProducts] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const [loadedAuctions, setLoadedAuctions] = useState<boolean>(false);
+  const loadProducts = async () => {
+    try {
+      const { data } = await api.get("/products");
+      const products = data.filter(
+        (product: IProductProps) =>
+          product.ad_type === "sale" && product.is_published === true
+      );
 
-  const getProducts = () => {
-    setLoadedProducts(true);
+      setCars(
+        products.filter(
+          (product: IProductProps) => product.vehicle_type === "car"
+        )
+      );
 
-    api
-      .get("/products")
-      .then((res) => {
-        const products = res.data.filter(
-          (product: IProductProps) => product.ad_type == "sale"
-        );
-
-        const productsActives = products.filter(
-          (product: IProductProps) => product.is_published == true
-        );
-
-        setCars(
-          productsActives.filter(
-            (product: IProductProps) => product.vehicle_type == "car"
-          )
-        );
-
-        setMotorcycles(
-          productsActives.filter(
-            (product: IProductProps) => product.vehicle_type == "motorcycle"
-          )
-        );
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setLoadedProducts(false));
+      setMotorcycles(
+        products.filter(
+          (product: IProductProps) => product.vehicle_type === "motorcycle"
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const getAuctions = () => {
-    setLoadedAuctions(true);
+  const loadAuctions = async () => {
+    try {
+      const { data } = await api.get("/auctions");
+      const auctions = data.filter(
+        (auction: IAuctionProps) => auction.product?.is_published === true
+      );
 
-    api
-      .get("/auctions")
-      .then((res) => {
-        const auctionsActives = res.data.filter(
-          (auction: IAuctionProps) => auction.product.is_published == true
-        );
-
-        setAuctions(auctionsActives);
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setLoadedAuctions(false));
+      setAuctions(auctions);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    getProducts();
-    getAuctions();
+    loadProducts();
+    loadAuctions();
   }, []);
 
   return (
-    <HelmetProvider>
-      <Helmet title="Motors Shop" />
-      {loadedProducts && loadedAuctions && (
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet title="Motors Shop" />
+      </HelmetProvider>
+      {isLoading ? (
         <ModalBackground>
           <Loaded />
         </ModalBackground>
-      )}
-      <>
-        <Header />
-        <Banner />
-        <ListAuction auctions={auctions} />
-        <ListCars products={cars} />
-        <ListMotorcycles products={motorcycles} />
-        <Footer />
-      </>
-    </HelmetProvider>
+      ) : null}
+      <Header />
+      <Banner />
+      <ListAuction auctions={auctions} />
+      <ListCars products={cars} />
+      <ListMotorcycles products={motorcycles} />
+      <Footer />
+    </React.Fragment>
   );
 };
 

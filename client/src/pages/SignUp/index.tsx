@@ -2,10 +2,10 @@ import { ModalSucessRegister } from "../../components/ModalSucessRegister";
 import { ModalBackground } from "../../components/ModalBackground";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FormSignUp } from "../../components/FormSignUp";
+import React, { useState, useEffect } from "react";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { Container } from "./style";
 
 const SignUp = () => {
@@ -16,19 +16,19 @@ const SignUp = () => {
   const [openModalSuccess, setOpenModalSuccess] = useState<boolean>(false);
 
   useEffect(() => {
-    if (token) {
-      return navigate("/");
-    }
+    if (token) return navigate("/");
   }, [token]);
 
   return (
-    <HelmetProvider>
-      <Helmet title="Cadastro - Motors Shop" />
-      {openModalSuccess && (
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet title="Cadastro - Motors Shop" />
+      </HelmetProvider>
+      {openModalSuccess ? (
         <ModalBackground>
           <ModalSucessRegister setOpenModalSuccess={setOpenModalSuccess} />
         </ModalBackground>
-      )}
+      ) : null}
       <Container>
         <Header />
 
@@ -38,7 +38,7 @@ const SignUp = () => {
 
         <Footer />
       </Container>
-    </HelmetProvider>
+    </React.Fragment>
   );
 };
 

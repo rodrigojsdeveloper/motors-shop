@@ -6,11 +6,11 @@ import { ModalPhoto } from "../../components/ModalPhoto";
 import { Container } from "../PageProductDetails/style";
 import { CreateBid } from "../../components/CreateBid";
 import { ListBids } from "../../components/ListBids";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Loaded } from "../../components/Loaded";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 const PageAuctionDetails = () => {
@@ -31,62 +31,79 @@ const PageAuctionDetails = () => {
 
   const [openModalPhoto, setOpenModalPhoto] = useState<boolean>(false);
 
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [loadingAuction, setLoadingAuction] = useState<boolean>(false);
 
-  const [loadedAuction, setLoadedAuction] = useState<boolean>(false);
+  const [loadingBids, setLoadingBids] = useState<boolean>(false);
 
-  const getAucton = () => {
-    setLoadedAuction(true);
+  useEffect(() => {
+    const fetchAuction = async () => {
+      setLoadingAuction(true);
 
-    api
-      .get(`/auctions/${auctionId}`)
-      .then((res) => setAuctionRequest(res.data))
-      .catch((error) => console.error(error))
-      .finally(() => setLoadedAuction(false));
-  };
+      try {
+        const { data } = await api.get(`/auctions/${auctionId}`);
+        setAuctionRequest(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingAuction(false);
+      }
+    };
 
-  const getBids = () => {
-    setLoaded(true);
+    const fetchBids = async () => {
+      setLoadingBids(true);
 
-    api
-      .get(`/bids/${auctionId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setBidsList(res.data))
-      .catch((error) => console.error(error))
-      .finally(() => setLoaded(false));
-  };
-
-  token &&
-    useEffect(() => {
-      api
-        .get("/users/profile", {
+      try {
+        const { data } = await api.get(`/bids/${auctionId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        })
-        .then((res) => setUser(res.data))
-        .catch((error) => console.error(error));
-    }, []);
+        });
+        setBidsList(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingBids(false);
+      }
+    };
+
+    fetchAuction();
+    fetchBids();
+  }, [auctionId, token]);
 
   useEffect(() => {
-    getAucton();
-    getBids();
-  }, []);
+    const fetchUser = async () => {
+      if (token) {
+        try {
+          const { data } = await api.get("/users/profile", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUser(data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
 
-  const ListBidsFunc = (bid: IBidProps) => setBidsList([bid, ...bidsList]);
+    fetchUser();
+  }, [token]);
+
+  const handleListBids = (bid: IBidProps) => setBidsList([bid, ...bidsList]);
 
   return (
-    <HelmetProvider>
-      <Helmet title={`${auctionRequest.product?.title} | Motors Shop`} />
-      {loadedAuction && (
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet
+          title={`${auctionRequest?.product?.title ?? ""} - Motors Shop`}
+        />
+      </HelmetProvider>
+      {loadingAuction ? (
         <ModalBackground>
           <Loaded />
         </ModalBackground>
-      )}
-      {openModalPhoto && (
+      ) : null}
+      {openModalPhoto ? (
         <ModalBackground>
           <ModalPhoto
             setOpenModalPhoto={setOpenModalPhoto}
@@ -94,7 +111,7 @@ const PageAuctionDetails = () => {
             cover_image={auctionRequest.product.cover_image}
           />
         </ModalBackground>
-      )}
+      ) : null}
       <Container>
         <Header />
 
@@ -108,12 +125,12 @@ const PageAuctionDetails = () => {
               />
               <ListBids
                 bids={bidsList}
-                loaded={loaded}
+                loaded={loadingBids}
                 auction={auctionRequest}
               />
               {user.id == auctionRequest.user.id ? null : (
                 <CreateBid
-                  ListBidsFunc={ListBidsFunc}
+                  ListBidsFunc={handleListBids}
                   auction={auctionRequest}
                 />
               )}
@@ -123,7 +140,7 @@ const PageAuctionDetails = () => {
 
         <Footer />
       </Container>
-    </HelmetProvider>
+    </React.Fragment>
   );
 };
 

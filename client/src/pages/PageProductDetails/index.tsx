@@ -5,11 +5,11 @@ import { CreateComment } from "../../components/CreateComment";
 import { ListComments } from "../../components/ListComments";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ModalPhoto } from "../../components/ModalPhoto";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Loaded } from "../../components/Loaded";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
 
@@ -30,49 +30,57 @@ const PageProductDetails = () => {
     },
   } as IProductProps);
 
-  const getProduct = () => {
-    setLoadedProduct(true);
-
-    api
-      .get(`/products/${productId}`)
-      .then((res) => setProductnRequest(res.data))
-      .catch((error) => console.error(error))
-      .finally(() => setLoadedProduct(false));
-  };
-
   const [commentsList, setCommentsList] = useState<ICommentProps[]>([]);
 
-  const getComments = () => {
-    setLoaded(true);
-
-    api
-      .get(`/comments/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setCommentsList(res.data))
-      .catch((error) => console.error(error))
-      .finally(() => setLoaded(false));
-  };
-
   useEffect(() => {
-    getProduct();
-    getComments();
-  }, []);
+    const fetchProduct = async () => {
+      setLoadedProduct(true);
 
-  const ListCommentsFunc = (comment: ICommentProps) =>
+      try {
+        const { data } = await api.get(`/products/${productId}`);
+        setProductnRequest(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadedProduct(false);
+      }
+    };
+
+    const fetchComments = async () => {
+      setLoaded(true);
+
+      try {
+        const { data } = await api.get(`/comments/${productId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCommentsList(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoaded(false);
+      }
+    };
+
+    fetchProduct();
+    fetchComments();
+  }, [productId, token]);
+
+  const handleListComments = (comment: ICommentProps) =>
     setCommentsList([comment, ...commentsList]);
 
   return (
-    <HelmetProvider>
-      <Helmet title={`${productRequest.title} | Motors Shop`} />
-      {loadedProduct && (
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet title={`${productRequest.title} - Motors Shop`} />
+      </HelmetProvider>
+      {loadedProduct ? (
         <ModalBackground>
           <Loaded />
         </ModalBackground>
-      )}
-      {openModalPhoto && (
+      ) : null}
+      {openModalPhoto ? (
         <ModalBackground>
           <ModalPhoto
             setOpenModalPhoto={setOpenModalPhoto}
@@ -80,7 +88,7 @@ const PageProductDetails = () => {
             title={productRequest.title}
           />
         </ModalBackground>
-      )}
+      ) : null}
       <Container>
         <Header />
 
@@ -94,7 +102,7 @@ const PageProductDetails = () => {
               />
               <ListComments loaded={loaded} comments={commentsList} />
               <CreateComment
-                ListCommentsFunc={ListCommentsFunc}
+                ListCommentsFunc={handleListComments}
                 product={productRequest}
               />
             </div>
@@ -103,7 +111,7 @@ const PageProductDetails = () => {
 
         <Footer />
       </Container>
-    </HelmetProvider>
+    </React.Fragment>
   );
 };
 

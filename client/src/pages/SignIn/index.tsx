@@ -3,8 +3,8 @@ import { FormSignIn } from "../../components/FormSignIn";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { Container } from "./style";
-import { useEffect } from "react";
 
 const SignIn = () => {
   const token = sessionStorage.getItem("Motors shop: token");
@@ -12,14 +12,14 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) {
-      return navigate("/");
-    }
+    if (token) return navigate("/");
   }, [token]);
 
   return (
-    <HelmetProvider>
-      <Helmet title="Iniciar Sessão - Motors Shop" />
+    <React.Fragment>
+      <HelmetProvider>
+        <Helmet title="Iniciar Sessão - Motors Shop" />
+      </HelmetProvider>
       <Container>
         <Header />
 
@@ -29,7 +29,7 @@ const SignIn = () => {
 
         <Footer />
       </Container>
-    </HelmetProvider>
+    </React.Fragment>
   );
 };
 
