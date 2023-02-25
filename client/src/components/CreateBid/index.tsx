@@ -27,14 +27,15 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
 
-    api
-      .get("/users/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setUser(res.data))
-      .catch((error) => console.error(error));
+    token &&
+      api
+        .get("/users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => setUser(res.data))
+        .catch((error) => console.error(error));
   }, []);
 
   const schema = yup.object().shape({

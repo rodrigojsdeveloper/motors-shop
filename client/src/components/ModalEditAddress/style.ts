@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 520px;
-  height: 787px;
+  height: 690px;
 
   background-color: var(--white-fixed);
   border-radius: 8px;
@@ -78,7 +78,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 425px) {
-    height: 845px;
+    height: 745px;
   }
 `;
 

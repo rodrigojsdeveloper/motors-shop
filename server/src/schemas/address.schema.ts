@@ -7,7 +7,6 @@ const addressSchema: SchemaOf<IAddress> = yup.object().shape({
     .string()
     .required("zip_code is a required field")
     .max(8, "Maximum 8 caracters"),
-  country: yup.string().required("country is a required field"),
   state: yup.string().required("state is a required field"),
   city: yup.string().required("city is a required field"),
   district: yup.string().required("district is a required field"),

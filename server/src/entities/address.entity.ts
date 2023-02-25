@@ -9,9 +9,6 @@ class Address {
   zip_code: string;
 
   @Column()
-  country: string;
-
-  @Column()
   state: string;
 
   @Column()

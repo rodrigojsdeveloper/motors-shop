@@ -18,7 +18,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
 
   const schema = yup.object().shape({
     zip_code: yup.number().required("CEP obrigatória"),
-    country: yup.string().required("País obrigatório"),
     state: yup.string().required(""),
     city: yup.string().required(""),
     district: yup.string().required("Bairro obrigatório"),
@@ -52,7 +51,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
 
     const address = {
       zip_code: data.zip_code,
-      country: data.country,
       state: data.state,
       city: data.city,
       district: data.district,
@@ -95,18 +93,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             required={true}
             size="inputModalEditAddressLarge"
             value={user?.address.zip_code}
-          />
-          <Input
-            label="País"
-            name="country"
-            register={register}
-            placeholder="Ex: United States"
-            autoComplete="off"
-            type="text"
-            error={errors.country?.message}
-            required={true}
-            size="inputModalEditAddressLarge"
-            value={user?.address.country}
           />
           <div className="divInputs">
             <Input

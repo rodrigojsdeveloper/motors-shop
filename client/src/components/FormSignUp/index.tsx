@@ -41,7 +41,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
       .string()
       .required("CEP obrigatório")
       .max(8, "Máximo 8 caracteres"),
-    country: yup.string().required("País obrigatório"),
     state: yup.string().required("Estado obrigatório"),
     city: yup.string().required("Cidade obrigatória"),
     district: yup.string().required("Bairro obrigatório"),
@@ -74,7 +73,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
     const address = {
       zip_code: data.zip_code,
-      country: data.country,
       state: data.state,
       city: data.city,
       district: data.district,
@@ -171,17 +169,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         autoComplete="off"
         type="number"
         error={errors.zip_code?.message}
-        required={true}
-        size="inputSignIn"
-      />
-      <Input
-        label="País"
-        name="country"
-        register={register}
-        placeholder="Ex: Brasil"
-        autoComplete="off"
-        type="text"
-        error={errors.country?.message}
         required={true}
         size="inputSignIn"
       />
