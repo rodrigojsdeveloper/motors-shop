@@ -21,6 +21,7 @@ const PageAuctionDetails = () => {
     loadingAuction,
     openModalPhoto,
     user,
+    setOpenModalPhoto,
   } = useContext(AuctionContext);
 
   const { auctionId } = useParams();
@@ -50,7 +51,11 @@ const PageAuctionDetails = () => {
       ) : null}
       {openModalPhoto ? (
         <ModalBackground>
-          <ModalPhoto />
+          <ModalPhoto
+            setOpenModalPhoto={setOpenModalPhoto}
+            cover_image={auctionRequest.product.cover_image}
+            title={auctionRequest.product.title}
+          />
         </ModalBackground>
       ) : null}
       <Container>

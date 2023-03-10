@@ -1,11 +1,8 @@
-import { AuctionContext } from "../../contexts/AuctionContext";
+import { IModalPhoto } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { Container } from "./style";
-import { useContext } from "react";
 
-const ModalPhoto = () => {
-  const { setOpenModalPhoto, auctionRequest } = useContext(AuctionContext);
-
+const ModalPhoto = ({ setOpenModalPhoto, cover_image, title }: IModalPhoto) => {
   return (
     <Container>
       <HeaderModal
@@ -13,10 +10,7 @@ const ModalPhoto = () => {
         setCloseModal={setOpenModalPhoto}
       />
 
-      <img
-        src={auctionRequest.product.cover_image}
-        alt={auctionRequest.product.title}
-      />
+      <img src={cover_image} alt={title} />
     </Container>
   );
 };
