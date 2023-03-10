@@ -1,4 +1,4 @@
-import { ProductContext } from "../../contexts/ProductContext";
+import { HomeContext } from "../../contexts/HomeContext";
 import { IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { TitleList } from "../TitleList";
@@ -7,7 +7,7 @@ import { Container } from "./style";
 import { useContext } from "react";
 
 const ListCars = () => {
-  const { cars } = useContext(ProductContext);
+  const { cars } = useContext(HomeContext);
 
   return (
     <Container id="cars">

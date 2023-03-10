@@ -1,5 +1,5 @@
-import { AuctionContextProvider } from "./AuctionContext";
-import { ProductContextProvider } from "./ProductContext";
+import { AdvertiserContextProvider } from "./AdvertiserContext";
+import { HomeContextProvider } from "./HomeContext";
 
 interface IProviders {
   children: React.ReactNode;
@@ -7,9 +7,9 @@ interface IProviders {
 
 const Providers = ({ children }: IProviders) => {
   return (
-    <ProductContextProvider>
-      <AuctionContextProvider>{children}</AuctionContextProvider>
-    </ProductContextProvider>
+    <HomeContextProvider>
+      <AdvertiserContextProvider>{children}</AdvertiserContextProvider>
+    </HomeContextProvider>
   );
 };
 

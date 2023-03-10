@@ -1,4 +1,4 @@
-import { ProductContext } from "../../contexts/ProductContext";
+import { HomeContext } from "../../contexts/HomeContext";
 import { IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { Container } from "../ListCars/style";
@@ -7,7 +7,7 @@ import { Product } from "../Product";
 import { useContext } from "react";
 
 const ListMotorcycles = () => {
-  const { motorcycles } = useContext(ProductContext);
+  const { motorcycles } = useContext(HomeContext);
 
   return (
     <Container id="motorcycles">

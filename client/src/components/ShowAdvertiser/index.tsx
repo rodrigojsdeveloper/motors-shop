@@ -1,31 +1,21 @@
 import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
+import { AdvertiserContext } from "../../contexts/AdvertiserContext";
 import { DescriptionProduct } from "../DescriptionProduct";
 import { ModalBackground } from "../ModalBackground";
-import { IShowAdvertiser } from "../../interfaces";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
+import { useContext } from "react";
 import { Button } from "../Button";
-import { useState } from "react";
 
-const ShowAdvertiser = ({
-  user,
-  listCarsFunc,
-  listMotorcyclesFunc,
-  listAuctionsFunc
-}: IShowAdvertiser) => {
-  const [openModalCreateAnnouncement, setOpenModalCreateAnnouncement] =
-    useState<boolean>(false);
+const ShowAdvertiser = () => {
+  const { user, openModalCreateAnnouncement, setOpenModalCreateAnnouncement } =
+    useContext(AdvertiserContext);
 
   return (
     <>
       {openModalCreateAnnouncement && (
         <ModalBackground>
-          <ModalCreateAnnouncement
-            setCloseModalCreateAnnouncement={setOpenModalCreateAnnouncement}
-            listMotorcyclesFunc={listMotorcyclesFunc}
-            listCarsFunc={listCarsFunc}
-            listAuctionsFunc={listAuctionsFunc}
-          />
+          <ModalCreateAnnouncement />
         </ModalBackground>
       )}
       <Container>

@@ -1,10 +1,14 @@
-import { IAuctionProps, IListAuctions } from "../../interfaces";
+import { AdvertiserContext } from "../../contexts/AdvertiserContext";
 import { AdvertiserAuction } from "../AdvertiserAuction";
 import { Container } from "../ListAuctions/style";
+import { IAuctionProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { TitleList } from "../TitleList";
+import { useContext } from "react";
 
-const AdvertiserListAuctions = ({ auctions }: IListAuctions) => {
+const AdvertiserListAuctions = () => {
+  const { auctions } = useContext(AdvertiserContext);
+
   return (
     <Container>
       <TitleList title="Leilão" />

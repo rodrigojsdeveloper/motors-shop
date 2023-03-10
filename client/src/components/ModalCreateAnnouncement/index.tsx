@@ -1,23 +1,25 @@
-import { IModalCreateAnnouncement } from "../../interfaces";
+import { AdvertiserContext } from "../../contexts/AdvertiserContext";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TypeOfVehicle } from "../TypeOfVehicle";
 import { HeaderModal } from "../HeaderModal";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { AdType } from "../AdType";
-import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-const ModalCreateAnnouncement = ({
-  setCloseModalCreateAnnouncement,
-  listMotorcyclesFunc,
-  listCarsFunc,
-  listAuctionsFunc,
-}: IModalCreateAnnouncement) => {
+const ModalCreateAnnouncement = () => {
+  const {
+    handleListAuctions,
+    handleListCars,
+    handleListMotorcycles,
+    setOpenModalCreateAnnouncement,
+  } = useContext(AdvertiserContext);
+
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
@@ -64,20 +66,19 @@ const ModalCreateAnnouncement = ({
         },
       })
       .then((res) => {
-
         if (res.data.vehicle_type == "car") {
-          listCarsFunc(res.data);
+          handleListCars(res.data);
         }
 
         if (res.data.vehicle_type == "motorcycle") {
-          listMotorcyclesFunc(res.data);
+          handleListMotorcycles(res.data);
         }
 
         if (res.data.product?.ad_type == "auction") {
-          listAuctionsFunc(res.data);
+          handleListAuctions(res.data);
         }
 
-        setCloseModalCreateAnnouncement(false);
+        setOpenModalCreateAnnouncement(false);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
@@ -87,7 +88,7 @@ const ModalCreateAnnouncement = ({
     <Container>
       <HeaderModal
         title="Criar anúncio"
-        setCloseModal={setCloseModalCreateAnnouncement}
+        setCloseModal={setOpenModalCreateAnnouncement}
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
@@ -181,7 +182,7 @@ const ModalCreateAnnouncement = ({
             color="buttonColorGrayModalEditAddress"
             size="buttonSizeModalEditAddressSmall"
             type="button"
-            onClick={() => setCloseModalCreateAnnouncement(false)}
+            onClick={() => setOpenModalCreateAnnouncement(false)}
           >
             Cancelar
           </Button>

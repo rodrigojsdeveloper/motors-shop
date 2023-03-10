@@ -1,28 +1,32 @@
-import { IProductProps } from "../../interfaces";
+import { IAuctionProps, IProductProps } from "../../interfaces";
 import { createContext, useState } from "react";
 import { api } from "../../services/api";
 
-interface IProductContextData {
+interface IHomeContextData {
   cars: IProductProps[];
   motorcycles: IProductProps[];
-  isLoadingProducts: boolean;
+  auctions: IAuctionProps[];
+  isLoading: boolean;
   loadProducts: () => Promise<void>;
+  loadAuctions: () => Promise<void>;
 }
 
-interface IProductContextProvider {
+interface IHomeContextProvider {
   children: React.ReactNode;
 }
 
-export const ProductContext = createContext({} as IProductContextData);
+export const HomeContext = createContext({} as IHomeContextData);
 
-export const ProductContextProvider = ({
+export const HomeContextProvider = ({
   children,
-}: IProductContextProvider) => {
+}: IHomeContextProvider) => {
   const [cars, setCars] = useState<IProductProps[]>([]);
 
   const [motorcycles, setMotorcycles] = useState<IProductProps[]>([]);
 
-  const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(true);
+  const [auctions, setAuctions] = useState<IAuctionProps[]>([]);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadProducts = async () => {
     try {
@@ -46,20 +50,37 @@ export const ProductContextProvider = ({
     } catch (error) {
       console.error(error);
     } finally {
-      setIsLoadingProducts(false);
+      setIsLoading(false);
+    }
+  };
+
+  const loadAuctions = async () => {
+    try {
+      const { data } = await api.get("/auctions");
+      const auctions = data.filter(
+        (auction: IAuctionProps) => auction.product?.is_published === true
+      );
+
+      setAuctions(auctions);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <ProductContext.Provider
+    <HomeContext.Provider
       value={{
         cars,
         motorcycles,
-        isLoadingProducts,
+        auctions,
+        isLoading,
         loadProducts,
+        loadAuctions,
       }}
     >
       {children}
-    </ProductContext.Provider>
+    </HomeContext.Provider>
   );
 };

@@ -1,17 +1,21 @@
-import { IListProducts, IProductProps } from "../../interfaces";
+import { AdvertiserContext } from "../../contexts/AdvertiserContext";
 import { AdvertiserProduct } from "../AdvertiserProduct";
+import { IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { Container } from "../ListCars/style";
 import { TitleList } from "../TitleList";
+import { useContext } from "react";
 
-const AdvertiserListMotorcycles = ({ products }: IListProducts) => {
+const AdvertiserListMotorcycles = () => {
+  const { motorcycles } = useContext(AdvertiserContext);
+
   return (
     <Container id="cars">
       <TitleList title="Motos" />
 
       <menu>
-        {products.length > 0 ? (
-          products.map((product: IProductProps) => (
+        {motorcycles.length > 0 ? (
+          motorcycles.map((product: IProductProps) => (
             <AdvertiserProduct product={product} />
           ))
         ) : (

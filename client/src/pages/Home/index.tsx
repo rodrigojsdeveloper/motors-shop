@@ -1,9 +1,8 @@
 import { ListMotorcycles } from "../../components/ListMotorcycles";
 import { ModalBackground } from "../../components/ModalBackground";
-import { ProductContext } from "../../contexts/ProductContext";
-import { AuctionContext } from "../../contexts/AuctionContext";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ListAuction } from "../../components/ListAuctions";
+import { HomeContext } from "../../contexts/HomeContext";
 import { ListCars } from "../../components/ListCars";
 import React, { useContext, useEffect } from "react";
 import { Header } from "../../components/Header";
@@ -12,8 +11,7 @@ import { Footer } from "../../components/Footer";
 import { Loaded } from "../../components/Loaded";
 
 const Home = () => {
-  const { loadProducts, isLoadingProducts } = useContext(ProductContext);
-  const { loadAuctions, isLoadingAuctions } = useContext(AuctionContext);
+  const { loadProducts, loadAuctions, isLoading } = useContext(HomeContext);
 
   useEffect(() => {
     loadProducts();
@@ -25,7 +23,7 @@ const Home = () => {
       <HelmetProvider>
         <Helmet title="Motors Shop" />
       </HelmetProvider>
-      {isLoadingAuctions && isLoadingProducts ? (
+      {isLoading ? (
         <ModalBackground>
           <Loaded />
         </ModalBackground>
