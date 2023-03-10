@@ -71,13 +71,12 @@ export default createGlobalStyle`
 		color: var(--grey0);
 	}
 
-	button {
+	button, a {
 		cursor: pointer;
 	}
 
 	a {
 		text-decoration: none;
-		cursor: pointer;
 	}
 
 	input::-webkit-outer-spin-button,
