@@ -11,7 +11,7 @@ const NotFound = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Página não encontrada - Motors Shop" />
+        <Helmet title="Página não encontrada | Motors Shop" />
       </HelmetProvider>
       <Container>
         <div>

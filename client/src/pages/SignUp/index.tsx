@@ -22,7 +22,7 @@ const SignUp = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Cadastro - Motors Shop" />
+        <Helmet title="Cadastro | Motors Shop" />
       </HelmetProvider>
       {openModalSuccess ? (
         <ModalBackground>

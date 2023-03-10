@@ -73,7 +73,7 @@ const PageProductDetails = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title={`${productRequest.title} - Motors Shop`} />
+        <Helmet title={`${productRequest.title} | Motors Shop`} />
       </HelmetProvider>
       {loadedProduct ? (
         <ModalBackground>

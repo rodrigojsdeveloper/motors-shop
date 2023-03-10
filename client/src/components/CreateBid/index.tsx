@@ -1,6 +1,6 @@
-import { ICreateBid, IUserProps } from "../../interfaces";
+import { AuctionContext } from "../../contexts/AuctionContext";
+import { useContext, useEffect, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
@@ -9,10 +9,11 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
-  const token = sessionStorage.getItem("Motors shop: token");
+const CreateBid = () => {
+  const { fetchUser, user, auctionRequest, handleListBids } =
+    useContext(AuctionContext);
 
-  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+  const token = sessionStorage.getItem("Motors shop: token");
 
   const [disable, setDisable] = useState<boolean>(false);
 
@@ -27,15 +28,7 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
   useEffect(() => {
     token ? setDisable(false) : setDisable(true);
 
-    token &&
-      api
-        .get("/users/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => setUser(res.data))
-        .catch((error) => console.error(error));
+    token && fetchUser();
   }, []);
 
   const schema = yup.object().shape({
@@ -51,12 +44,12 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
     setResetInput("");
 
     api
-      .post(`/bids/${auction?.id}`, data, {
+      .post(`/bids/${auctionRequest?.id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => ListBidsFunc(res.data))
+      .then((res) => handleListBids(res.data))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };

@@ -30,7 +30,7 @@ const PageAdvertiser = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Meus Anúncios - Motors Shop" />
+        <Helmet title="Meus Anúncios | Motors Shop" />
       </HelmetProvider>
       {isLoading ? (
         <ModalBackground>

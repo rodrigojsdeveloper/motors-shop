@@ -18,7 +18,7 @@ const PageEmail = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Recuperação de senha - Motors Shop" />
+        <Helmet title="Recuperação de senha | Motors Shop" />
       </HelmetProvider>
       <Container>
         <Header />

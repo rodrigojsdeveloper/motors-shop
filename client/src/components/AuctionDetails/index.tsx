@@ -1,50 +1,45 @@
-import { IAuctionDetails, IUserProps } from "../../interfaces";
+import { AuctionContext } from "../../contexts/AuctionContext";
 import { DetailsNotLogged } from "../DetailsNotLogged";
 import { DetailsAuction } from "../DetailsAuction";
 import { PhotosGallery } from "../PhotosGallery";
+import { useContext, useEffect } from "react";
 import { Description } from "../Description";
 import { Container, Content } from "./style";
-import { useEffect, useState } from "react";
 import { CardSeller } from "../CardSeller";
-import { api } from "../../services/api";
 import { Photo } from "../Photo";
 
-const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
-  const token = sessionStorage.getItem("Motors shop: token");
+const AuctionDetails = () => {
+  const { fetchUser, user, auctionRequest, setOpenModalPhoto } =
+    useContext(AuctionContext);
 
-  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+  const token = sessionStorage.getItem("Motors shop: token");
 
   token &&
     useEffect(() => {
-      api
-        .get("/users/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => setUser(res.data))
-        .catch((error) => console.error(error));
-    });
+      fetchUser();
+    }, [token]);
 
   return token ? (
-    user.id == auction.user.id ? (
+    user.id == auctionRequest.user.id ? (
       <Content>
         <article>
           <div className="divCarPhotoAndDetails">
             <Photo
-              image={auction.product?.cover_image}
+              image={auctionRequest.product?.cover_image}
               setOpenModalPhoto={setOpenModalPhoto}
             />
 
-            <DetailsNotLogged product={auction.product} />
+            <DetailsNotLogged product={auctionRequest.product} />
           </div>
 
-          <Description description={auction.product?.description} />
+          <Description description={auctionRequest.product?.description} />
         </article>
 
         <div className="divPhotosAndUserDetails">
-          <PhotosGallery gallery_image={auction.product?.gallery_image} />
-          <CardSeller user={auction.user} />
+          <PhotosGallery
+            gallery_image={auctionRequest.product?.gallery_image}
+          />
+          <CardSeller user={auctionRequest.user} />
         </div>
       </Content>
     ) : (
@@ -52,19 +47,21 @@ const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
         <article>
           <div className="divCarPhotoAndDetails">
             <Photo
-              image={auction.product?.cover_image}
+              image={auctionRequest.product?.cover_image}
               setOpenModalPhoto={setOpenModalPhoto}
             />
 
-            <DetailsAuction auction={auction} />
+            <DetailsAuction auction={auctionRequest} />
           </div>
 
-          <Description description={auction.product?.description} />
+          <Description description={auctionRequest.product?.description} />
         </article>
 
         <div className="divPhotosAndUserDetails">
-          <PhotosGallery gallery_image={auction.product?.gallery_image} />
-          <CardSeller user={auction.user} />
+          <PhotosGallery
+            gallery_image={auctionRequest.product?.gallery_image}
+          />
+          <CardSeller user={auctionRequest.user} />
         </div>
       </Container>
     )
@@ -73,19 +70,19 @@ const AuctionDetails = ({ auction, setOpenModalPhoto }: IAuctionDetails) => {
       <article>
         <div className="divCarPhotoAndDetails">
           <Photo
-            image={auction.product?.cover_image}
+            image={auctionRequest.product?.cover_image}
             setOpenModalPhoto={setOpenModalPhoto}
           />
 
-          <DetailsNotLogged product={auction.product} />
+          <DetailsNotLogged product={auctionRequest.product} />
         </div>
 
-        <Description description={auction.product?.description} />
+        <Description description={auctionRequest.product?.description} />
       </article>
 
       <div className="divPhotosAndUserDetails">
-        <PhotosGallery gallery_image={auction.product?.gallery_image} />
-        <CardSeller user={auction.user} />
+        <PhotosGallery gallery_image={auctionRequest.product?.gallery_image} />
+        <CardSeller user={auctionRequest.user} />
       </div>
     </Content>
   );

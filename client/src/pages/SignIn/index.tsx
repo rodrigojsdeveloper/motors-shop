@@ -18,7 +18,7 @@ const SignIn = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Iniciar Sessão - Motors Shop" />
+        <Helmet title="Iniciar Sessão | Motors Shop" />
       </HelmetProvider>
       <Container>
         <Header />
