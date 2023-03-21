@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.h4`
+const Container = styled.h3`
   font-weight: 600;
   font-size: 20px;
   line-height: 25px;

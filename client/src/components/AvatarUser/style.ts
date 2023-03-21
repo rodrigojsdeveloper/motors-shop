@@ -21,7 +21,7 @@ const Container = styled.div`
   align-items: center;
   padding: 15px 0;
 
-  & > h5 {
+  & > h4 {
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
