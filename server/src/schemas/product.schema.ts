@@ -17,7 +17,6 @@ const productSchema: SchemaOf<IProduct> = yup.object().shape({
     .number()
     .required()
     .typeError("year must be a number")
-    .positive()
     .integer(),
   cover_image: yup.string().required().url(),
   gallery_image: yup.string().required().url(),

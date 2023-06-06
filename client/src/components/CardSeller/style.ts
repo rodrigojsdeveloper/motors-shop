@@ -35,7 +35,7 @@ const Container = styled.aside`
         }
       }
 
-      & > h5 {
+      & > h4 {
         display: none;
       }
     }
