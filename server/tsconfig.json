@@ -3,7 +3,6 @@
     "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
-    "rootDir": "./",
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,5 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "typeRoots": ["./@types", "node_modules/@types"]
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
