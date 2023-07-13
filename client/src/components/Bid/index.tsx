@@ -1,17 +1,26 @@
-import { AuctionContext } from "../../contexts/AuctionContext";
+import { IBid, IUserProps } from "../../interfaces";
 import { showDate } from "../../utils/dateCreated";
 import { PriceProduct } from "../PriceProduct";
-import { useContext, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
-import { IBid } from "../../interfaces";
+import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
 
-const Bid = ({ bid }: IBid) => {
-  const { fetchUser, user, auctionRequest } = useContext(AuctionContext);
+const Bid = ({ bid, auction }: IBid) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
+  const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
   useEffect(() => {
-    fetchUser();
+    api
+      .get("/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setUser(res.data))
+      .catch((error) => console.error(error));
   }, []);
 
   return (
@@ -24,7 +33,7 @@ const Bid = ({ bid }: IBid) => {
 
       <PriceProduct price={bid.value} />
 
-      {user.id == auctionRequest.user.id ? (
+      {user.id == auction.user.id ? (
         <Button
           size="buttonSizeSellBid"
           color="buttonColorGraySellBid"

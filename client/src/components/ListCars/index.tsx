@@ -1,22 +1,18 @@
-import { HomeContext } from "../../contexts/HomeContext";
-import { IProductProps } from "../../interfaces";
+import { IListProducts, IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { TitleList } from "../TitleList";
 import { Product } from "../Product";
 import { Container } from "./style";
-import { useContext } from "react";
 
-const ListCars = () => {
-  const { cars } = useContext(HomeContext);
-
+const ListCars = ({ products }: IListProducts) => {
   return (
     <Container id="cars">
       <TitleList title="Carros" />
 
       <menu>
-        {cars.length > 0 ? (
-          cars.map((car: IProductProps) => (
-            <Product product={car} key={car.id} />
+        {products.length > 0 ? (
+          products.map((product: IProductProps) => (
+            <Product product={product} key={product.id} />
           ))
         ) : (
           <EmptyMessage message="Não há carros" />

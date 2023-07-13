@@ -157,6 +157,7 @@ export interface IComment {
 
 export interface IBid {
   bid: IBidProps;
+  auction: IAuctionProps;
 }
 
 export interface IListProducts {
