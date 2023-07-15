@@ -77,10 +77,8 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="name"
             register={register}
             placeholder="Ex: Rodrigo Silva"
-            autoComplete="off"
             type="text"
             error={errors.name?.message}
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.name}
           />
@@ -89,10 +87,8 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="email"
             register={register}
             placeholder="Ex: johndoe@org.com"
-            autoComplete="off"
             type="email"
             error={errors.email?.message}
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.email}
           />
@@ -101,10 +97,8 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="cpf"
             register={register}
             placeholder="000.000.000-00"
-            autoComplete="off"
             type="number"
             error={errors.cpf?.message}
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.cpf}
           />
@@ -113,10 +107,8 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="cellphone"
             register={register}
             placeholder="(DDD) 9 9999-9999"
-            autoComplete="off"
             type="text"
             error={errors.cellphone?.message}
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.cellphone}
           />
@@ -125,14 +117,12 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="birthdate"
             register={register}
             placeholder="00/00/0000"
-            autoComplete="off"
             type="text"
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.birthdate}
           />
           <TextArea
-            value={user?.description}
+            defaultValue={user?.description}
             register={register}
             name="description"
             error={errors.description?.message}

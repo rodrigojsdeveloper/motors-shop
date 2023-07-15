@@ -5,16 +5,15 @@ const Input = ({
   type,
   name,
   register,
-  autoComplete,
   error,
   label,
   placeholder,
-  required,
   onChange,
   size,
   className,
   value,
   disabled,
+  defaultValue,
 }: InputProps) => {
   return (
     <Container className={className}>
@@ -27,11 +26,12 @@ const Input = ({
         size={size}
         type={type}
         {...register(name)}
-        autoComplete={autoComplete}
+        autoComplete="off"
         placeholder={placeholder}
-        required={required}
+        required={true}
         onChange={onChange}
         disabled={disabled}
+        defaultValue={defaultValue}
       />
     </Container>
   );

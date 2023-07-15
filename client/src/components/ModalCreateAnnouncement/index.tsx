@@ -100,10 +100,8 @@ const ModalCreateAnnouncement = ({
           name="title"
           register={register}
           placeholder="Digitar título"
-          autoComplete="off"
           type="text"
           error={errors.title?.message}
-          required={true}
           size="inputModalEditAddressLarge"
         />
 
@@ -113,10 +111,8 @@ const ModalCreateAnnouncement = ({
             name="year"
             register={register}
             placeholder="Digitar ano"
-            autoComplete="off"
             type="number"
             error={errors.year?.message}
-            required={true}
             size="inputModalCreateAnnouncementSmall"
           />
           <Input
@@ -124,10 +120,8 @@ const ModalCreateAnnouncement = ({
             name="kilometers"
             register={register}
             placeholder="0"
-            autoComplete="off"
             type="number"
             error={errors.kilometers?.message}
-            required={true}
             size="inputModalCreateAnnouncementSmall"
             className="inputKilometers"
           />
@@ -136,10 +130,8 @@ const ModalCreateAnnouncement = ({
             name="price"
             register={register}
             placeholder="Digitar preço"
-            autoComplete="off"
             type="text"
             error={errors.price?.message}
-            required={true}
             size="inputModalCreateAnnouncementSmall"
           />
         </div>
@@ -158,10 +150,8 @@ const ModalCreateAnnouncement = ({
           name="cover_image"
           register={register}
           placeholder="Inserir URL da imagem"
-          autoComplete="off"
           type="text"
           error={errors.cover_image?.message}
-          required={true}
           size="inputModalEditAddressLarge"
         />
         <Input
@@ -169,10 +159,8 @@ const ModalCreateAnnouncement = ({
           name="gallery_image"
           register={register}
           placeholder="Inserir URL da imagem"
-          autoComplete="off"
           type="text"
           error={errors.gallery_image?.message}
-          required={true}
           size="inputModalEditAddressLarge"
         />
 

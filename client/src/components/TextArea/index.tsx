@@ -1,7 +1,7 @@
 import { ITextAreaProps } from "../../interfaces";
 import { Container } from "./style";
 
-const TextArea = ({ value, name, register, error }: ITextAreaProps) => {
+const TextArea = ({ defaultValue, name, register, error }: ITextAreaProps) => {
   return (
     <Container>
       <label>
@@ -10,7 +10,7 @@ const TextArea = ({ value, name, register, error }: ITextAreaProps) => {
       </label>
       <textarea
         placeholder="Digitar descrição"
-        value={value}
+        defaultValue={defaultValue}
         {...register(name)}
       />
     </Container>

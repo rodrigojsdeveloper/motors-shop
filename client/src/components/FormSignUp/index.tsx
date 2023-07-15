@@ -103,10 +103,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="name"
         register={register}
         placeholder="Ex: Rodrigo Silva"
-        autoComplete="off"
         type="text"
         error={errors.name?.message}
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -114,10 +112,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="email"
         register={register}
         placeholder="Ex: rodrigo@gmail.com"
-        autoComplete="off"
         type="email"
         error={errors.email?.message}
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -125,10 +121,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="cpf"
         register={register}
         placeholder="000.000.000-00"
-        autoComplete="off"
         type="text"
         error={errors.cpf?.message}
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -136,10 +130,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="cellphone"
         register={register}
         placeholder="(DDD) 90000-0000"
-        autoComplete="off"
         type="text"
         error={errors.cellphone?.message}
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -147,10 +139,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="birthdate"
         register={register}
         placeholder="00/00/0000"
-        autoComplete="off"
         type="text"
         error={errors.birthdate?.message}
-        required={true}
         size="inputSignIn"
       />
       <TextArea
@@ -166,10 +156,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="zip_code"
         register={register}
         placeholder="00000-000"
-        autoComplete="off"
         type="number"
         error={errors.zip_code?.message}
-        required={true}
         size="inputSignIn"
       />
       <div className="divInputs">
@@ -178,9 +166,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           name="state"
           register={register}
           placeholder="Digitar estado"
-          autoComplete="off"
           type="text"
-          required={true}
           size="inputSignUpSmall"
           className="changeInput"
         />
@@ -189,9 +175,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           name="city"
           register={register}
           placeholder="Digitar cidade"
-          autoComplete="off"
           type="text"
-          required={true}
           size="inputSignUpSmall"
           className="changeInput"
         />
@@ -201,10 +185,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="district"
         register={register}
         placeholder="Digitar bairro"
-        autoComplete="off"
         type="text"
         error={errors.district?.message}
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -212,10 +194,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="street"
         register={register}
         placeholder="Digitar rua"
-        autoComplete="off"
         type="text"
         error={errors.street?.message}
-        required={true}
         size="inputSignIn"
       />
       <div className="divInputs">
@@ -225,9 +205,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           name="number"
           register={register}
           placeholder="Digitar número"
-          autoComplete="off"
           type="number"
-          required={true}
           size="inputSignUpSmall"
         />
         <Input
@@ -236,9 +214,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           name="complement"
           register={register}
           placeholder="Ex: apart 307"
-          autoComplete="off"
           type="text"
-          required={true}
           size="inputSignUpSmall"
         />
       </div>
@@ -309,9 +285,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="password"
         register={register}
         placeholder="Digitar senha"
-        autoComplete="off"
         type="password"
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -319,9 +293,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         name="repeat_password"
         register={register}
         placeholder="Repetir senha"
-        autoComplete="off"
         type="password"
-        required={true}
         size="inputSignIn"
       />
 

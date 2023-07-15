@@ -70,9 +70,7 @@ const CreateBid = ({ auction, ListBidsFunc }: ICreateBid) => {
           <Input
             label="Lance"
             placeholder="Inserir valor do lance"
-            autoComplete="off"
             type="text"
-            required={true}
             size="inputSignIn"
             register={register}
             name="value"

@@ -88,9 +88,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             name="zip_code"
             register={register}
             placeholder="00000-000"
-            autoComplete="off"
             type="number"
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.address.zip_code}
           />
@@ -100,10 +98,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
               name="state"
               register={register}
               placeholder="Digitar estado"
-              autoComplete="off"
               type="text"
               error={errors.state?.message}
-              required={true}
               size="inputModalEditAddressMedium"
               className="changeInput"
               value={user?.address.state}
@@ -113,10 +109,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
               name="city"
               register={register}
               placeholder="Digitar cidade"
-              autoComplete="off"
               type="text"
               error={errors.city?.message}
-              required={true}
               size="inputModalEditAddressMedium"
               className="changeInput"
               value={user?.address.city}
@@ -127,10 +121,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             name="district"
             register={register}
             placeholder="Digitar bairro"
-            autoComplete="off"
             type="text"
             error={errors.district?.message}
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.address.district}
           />
@@ -139,10 +131,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             name="street"
             register={register}
             placeholder="Digitar rua"
-            autoComplete="off"
             type="text"
             error={errors.street?.message}
-            required={true}
             size="inputModalEditAddressLarge"
             value={user?.address.street}
           />
@@ -153,9 +143,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
               name="number"
               register={register}
               placeholder="Digitar número"
-              autoComplete="off"
               type="number"
-              required={true}
               size="inputModalEditAddressMedium"
               value={user?.address.number}
             />
@@ -165,7 +153,6 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
               name="complement"
               register={register}
               placeholder="Ex: Apart 307"
-              autoComplete="off"
               type="text"
               size="inputModalEditAddressMedium"
               value={user?.address.complement}

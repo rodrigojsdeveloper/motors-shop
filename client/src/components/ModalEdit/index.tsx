@@ -96,12 +96,10 @@ const ModalEdit = ({
           name="title"
           register={register}
           placeholder="Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200"
-          autoComplete="off"
           type="text"
           error={errors.title?.message}
-          required={true}
           size="inputModalEditAddressLarge"
-          value={product?.title}
+          defaultValue={product?.title}
         />
 
         <div>
@@ -110,41 +108,35 @@ const ModalEdit = ({
             name="year"
             register={register}
             placeholder="2018"
-            autoComplete="off"
             type="number"
             error={errors.year?.message}
-            required={true}
             size="inputModalCreateAnnouncementSmall"
-            value={product?.year}
+            defaultValue={product?.year}
           />
           <Input
             label="Quilometragem"
             name="kilometers"
             register={register}
             placeholder="0"
-            autoComplete="off"
             type="number"
             error={errors.kilometers?.message}
-            required={true}
             size="inputModalCreateAnnouncementSmall"
             className="inputKilometers"
-            value={product?.kilometers}
+            defaultValue={product?.kilometers}
           />
           <Input
             label="Preço"
             name="price"
             register={register}
             placeholder="50.000,00"
-            autoComplete="off"
             type="text"
             error={errors.price?.message}
-            required={true}
             size="inputModalCreateAnnouncementSmall"
-            value={product?.price}
+            defaultValue={product?.price}
           />
         </div>
         <TextArea
-          value={product?.description}
+          defaultValue={product?.description}
           register={register}
           name="description"
           error={errors.description?.message}
@@ -216,24 +208,20 @@ const ModalEdit = ({
           name="cover_image"
           register={register}
           placeholder="https://image.com"
-          autoComplete="off"
           type="text"
           error={errors.cover_image?.message}
-          required={true}
           size="inputModalEditAddressLarge"
-          value={product?.cover_image}
+          defaultValue={product?.cover_image}
         />
         <Input
           label="1º Imagem da galeria"
           name="gallery_image"
           register={register}
           placeholder="https://image.com"
-          autoComplete="off"
           type="text"
           error={errors.gallery_image?.message}
-          required={true}
           size="inputModalEditAddressLarge"
-          value={product?.gallery_image}
+          defaultValue={product?.gallery_image}
         />
 
         <div>

@@ -57,10 +57,8 @@ const FormEmail = () => {
           name="email"
           register={register}
           placeholder="Digitar email"
-          autoComplete="off"
           type="email"
           error={errors.email?.message}
-          required={true}
           size="inputSignIn"
         />
 

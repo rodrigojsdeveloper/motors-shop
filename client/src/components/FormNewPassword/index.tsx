@@ -59,10 +59,8 @@ const FormNewPassword = () => {
           name="password"
           register={register}
           placeholder="Digitar senha"
-          autoComplete="off"
           type="password"
           error={errors.password?.message}
-          required={true}
           size="inputSignIn"
         />
         <Input
@@ -70,10 +68,8 @@ const FormNewPassword = () => {
           name="repeat_password"
           register={register}
           placeholder="Digitar senha"
-          autoComplete="off"
           type="password"
           error={errors.repeat_password?.message}
-          required={true}
           size="inputSignIn"
         />
       </div>

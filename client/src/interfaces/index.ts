@@ -4,12 +4,10 @@ import { ReactNode } from "react";
 export interface InputProps {
   type?: React.HTMLInputTypeAttribute;
   name: string;
-  autoComplete?: string;
   placeholder?: string;
   register: UseFormRegister<FieldValues>;
   label?: string;
   error?: any;
-  required?: boolean | undefined;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   size:
     | "inputSignIn"
@@ -21,6 +19,7 @@ export interface InputProps {
   className?: string;
   value?: string | number | readonly string[];
   disabled?: boolean;
+  defaultValue?: string | number | readonly string[];
 }
 
 export interface IButtonProps {
@@ -64,7 +63,7 @@ export interface IButtonProps {
 }
 
 export interface ITextAreaProps {
-  value?: string;
+  defaultValue?: string | number | readonly string[];
   register: UseFormRegister<FieldValues>;
   name: string;
   error?: any;

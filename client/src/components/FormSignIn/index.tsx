@@ -50,10 +50,8 @@ const FormSignIn = () => {
         name="email"
         register={register}
         placeholder="Digitar usuário"
-        autoComplete="off"
         type="text"
         error={errors.email?.message}
-        required={true}
         size="inputSignIn"
       />
       <Input
@@ -61,10 +59,8 @@ const FormSignIn = () => {
         name="password"
         register={register}
         placeholder="Digitar senha"
-        autoComplete="off"
         type="password"
         error={errors.password?.message}
-        required={true}
         size="inputSignIn"
       />
 
