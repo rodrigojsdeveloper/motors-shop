@@ -129,7 +129,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         label="Celular"
         name="cellphone"
         register={register}
-        placeholder="(DDD) 90000-0000"
+        placeholder="(DDD) 99999-9999"
         type="text"
         error={errors.cellphone?.message}
         size="inputSignIn"
@@ -138,8 +138,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         label="Data de nascimento"
         name="birthdate"
         register={register}
-        placeholder="00/00/0000"
-        type="text"
+        type="date"
         error={errors.birthdate?.message}
         size="inputSignIn"
       />

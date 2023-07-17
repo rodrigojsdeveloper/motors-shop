@@ -9,17 +9,9 @@ A Motors shop é um site de vendas de carros, motos e de leilões por tempo limi
 
 #### Links da aplicação:
 
-Front-end: 
-```
-https://motors-shop-beta.vercel.app/
-```
+Indisponíveis por enquanto...
 
-Back-end:
-```
-https://motors-shop-z6i7.onrender.com/
-```
-
---- 
+---
 
 ## Instalação do Projeto
 
@@ -122,10 +114,15 @@ a flag `-d` é para rodar o projeto em 'background' deixando o terminal livre pa
 
 ### 4. Documentação
 
-Com o projeto rodando acesse `http://localhost:3000/docs` ou `https://motors-shop-z6i7.onrender.com/docs` para ver a documentação do projeto no swagger
+Com o projeto rodando acesse `http://localhost:3000/docs` para ver a documentação
 
 ## Desenvolvedor
 
-<a href="https://www.linkedin.com/in/rodrigo-de-jesus-silva">
-  <img src="client/src/assets/icons8-linkedin-48.png" />
-</a>
+<div>
+  <a href="https://www.linkedin.com/in/rodrigo-de-jesus-silva" target="_blank">
+		<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+	</a>
+	<a href="mailto:rodrigojsdeveloper@gmail.com" rel="noreferrer" target="_blank">
+	  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white">
+	</a>
+</div>

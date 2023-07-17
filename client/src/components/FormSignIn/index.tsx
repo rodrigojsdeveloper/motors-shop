@@ -46,10 +46,10 @@ const FormSignIn = () => {
       <h2>Login</h2>
 
       <Input
-        label="Usuário"
+        label="Email"
         name="email"
         register={register}
-        placeholder="Digitar usuário"
+        placeholder="Digitar email"
         type="text"
         error={errors.email?.message}
         size="inputSignIn"

@@ -64,6 +64,24 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
       .finally(() => setLoad(false));
   };
 
+  const formatBirthdate = (birthdate: any) => {
+    const date = new Date(birthdate);
+    const year = date.getFullYear();
+    let month: any = date.getMonth() + 1;
+    let day:  any = date.getDate();
+  
+    if (month < 10) {
+      month = `0${month}`;
+    }
+  
+    if (day < 10) {
+      day = `0${day}`;
+    }
+  
+    return `${year}-${month}-${day}`;
+  };
+  
+
   return (
     <Container>
       <HeaderModal title="Editar perfil" setCloseModal={setOpenModalEditUser} />
@@ -86,7 +104,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             label="Email"
             name="email"
             register={register}
-            placeholder="Ex: johndoe@org.com"
+            placeholder="Ex: rodrigo@gmail.com"
             type="email"
             error={errors.email?.message}
             size="inputModalEditAddressLarge"
@@ -106,7 +124,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             label="Celular"
             name="cellphone"
             register={register}
-            placeholder="(DDD) 9 9999-9999"
+            placeholder="(DDD) 99999-9999"
             type="text"
             error={errors.cellphone?.message}
             size="inputModalEditAddressLarge"
@@ -116,10 +134,9 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             label="Data de nascimento"
             name="birthdate"
             register={register}
-            placeholder="00/00/0000"
-            type="text"
+            type="date"
             size="inputModalEditAddressLarge"
-            value={user?.birthdate}
+            value={formatBirthdate(user?.birthdate)}
           />
           <TextArea
             defaultValue={user?.description}

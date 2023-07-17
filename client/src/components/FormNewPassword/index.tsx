@@ -67,7 +67,7 @@ const FormNewPassword = () => {
           label="Repetir senha"
           name="repeat_password"
           register={register}
-          placeholder="Digitar senha"
+          placeholder="Repetir senha"
           type="password"
           error={errors.repeat_password?.message}
           size="inputSignIn"
