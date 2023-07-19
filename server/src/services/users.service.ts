@@ -59,11 +59,15 @@ class UsersServices {
       throw new NotFoundError("User");
     }
 
+    Reflect.deleteProperty(user, "password");
+
     return user;
   }
 
   async profile(email: string): Promise<User> {
     const user = await userRepository.findOneBy({ email });
+
+    Reflect.deleteProperty(user!, "password");
 
     return user!;
   }
@@ -92,6 +96,8 @@ class UsersServices {
     });
 
     const updatedUser = await userRepository.findOneBy({ id: findUser.id });
+
+    Reflect.deleteProperty(updatedUser!, "password");
 
     return updatedUser!;
   }
