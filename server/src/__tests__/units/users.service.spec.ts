@@ -1,6 +1,6 @@
+import { updatedUser, user, user2, user3 } from "../../mocks";
 import { UsersServices } from "../../services/users.service";
 import { AppDataSource } from "../../data-source";
-import { updatedUser, user } from "../../mocks";
 import { DataSource } from "typeorm";
 
 describe("Testing all service user methods", () => {
@@ -65,9 +65,7 @@ describe("Testing all service user methods", () => {
   });
 
   test("Must be able to show a user using id", async () => {
-    user.email = "johndoe2@org.com";
-
-    const createdUser = await new UsersServices().create(user);
+    const createdUser = await new UsersServices().create(user2);
 
     const result = await new UsersServices().listProductsUser(createdUser.id);
 
@@ -90,9 +88,7 @@ describe("Testing all service user methods", () => {
   });
 
   test("Must be able to edit a user", async () => {
-    user.email = "johndoe3@org.com";
-
-    const createdUser = await new UsersServices().create(user);
+    const createdUser = await new UsersServices().create(user3);
 
     const result = await new UsersServices().update(
       updatedUser,
