@@ -17,7 +17,7 @@ describe("Testing all service product methods", () => {
 
   afterAll(async () => await connection.destroy());
 
-  test("Must be able to create a product", async () => {
+  it("Must be able to create a product", async () => {
     const createdUser = await new UsersServices().create(user);
 
     const result = await new ProductsServices().create(
@@ -40,13 +40,13 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("user");
   });
 
-  test("Must be able to list all products", async () => {
+  it("Must be able to list all products", async () => {
     const result = await new ProductsServices().listAll();
 
     expect(result).toHaveProperty("map");
   });
 
-  test("Must be able to show specific product using id", async () => {
+  it("Must be able to show specific product using id", async () => {
     const createdUser = await new UsersServices().create(user2);
 
     const createdProduct = await new ProductsServices().create(
@@ -71,7 +71,7 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("user");
   });
 
-  test("Must be able to edit a product", async () => {
+  it("Must be able to edit a product", async () => {
     const createdUser = await new UsersServices().create(user3);
 
     const createdProduct = await new ProductsServices().create(
@@ -98,7 +98,7 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("is_published");
   });
 
-  test("Must be able to delete a product", async () => {
+  it("Must be able to delete a product", async () => {
     const createdUser = await new UsersServices().create(user4);
 
     const createdProduct = await new ProductsServices().create(

@@ -1,9 +1,9 @@
 import { IAddress } from "../interfaces/address.interface";
-import { IBid } from "../interfaces/bid.interface";
 import { IComment } from "../interfaces/comment.interface";
-import { ILogin } from "../interfaces/login.interface";
 import { IProduct } from "../interfaces/product.interface";
+import { ILogin } from "../interfaces/login.interface";
 import { IUser } from "../interfaces/user.interface";
+import { IBid } from "../interfaces/bid.interface";
 
 const address: IAddress = {
   state: "Califórnia",
@@ -60,6 +60,18 @@ const user4: IUser = {
   cpf: "00000000000",
   birthdate: "01/01/2001",
   is_seller: true,
+  description: "Lorem Ipsum.",
+};
+
+const userNotSeller: IUser = {
+  name: "John doe",
+  email: "johndoenotseller@org.com",
+  password: "Johndoe@123",
+  cellphone: "99 99999-9999",
+  address: address,
+  cpf: "00000000000",
+  birthdate: "01/01/2001",
+  is_seller: false,
   description: "Lorem Ipsum.",
 };
 
@@ -120,6 +132,11 @@ const login3: ILogin = {
   password: "Johndoe@123",
 };
 
+const loginNotSeller: ILogin = {
+  email: "johndoenotseller@org.com",
+  password: "Johndoe@123",
+};
+
 export {
   user,
   user2,
@@ -134,4 +151,6 @@ export {
   bid,
   login,
   login3,
+  userNotSeller,
+  loginNotSeller,
 };

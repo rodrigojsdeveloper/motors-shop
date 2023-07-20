@@ -16,7 +16,7 @@ describe("Testing all service user methods", () => {
 
   afterAll(async () => await connection.destroy());
 
-  test("Must be able to create a user", async () => {
+  it("Must be able to create a user", async () => {
     const result = await new UsersServices().create(user);
 
     expect(result).toHaveProperty("id");
@@ -37,13 +37,13 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("auctions");
   });
 
-  test("Must be able to list all users", async () => {
+  it("Must be able to list all users", async () => {
     const result = await new UsersServices().listAll();
 
     expect(result).toHaveProperty("map");
   });
 
-  test("Must be able to show a user using email", async () => {
+  it("Must be able to show a user using email", async () => {
     const result = await new UsersServices().profile(user.email);
 
     expect(result).toHaveProperty("id");
@@ -64,7 +64,7 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("auctions");
   });
 
-  test("Must be able to show a user using id", async () => {
+  it("Must be able to show a user using id", async () => {
     const createdUser = await new UsersServices().create(user2);
 
     const result = await new UsersServices().listProductsUser(createdUser.id);
@@ -87,7 +87,7 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("auctions");
   });
 
-  test("Must be able to edit a user", async () => {
+  it("Must be able to edit a user", async () => {
     const createdUser = await new UsersServices().create(user3);
 
     const result = await new UsersServices().update(

@@ -18,7 +18,7 @@ describe("Testing all service comment methods", () => {
 
   afterAll(async () => await connection.destroy());
 
-  test("Must be able to create a comment", async () => {
+  it("Must be able to create a comment", async () => {
     const createdUser = await new UsersServices().create(user);
 
     const createdProduct = await new ProductsServices().create(
@@ -38,7 +38,7 @@ describe("Testing all service comment methods", () => {
     expect(result).toHaveProperty("product");
   });
 
-  test("Must be able to list all comments", async () => {
+  it("Must be able to list all comments", async () => {
     const createdUser = await new UsersServices().create(user2);
 
     const createdProduct = await new ProductsServices().create(

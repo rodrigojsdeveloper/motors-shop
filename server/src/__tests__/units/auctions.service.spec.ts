@@ -18,13 +18,13 @@ describe("Testing all service auction methods", () => {
 
   afterAll(async () => await connection.destroy());
 
-  test("Must be able to list all auctions", async () => {
+  it("Must be able to list all auctions", async () => {
     const result = await new AuctionsServices().listAll();
 
     expect(result).toHaveProperty("map");
   });
 
-  test("Must be able to show specific auction using id", async () => {
+  it("Must be able to show specific auction using id", async () => {
     const createdUser = await new UsersServices().create(user);
 
     const createdAuction = await new ProductsServices().create(

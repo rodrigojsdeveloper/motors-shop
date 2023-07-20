@@ -18,7 +18,7 @@ describe("Testing all service bid methods", () => {
 
   afterAll(async () => await connection.destroy());
 
-  test("Must be able to create a bid", async () => {
+  it("Must be able to create a bid", async () => {
     const createdUser = await new UsersServices().create(user);
 
     const createdAuction = await new ProductsServices().create(
@@ -38,7 +38,7 @@ describe("Testing all service bid methods", () => {
     expect(result).toHaveProperty("created_at");
   });
 
-  test("Must be able to list all bids", async () => {
+  it("Must be able to list all bids", async () => {
     const createdUser = await new UsersServices().create(user2);
 
     const createdAuction = await new ProductsServices().create(
