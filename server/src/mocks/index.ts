@@ -115,6 +115,11 @@ const login: ILogin = {
   password: "Johndoe@123",
 };
 
+const login3: ILogin = {
+  email: "johndoe3@org.com",
+  password: "Johndoe@123",
+};
+
 export {
   user,
   user2,
@@ -128,4 +133,5 @@ export {
   comment,
   bid,
   login,
+  login3,
 };
