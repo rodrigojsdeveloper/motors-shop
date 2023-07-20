@@ -1,13 +1,13 @@
-import { comment, login, product, user } from "../../mocks";
+import { auction, bid, login, user } from "../../mocks";
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
 import { app } from "../../app";
 import request from "supertest";
 
-describe("Testing all comment routes", () => {
+describe("Testing all bid routes", () => {
   let connection: DataSource;
   let token: string;
-  let createdProductId: string;
+  let createdAuctionId: string;
 
   async function loginUser() {
     const requestLogin = await request(app).post("/signin").send(login);
@@ -24,57 +24,57 @@ describe("Testing all comment routes", () => {
     await request(app).post("/users/signup").send(user);
     token = await loginUser();
 
-    const createdProductResponse = await request(app)
+    const createdAuctionResponse = await request(app)
       .post("/products")
-      .send(product)
+      .send(auction)
       .set("Authorization", `Bearer ${token}`);
-    createdProductId = createdProductResponse.body.id;
+    createdAuctionId = createdAuctionResponse.body.id;
   });
 
   afterAll(async () => await connection.destroy());
 
-  test("Must be able to create a comment", async () => {
+  test("Must be able to create a bid", async () => {
     const response = await request(app)
-      .post(`/comments/${createdProductId}`)
-      .send(comment)
+      .post(`/bids/${createdAuctionId}`)
+      .send(bid)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("content");
+    expect(response.body).toHaveProperty("value");
+    expect(response.body).toHaveProperty("auction");
     expect(response.body).toHaveProperty("created_at");
-    expect(response.body).toHaveProperty("product");
   });
 
-  test("Must be able to prevent creating of a comment without token", async () => {
+  test("Must be able to prevent creating of a bid without token", async () => {
     const response = await request(app)
-      .post(`/comments/${createdProductId}`)
-      .send(comment);
+      .post(`/bids/${createdAuctionId}`)
+      .send(bid);
 
     expect(response.status).toBe(401);
     expect(response.body).toHaveProperty("message");
   });
 
-  test("Must be able to prevent creating a comment with invalid id", async () => {
+  test("Must be able to prevent creating a bid with invalid id", async () => {
     const response = await request(app)
-      .post("/comments/05a429c8-ca25-4007-8854-25c25f734167")
-      .send(comment)
+      .post("/bids/05a429c8-ca25-4007-8854-25c25f734167")
+      .send(bid)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(404);
     expect(response.body).toHaveProperty("message");
   });
 
-  test("Must be able to show all reviews for a product using id", async () => {
-    const response = await request(app).get(`/comments/${createdProductId}`);
+  test("Must be able to show all bids for a product using id", async () => {
+    const response = await request(app).get(`/bids/${createdAuctionId}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("map");
   });
 
-  test("Must be able to stop showing all reviews for a product using invalid id", async () => {
+  test("Must be able to stop showing all bids for a product using invalid id", async () => {
     const response = await request(app).get(
-      "/comments/05a429c8-ca25-4007-8854-25c25f734167"
+      "/bids/05a429c8-ca25-4007-8854-25c25f734167"
     );
 
     expect(response.status).toBe(404);
