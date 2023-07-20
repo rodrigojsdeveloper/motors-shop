@@ -38,7 +38,7 @@ describe("Testing all service comment methods", () => {
     expect(result).toHaveProperty("product");
   });
 
-  it("Must be able to list all comments", async () => {
+  it("Must be able to show all reviews for a product using id", async () => {
     const createdUser = await new UsersServices().create(user2);
 
     const createdProduct = await new ProductsServices().create(
