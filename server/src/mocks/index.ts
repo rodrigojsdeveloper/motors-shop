@@ -1,4 +1,5 @@
 import { IAddress } from "../interfaces/address.interface";
+import { IComment } from "../interfaces/comment.interface";
 import { IProduct } from "../interfaces/product.interface";
 import { IUser } from "../interfaces/user.interface";
 
@@ -99,6 +100,10 @@ const auction: IProduct = {
     "https://fotos.jornaldocarro.estadao.com.br/wp-content/uploads/2020/06/08103657/BMW-Serie-1-thumb-300x169.jpg",
 };
 
+const comment: IComment = {
+  content: "Beautiful car",
+};
+
 export {
   user,
   user2,
@@ -109,4 +114,5 @@ export {
   product,
   updatedProduct,
   auction,
+  comment,
 };
