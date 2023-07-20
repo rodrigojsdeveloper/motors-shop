@@ -1,6 +1,7 @@
 import { IAddress } from "../interfaces/address.interface";
 import { IBid } from "../interfaces/bid.interface";
 import { IComment } from "../interfaces/comment.interface";
+import { ILogin } from "../interfaces/login.interface";
 import { IProduct } from "../interfaces/product.interface";
 import { IUser } from "../interfaces/user.interface";
 
@@ -109,6 +110,11 @@ const bid: IBid = {
   value: "R$ 1.000,00",
 };
 
+const login: ILogin = {
+  email: "johndoe@org.com",
+  password: "Johndoe@123",
+};
+
 export {
   user,
   user2,
@@ -121,4 +127,5 @@ export {
   auction,
   comment,
   bid,
+  login,
 };
