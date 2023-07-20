@@ -1,4 +1,5 @@
 import { IAddress } from "../interfaces/address.interface";
+import { IBid } from "../interfaces/bid.interface";
 import { IComment } from "../interfaces/comment.interface";
 import { IProduct } from "../interfaces/product.interface";
 import { IUser } from "../interfaces/user.interface";
@@ -104,6 +105,10 @@ const comment: IComment = {
   content: "Beautiful car",
 };
 
+const bid: IBid = {
+  value: "R$ 1.000,00",
+};
+
 export {
   user,
   user2,
@@ -115,4 +120,5 @@ export {
   updatedProduct,
   auction,
   comment,
+  bid,
 };
