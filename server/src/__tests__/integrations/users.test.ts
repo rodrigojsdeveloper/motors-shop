@@ -1,5 +1,7 @@
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
+import { app } from "../../app";
+import request from "supertest";
 import {
   login,
   login3,
@@ -9,8 +11,6 @@ import {
   user3,
   user4,
 } from "../../mocks";
-import request from "supertest";
-import { app } from "../../app";
 
 describe("Testing all user routes", () => {
   let connection: DataSource;
