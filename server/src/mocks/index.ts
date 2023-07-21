@@ -137,6 +137,14 @@ const loginNotSeller: ILogin = {
   password: "Johndoe@123",
 };
 
+const updatedBid: IBid = {
+  value: "R$ 10,00",
+};
+
+const updatedComment: IComment = {
+  content: "Olá, Hello",
+};
+
 export {
   user,
   user2,
@@ -153,4 +161,6 @@ export {
   login3,
   userNotSeller,
   loginNotSeller,
+  updatedBid,
+  updatedComment,
 };
