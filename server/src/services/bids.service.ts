@@ -40,6 +40,34 @@ class BidsServices {
 
     return bids.filter((bid) => bid.auction.id == auction.id);
   }
+
+  async update(comment: Partial<IBid>, id: string): Promise<Bid> {
+    const findBid = await bidRepository.findOneBy({ id });
+
+    if (!findBid) {
+      throw new NotFoundError("Comment");
+    }
+
+    await bidRepository.update(findBid.id, {
+      value: comment.value ? comment.value : findBid.value,
+    });
+
+    const updatedBid = await bidRepository.findOneBy({
+      id: findBid.id,
+    });
+
+    return updatedBid!;
+  }
+
+  async delete(id: string): Promise<void> {
+    const findBid = await bidRepository.findOneBy({ id });
+
+    if (!findBid) {
+      throw new NotFoundError("Comment");
+    }
+
+    await bidRepository.delete(findBid.id);
+  }
 }
 
 export { BidsServices };

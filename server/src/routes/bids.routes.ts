@@ -19,6 +19,10 @@ const bidsRoutes = (): Router => {
 
   routes.get("/:auction_id", new BidsControllers().listBidsAuction);
 
+  routes.patch("/:id", tokenMiddleware, new BidsControllers().update);
+
+  routes.delete("/:id", tokenMiddleware, new BidsControllers().delete);
+
   return routes;
 };
 

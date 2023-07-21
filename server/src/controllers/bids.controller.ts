@@ -22,6 +22,24 @@ class BidsControllers {
 
     return res.json(bids);
   }
+
+  async update(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    const data: Partial<IBid> = req.body;
+
+    const updatedBid = await new BidsServices().update(data, id);
+
+    return res.json(updatedBid);
+  }
+
+  async delete(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    await new BidsServices().delete(id);
+
+    return res.status(204).json();
+  }
 }
 
 export { BidsControllers };
