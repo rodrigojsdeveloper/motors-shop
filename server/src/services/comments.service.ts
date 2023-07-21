@@ -48,5 +48,34 @@ class CommentsServices {
 
     return comments.filter((comment) => comment.product.id == product.id);
   }
+
+  async update(comment: Partial<IComment>, id: string): Promise<Comment> {
+    const findComment = await commentRepository.findOneBy({ id });
+
+    if (!findComment) {
+      throw new NotFoundError("Comment");
+    }
+
+    await commentRepository.update(findComment.id, {
+      content: comment.content ? comment.content : findComment.content,
+    });
+
+    const updatedComment = await commentRepository.findOneBy({
+      id: findComment.id,
+    });
+
+    return updatedComment!;
+  }
+
+  async delete(id: string): Promise<void> {
+    const findComment = await commentRepository.findOneBy({ id });
+
+    if (!findComment) {
+      throw new NotFoundError("Comment");
+    }
+
+    await commentRepository.delete(findComment.id);
+  }
 }
+
 export { CommentsServices };

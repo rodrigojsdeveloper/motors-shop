@@ -28,6 +28,24 @@ class CommentsControllers {
 
     return res.json(comments);
   }
+
+  async update(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    const data: Partial<IComment> = req.body;
+
+    const updatedComment = await new CommentsServices().update(data, id);
+
+    return res.json(updatedComment);
+  }
+
+  async delete(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    await new CommentsServices().delete(id);
+
+    return res.status(204).json();
+  }
 }
 
 export { CommentsControllers };

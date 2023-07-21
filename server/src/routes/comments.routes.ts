@@ -19,6 +19,10 @@ const commentsRoutes = (): Router => {
 
   routes.get("/:product_id", new CommentsControllers().listCommentsProduct);
 
+  routes.patch("/:id", tokenMiddleware, new CommentsControllers().update);
+
+  routes.delete("/:id", tokenMiddleware, new CommentsControllers().delete);
+
   return routes;
 };
 
