@@ -33,8 +33,6 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
     expect(result).toHaveProperty("comments");
-    expect(result).toHaveProperty("bids");
-    expect(result).toHaveProperty("auctions");
   });
 
   it("Must be able to list all users", async () => {
@@ -60,8 +58,6 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
     expect(result).toHaveProperty("comments");
-    expect(result).toHaveProperty("bids");
-    expect(result).toHaveProperty("auctions");
   });
 
   it("Must be able to show a user using id", async () => {
@@ -83,8 +79,6 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
     expect(result).toHaveProperty("comments");
-    expect(result).toHaveProperty("bids");
-    expect(result).toHaveProperty("auctions");
   });
 
   it("Must be able to edit a user", async () => {
@@ -109,7 +103,5 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
     expect(result).toHaveProperty("comments");
-    expect(result).toHaveProperty("bids");
-    expect(result).toHaveProperty("auctions");
   });
 });

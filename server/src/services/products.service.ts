@@ -1,14 +1,12 @@
-import { auctionRepository } from "../repositories/auction.repository";
 import { productRepository } from "../repositories/product.repository";
 import { userRepository } from "../repositories/user.repository";
 import { ForbiddenError } from "../errors/forbidden.error";
 import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
-import { Auction } from "../entities/auction.entity";
 import { Product } from "../entities/product.entity";
 
 class ProductsServices {
-  async create(product: IProduct, email: string): Promise<Product | Auction> {
+  async create(product: IProduct, email: string): Promise<Product> {
     const user = await userRepository.findOneBy({ email });
 
     if (!user?.is_seller) {
@@ -31,20 +29,7 @@ class ProductsServices {
     productRepository.create(newProduct);
     await productRepository.save(newProduct);
 
-    if (newProduct.ad_type == "auction") {
-      const newAuction = new Auction();
-      newAuction.bids = [];
-      newAuction.time_limit = "1:00:00";
-      newAuction.product = newProduct;
-      newAuction.user = user!;
-
-      auctionRepository.create(newAuction);
-      await auctionRepository.save(newAuction);
-
-      return newAuction;
-    } else {
-      return newProduct;
-    }
+    return newProduct;
   }
 
   async listAll(): Promise<ReadonlyArray<Product>> {

@@ -28,10 +28,8 @@ class UsersServices {
     newUser.birthdate = user.birthdate;
     newUser.is_seller = user.is_seller;
     newUser.description = user.description;
-    newUser.bids = [];
     newUser.comments = [];
     newUser.products = [];
-    newUser.auctions = [];
 
     userRepository.create(newUser);
     await userRepository.save(newUser);
@@ -43,7 +41,7 @@ class UsersServices {
 
   async listAll(): Promise<ReadonlyArray<User>> {
     const users = await userRepository.find({
-      relations: ["address", "products", "comments", "bids"],
+      relations: ["address", "products", "comments"],
     });
 
     return users;
@@ -52,7 +50,7 @@ class UsersServices {
   async listProductsUser(id: string): Promise<User> {
     const user = await userRepository.findOne({
       where: { id },
-      relations: ["address", "products", "comments", "bids"],
+      relations: ["address", "products", "comments"],
     });
 
     if (!user) {

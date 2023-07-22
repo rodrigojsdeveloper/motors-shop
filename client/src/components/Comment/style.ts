@@ -35,6 +35,37 @@ const Container = styled.div`
 
       color: var(--grey3);
     }
+
+    .divEditAndDelete {
+      display: none;
+      margin-left: 20px;
+
+      &::after {
+        content: unset;
+      }
+
+      & > p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 24px;
+
+        cursor: pointer;
+        color: var(--grey3);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      & > hr {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+
+        background-color: var(--grey4);
+        margin: 10px 8px 0 8px;
+      }
+    }
   }
 
   & > p {
@@ -54,6 +85,12 @@ const Container = styled.div`
     @media (max-width: 768px) {
       height: 168px;
       -webkit-line-clamp: 7;
+    }
+  }
+
+  &:hover {
+    .divEditAndDelete {
+      display: flex;
     }
   }
 `;

@@ -43,8 +43,6 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
     expect(response.body).toHaveProperty("comments");
-    expect(response.body).toHaveProperty("bids");
-    expect(response.body).toHaveProperty("auctions");
   });
 
   test("Must be able to prevent creation of a user with email that already exists", async () => {
@@ -85,8 +83,6 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
     expect(response.body).toHaveProperty("comments");
-    expect(response.body).toHaveProperty("bids");
-    expect(response.body).toHaveProperty("auctions");
   });
 
   test("Must be able to prevent showing a user using tokenless email", async () => {
@@ -118,8 +114,6 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
     expect(response.body).toHaveProperty("comments");
-    expect(response.body).toHaveProperty("bids");
-    expect(response.body).toHaveProperty("auctions");
   });
 
   test("Must be able to prevent displaying a user using invalid id", async () => {
@@ -158,8 +152,6 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
     expect(response.body).toHaveProperty("comments");
-    expect(response.body).toHaveProperty("bids");
-    expect(response.body).toHaveProperty("auctions");
   });
 
   test("Must be able to prevent editing of a user without token", async () => {

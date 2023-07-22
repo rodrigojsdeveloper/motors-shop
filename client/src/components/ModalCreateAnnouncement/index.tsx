@@ -64,7 +64,6 @@ const ModalCreateAnnouncement = ({
         },
       })
       .then((res) => {
-
         if (res.data.vehicle_type == "car") {
           listCarsFunc(res.data);
         }
