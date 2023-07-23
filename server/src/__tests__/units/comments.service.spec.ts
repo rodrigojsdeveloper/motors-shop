@@ -1,20 +1,13 @@
+import { comment, product, updatedComment, user } from "../../mocks";
 import { ProductsServices } from "../../services/products.service";
 import { CommentsServices } from "../../services/comments.service";
 import { UsersServices } from "../../services/users.service";
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
-import {
-  comment,
-  product,
-  updatedComment,
-  user,
-  user2,
-  user3,
-  user4,
-} from "../../mocks";
 
 describe("Testing all service comment methods", () => {
   let connection: DataSource;
+  let createdUserEmail: string;
 
   beforeAll(async () => {
     await AppDataSource.initialize()
@@ -22,21 +15,23 @@ describe("Testing all service comment methods", () => {
       .catch((error) =>
         console.error("Error during Data Source initialization", error)
       );
+
+    const createdUserResponse = await new UsersServices().create(user);
+
+    createdUserEmail = createdUserResponse.email;
   });
 
   afterAll(async () => await connection.destroy());
 
   it("Must be able to create a comment", async () => {
-    const createdUser = await new UsersServices().create(user);
-
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const result = await new CommentsServices().create(
       comment,
-      createdUser.email,
+      createdUserEmail,
       createdProduct.id
     );
 
@@ -47,11 +42,9 @@ describe("Testing all service comment methods", () => {
   });
 
   it("Must be able to show all reviews for a product using id", async () => {
-    const createdUser = await new UsersServices().create(user2);
-
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const result = await new CommentsServices().listCommentsProduct(
@@ -61,17 +54,34 @@ describe("Testing all service comment methods", () => {
     expect(result).toHaveProperty("map");
   });
 
-  it("Must be able to edit a comment", async () => {
-    const createdUser = await new UsersServices().create(user3);
-
+  it("Must be able to show specific comment using id", async () => {
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const createdComment = await new CommentsServices().create(
       comment,
-      createdUser.email,
+      createdUserEmail,
+      createdProduct.id
+    );
+
+    const result = await new CommentsServices().specific(createdComment.id);
+
+    expect(result).toHaveProperty("id");
+    expect(result).toHaveProperty("content");
+    expect(result).toHaveProperty("created_at");
+  });
+
+  it("Must be able to edit a comment", async () => {
+    const createdProduct = await new ProductsServices().create(
+      product,
+      createdUserEmail
+    );
+
+    const createdComment = await new CommentsServices().create(
+      comment,
+      createdUserEmail,
       createdProduct.id
     );
 
@@ -86,16 +96,14 @@ describe("Testing all service comment methods", () => {
   });
 
   it("Must be able to delete a comment", async () => {
-    const createdUser = await new UsersServices().create(user4);
-
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const createdComment = await new CommentsServices().create(
       comment,
-      createdUser.email,
+      createdUserEmail,
       createdProduct.id
     );
 

@@ -29,6 +29,14 @@ class CommentsControllers {
     return res.json(comments);
   }
 
+  async specific(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    const specificComment = await new CommentsServices().specific(id);
+
+    return res.json(specificComment);
+  }
+
   async update(req: Request, res: Response) {
     const id: string = req.params.id;
 

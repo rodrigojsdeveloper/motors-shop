@@ -49,6 +49,16 @@ class CommentsServices {
     return comments.filter((comment) => comment.product.id == product.id);
   }
 
+  async specific(id: string): Promise<Comment> {
+    const comment = await commentRepository.findOneBy({ id });
+
+    if (!comment) {
+      throw new NotFoundError("Comment");
+    }
+
+    return comment;
+  }
+
   async update(comment: Partial<IComment>, id: string): Promise<Comment> {
     const findComment = await commentRepository.findOneBy({ id });
 

@@ -88,6 +88,35 @@ describe("Testing all comment routes", () => {
     expect(response.body).toHaveProperty("message");
   });
 
+  test("Must be able to show a comment using id", async () => {
+    const response = await request(app)
+      .get(`/comments/specific/${createdCommentId}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("content");
+    expect(response.body).toHaveProperty("created_at");
+  });
+
+  test("Must be able to prevent displaying of a comment without token", async () => {
+    const response = await request(app).get(
+      `/comments/specific/${createdCommentId}`
+    );
+
+    expect(response.status).toBe(401);
+    expect(response.body).toHaveProperty("message");
+  });
+
+  test("Must be able to prevent displaying a comment using invalid id", async () => {
+    const response = await request(app)
+      .get("/comments/specific/05a429c8-ca25-4007-8854-25c25f734167")
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.status).toBe(404);
+    expect(response.body).toHaveProperty("message");
+  });
+
   test("Must be able to edit a comment", async () => {
     const response = await request(app)
       .patch(`/comments/${createdCommentId}`)

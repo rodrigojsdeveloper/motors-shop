@@ -1,11 +1,12 @@
-import { product, updatedUser, user, user2, user3, user4 } from "../../mocks";
 import { ProductsServices } from "../../services/products.service";
 import { UsersServices } from "../../services/users.service";
+import { product, updatedUser, user } from "../../mocks";
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
 
 describe("Testing all service product methods", () => {
   let connection: DataSource;
+  let createdUserEmail: string;
 
   beforeAll(async () => {
     await AppDataSource.initialize()
@@ -13,16 +14,18 @@ describe("Testing all service product methods", () => {
       .catch((error) =>
         console.error("Error during Data Source initialization", error)
       );
+
+    const createdUserResponse = await new UsersServices().create(user);
+
+    createdUserEmail = createdUserResponse.email;
   });
 
   afterAll(async () => await connection.destroy());
 
   it("Must be able to create a product", async () => {
-    const createdUser = await new UsersServices().create(user);
-
     const result = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     expect(result).toHaveProperty("id");
@@ -47,11 +50,9 @@ describe("Testing all service product methods", () => {
   });
 
   it("Must be able to show specific product using id", async () => {
-    const createdUser = await new UsersServices().create(user2);
-
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const result = await new ProductsServices().specific(createdProduct.id);
@@ -72,11 +73,9 @@ describe("Testing all service product methods", () => {
   });
 
   it("Must be able to edit a product", async () => {
-    const createdUser = await new UsersServices().create(user3);
-
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const result = await new ProductsServices().update(
@@ -99,11 +98,9 @@ describe("Testing all service product methods", () => {
   });
 
   it("Must be able to delete a product", async () => {
-    const createdUser = await new UsersServices().create(user4);
-
     const createdProduct = await new ProductsServices().create(
       product,
-      createdUser.email
+      createdUserEmail
     );
 
     const result = await new ProductsServices().delete(createdProduct.id);
