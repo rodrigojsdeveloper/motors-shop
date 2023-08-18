@@ -1,4 +1,6 @@
 import { IComment, IUserProps } from "../../interfaces";
+import { ModalEditComment } from "../ModalEditComment";
+import { ModalBackground } from "../ModalBackground";
 import { showDate } from "../../utils/dateCreated";
 import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
@@ -9,6 +11,9 @@ const Comment = ({ comment }: IComment) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
+
+  const [openModalEditComment, setOpenModalEditComment] =
+    useState<boolean>(false);
 
   useEffect(() => {
     token &&
@@ -23,25 +28,35 @@ const Comment = ({ comment }: IComment) => {
   }, [user]);
 
   return (
-    <Container>
-      <div>
-        <AvatarUser username={comment.user.name} />
+    <>
+      {openModalEditComment ? (
+        <ModalBackground>
+          <ModalEditComment
+            comment_id={comment.id}
+            setOpenModalEditComment={setOpenModalEditComment}
+          />
+        </ModalBackground>
+      ) : null}
+      <Container>
+        <div>
+          <AvatarUser username={comment.user.name} />
 
-        <p>{showDate(comment.created_at)}</p>
+          <p>{showDate(comment.created_at)}</p>
 
-        {token ? (
-          user.id == comment.user.id ? (
-            <div className="divEditAndDelete">
-              <p>Editar</p>
-              <hr />
-              <p>Deletar</p>
-            </div>
-          ) : null
-        ) : null}
-      </div>
+          {token ? (
+            user.id == comment.user.id ? (
+              <div className="divEditAndDelete">
+                <p onClick={() => setOpenModalEditComment(true)}>Editar</p>
+                <hr />
+                <p>Deletar</p>
+              </div>
+            ) : null
+          ) : null}
+        </div>
 
-      <p>{comment.content}</p>
-    </Container>
+        <p>{comment.content}</p>
+      </Container>
+    </>
   );
 };
 

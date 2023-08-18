@@ -1,5 +1,4 @@
 import { AdvertiserListMotorcycles } from "../../components/AdvertiserListMotorcycles";
-import { AdvertiserListAuctions } from "../../components/AdvertiserListAuctions";
 import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
 import { AdvertiserListCars } from "../../components/AdvertiserListCars";
 import { ModalBackground } from "../../components/ModalBackground";
@@ -100,7 +99,6 @@ const PageAdvertiser = () => {
               listAuctionsFunc={handleListAuctions}
               user={user}
             />
-            <AdvertiserListAuctions auctions={auctions} />
             <AdvertiserListCars products={cars} />
             <AdvertiserListMotorcycles products={motorcycles} />
           </div>

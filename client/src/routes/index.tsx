@@ -1,5 +1,4 @@
 import { PageProductDetails } from "../pages/PageProductDetails";
-import { PageAuctionDetails } from "../pages/PageAuctionDetails";
 import { PageProductsUser } from "../pages/PageProductsUser";
 import { PageNewPassword } from "../pages/PageNewPassword";
 import { PageAdvertiser } from "../pages/PageAdvertiser";
@@ -18,7 +17,6 @@ const AllRoutes = () => {
       <Route path="/newpassword/:userId" element={<PageNewPassword />} />
       <Route path="/resetpassword" element={<PageEmail />} />
       <Route path="/products/:productId" element={<PageProductDetails />} />
-      <Route path="/auctions/:auctionId" element={<PageAuctionDetails />} />
       <Route path="/myadvertiser" element={<PageAdvertiser />} />
       <Route path="/users/:userProductId" element={<PageProductsUser />} />
       <Route path="/" index element={<Home />} />

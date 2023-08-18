@@ -2,7 +2,6 @@ import { ListMotorcycles } from "../../components/ListMotorcycles";
 import { ModalBackground } from "../../components/ModalBackground";
 import { IAuctionProps, IProductProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { ListAuction } from "../../components/ListAuctions";
 import { ListCars } from "../../components/ListCars";
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
@@ -78,7 +77,6 @@ const Home = () => {
       ) : null}
       <Header />
       <Banner />
-      <ListAuction auctions={auctions} />
       <ListCars products={cars} />
       <ListMotorcycles products={motorcycles} />
       <Footer />

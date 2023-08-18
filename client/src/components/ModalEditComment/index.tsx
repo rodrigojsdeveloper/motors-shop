@@ -1,20 +1,26 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { ICommentProps } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { useState } from "react";
 import * as yup from "yup";
 
 interface IModalEditComment {
-  comment_id: string
+  comment_id: string;
+  setOpenModalEditComment: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ModalEditComment = ({ comment_id }: IModalEditComment) => {
-  const [openModalEditComment, setOpenModalEditComment] =
-    useState<boolean>(false);
+const ModalEditComment = ({
+  comment_id,
+  setOpenModalEditComment,
+}: IModalEditComment) => {
+  const token = sessionStorage.getItem("Motors shop: token");
+
+  const [comment, setComment] = useState<ICommentProps>({} as ICommentProps);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -30,6 +36,18 @@ const ModalEditComment = ({ comment_id }: IModalEditComment) => {
     resolver: yupResolver(schema),
   });
 
+  token &&
+    useEffect(() => {
+      api
+        .get(`/comments/specific/${comment_id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => setComment(res.data))
+        .catch((error) => console.error(error));
+    }, []);
+
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
@@ -43,7 +61,7 @@ const ModalEditComment = ({ comment_id }: IModalEditComment) => {
   return (
     <Container onSubmit={handleSubmit(onSubmitFunction)}>
       <HeaderModal
-        title="Editar commentário"
+        title="Editar comentário"
         setCloseModal={setOpenModalEditComment}
       />
 
@@ -56,20 +74,20 @@ const ModalEditComment = ({ comment_id }: IModalEditComment) => {
 
       <div className="divButtons">
         <Button
-          color="buttonColorGrayModalEditAddress"
-          size="buttonSizeModalEditAddressSmall"
-          type="button"
-          onClick={() => setOpenModalEditComment(false)}
-        >
-          Cancelar
-        </Button>
-        <Button
           color="buttonColorBlueLogin"
           size="buttonSizeModalEditAddressMedium"
           type="submit"
           disabled={load}
         >
           {load ? "Salvando..." : "Salvar alteração"}
+        </Button>
+        <Button
+          color="buttonColorGrayModalEditAddress"
+          size="buttonSizeModalEditAddressSmall"
+          type="button"
+          onClick={() => setOpenModalEditComment(false)}
+        >
+          Cancelar
         </Button>
       </div>
     </Container>

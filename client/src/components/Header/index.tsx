@@ -22,12 +22,12 @@ const Header = () => {
   const [openNavNonAdvertiserLogged, setOpenNavNonAdvertiserLogged] =
     useState<boolean>(false);
 
-  const [user, setUser] = useState<IUserProps>({ name: "" } as IUserProps);
-
   const [openModalEditAddress, setOpenModalEditAddress] =
     useState<boolean>(false);
 
   const [openModalEditUser, setOpenModalEditUser] = useState<boolean>(false);
+
+  const [user, setUser] = useState<IUserProps>({ name: "" } as IUserProps);
 
   token &&
     useEffect(() => {
@@ -56,6 +56,7 @@ const Header = () => {
       {openNavAdvertiserLogged && user?.is_seller ? (
         <nav className="navAdvertiser">
           <p
+            className="link"
             onClick={() => {
               setOpenModalEditUser(true);
 
@@ -65,6 +66,7 @@ const Header = () => {
             Editar perfil
           </p>
           <p
+            className="link"
             onClick={() => {
               setOpenModalEditAddress(true);
 
@@ -73,9 +75,12 @@ const Header = () => {
           >
             Editar endereço
           </p>
-          <Link to="/myadvertiser">Meus Anúncios</Link>
+          <Link to="/myadvertiser" className="link">
+            Meus Anúncios
+          </Link>
           <Link
             to="/signin"
+            className="link"
             onClick={() => {
               setOpenNavAdvertiserLogged(false);
 
@@ -89,6 +94,7 @@ const Header = () => {
         openNavNonAdvertiserLogged && (
           <nav className="navNonAdvertiser">
             <p
+              className="link"
               onClick={() => {
                 setOpenModalEditUser(true);
 
@@ -98,6 +104,7 @@ const Header = () => {
               Editar perfil
             </p>
             <p
+              className="link"
               onClick={() => {
                 setOpenModalEditAddress(true);
 
@@ -108,6 +115,7 @@ const Header = () => {
             </p>
             <Link
               to="/signin"
+              className="link"
               onClick={() => {
                 setOpenNavNonAdvertiserLogged(false);
 
@@ -124,11 +132,6 @@ const Header = () => {
       </Link>
 
       <div className={token ? "divLogged" : "divNotLogged"}>
-        <nav>
-          <a href="/#cars">Carros</a>
-          <a href="/#motorcycles">Motos</a>
-          <a href="/#auctions">Leilão</a>
-        </nav>
         <hr />
         {token ? (
           <div
@@ -154,8 +157,12 @@ const Header = () => {
           </div>
         ) : (
           <nav>
-            <Link to="/signin">Fazer Login</Link>
-            <Link to="/signup">Cadastrar</Link>
+            <Link to="/signin" className="link">
+              Fazer Login
+            </Link>
+            <Link to="/signup" className="buttonOut">
+              Cadastrar
+            </Link>
           </nav>
         )}
       </div>
@@ -193,19 +200,8 @@ const Header = () => {
           openNavAdvertiserLogged && user?.is_seller ? (
             <div className="divAdvertiserLogged">
               <nav>
-                <a href="/#cars" onClick={() => setMenuOpen(false)}>
-                  Carros
-                </a>
-                <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
-                  Motos
-                </a>
-                <a href="/#auctions" onClick={() => setMenuOpen(false)}>
-                  Leilão
-                </a>
-              </nav>
-              <hr />
-              <nav>
                 <p
+                  className="link"
                   onClick={() => {
                     setOpenModalEditUser(true);
 
@@ -217,6 +213,7 @@ const Header = () => {
                   Editar perfil
                 </p>
                 <p
+                  className="link"
                   onClick={() => {
                     setOpenModalEditAddress(true);
 
@@ -227,11 +224,16 @@ const Header = () => {
                 >
                   Editar endereço
                 </p>
-                <Link to="/myadvertiser" onClick={() => setMenuOpen(false)}>
+                <Link
+                  to="/myadvertiser"
+                  className="link"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Meus Anúncios
                 </Link>
                 <Link
                   to="/signin"
+                  className="buttonOut"
                   onClick={() => {
                     setMenuOpen(false);
 
@@ -246,19 +248,8 @@ const Header = () => {
             openNavNonAdvertiserLogged && (
               <div className="divNonAdvertiserLogged">
                 <nav>
-                  <a href="/#cars" onClick={() => setMenuOpen(false)}>
-                    Carros
-                  </a>
-                  <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
-                    Motos
-                  </a>
-                  <a href="/#auctions" onClick={() => setMenuOpen(false)}>
-                    Leilão
-                  </a>
-                </nav>
-                <hr />
-                <nav>
                   <p
+                    className="link"
                     onClick={() => {
                       setOpenModalEditUser(true);
 
@@ -270,6 +261,7 @@ const Header = () => {
                     Editar perfil
                   </p>
                   <p
+                    className="link"
                     onClick={() => {
                       setOpenModalEditAddress(true);
 
@@ -282,6 +274,7 @@ const Header = () => {
                   </p>
                   <Link
                     to="/signin"
+                    className="buttonOut"
                     onClick={() => {
                       setMenuOpen(false);
 
@@ -297,24 +290,19 @@ const Header = () => {
         ) : (
           menuOpen && (
             <div className="navNotLogged">
-              <hr />
               <nav>
-                <a href="/#cars" onClick={() => setMenuOpen(false)}>
-                  Carros
-                </a>
-                <a href="/#motorcycles" onClick={() => setMenuOpen(false)}>
-                  Motos
-                </a>
-                <a href="/#auctions" onClick={() => setMenuOpen(false)}>
-                  Leilão
-                </a>
-              </nav>
-              <hr />
-              <nav>
-                <Link to="/signin" onClick={() => setMenuOpen(false)}>
+                <Link
+                  to="/signin"
+                  className="link"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Fazer Login
                 </Link>
-                <Link to="/signup" onClick={() => setMenuOpen(false)}>
+                <Link
+                  to="/signup"
+                  className="buttonOut"
+                  onClick={() => setMenuOpen(false)}
+                >
                   Cadastrar
                 </Link>
               </nav>
