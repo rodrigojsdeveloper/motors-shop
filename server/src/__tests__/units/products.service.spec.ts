@@ -34,7 +34,6 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("year");
     expect(result).toHaveProperty("kilometers");
     expect(result).toHaveProperty("price");
-    expect(result).toHaveProperty("ad_type");
     expect(result).toHaveProperty("vehicle_type");
     expect(result).toHaveProperty("cover_image");
     expect(result).toHaveProperty("gallery_image");
@@ -63,7 +62,6 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("year");
     expect(result).toHaveProperty("kilometers");
     expect(result).toHaveProperty("price");
-    expect(result).toHaveProperty("ad_type");
     expect(result).toHaveProperty("vehicle_type");
     expect(result).toHaveProperty("cover_image");
     expect(result).toHaveProperty("gallery_image");
@@ -89,7 +87,6 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("year");
     expect(result).toHaveProperty("kilometers");
     expect(result).toHaveProperty("price");
-    expect(result).toHaveProperty("ad_type");
     expect(result).toHaveProperty("vehicle_type");
     expect(result).toHaveProperty("cover_image");
     expect(result).toHaveProperty("gallery_image");

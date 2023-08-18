@@ -54,7 +54,6 @@ describe("Testing all product routes", () => {
     expect(response.body).toHaveProperty("year");
     expect(response.body).toHaveProperty("kilometers");
     expect(response.body).toHaveProperty("price");
-    expect(response.body).toHaveProperty("ad_type");
     expect(response.body).toHaveProperty("vehicle_type");
     expect(response.body).toHaveProperty("cover_image");
     expect(response.body).toHaveProperty("gallery_image");
@@ -103,7 +102,6 @@ describe("Testing all product routes", () => {
     expect(response.body).toHaveProperty("year");
     expect(response.body).toHaveProperty("kilometers");
     expect(response.body).toHaveProperty("price");
-    expect(response.body).toHaveProperty("ad_type");
     expect(response.body).toHaveProperty("vehicle_type");
     expect(response.body).toHaveProperty("cover_image");
     expect(response.body).toHaveProperty("gallery_image");
@@ -134,7 +132,6 @@ describe("Testing all product routes", () => {
     expect(response.body).toHaveProperty("year");
     expect(response.body).toHaveProperty("kilometers");
     expect(response.body).toHaveProperty("price");
-    expect(response.body).toHaveProperty("ad_type");
     expect(response.body).toHaveProperty("vehicle_type");
     expect(response.body).toHaveProperty("cover_image");
     expect(response.body).toHaveProperty("gallery_image");

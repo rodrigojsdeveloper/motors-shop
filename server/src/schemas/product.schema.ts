@@ -5,7 +5,6 @@ import * as yup from "yup";
 const productSchema: SchemaOf<IProduct> = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
-  ad_type: yup.mixed().oneOf(["sale", "auction"]).required(),
   kilometers: yup
     .number()
     .required()

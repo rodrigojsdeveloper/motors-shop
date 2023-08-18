@@ -18,7 +18,6 @@ class ProductsServices {
     newProduct.description = product.description;
     newProduct.year = product.year;
     newProduct.kilometers = product.kilometers;
-    newProduct.ad_type = product.ad_type;
     newProduct.price = product.price;
     newProduct.vehicle_type = product.vehicle_type;
     newProduct.cover_image = product.cover_image;
@@ -69,7 +68,6 @@ class ProductsServices {
       kilometers: product.kilometers
         ? product.kilometers
         : findProduct.kilometers,
-      ad_type: product.ad_type ? product.ad_type : findProduct.ad_type,
       price: product.price ? product.price : findProduct.price,
       vehicle_type: product.vehicle_type
         ? product.vehicle_type

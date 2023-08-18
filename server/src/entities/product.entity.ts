@@ -32,9 +32,6 @@ class Product {
   is_published: boolean;
 
   @Column()
-  ad_type: string;
-
-  @Column()
   vehicle_type: string;
 
   @Column()

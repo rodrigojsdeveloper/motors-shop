@@ -39,13 +39,11 @@ export interface IButtonProps {
     | "buttonSizeModalEditAddressMedium"
     | "buttonSizeModalEditAddressSmall"
     | "buttonSizeUserDetailsMedium"
-    | "buttonSizeCreateBid"
     | "buttonSizeEditProduct"
     | "buttonSizeShowProduct"
     | "buttonSizeShowAdvertiser"
     | "buttonSizeModalEditProduct"
-    | "buttonSizeModalDeleteProduct"
-    | "buttonSizeSellBid";
+    | "buttonSizeModalDeleteProduct";
   color:
     | "buttonColorBlueLogin"
     | "buttonColorWhiteHeader"
@@ -56,8 +54,7 @@ export interface IButtonProps {
     | "buttonColorGrayModalEditAddress"
     | "buttonColorWhiteUserDetails"
     | "buttonColorWhiteEditAndShowProduct"
-    | "buttonColorRedModalDeleteProduct"
-    | "buttonColorGraySellBid";
+    | "buttonColorRedModalDeleteProduct";
   className?: string;
   style?: React.CSSProperties | undefined;
 }
@@ -106,7 +103,6 @@ export interface IProductProps {
   year: number;
   kilometers: number;
   price: string;
-  ad_type: "sale" | "auction" | string;
   vehicle_type: "car" | "motorbike" | string;
   is_published: boolean;
   cover_image: string;
@@ -115,27 +111,11 @@ export interface IProductProps {
   comments: [];
 }
 
-export interface IAuctionProps {
-  id: string;
-  product: IProductProps;
-  user: IUserProps;
-  time_limit: string;
-  bids: [];
-}
-
 export interface ICommentProps {
   id: string;
   content: string;
   user: IUserProps;
   created_at: string;
-}
-
-export interface IBidProps {
-  id: string;
-  value: string;
-  created_at: string;
-  user: IUserProps;
-  auction: IAuctionProps;
 }
 
 export interface IUser {
@@ -146,25 +126,12 @@ export interface IProduct {
   product: IProductProps;
 }
 
-export interface IAuction {
-  auction: IAuctionProps;
-}
-
 export interface IComment {
   comment: ICommentProps;
 }
 
-export interface IBid {
-  bid: IBidProps;
-  auction: IAuctionProps;
-}
-
 export interface IListProducts {
   products: IProductProps[];
-}
-
-export interface IListAuctions {
-  auctions: IAuctionProps[];
 }
 
 export interface IListComments {
@@ -172,20 +139,9 @@ export interface IListComments {
   loaded: boolean;
 }
 
-export interface IListBids {
-  bids: IBidProps[];
-  loaded: boolean;
-  auction: IAuctionProps;
-}
-
 export interface ICreateComment {
   product: IProductProps;
   ListCommentsFunc: (comment: ICommentProps) => void;
-}
-
-export interface ICreateBid {
-  auction: IAuctionProps;
-  ListBidsFunc: (bid: IBidProps) => void;
 }
 
 export interface IimageProduct {
@@ -199,11 +155,6 @@ export interface ITitleProduct {
 
 export interface IDescription {
   description: string;
-}
-
-export interface IAdType {
-  setSaleOrAuctionAdType: React.Dispatch<React.SetStateAction<boolean>>;
-  ad_type?: string;
 }
 
 export interface ITypeOfVehicle {
@@ -244,7 +195,6 @@ export interface IModalCreateAnnouncement {
   >;
   listMotorcyclesFunc: (motorcycle: IProductProps) => void;
   listCarsFunc: (car: IProductProps) => void;
-  listAuctionsFunc: (auction: IAuctionProps) => void;
 }
 
 export interface IModalDelete {
@@ -290,16 +240,10 @@ export interface IProductDetails {
   setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface IAuctionDetails {
-  auction: IAuctionProps;
-  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export interface IShowAdvertiser {
   user: IUserProps;
   listMotorcyclesFunc: (motorcycle: IProductProps) => void;
   listCarsFunc: (car: IProductProps) => void;
-  listAuctionsFunc: (auction: IAuctionProps) => void;
 }
 
 export interface IUserProductsProduct {
@@ -314,4 +258,9 @@ export interface IUserProductsListCars {
 
 export interface IEmptyMessage {
   message: string;
+}
+
+export interface ILayout {
+  children: React.ReactNode;
+  title: string
 }

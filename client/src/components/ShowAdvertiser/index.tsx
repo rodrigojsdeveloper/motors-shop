@@ -11,7 +11,6 @@ const ShowAdvertiser = ({
   user,
   listCarsFunc,
   listMotorcyclesFunc,
-  listAuctionsFunc,
 }: IShowAdvertiser) => {
   const [openModalCreateAnnouncement, setOpenModalCreateAnnouncement] =
     useState<boolean>(false);
@@ -24,7 +23,6 @@ const ShowAdvertiser = ({
             setCloseModalCreateAnnouncement={setOpenModalCreateAnnouncement}
             listMotorcyclesFunc={listMotorcyclesFunc}
             listCarsFunc={listCarsFunc}
-            listAuctionsFunc={listAuctionsFunc}
           />
         </ModalBackground>
       )}

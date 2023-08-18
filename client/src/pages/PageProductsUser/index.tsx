@@ -30,18 +30,15 @@ const PageProductsUser = () => {
       try {
         const { data } = await api.get(`/users/products/${userProductId}`);
         setUser(data);
-        const products = data.products.filter(
-          (product: IProductProps) => product.ad_type == "sale"
-        );
 
         setCars(
-          products.filter(
+          data.products.filter(
             (product: IProductProps) => product.vehicle_type == "car"
           )
         );
 
         setMotorcycles(
-          products.filter(
+          data.products.filter(
             (product: IProductProps) => product.vehicle_type == "motorcycle"
           )
         );

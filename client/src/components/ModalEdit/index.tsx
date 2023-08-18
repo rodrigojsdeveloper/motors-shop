@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IModalEdit } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useEffect, useState } from "react";
-import { AdTypeEdit } from "../AdTypeEdit";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
@@ -22,9 +21,6 @@ const ModalEdit = ({
   const [changePostedToYes, setChangPostedToYes] = useState<boolean>(true);
 
   const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
-
-  const [saleOrAuctionAdType, setSaleOrAuctionAdType] =
-    useState<boolean>(false);
 
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
     useState<boolean>(false);
@@ -52,11 +48,9 @@ const ModalEdit = ({
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
-    saleOrAuctionAdType ? (data.ad_type = "sale") : (data.ad_type = "auction");
-
     buyerOrAdvertiserVehicleType
-      ? (data.ad_type = "car")
-      : (data.ad_type = "motorcycle");
+      ? (data.vehicle_type = "car")
+      : (data.vehicle_type = "motorcycle");
 
     api
       .patch(`/products/${product?.id}`, data, {
@@ -84,11 +78,6 @@ const ModalEdit = ({
       <HeaderModal title="Editar anúncio" setCloseModal={setOpenModalEdit} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdTypeEdit
-          setSaleOrAuctionAdType={setSaleOrAuctionAdType}
-          ad_type={product.ad_type}
-        />
-
         <h4>Informações do veículo</h4>
 
         <Input

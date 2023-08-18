@@ -12,8 +12,6 @@ const Container = styled.form`
   background-color: var(--grey10);
   border-radius: 4px;
 
-  margin: 90px 0;
-
   & > h2 {
     font-weight: bold;
     font-size: 24px;

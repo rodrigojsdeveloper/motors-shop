@@ -1,8 +1,8 @@
 import { AdvertiserListMotorcycles } from "../../components/AdvertiserListMotorcycles";
-import { IAuctionProps, IProductProps, IUserProps } from "../../interfaces";
 import { AdvertiserListCars } from "../../components/AdvertiserListCars";
 import { ModalBackground } from "../../components/ModalBackground";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
+import { IProductProps, IUserProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
@@ -21,8 +21,6 @@ const PageAdvertiser = () => {
 
   const [motorcycles, setMotorcycles] = useState<IProductProps[]>([]);
 
-  const [auctions, setAuctions] = useState<IAuctionProps[]>([]);
-
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -39,23 +37,17 @@ const PageAdvertiser = () => {
       .then((res) => {
         setUser(res.data);
 
-        const products = res.data.products.filter(
-          (product: IProductProps) => product.ad_type === "sale"
-        );
-
         setCars(
-          products.filter(
+          res.data.products.filter(
             (product: IProductProps) => product.vehicle_type === "car"
           )
         );
 
         setMotorcycles(
-          products.filter(
+          res.data.products.filter(
             (product: IProductProps) => product.vehicle_type === "motorcycle"
           )
         );
-
-        setAuctions(res.data.auctions);
       })
       .catch((error) => console.error(error))
       .finally(() => setIsLoading(false));
@@ -64,9 +56,6 @@ const PageAdvertiser = () => {
   useEffect(() => {
     if (token) getUserData();
   }, [token]);
-
-  const handleListAuctions = (auction: IAuctionProps) =>
-    setAuctions([auction, ...auctions]);
 
   const handleListCars = (car: IProductProps) => setCars([car, ...cars]);
 
@@ -96,7 +85,6 @@ const PageAdvertiser = () => {
             <ShowAdvertiser
               listCarsFunc={handleListCars}
               listMotorcyclesFunc={handleListMotorcycles}
-              listAuctionsFunc={handleListAuctions}
               user={user}
             />
             <AdvertiserListCars products={cars} />

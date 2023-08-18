@@ -7,7 +7,6 @@ import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { AdType } from "../AdType";
 import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
@@ -16,14 +15,11 @@ const ModalCreateAnnouncement = ({
   setCloseModalCreateAnnouncement,
   listMotorcyclesFunc,
   listCarsFunc,
-  listAuctionsFunc,
 }: IModalCreateAnnouncement) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
     useState<boolean>(true);
-
-  const [saleOrAuctionAdType, setSaleOrAuctionAdType] = useState<boolean>(true);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -51,8 +47,6 @@ const ModalCreateAnnouncement = ({
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
-    saleOrAuctionAdType ? (data.ad_type = "sale") : (data.ad_type = "auction");
-
     buyerOrAdvertiserVehicleType
       ? (data.vehicle_type = "car")
       : (data.vehicle_type = "motorcycle");
@@ -72,10 +66,6 @@ const ModalCreateAnnouncement = ({
           listMotorcyclesFunc(res.data);
         }
 
-        if (res.data.product?.ad_type == "auction") {
-          listAuctionsFunc(res.data);
-        }
-
         setCloseModalCreateAnnouncement(false);
       })
       .catch((error) => console.error(error))
@@ -90,8 +80,6 @@ const ModalCreateAnnouncement = ({
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <AdType setSaleOrAuctionAdType={setSaleOrAuctionAdType} />
-
         <h4>Informações do veículo</h4>
 
         <Input

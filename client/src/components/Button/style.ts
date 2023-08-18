@@ -89,12 +89,6 @@ const Container = styled.button<IButtonStyledProps>`
           max-width: 126px;
         `;
 
-      case "buttonSizeCreateBid":
-        return css`
-          height: 48px;
-          max-width: 179px;
-        `;
-
       case "buttonSizeEditProduct":
         return css`
           height: 38px;
@@ -123,12 +117,6 @@ const Container = styled.button<IButtonStyledProps>`
         return css`
           height: 48px;
           max-width: 211px;
-        `;
-
-      case "buttonSizeSellBid":
-        return css`
-          height: 32px;
-          max-width: 64px;
         `;
 
       default:
@@ -283,22 +271,6 @@ const Container = styled.button<IButtonStyledProps>`
           :hover {
             border-color: var(--alert2);
             background-color: var(--alert2);
-          }
-        `;
-
-      case "buttonColorGraySellBid":
-        return css`
-          padding: 4px 8px;
-          background-color: var(--brand4);
-          border-radius: 4px;
-
-          font-weight: 500;
-          font-size: 14px;
-          line-height: 24px;
-          color: var(--brand1);
-
-          :hover {
-            background-color: var(--grey6);
           }
         `;
 

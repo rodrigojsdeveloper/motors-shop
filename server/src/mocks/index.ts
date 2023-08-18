@@ -85,7 +85,6 @@ const product: IProduct = {
   year: 2023,
   kilometers: 0,
   price: "R$ 1.000.000,00",
-  ad_type: "sale",
   vehicle_type: "car",
   cover_image:
     "https://cosystatic.bmwgroup.com/bmwweb/cosySec?COSY-EU-100-2545xM4RIyFnbm9Mb3AgyyIJrjG0suyJRBODlsrjGpuaprQbhSIqppglBguNbJl384MlficYiGHqoQxYLW7%25f3tiJ0PCJirQbLDWcQW7%251uSRnqoQh47wMvcYi9K6rfMb3islBglUb90cRScHz63MbnMdQocyJGy58iUrQ%25r9oi5W8zWu3djqogqaJjdl3ilUQzjcRScH8gsMbnMdobeyJGy53ARrQ%25r9R1HW8zWubxdqogqaJhul3ilUQTqcRScH753MbnMd08YyJGy5BoorQ%25r9YbJW8zWunUQqogqaGb7l3ilU%25JjcRScHzo9MbnMdg3YyJGy5iRBrQ%25r9SEUW8zWunFbqogqaG%25Jl3ilU%254mcRScHzJmMbnMdg5uyJGy5i9ErQ%25r9SBYW8zWunCjqogqaG4zl3ilU%25WFcRScHzRUMbnMdg1RyJGy5mR3rQ%25r9sEGW8zWuKGEqogqaDCdl3ilUC4ocRScH4JBMbnMdeoiyJGy5m30rQ%25r9sRcW8zWuKSuqogqaDnvl3ilURJ5cRScHbeiMbnMdJ70yJGy5Q3drQ%25r98R9W8zWuobSqogqa3GIl3ilUR3pcRScHbDBMbnMdJC0yJGy5QkirQ%25r99aGW8zWuuRHqogqaabJl3ilUUJecRScHHeiMbnMddQuyJGy559KrQbBUq2rjGLqryJR5GlJirjGNY3QcNQBUJ1",
