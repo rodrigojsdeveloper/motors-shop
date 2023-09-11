@@ -5,7 +5,7 @@ import { IComment } from "../interfaces/comment.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Comment } from "../entities/comment.entity";
 
-class CommentsServices {
+class CommentsService {
   async create(
     comment: IComment,
     email: string,
@@ -88,4 +88,4 @@ class CommentsServices {
   }
 }
 
-export { CommentsServices };
+export { CommentsService };

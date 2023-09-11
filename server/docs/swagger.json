@@ -3,7 +3,7 @@
   "info": {
     "title": "Motors Shop API",
     "description": "This is the official Motors Shop API",
-    "termsOfService": "https://motors-shop-cx41.onrender.com/terms",
+    "termsOfService": "http://localhost:3000/api/terms",
     "contact": {
       "email": "rodrigojsdeveloper@gmail.com"
     },
@@ -11,12 +11,12 @@
   },
   "servers": [
     {
-      "url": "https://motors-shop-cx41.onrender.com",
+      "url": "http://localhost:3000",
       "description": "API"
     }
   ],
   "paths": {
-    "/users/signup": {
+    "/api/users/signup": {
       "post": {
         "summary": "User registration",
         "description": "This route will be responsible for registering the user",
@@ -72,7 +72,7 @@
         }
       }
     },
-    "/users": {
+    "/api/users": {
       "get": {
         "summary": "List all users",
         "description": "This route will be responsible for listing all users",
@@ -87,7 +87,7 @@
         }
       }
     },
-    "/users/profile": {
+    "/api/users/profile": {
       "get": {
         "summary": "Profile user",
         "description": "This route will be responsible for seeing a user",
@@ -103,7 +103,7 @@
         }
       }
     },
-    "/users/{id}": {
+    "/api/users/{id}": {
       "patch": {
         "summary": "Update a user",
         "description": "This route will be responsible for updating the user",
@@ -136,7 +136,7 @@
         }
       }
     },
-    "/users/products/{id}": {
+    "/api/users/products/{id}": {
       "get": {
         "summary": "Show all products",
         "description": "This route will be responsible for showing all products",
@@ -165,7 +165,7 @@
         }
       }
     },
-    "/users/email/{email}": {
+    "/api/users/email/{email}": {
       "get": {
         "summary": "View a user",
         "description": "This route will be responsible for view a user",
@@ -194,7 +194,7 @@
         }
       }
     },
-    "/products": {
+    "/api/products": {
       "post": {
         "summary": "Create product",
         "description": "This route will be responsible for create product",
@@ -257,7 +257,7 @@
         }
       }
     },
-    "/products/{id}": {
+    "/api/products/{id}": {
       "get": {
         "summary": "Specific product",
         "description": "This route will be responsible for showing a specific product",
@@ -364,7 +364,7 @@
         }
       }
     },
-    "/comments/{product_id}": {
+    "/api/comments/{product_id}": {
       "post": {
         "summary": "Create comment",
         "description": "This route will be responsible for create comment",
@@ -448,7 +448,7 @@
         }
       }
     },
-    "/signin": {
+    "/api/signin": {
       "post": {
         "summary": "Login",
         "description": "This route will be responsible for login",

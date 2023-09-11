@@ -26,7 +26,7 @@ describe("Testing all user routes", () => {
   afterAll(async () => await connection.destroy());
 
   test("Must be able to create a user", async () => {
-    const response = await request(app).post("/users/signup").send(user);
+    const response = await request(app).post("/api/users/signup").send(user);
 
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
@@ -46,26 +46,26 @@ describe("Testing all user routes", () => {
   });
 
   test("Must be able to prevent creation of a user with email that already exists", async () => {
-    const response = await request(app).post("/users/signup").send(user);
+    const response = await request(app).post("/api/users/signup").send(user);
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty("message");
   });
 
   test("Must be able to list all users", async () => {
-    const response = await request(app).get("/users");
+    const response = await request(app).get("/api/users");
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("map");
   });
 
   test("Must be able to show a user using email", async () => {
-    const requestLogin = await request(app).post("/signin").send(login);
+    const requestLogin = await request(app).post("/api/signin").send(login);
 
     const token: string = requestLogin.body.token;
 
     const response = await request(app)
-      .get("/users/profile")
+      .get("/api/users/profile")
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(200);
@@ -86,17 +86,19 @@ describe("Testing all user routes", () => {
   });
 
   test("Must be able to prevent showing a user using tokenless email", async () => {
-    const response = await request(app).get("/users/profile");
+    const response = await request(app).get("/api/users/profile");
 
     expect(response.status).toBe(401);
     expect(response.body).toHaveProperty("message");
   });
 
   test("Must be able to show a user using id", async () => {
-    const createdUser = await request(app).post("/users/signup").send(user2);
+    const createdUser = await request(app)
+      .post("/api/users/signup")
+      .send(user2);
 
     const response = await request(app).get(
-      `/users/products/${createdUser.body.id}`
+      `/api/users/products/${createdUser.body.id}`
     );
 
     expect(response.status).toBe(200);
@@ -118,7 +120,7 @@ describe("Testing all user routes", () => {
 
   test("Must be able to prevent displaying a user using invalid id", async () => {
     const response = await request(app).get(
-      "/users/products/05a429c8-ca25-4007-8854-25c25f734167"
+      "/api/users/products/05a429c8-ca25-4007-8854-25c25f734167"
     );
 
     expect(response.status).toBe(404);
@@ -126,14 +128,16 @@ describe("Testing all user routes", () => {
   });
 
   test("Must be able to edit a user", async () => {
-    const createdUser = await request(app).post("/users/signup").send(user3);
+    const createdUser = await request(app)
+      .post("/api/users/signup")
+      .send(user3);
 
-    const requestLogin = await request(app).post("/signin").send(login3);
+    const requestLogin = await request(app).post("/api/signin").send(login3);
 
     const token: string = requestLogin.body.token;
 
     const response = await request(app)
-      .patch(`/users/${createdUser.body.id}`)
+      .patch(`/api/users/${createdUser.body.id}`)
       .send(updatedUser)
       .set("Authorization", `Bearer ${token}`);
 
@@ -155,10 +159,12 @@ describe("Testing all user routes", () => {
   });
 
   test("Must be able to prevent editing of a user without token", async () => {
-    const createdUser = await request(app).post("/users/signup").send(user4);
+    const createdUser = await request(app)
+      .post("/api/users/signup")
+      .send(user4);
 
     const response = await request(app)
-      .patch(`/users/${createdUser.body.id}`)
+      .patch(`/api/users/${createdUser.body.id}`)
       .send(updatedUser);
 
     expect(response.status).toBe(401);
@@ -166,12 +172,12 @@ describe("Testing all user routes", () => {
   });
 
   test("Must be able to prevent editing a user with invalid id", async () => {
-    const requestLogin = await request(app).post("/signin").send(login);
+    const requestLogin = await request(app).post("/api/signin").send(login);
 
     const token: string = requestLogin.body.token;
 
     const response = await request(app)
-      .patch("/users/05a429c8-ca25-4007-8854-25c25f734167")
+      .patch("/api/users/05a429c8-ca25-4007-8854-25c25f734167")
       .send(updatedUser)
       .set("Authorization", `Bearer ${token}`);
 

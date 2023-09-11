@@ -1,11 +1,11 @@
 import { Router } from "express";
 
-import { TermsControllers } from "../controllers/terms.controller";
+import { TermsController } from "../controllers/terms.controller";
 
 const routes = Router();
 
 const termsRoutes = () => {
-  routes.get("", new TermsControllers().term);
+  routes.get("", new TermsController().term);
 
   return routes;
 };

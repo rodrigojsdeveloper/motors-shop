@@ -10,7 +10,9 @@ app.use(express.json());
 
 app.use(cors());
 
-appRoutes(app);
+app.disable("x-powered-by");
+
+appRoutes(app, "api");
 
 app.use(handleErrorMiddleware);
 

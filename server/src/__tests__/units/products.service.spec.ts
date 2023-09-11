@@ -1,5 +1,5 @@
-import { ProductsServices } from "../../services/products.service";
-import { UsersServices } from "../../services/users.service";
+import { ProductsService } from "../../services/products.service";
+import { UsersService } from "../../services/users.service";
 import { product, updatedUser, user } from "../../mocks";
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
@@ -15,7 +15,7 @@ describe("Testing all service product methods", () => {
         console.error("Error during Data Source initialization", error)
       );
 
-    const createdUserResponse = await new UsersServices().create(user);
+    const createdUserResponse = await new UsersService().create(user);
 
     createdUserEmail = createdUserResponse.email;
   });
@@ -23,7 +23,7 @@ describe("Testing all service product methods", () => {
   afterAll(async () => await connection.destroy());
 
   it("Must be able to create a product", async () => {
-    const result = await new ProductsServices().create(
+    const result = await new ProductsService().create(
       product,
       createdUserEmail
     );
@@ -43,18 +43,18 @@ describe("Testing all service product methods", () => {
   });
 
   it("Must be able to list all products", async () => {
-    const result = await new ProductsServices().listAll();
+    const result = await new ProductsService().listAll();
 
     expect(result).toHaveProperty("map");
   });
 
   it("Must be able to show specific product using id", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const result = await new ProductsServices().specific(createdProduct.id);
+    const result = await new ProductsService().specific(createdProduct.id);
 
     expect(result).toHaveProperty("id");
     expect(result).toHaveProperty("title");
@@ -71,12 +71,12 @@ describe("Testing all service product methods", () => {
   });
 
   it("Must be able to edit a product", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const result = await new ProductsServices().update(
+    const result = await new ProductsService().update(
       updatedUser,
       createdProduct.id
     );
@@ -95,12 +95,12 @@ describe("Testing all service product methods", () => {
   });
 
   it("Must be able to delete a product", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const result = await new ProductsServices().delete(createdProduct.id);
+    const result = await new ProductsService().delete(createdProduct.id);
 
     expect(result).toBeUndefined();
   });

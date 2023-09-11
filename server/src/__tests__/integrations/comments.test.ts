@@ -11,7 +11,7 @@ describe("Testing all comment routes", () => {
   let createdCommentId: string;
 
   async function loginUser() {
-    const requestLogin = await request(app).post("/signin").send(login);
+    const requestLogin = await request(app).post("/api/signin").send(login);
     return requestLogin.body.token;
   }
 
@@ -22,17 +22,17 @@ describe("Testing all comment routes", () => {
         console.error("Error during DataSource initialization", err)
       );
 
-    await request(app).post("/users/signup").send(user);
+    await request(app).post("/api/users/signup").send(user);
     token = await loginUser();
 
     const createdProductResponse = await request(app)
-      .post("/products")
+      .post("/api/products")
       .send(product)
       .set("Authorization", `Bearer ${token}`);
     createdProductId = createdProductResponse.body.id;
 
     const createdCommentResponse = await request(app)
-      .post(`/comments/${createdProductId}`)
+      .post(`/api/comments/${createdProductId}`)
       .send(comment)
       .set("Authorization", `Bearer ${token}`);
     createdCommentId = createdCommentResponse.body.id;
@@ -42,7 +42,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to create a comment", async () => {
     const response = await request(app)
-      .post(`/comments/${createdProductId}`)
+      .post(`/api/comments/${createdProductId}`)
       .send(comment)
       .set("Authorization", `Bearer ${token}`);
 
@@ -55,7 +55,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent creating of a comment without token", async () => {
     const response = await request(app)
-      .post(`/comments/${createdProductId}`)
+      .post(`/api/comments/${createdProductId}`)
       .send(comment);
 
     expect(response.status).toBe(401);
@@ -64,7 +64,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent creating a comment with invalid id", async () => {
     const response = await request(app)
-      .post("/comments/05a429c8-ca25-4007-8854-25c25f734167")
+      .post("/api/comments/05a429c8-ca25-4007-8854-25c25f734167")
       .send(comment)
       .set("Authorization", `Bearer ${token}`);
 
@@ -73,7 +73,9 @@ describe("Testing all comment routes", () => {
   });
 
   test("Must be able to show all reviews for a product using id", async () => {
-    const response = await request(app).get(`/comments/${createdProductId}`);
+    const response = await request(app).get(
+      `/api/comments/${createdProductId}`
+    );
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("map");
@@ -81,7 +83,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to stop showing all reviews for a product using invalid id", async () => {
     const response = await request(app).get(
-      "/comments/05a429c8-ca25-4007-8854-25c25f734167"
+      "/api/comments/05a429c8-ca25-4007-8854-25c25f734167"
     );
 
     expect(response.status).toBe(404);
@@ -90,7 +92,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to show a comment using id", async () => {
     const response = await request(app)
-      .get(`/comments/specific/${createdCommentId}`)
+      .get(`/api/comments/specific/${createdCommentId}`)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(200);
@@ -101,7 +103,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent displaying of a comment without token", async () => {
     const response = await request(app).get(
-      `/comments/specific/${createdCommentId}`
+      `/api/comments/specific/${createdCommentId}`
     );
 
     expect(response.status).toBe(401);
@@ -110,7 +112,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent displaying a comment using invalid id", async () => {
     const response = await request(app)
-      .get("/comments/specific/05a429c8-ca25-4007-8854-25c25f734167")
+      .get("/api/comments/specific/05a429c8-ca25-4007-8854-25c25f734167")
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(404);
@@ -119,7 +121,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to edit a comment", async () => {
     const response = await request(app)
-      .patch(`/comments/${createdCommentId}`)
+      .patch(`/api/comments/${createdCommentId}`)
       .send(updatedComment)
       .set("Authorization", `Bearer ${token}`);
 
@@ -131,7 +133,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent editing of a comment without token", async () => {
     const response = await request(app)
-      .patch(`/comments/${createdCommentId}`)
+      .patch(`/api/comments/${createdCommentId}`)
       .send(updatedComment);
 
     expect(response.status).toBe(401);
@@ -140,7 +142,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent editing a comment with invalid id", async () => {
     const response = await request(app)
-      .patch("/comments/05a429c8-ca25-4007-8854-25c25f734167")
+      .patch("/api/comments/05a429c8-ca25-4007-8854-25c25f734167")
       .send(updatedComment)
       .set("Authorization", `Bearer ${token}`);
 
@@ -150,14 +152,16 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to delete a comment", async () => {
     const response = await request(app)
-      .delete(`/comments/${createdCommentId}`)
+      .delete(`/api/comments/${createdCommentId}`)
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(204);
   });
 
   test("Must be able to prevent deleting of a comment without token", async () => {
-    const response = await request(app).delete(`/comments/${createdCommentId}`);
+    const response = await request(app).delete(
+      `/api/comments/${createdCommentId}`
+    );
 
     expect(response.status).toBe(401);
     expect(response.body).toHaveProperty("message");
@@ -165,7 +169,7 @@ describe("Testing all comment routes", () => {
 
   test("Must be able to prevent deleting a comment with invalid id", async () => {
     const response = await request(app)
-      .delete("/comments/05a429c8-ca25-4007-8854-25c25f734167")
+      .delete("/api/comments/05a429c8-ca25-4007-8854-25c25f734167")
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(404);

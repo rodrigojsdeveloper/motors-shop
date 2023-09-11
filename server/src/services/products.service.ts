@@ -5,7 +5,7 @@ import { IProduct } from "../interfaces/product.interface";
 import { NotFoundError } from "../errors/notFound.error";
 import { Product } from "../entities/product.entity";
 
-class ProductsServices {
+class ProductsService {
   async create(product: IProduct, email: string): Promise<Product> {
     const user = await userRepository.findOneBy({ email });
 
@@ -98,4 +98,4 @@ class ProductsServices {
   }
 }
 
-export { ProductsServices };
+export { ProductsService };

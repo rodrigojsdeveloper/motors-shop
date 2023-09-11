@@ -1,5 +1,5 @@
 import { updatedUser, user, user2, user3 } from "../../mocks";
-import { UsersServices } from "../../services/users.service";
+import { UsersService } from "../../services/users.service";
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
 
@@ -17,7 +17,7 @@ describe("Testing all service user methods", () => {
   afterAll(async () => await connection.destroy());
 
   it("Must be able to create a user", async () => {
-    const result = await new UsersServices().create(user);
+    const result = await new UsersService().create(user);
 
     expect(result).toHaveProperty("id");
     expect(result).toHaveProperty("name");
@@ -36,13 +36,13 @@ describe("Testing all service user methods", () => {
   });
 
   it("Must be able to list all users", async () => {
-    const result = await new UsersServices().listAll();
+    const result = await new UsersService().listAll();
 
     expect(result).toHaveProperty("map");
   });
 
   it("Must be able to show a user using email", async () => {
-    const result = await new UsersServices().profile(user.email);
+    const result = await new UsersService().profile(user.email);
 
     expect(result).toHaveProperty("id");
     expect(result).toHaveProperty("name");
@@ -61,9 +61,9 @@ describe("Testing all service user methods", () => {
   });
 
   it("Must be able to show a user using id", async () => {
-    const createdUser = await new UsersServices().create(user2);
+    const createdUser = await new UsersService().create(user2);
 
-    const result = await new UsersServices().listProductsUser(createdUser.id);
+    const result = await new UsersService().listProductsUser(createdUser.id);
 
     expect(result).toHaveProperty("id");
     expect(result).toHaveProperty("name");
@@ -82,9 +82,9 @@ describe("Testing all service user methods", () => {
   });
 
   it("Must be able to edit a user", async () => {
-    const createdUser = await new UsersServices().create(user3);
+    const createdUser = await new UsersService().create(user3);
 
-    const result = await new UsersServices().update(
+    const result = await new UsersService().update(
       updatedUser,
       createdUser.id
     );

@@ -1,7 +1,7 @@
 import { comment, product, updatedComment, user } from "../../mocks";
-import { ProductsServices } from "../../services/products.service";
-import { CommentsServices } from "../../services/comments.service";
-import { UsersServices } from "../../services/users.service";
+import { ProductsService } from "../../services/products.service";
+import { CommentsService } from "../../services/comments.service";
+import { UsersService } from "../../services/users.service";
 import { AppDataSource } from "../../data-source";
 import { DataSource } from "typeorm";
 
@@ -16,7 +16,7 @@ describe("Testing all service comment methods", () => {
         console.error("Error during Data Source initialization", error)
       );
 
-    const createdUserResponse = await new UsersServices().create(user);
+    const createdUserResponse = await new UsersService().create(user);
 
     createdUserEmail = createdUserResponse.email;
   });
@@ -24,12 +24,12 @@ describe("Testing all service comment methods", () => {
   afterAll(async () => await connection.destroy());
 
   it("Must be able to create a comment", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const result = await new CommentsServices().create(
+    const result = await new CommentsService().create(
       comment,
       createdUserEmail,
       createdProduct.id
@@ -42,12 +42,12 @@ describe("Testing all service comment methods", () => {
   });
 
   it("Must be able to show all reviews for a product using id", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const result = await new CommentsServices().listCommentsProduct(
+    const result = await new CommentsService().listCommentsProduct(
       createdProduct.id
     );
 
@@ -55,18 +55,18 @@ describe("Testing all service comment methods", () => {
   });
 
   it("Must be able to show specific comment using id", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const createdComment = await new CommentsServices().create(
+    const createdComment = await new CommentsService().create(
       comment,
       createdUserEmail,
       createdProduct.id
     );
 
-    const result = await new CommentsServices().specific(createdComment.id);
+    const result = await new CommentsService().specific(createdComment.id);
 
     expect(result).toHaveProperty("id");
     expect(result).toHaveProperty("content");
@@ -74,18 +74,18 @@ describe("Testing all service comment methods", () => {
   });
 
   it("Must be able to edit a comment", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const createdComment = await new CommentsServices().create(
+    const createdComment = await new CommentsService().create(
       comment,
       createdUserEmail,
       createdProduct.id
     );
 
-    const result = await new CommentsServices().update(
+    const result = await new CommentsService().update(
       updatedComment,
       createdComment.id
     );
@@ -96,18 +96,18 @@ describe("Testing all service comment methods", () => {
   });
 
   it("Must be able to delete a comment", async () => {
-    const createdProduct = await new ProductsServices().create(
+    const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const createdComment = await new CommentsServices().create(
+    const createdComment = await new CommentsService().create(
       comment,
       createdUserEmail,
       createdProduct.id
     );
 
-    const result = await new CommentsServices().delete(createdComment.id);
+    const result = await new CommentsService().delete(createdComment.id);
 
     expect(result).toBeUndefined();
   });

@@ -1,15 +1,15 @@
-import { LoginServices } from "../services/login.service";
+import { LoginService } from "../services/login.service";
 import { ILogin } from "../interfaces/login.interface";
 import { Request, Response } from "express";
 
-class LoginControllers {
+class LoginController {
   async login(req: Request, res: Response) {
     const data: ILogin = req.body;
 
-    const token = await new LoginServices().login(data);
+    const token = await new LoginService().login(data);
 
     return res.json(token);
   }
 }
 
-export { LoginControllers };
+export { LoginController };

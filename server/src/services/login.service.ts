@@ -4,7 +4,7 @@ import { ILogin } from "../interfaces/login.interface";
 import { sign } from "jsonwebtoken";
 import { compare } from "bcrypt";
 
-class LoginServices {
+class LoginService {
   async login(user: ILogin): Promise<{ token: string }> {
     const findUser = await userRepository.findOneBy({ email: user.email });
 
@@ -27,4 +27,4 @@ class LoginServices {
     return { token };
   }
 }
-export { LoginServices };
+export { LoginService };

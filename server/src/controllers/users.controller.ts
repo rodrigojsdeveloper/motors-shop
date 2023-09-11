@@ -1,18 +1,18 @@
-import { UsersServices } from "../services/users.service";
+import { UsersService } from "../services/users.service";
 import { IUser } from "../interfaces/user.interface";
 import { Request, Response } from "express";
 
-class UsersControllers {
+class UsersController {
   async create(req: Request, res: Response) {
     const data: IUser = req.body;
 
-    const newUser = await new UsersServices().create(data);
+    const newUser = await new UsersService().create(data);
 
     return res.status(201).json(newUser);
   }
 
   async listAll(req: Request, res: Response) {
-    const users = await new UsersServices().listAll();
+    const users = await new UsersService().listAll();
 
     return res.json(users);
   }
@@ -20,7 +20,7 @@ class UsersControllers {
   async listProductsUser(req: Request, res: Response) {
     const id: string = req.params.id;
 
-    const listProducts = await new UsersServices().listProductsUser(id);
+    const listProducts = await new UsersService().listProductsUser(id);
 
     return res.json(listProducts);
   }
@@ -28,7 +28,7 @@ class UsersControllers {
   async profile(req: Request, res: Response) {
     const email: string = req.email;
 
-    const profile = await new UsersServices().profile(email);
+    const profile = await new UsersService().profile(email);
 
     return res.json(profile);
   }
@@ -38,7 +38,7 @@ class UsersControllers {
 
     const data: Partial<IUser> = req.body;
 
-    const updatedUser = await new UsersServices().update(data, id);
+    const updatedUser = await new UsersService().update(data, id);
 
     return res.json(updatedUser);
   }
@@ -46,10 +46,10 @@ class UsersControllers {
   async specificUserWithEmail(req: Request, res: Response) {
     const email: string = req.params.email;
 
-    const user = await new UsersServices().specificUserWithEmail(email);
+    const user = await new UsersService().specificUserWithEmail(email);
 
     return res.json(user);
   }
 }
 
-export { UsersControllers };
+export { UsersController };

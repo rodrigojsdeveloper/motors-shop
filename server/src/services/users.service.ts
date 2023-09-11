@@ -7,7 +7,7 @@ import { User } from "../entities/user.entity";
 import { createTransport } from "nodemailer";
 import { hash } from "bcrypt";
 
-class UsersServices {
+class UsersService {
   async create(user: IUser): Promise<User> {
     const newAddress = addressRepository.create(user.address);
     await addressRepository.save(newAddress);
@@ -133,4 +133,4 @@ class UsersServices {
   }
 }
 
-export { UsersServices };
+export { UsersService };
