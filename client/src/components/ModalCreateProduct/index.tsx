@@ -149,14 +149,14 @@ const ModalCreateProduct = ({
         />
         <Input
           label="1º Imagem da galeria"
-          name="gallery_image"
+          name="primary_image"
           register={register}
           placeholder="https://image.com"
           type="url"
         />
         <Input
           label="2º Imagem da galeria"
-          name="gallery_image"
+          name="second_image"
           register={register}
           placeholder="https://image.com"
           type="url"

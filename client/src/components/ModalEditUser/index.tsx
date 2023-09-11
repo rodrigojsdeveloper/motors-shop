@@ -1,7 +1,9 @@
-import { IModalEditUser, IUserProps } from "../../interfaces";
+import { formatBirthdate } from "../../utils/formatBirthdate";
+import { UserContext } from "../../contexts/user.context";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { IModalEditUser } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
@@ -11,9 +13,7 @@ import { Input } from "../Input";
 import * as yup from "yup";
 
 const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
-  const token = sessionStorage.getItem("Motors shop: token");
-
-  const [user, setUser] = useState<IUserProps>({} as IUserProps);
+  const { user } = useContext(UserContext);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -34,25 +34,9 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
     description: yup.string().required("Descrição obrigatória"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-
-  token &&
-    useEffect(() => {
-      api
-        .get("/users/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => setUser(res.data))
-        .catch((error) => console.error(error));
-    }, []);
 
   const onSubmitFunction = (data: any) => {
     setLoad(true);
@@ -64,24 +48,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
       .finally(() => setLoad(false));
   };
 
-  const formatBirthdate = (birthdate: any) => {
-    const date = new Date(birthdate);
-    const year = date.getFullYear();
-    let month: any = date.getMonth() + 1;
-    let day:  any = date.getDate();
-  
-    if (month < 10) {
-      month = `0${month}`;
-    }
-  
-    if (day < 10) {
-      day = `0${day}`;
-    }
-  
-    return `${year}-${month}-${day}`;
-  };
-  
-
   return (
     <Container>
       <HeaderModal title="Editar perfil" setCloseModal={setOpenModalEditUser} />
@@ -89,55 +55,48 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <h3>Infomações pessoais</h3>
 
-          <Input
-            label="Nome"
-            name="name"
-            register={register}
-            placeholder="Ex: Rodrigo Silva"
-            type="text"
-            error={errors.name?.message}
-            value={user?.name}
-          />
-          <Input
-            label="Email"
-            name="email"
-            register={register}
-            placeholder="Ex: rodrigo@gmail.com"
-            type="email"
-            error={errors.email?.message}
-            value={user?.email}
-          />
-          <Input
-            label="CPF"
-            name="cpf"
-            register={register}
-            placeholder="000.000.000-00"
-            type="number"
-            error={errors.cpf?.message}
-            value={user?.cpf}
-          />
-          <Input
-            label="Celular"
-            name="cellphone"
-            register={register}
-            placeholder="(DDD) 99999-9999"
-            type="text"
-            error={errors.cellphone?.message}
-            value={user?.cellphone}
-          />
-          <Input
-            label="Data de nascimento"
-            name="birthdate"
-            register={register}
-            type="date"
-            value={formatBirthdate(user?.birthdate)}
-          />
-          <TextArea
-            defaultValue={user?.description}
-            register={register}
-            name="description"
-            error={errors.description?.message}
-          />
+        <Input
+          label="Nome"
+          name="name"
+          register={register}
+          placeholder="Ex: Rodrigo Silva"
+          defaultValue={user.name}
+        />
+        <Input
+          label="Email"
+          name="email"
+          register={register}
+          placeholder="Ex: rodrigo@gmail.com"
+          type="email"
+          defaultValue={user.email}
+        />
+        <Input
+          label="CPF"
+          name="cpf"
+          register={register}
+          placeholder="000.000.000-00"
+          type="number"
+          defaultValue={user.cpf}
+        />
+        <Input
+          label="Celular"
+          name="cellphone"
+          register={register}
+          placeholder="(DDD) 99999-9999"
+          defaultValue={user.cellphone}
+        />
+        <Input
+          label="Data de nascimento"
+          name="birthdate"
+          register={register}
+          type="date"
+          defaultValue={formatBirthdate(user.birthdate)}
+        />
+        <TextArea
+          name="description"
+          register={register}
+          defaultValue={user.description}
+        />
 
         <div className="divButtons">
           <Button
@@ -148,12 +107,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
           >
             Cancelar
           </Button>
-          <Button
-            color="blue"
-            size="193px"
-            type="submit"
-            disabled={load}
-          >
+          <Button color="blue" size="193px" type="submit" disabled={load}>
             {load ? "Salvando..." : "Salvar alteração"}
           </Button>
         </div>

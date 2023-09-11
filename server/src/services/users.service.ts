@@ -63,7 +63,10 @@ class UsersService {
   }
 
   async profile(email: string): Promise<User> {
-    const user = await userRepository.findOneBy({ email });
+    const user = await userRepository.findOne({
+      where: { email },
+      relations: ["address", "products", "comments"],
+    });
 
     Reflect.deleteProperty(user!, "password");
 

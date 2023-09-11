@@ -66,15 +66,18 @@ export interface IUserProps {
   birthdate: string;
   is_seller: boolean;
   description: string;
+  address: IAddress;
+  products: [];
+}
+
+export interface IAddress {
   zip_code: string;
-  country: string;
   state: string;
   city: string;
   district: string;
   street: string;
   number: number;
-  complement: string;
-  products: [];
+  complement?: string;
 }
 
 export interface IProductProps {
@@ -248,7 +251,10 @@ export interface IChildren {
 
 export interface IProductContextData {
   products: Array<IProductProps>;
+  advertiserProducts: Array<IProductProps>;
   addProduct: (product: IProductProps) => void;
+  isLoading: boolean;
+  isLoadingAdvertiser: boolean;
 }
 
 export interface IUserContextData {

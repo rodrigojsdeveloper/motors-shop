@@ -1,7 +1,8 @@
+import { UserContext } from "../../contexts/user.context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IModalEditAddress } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { Container } from "./style";
@@ -10,9 +11,9 @@ import { Input } from "../Input";
 import * as yup from "yup";
 
 const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
-  const token = sessionStorage.getItem("Motors shop: token");
+  const { user } = useContext(UserContext);
 
-  const [user, setUser] = useState<any>();
+  const token = sessionStorage.getItem("Motors shop: token");
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -26,25 +27,9 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
     complement: yup.string(),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
-
-  token &&
-    useEffect(() => {
-      api
-        .get("/users/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => setUser(res.data))
-        .catch((error) => console.error(error));
-    }, []);
 
   const onSubmitFunction = (data: any) => {
     setLoad(true);
@@ -88,7 +73,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
           register={register}
           placeholder="00000-000"
           type="number"
-          value={user?.address.zip_code}
+          defaultValue={user.address.zip_code}
         />
 
         <div className="divInputs">
@@ -97,16 +82,14 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             name="state"
             register={register}
             placeholder="Digitar estado"
-            type="text"
-            value={user?.address.state}
+            defaultValue={user.address.state}
           />
           <Input
             label="Cidade"
             name="city"
             register={register}
             placeholder="Digitar cidade"
-            type="text"
-            value={user?.address.city}
+            defaultValue={user.address.city}
           />
         </div>
 
@@ -115,16 +98,14 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
           name="district"
           register={register}
           placeholder="Digitar bairro"
-          type="text"
-          value={user?.address.district}
+          defaultValue={user.address.district}
         />
         <Input
           label="Rua"
           name="street"
           register={register}
           placeholder="Digitar rua"
-          type="text"
-          value={user?.address.street}
+          defaultValue={user.address.street}
         />
 
         <div className="divInputs">
@@ -134,15 +115,14 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             register={register}
             placeholder="Digitar número"
             type="number"
-            value={user?.address.number}
+            defaultValue={user.address.number}
           />
           <Input
             label="Complemento"
             name="complement"
             register={register}
             placeholder="Ex: Apart 307"
-            type="text"
-            value={user?.address.complement}
+            defaultValue={user.address.complement}
           />
         </div>
 
@@ -155,12 +135,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
           >
             Cancelar
           </Button>
-          <Button
-            color="blue"
-            size="193px"
-            type="submit"
-            disabled={load}
-          >
+          <Button color="blue" size="193px" type="submit" disabled={load}>
             {load ? "Salvando..." : "Salvar alteração"}
           </Button>
         </div>

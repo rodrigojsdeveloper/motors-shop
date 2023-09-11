@@ -1,8 +1,9 @@
-import { AdvertiserList } from "../../components/AdvertiserListCars";
 import { ModalBackground } from "../../components/ModalBackground";
+import { AdvertiserList } from "../../components/AdvertiserList";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
+import { ProductContext } from "../../contexts/product.context";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Loaded } from "../../components/Loaded";
@@ -10,11 +11,11 @@ import { useNavigate } from "react-router-dom";
 import { Container } from "./style";
 
 const PageAdvertiser = () => {
+  const { isLoadingAdvertiser } = useContext(ProductContext);
+
   const token = sessionStorage.getItem("Motors shop: token");
 
   const navigate = useNavigate();
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token) return navigate("/");
@@ -23,8 +24,8 @@ const PageAdvertiser = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Meus Anúncios - Motors Shop" />
-        {isLoading ? (
+        <Helmet title="Meus Anúncios | Motors Shop" />
+        {isLoadingAdvertiser ? (
           <ModalBackground>
             <Loaded />
           </ModalBackground>

@@ -1,15 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { IsPublishedEdit } from "../IsPublishedEdit";
 import { IModalEdit } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
+import { useState } from "react";
 import * as yup from "yup";
-import { IsPublishedEdit } from "../IsPublishedEdit";
 
 const ModalEditProduct = ({
   product,
