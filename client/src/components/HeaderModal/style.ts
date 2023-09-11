@@ -18,7 +18,7 @@ const Container = styled.header`
     font-weight: bold;
   }
 
-  & > img {
+  & > svg {
     cursor: pointer;
   }
 `;

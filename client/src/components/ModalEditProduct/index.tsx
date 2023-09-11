@@ -10,20 +10,19 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
+import { IsPublishedEdit } from "../IsPublishedEdit";
 
-const ModalEdit = ({
+const ModalEditProduct = ({
   product,
   setOpenModalEdit,
   setOpenModalDelete,
 }: IModalEdit) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
-  const [changePostedToYes, setChangPostedToYes] = useState<boolean>(true);
-
-  const [changePostedToNo, setChangPostedToNo] = useState<boolean>(false);
-
   const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
     useState<boolean>(false);
+
+  const [isPublished, setIsPublished] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -48,6 +47,8 @@ const ModalEdit = ({
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
+    isPublished ? (data.is_published = true) : (data.is_published = false);
+
     buyerOrAdvertiserVehicleType
       ? (data.vehicle_type = "car")
       : (data.vehicle_type = "motorcycle");
@@ -62,16 +63,6 @@ const ModalEdit = ({
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };
-
-  useEffect(() => {
-    if (product?.is_published) {
-      setChangPostedToYes(true);
-      setChangPostedToNo(false);
-    } else {
-      setChangPostedToYes(false);
-      setChangPostedToNo(true);
-    }
-  }, []);
 
   return (
     <Container>
@@ -91,7 +82,7 @@ const ModalEdit = ({
           defaultValue={product?.title}
         />
 
-        <div>
+        <div className="divInputs">
           <Input
             label="Ano"
             name="year"
@@ -124,6 +115,7 @@ const ModalEdit = ({
             defaultValue={product?.price}
           />
         </div>
+
         <TextArea
           defaultValue={product?.description}
           register={register}
@@ -136,61 +128,10 @@ const ModalEdit = ({
           vehicle_type={product.vehicle_type}
         />
 
-        <div>
-          <h4>Publicado</h4>
-          <div className="divButtons">
-            <Button
-              onClick={() => {
-                setChangPostedToYes(true);
-                setChangPostedToNo(false);
-              }}
-              style={
-                changePostedToYes
-                  ? {
-                      backgroundColor: "#4529E6",
-                      color: "#fff",
-                      borderColor: "#4529E6",
-                    }
-                  : {
-                      backgroundColor: "#fff",
-                      color: "#000",
-                      borderColor: "#ADB5BD",
-                    }
-              }
-              size="buttonSizeSignUp"
-              color="buttonColorWhiteSignUp"
-              type="button"
-              className="changeButton"
-            >
-              Sim
-            </Button>
-            <Button
-              onClick={() => {
-                setChangPostedToNo(true);
-                setChangPostedToYes(false);
-              }}
-              style={
-                changePostedToNo
-                  ? {
-                      backgroundColor: "#4529E6",
-                      color: "#fff",
-                      borderColor: "#4529E6",
-                    }
-                  : {
-                      backgroundColor: "#fff",
-                      color: "#000",
-                      borderColor: "#ADB5BD",
-                    }
-              }
-              size="buttonSizeSignUp"
-              color="buttonColorWhiteSignUp"
-              type="button"
-              className="changeButton"
-            >
-              Não
-            </Button>
-          </div>
-        </div>
+        <IsPublishedEdit
+          setIsPublished={setIsPublished}
+          is_published={product.is_published}
+        />
 
         <Input
           label="Imagem da capa"
@@ -213,7 +154,7 @@ const ModalEdit = ({
           defaultValue={product?.gallery_image}
         />
 
-        <div>
+        <div className="divButtons">
           <Button
             color="buttonColorGrayModalEditAddress"
             size="buttonSizeModalEditProduct"
@@ -239,4 +180,4 @@ const ModalEdit = ({
   );
 };
 
-export { ModalEdit };
+export { ModalEditProduct };

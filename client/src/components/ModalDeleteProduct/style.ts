@@ -7,7 +7,7 @@ const Container = styled.div`
   height: min-content;
 
   background-color: var(--white-fixed);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   padding: 20px;
   animation: ${animationModal} 0.5s;
 

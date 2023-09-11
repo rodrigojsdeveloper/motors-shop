@@ -71,7 +71,7 @@ export default createGlobalStyle`
 		--transparent: transparent;
 
 		// border-radius
-		--border-radius: 4px;
+		--border-radius: 0px;
 		--border-radius-50: 50%;
 	}
 
@@ -80,8 +80,8 @@ export default createGlobalStyle`
 		background-color: var(--white-fixed);
 	}
 
-	button, a {
-		cursor: pointer;
+	button, a, input[type="date"] {
+		cursor: pointer; 
 	}
 
 	a {
@@ -99,6 +99,15 @@ export default createGlobalStyle`
 	}
 
 	&::-webkit-scrollbar {
-		display: none;
+  	width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+	  background-color: var(--grey4);
+		border-radius: 12px;
 	}
 `;

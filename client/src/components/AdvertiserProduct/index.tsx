@@ -6,7 +6,7 @@ import { TitleProduct } from "../TitleProduct";
 import { ImageProduct } from "../ImageProduct";
 import { YearProduct } from "../YearProduct";
 import { IProduct } from "../../interfaces";
-import { ModalEdit } from "../ModalEdit";
+import { ModalEditProduct } from "../ModalEditProduct";
 import { KmProduct } from "../KmProduct";
 import { Link } from "react-router-dom";
 import { Container } from "./style";
@@ -22,7 +22,7 @@ const AdvertiserProduct = ({ product }: IProduct) => {
     <>
       {openModalEdit && (
         <ModalBackground>
-          <ModalEdit
+          <ModalEditProduct
             product={product}
             setOpenModalEdit={setOpenModalEdit}
             setOpenModalDelete={setOpenModalDelete}

@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  & > h4 {
-    margin-top: 20px;
-  }
-  
   & > div {
     width: 100%;
     display: flex;
     flex-direction: row;
 
-    padding: 20px 0;
+    padding: 5px 0 20px 0;
 
     & > button {
       max-width: unset;

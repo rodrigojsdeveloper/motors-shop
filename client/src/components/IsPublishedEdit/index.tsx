@@ -1,19 +1,24 @@
-import { ITypeOfVehicle } from "../../interfaces";
-import { Container } from "./style";
+import { useState } from "react";
 import { Button } from "../Button";
+import { Container } from "./style";
 
-const TypeOfVehicleEdit = ({
-  setBuyerOrAdvertiserVehicleType,
-  vehicle_type,
-}: ITypeOfVehicle) => {
+interface IsPublishedEditProps {
+  setIsPublished: React.Dispatch<React.SetStateAction<boolean>>;
+  is_published: boolean;
+}
+
+const IsPublishedEdit = ({
+  setIsPublished,
+  is_published,
+}: IsPublishedEditProps) => {
   return (
     <Container>
-      <h4>Tipo de veículo</h4>
-      <div>
+      <h4>Publicado</h4>
+      <div className="divButtons">
         <Button
-          onClick={() => setBuyerOrAdvertiserVehicleType(true)}
+          onClick={() => setIsPublished(true)}
           style={
-            vehicle_type == "car"
+            is_published
               ? {
                   backgroundColor: "#4529E6",
                   color: "#fff",
@@ -30,12 +35,12 @@ const TypeOfVehicleEdit = ({
           type="button"
           className="changeButton"
         >
-          Carro
+          Sim
         </Button>
         <Button
-          onClick={() => setBuyerOrAdvertiserVehicleType(false)}
+          onClick={() => setIsPublished(false)}
           style={
-            vehicle_type == "motorcycle"
+            !is_published
               ? {
                   backgroundColor: "#4529E6",
                   color: "#fff",
@@ -52,11 +57,11 @@ const TypeOfVehicleEdit = ({
           type="button"
           className="changeButton"
         >
-          Moto
+          Não
         </Button>
       </div>
     </Container>
   );
 };
 
-export { TypeOfVehicleEdit };
+export { IsPublishedEdit };

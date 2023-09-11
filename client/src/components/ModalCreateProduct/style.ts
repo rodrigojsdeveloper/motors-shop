@@ -4,10 +4,10 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 520px;
-  height: 985px;
+  height: 860px;
 
   background-color: var(--white-fixed);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   padding: 16px 24px;
   animation: ${animationModal} 1s;
 
@@ -18,7 +18,7 @@ const Container = styled.div`
       line-height: 24px;
     }
 
-    & > div:nth-child(4) {
+    & > .divInputs {
       display: flex;
       flex-direction: row;
 
@@ -44,42 +44,7 @@ const Container = styled.div`
       }
     }
 
-    & > div {
-      & > h4 {
-        margin-top: 20px;
-      }
-
-      .divButtons {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-
-        padding: 20px 0;
-
-        & > button {
-          max-width: unset;
-        }
-
-        & > button:nth-child(1) {
-          margin-right: 7px;
-        }
-
-        @media (max-width: 320px) {
-          flex-direction: column;
-
-          & > button {
-            margin-right: 0;
-            max-width: unset;
-          }
-
-          & > button:nth-child(2) {
-            margin-top: 10px;
-          }
-        }
-      }
-    }
-
-    & > div:nth-child(9) {
+    & > .divButtons {
       width: 100%;
       display: flex;
       flex-direction: row;

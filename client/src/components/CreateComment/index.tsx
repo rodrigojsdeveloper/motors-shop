@@ -83,12 +83,6 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           {load ? "Comentando..." : "Comentar"}
         </Button>
       </form>
-
-      <div className="divTexts">
-        <p>Gostei muito!</p>
-        <p>Incrível</p>
-        <p>Recomendarei para meus amigos!</p>
-      </div>
     </Container>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 751px;
-  height: 289px;
+  height: 259px;
 
   background-color: var(--grey10);
   border-radius: var(--border-radius);
@@ -108,44 +108,6 @@ const Container = styled.div`
 
   & > div:nth-child(1) {
     padding-top: 0;
-  }
-
-  .divTexts {
-    width: 401px;
-    margin-top: 15px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    & > p {
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 24px;
-      color: var(--grey3);
-
-      background-color: var(--grey7);
-      border-radius: 24px;
-
-      cursor: pointer;
-      padding: 0px 12px;
-      transition: 0.5s;
-
-      &:hover {
-        color: var(--black-fixed);
-      }
-    }
-
-    @media (max-width: 768px) {
-      height: 110px;
-      width: 100%;
-      max-width: 218px;
-
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
   }
 
   @media (max-width: 1440px) {

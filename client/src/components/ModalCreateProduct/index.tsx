@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-const ModalCreateAnnouncement = ({
+const ModalCreateProduct = ({
   setCloseModalCreateAnnouncement,
   listMotorcyclesFunc,
   listCarsFunc,
@@ -92,7 +92,7 @@ const ModalCreateAnnouncement = ({
           size="inputModalEditAddressLarge"
         />
 
-        <div>
+        <div className="divInputs">
           <Input
             label="Ano"
             name="year"
@@ -122,6 +122,7 @@ const ModalCreateAnnouncement = ({
             size="inputModalCreateAnnouncementSmall"
           />
         </div>
+
         <TextArea
           register={register}
           name="description"
@@ -151,7 +152,7 @@ const ModalCreateAnnouncement = ({
           size="inputModalEditAddressLarge"
         />
 
-        <div>
+        <div className="divButtons">
           <Button
             color="buttonColorGrayModalEditAddress"
             size="buttonSizeModalEditAddressSmall"
@@ -174,4 +175,4 @@ const ModalCreateAnnouncement = ({
   );
 };
 
-export { ModalCreateAnnouncement };
+export { ModalCreateProduct };

@@ -6,7 +6,7 @@ const Container = styled.div`
   max-width: 520px;
   height: 354px;
   background-color: var(--white-fixed);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   padding: 20px;
 
   display: flex;

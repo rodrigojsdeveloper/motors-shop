@@ -1,4 +1,4 @@
-import { ModalCreateAnnouncement } from "../ModalCreateAnnouncement";
+import { ModalCreateProduct } from "../ModalCreateProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
 import { ModalBackground } from "../ModalBackground";
 import { IShowAdvertiser } from "../../interfaces";
@@ -19,7 +19,7 @@ const ShowAdvertiser = ({
     <>
       {openModalCreateAnnouncement && (
         <ModalBackground>
-          <ModalCreateAnnouncement
+          <ModalCreateProduct
             setCloseModalCreateAnnouncement={setOpenModalCreateAnnouncement}
             listMotorcyclesFunc={listMotorcyclesFunc}
             listCarsFunc={listCarsFunc}
