@@ -204,7 +204,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
       <h3>Tipo de conta</h3>
 
-      <div className="divInputs">
+      <div className="divAccountType">
         <Button
           onClick={() => {
             setChangeColorBuyer(true);

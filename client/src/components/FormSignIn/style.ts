@@ -13,25 +13,29 @@ const Container = styled.form`
   & > h2 {
     font-weight: 600;
     font-size: 24px;
-    text-align: start;
     line-height: 30px;
   }
 
   & > a,
   & > small {
-    color: var(--grey2);
     font-weight: 500;
     font-size: 14px;
+
+    color: var(--grey2);
   }
 
   & > .resetPassword {
+    width: fit-content;
+
     display: flex;
     justify-content: flex-end;
-    cursor: pointer;
+    align-items: center;
+    float: right;
 
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
+
     padding: 10px 0 20px 0;
 
     :hover {
@@ -41,6 +45,7 @@ const Container = styled.form`
 
   & > small {
     height: 72px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +55,7 @@ const Container = styled.form`
     width: 100%;
     max-width: 315px;
     height: 48px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,12 +63,12 @@ const Container = styled.form`
     font-weight: 600;
     font-size: 16px;
     line-height: 18px;
-        
+
     color: var(--grey0);
     border: 2px solid var(--grey4);
     background-color: var(--grey10);
     border-radius: var(--border-radius);
-    
+
     transition: 0.5s;
     padding: 12px 28px;
   }
@@ -71,41 +76,9 @@ const Container = styled.form`
   @media (max-width: 425px) {
     padding: 44px 28px;
 
-    & > div:nth-child(2),
-    & > div:nth-child(3),
-    & > button {
+    & > button,
+    .buttonSignUp {
       max-width: unset;
-
-      & > input {
-        max-width: unset;
-      }
-    }
-  }
-
-  @media (max-width: 265px) {
-    & > h2 {
-      font-size: 20px;
-    }
-
-    & > div:nth-child(2),
-    & > div:nth-child(3) {
-      & > label {
-        font-size: 12px;
-      }
-      & > input {
-        &::placeholder {
-          font-size: 12px;
-        }
-      }
-    }
-
-    & > a,
-    & > small {
-      font-size: 12px;
-    }
-
-    & > a:nth-last-child(1) {
-      font-size: 14px;
     }
   }
 `;

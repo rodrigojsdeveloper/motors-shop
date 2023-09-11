@@ -8,14 +8,10 @@ const Container = styled.main`
   justify-content: center;
   align-items: center;
 
-  padding: 50px 10px;
   margin-top: 70px;
+  padding: 50px 10px;
 
   background-color: var(--grey8);
-
-  @media (max-width: 425px) {
-    margin-top: 10px;
-  }
 `;
 
 export { Container };

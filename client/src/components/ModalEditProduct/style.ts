@@ -4,10 +4,11 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 520px;
-  height: 945px;
+  height: 1215px;
 
-  background-color: var(--white-fixed);
   border-radius: var(--border-radius);
+  background-color: var(--white-fixed);
+
   padding: 16px 24px;
   animation: ${animationModal} 1s;
 
@@ -33,25 +34,20 @@ const Container = styled.div`
         padding-top: 20px;
         flex-direction: column-reverse;
 
-        & > button:nth-child(1) {
-          margin-right: 0;
+        & > button {
           max-width: unset;
         }
 
-        & > button:nth-child(2) {
-          margin-bottom: 10px;
-          max-width: unset;
+        & > button:nth-child(1) {
+          margin-right: 0;
+          margin-top: 11px;
         }
       }
     }
   }
 
   @media (max-width: 425px) {
-    height: 1165px;
-  }
-
-  @media (max-width: 320px) {
-    height: 1335px;
+    height: 1320px;
   }
 `;
 

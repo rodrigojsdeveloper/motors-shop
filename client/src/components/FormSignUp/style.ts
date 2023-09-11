@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
 const Container = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
   width: 100%;
   max-width: 411px;
 
-  padding: 44px 48px;
   background-color: var(--grey10);
   border-radius: var(--border-radius);
+
+  padding: 44px 48px;
 
   & > h2 {
     font-weight: bold;
@@ -28,6 +25,16 @@ const Container = styled.form`
     padding: 20px 0;
   }
 
+  .divAccountType {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > button:nth-child(1) {
+      margin-right: 11px;
+    }
+  }
+
   .buttonSubmit {
     margin-top: 30px;
   }
@@ -35,41 +42,21 @@ const Container = styled.form`
   @media (max-width: 425px) {
     padding: 44px 28px;
 
-    & > div {
-      input {
+    .divAccountType {
+      flex-direction: column;
+
+      & > button:nth-child(1) {
+        margin-right: unset;
+        margin-bottom: 11px;
+      }
+
+      & > button {
         max-width: unset;
       }
     }
 
-    .divInputPassword {
+    & > button {
       max-width: unset;
-    }
-
-    button {
-      max-width: unset;
-    }
-  }
-
-  @media (max-width: 265px) {
-    & > h2 {
-      font-size: 20px;
-    }
-
-    h3,
-    button {
-      font-size: 13px;
-    }
-
-    label,
-    input,
-    textarea {
-      font-size: 12px;
-    }
-
-    .divInputPassword {
-      input {
-        font-size: 12px;
-      }
     }
   }
 `;

@@ -1,4 +1,3 @@
-import { TypeOfVehicleEdit } from "../TypeOfVehicleEdit";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IModalEdit } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
@@ -19,9 +18,6 @@ const ModalEditProduct = ({
 }: IModalEdit) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
-  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
-    useState<boolean>(false);
-
   const [isPublished, setIsPublished] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
@@ -36,11 +32,7 @@ const ModalEditProduct = ({
     gallery_image: yup.string().required("1º Imagem da galeria obrigatória"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -49,12 +41,8 @@ const ModalEditProduct = ({
 
     isPublished ? (data.is_published = true) : (data.is_published = false);
 
-    buyerOrAdvertiserVehicleType
-      ? (data.vehicle_type = "car")
-      : (data.vehicle_type = "motorcycle");
-
     api
-      .patch(`/products/${product?.id}`, data, {
+      .patch(`/products/${product.id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,34 +60,39 @@ const ModalEditProduct = ({
         <h4>Informações do veículo</h4>
 
         <Input
-          label="Título"
-          name="title"
+          label="Marca"
+          name="brand"
           register={register}
-          placeholder="Título"
-          type="text"
-          error={errors.title?.message}
-          defaultValue={product?.title}
+          placeholder="Digitar marca"
+          defaultValue={product.brand}
         />
 
+        <Input
+          label="Modelo"
+          name="model"
+          register={register}
+          placeholder="Digitar modelo"
+          defaultValue={product.model}
+        />
 
-<div className="divInputs">
+        <div className="divInputs">
           <Input
             label="Ano"
             name="year"
             register={register}
             placeholder="Digitar ano"
             type="number"
-            maxLength={4}
+            defaultValue={product.year}
           />
           <Input
             label="Combustível"
             name="fuel"
             register={register}
             placeholder="Gasolina/Etanol"
-            type="text"
+            defaultValue={product.fuel}
           />
         </div>
-        
+
         <div className="divInputs">
           <Input
             label="Quilometragem"
@@ -107,16 +100,17 @@ const ModalEditProduct = ({
             register={register}
             placeholder="0"
             type="number"
+            defaultValue={product.kilometers}
           />
           <Input
             label="Cor"
             name="color"
             register={register}
             placeholder="Digite a cor"
-            type="text"
+            defaultValue={product.color}
           />
         </div>
-        
+
         <div className="divInputs">
           <Input
             label="Preço tabela FIPE"
@@ -124,6 +118,7 @@ const ModalEditProduct = ({
             register={register}
             placeholder="0"
             type="number"
+            defaultValue={product.fipe}
           />
           <Input
             label="Preço"
@@ -131,19 +126,14 @@ const ModalEditProduct = ({
             register={register}
             placeholder="0"
             type="number"
+            defaultValue={product.price}
           />
         </div>
 
         <TextArea
-          defaultValue={product?.description}
+          defaultValue={product.description}
           register={register}
           name="description"
-          error={errors.description?.message}
-        />
-
-        <TypeOfVehicleEdit
-          setBuyerOrAdvertiserVehicleType={setBuyerOrAdvertiserVehicleType}
-          vehicle_type={product.vehicle_type}
         />
 
         <IsPublishedEdit
@@ -156,18 +146,24 @@ const ModalEditProduct = ({
           name="cover_image"
           register={register}
           placeholder="https://image.com"
-          type="text"
-          error={errors.cover_image?.message}
-          defaultValue={product?.cover_image}
+          type="url"
+          defaultValue={product.cover_image}
         />
         <Input
           label="1º Imagem da galeria"
           name="gallery_image"
           register={register}
           placeholder="https://image.com"
-          type="text"
-          error={errors.gallery_image?.message}
-          defaultValue={product?.gallery_image}
+          type="url"
+          defaultValue={product.primary_image}
+        />
+        <Input
+          label="2º Imagem da galeria"
+          name="gallery_image"
+          register={register}
+          placeholder="https://image.com"
+          type="url"
+          defaultValue={product.second_image}
         />
 
         <div className="divButtons">
@@ -182,12 +178,7 @@ const ModalEditProduct = ({
           >
             Excluir anúncio
           </Button>
-          <Button
-            color="blue"
-            size="193px"
-            type="submit"
-            disabled={load}
-          >
+          <Button color="blue" size="193px" type="submit" disabled={load}>
             {load ? "Salvando..." : "Salvar alterações"}
           </Button>
         </div>

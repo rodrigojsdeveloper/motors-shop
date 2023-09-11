@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 520px;
-  height: 1155px;
+  height: 1120px;
 
   background-color: var(--white-fixed);
   border-radius: var(--border-radius);
@@ -40,7 +40,7 @@ const Container = styled.div`
         }
 
         & > button:nth-child(2) {
-          margin-bottom: 10px;
+          margin-bottom: 11px;
           max-width: unset;
         }
       }
@@ -48,11 +48,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 425px) {
-    height: 1030px;
-  }
-
-  @media (max-width: 320px) {
-    height: 1150px;
+    height: 1165px;
   }
 `;
 

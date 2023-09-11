@@ -83,11 +83,17 @@ export interface IProductProps {
   description: string;
   year: number;
   kilometers: number;
+  fipe: number;
+  brand: string;
+  model: string;
+  fuel: string;
+  color: string;
   price: string;
   vehicle_type: "car" | "motorbike" | string;
   is_published: boolean;
   cover_image: string;
-  gallery_image: string;
+  primary_image: string;
+  second_image: string;
   user: IUserProps;
   comments: [];
 }

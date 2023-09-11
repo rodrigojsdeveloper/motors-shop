@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  padding-top: 20px;
+
   & > div {
     width: 100%;
+
     display: flex;
     flex-direction: row;
+    align-items: center;
 
-    padding: 5px 0 20px 0;
+    padding-top: 5px;
 
     & > button {
       max-width: unset;
@@ -16,16 +20,12 @@ const Container = styled.div`
       margin-right: 7px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 425px) {
       flex-direction: column;
 
-      & > button {
+      & > button:nth-child(1) {
         margin-right: 0;
-        max-width: unset;
-      }
-
-      & > button:nth-child(2) {
-        margin-top: 10px;
+        margin-bottom: 10px;
       }
     }
   }

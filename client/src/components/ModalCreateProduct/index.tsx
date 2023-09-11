@@ -1,6 +1,5 @@
 import { IModalCreateAnnouncement } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TypeOfVehicle } from "../TypeOfVehicle";
 import { HeaderModal } from "../HeaderModal";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
@@ -17,9 +16,6 @@ const ModalCreateProduct = ({
   listCarsFunc,
 }: IModalCreateAnnouncement) => {
   const token = sessionStorage.getItem("Motors shop: token");
-
-  const [buyerOrAdvertiserVehicleType, setBuyerOrAdvertiserVehicleType] =
-    useState<boolean>(true);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -46,10 +42,6 @@ const ModalCreateProduct = ({
 
   const onSubmitFunction = (data: any) => {
     setLoad(true);
-
-    buyerOrAdvertiserVehicleType
-      ? (data.vehicle_type = "car")
-      : (data.vehicle_type = "motorcycle");
 
     api
       .post("/products", data, {
@@ -87,15 +79,13 @@ const ModalCreateProduct = ({
           name="brand"
           register={register}
           placeholder="Digitar marca"
-          type="text"
         />
-        
+
         <Input
           label="Modelo"
           name="model"
           register={register}
           placeholder="Digitar modelo"
-          type="text"
         />
 
         <div className="divInputs">
@@ -103,49 +93,46 @@ const ModalCreateProduct = ({
             label="Ano"
             name="year"
             register={register}
-            placeholder="Digitar ano"
+            placeholder="2020"
             type="number"
-            maxLength={4}
           />
           <Input
             label="Combustível"
             name="fuel"
             register={register}
             placeholder="Gasolina/Etanol"
-            type="text"
           />
         </div>
-        
+
         <div className="divInputs">
           <Input
             label="Quilometragem"
             name="kilometers"
             register={register}
-            placeholder="0"
+            placeholder="30.000"
             type="number"
           />
           <Input
             label="Cor"
             name="color"
             register={register}
-            placeholder="Digite a cor"
-            type="text"
+            placeholder="Branco"
           />
         </div>
-        
+
         <div className="divInputs">
           <Input
-            label="Preço tabela FIPE"
+            label="Tabela FIPE"
             name="fipe"
             register={register}
-            placeholder="0"
+            placeholder="R$ 48.000,00"
             type="number"
           />
           <Input
             label="Preço"
             name="price"
             register={register}
-            placeholder="0"
+            placeholder="R$ 50.000,00"
             type="number"
           />
         </div>
@@ -153,28 +140,28 @@ const ModalCreateProduct = ({
         <TextArea
           register={register}
           name="description"
-          error={errors.description?.message}
-        />
-
-        <TypeOfVehicle
-          setBuyerOrAdvertiserVehicleType={setBuyerOrAdvertiserVehicleType}
         />
 
         <Input
           label="Imagem da capa"
           name="cover_image"
           register={register}
-          placeholder="Inserir URL da imagem"
-          type="text"
-          error={errors.cover_image?.message}
+          placeholder="https://image.com"
+          type="url"
         />
         <Input
           label="1º Imagem da galeria"
           name="gallery_image"
           register={register}
-          placeholder="Inserir URL da imagem"
-          type="text"
-          error={errors.gallery_image?.message}
+          placeholder="https://image.com"
+          type="url"
+        />
+        <Input
+          label="2º Imagem da galeria"
+          name="gallery_image"
+          register={register}
+          placeholder="https://image.com"
+          type="url"
         />
 
         <div className="divButtons">
@@ -186,12 +173,7 @@ const ModalCreateProduct = ({
           >
             Cancelar
           </Button>
-          <Button
-            color="blue"
-            size="193px"
-            type="submit"
-            disabled={load}
-          >
+          <Button color="blue" size="193px" type="submit" disabled={load}>
             {load ? "Criando..." : "Criar anúncio"}
           </Button>
         </div>

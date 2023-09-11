@@ -57,7 +57,6 @@ const Container = styled.div`
       color: var(--white-fixed);
 
       transition: 0.5s;
-      cursor: pointer;
 
       display: flex;
       justify-content: center;
