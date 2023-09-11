@@ -1,12 +1,16 @@
 interface IProduct {
-  title: string;
-  description: string;
+  brand: string;
+  model: string;
   year: number;
+  fuel: "Gasolina" | "Etanol";
   kilometers: number;
-  price: string;
-  vehicle_type: "car" | "motorcycle";
+  color: string;
+  fipe: number;
+  price: number;
+  description: string;
   cover_image: string;
-  gallery_image: string;
+  primary_image: string;
+  second_image: string;
 }
 
 export { IProduct };

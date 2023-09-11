@@ -49,17 +49,20 @@ describe("Testing all product routes", () => {
 
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("title");
-    expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("brand");
+    expect(response.body).toHaveProperty("model");
     expect(response.body).toHaveProperty("year");
+    expect(response.body).toHaveProperty("fuel");
     expect(response.body).toHaveProperty("kilometers");
+    expect(response.body).toHaveProperty("color");
+    expect(response.body).toHaveProperty("fipe");
     expect(response.body).toHaveProperty("price");
-    expect(response.body).toHaveProperty("vehicle_type");
-    expect(response.body).toHaveProperty("cover_image");
-    expect(response.body).toHaveProperty("gallery_image");
-    expect(response.body).toHaveProperty("comments");
+    expect(response.body).toHaveProperty("description");
     expect(response.body).toHaveProperty("is_published");
-    expect(response.body).toHaveProperty("user");
+    expect(response.body).toHaveProperty("cover_image");
+    expect(response.body).toHaveProperty("primary_image");
+    expect(response.body).toHaveProperty("second_image");
+    expect(response.body).toHaveProperty("comments");
   });
 
   test("Must be able to prevent creation of a tokenless product", async () => {
@@ -99,17 +102,20 @@ describe("Testing all product routes", () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("title");
-    expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("brand");
+    expect(response.body).toHaveProperty("model");
     expect(response.body).toHaveProperty("year");
+    expect(response.body).toHaveProperty("fuel");
     expect(response.body).toHaveProperty("kilometers");
+    expect(response.body).toHaveProperty("color");
+    expect(response.body).toHaveProperty("fipe");
     expect(response.body).toHaveProperty("price");
-    expect(response.body).toHaveProperty("vehicle_type");
-    expect(response.body).toHaveProperty("cover_image");
-    expect(response.body).toHaveProperty("gallery_image");
-    expect(response.body).toHaveProperty("comments");
+    expect(response.body).toHaveProperty("description");
     expect(response.body).toHaveProperty("is_published");
-    expect(response.body).toHaveProperty("user");
+    expect(response.body).toHaveProperty("cover_image");
+    expect(response.body).toHaveProperty("primary_image");
+    expect(response.body).toHaveProperty("second_image");
+    expect(response.body).toHaveProperty("comments");
   });
 
   test("Must be able to prevent displaying a product using invalid id", async () => {
@@ -129,16 +135,20 @@ describe("Testing all product routes", () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("title");
-    expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("brand");
+    expect(response.body).toHaveProperty("model");
     expect(response.body).toHaveProperty("year");
+    expect(response.body).toHaveProperty("fuel");
     expect(response.body).toHaveProperty("kilometers");
+    expect(response.body).toHaveProperty("color");
+    expect(response.body).toHaveProperty("fipe");
     expect(response.body).toHaveProperty("price");
-    expect(response.body).toHaveProperty("vehicle_type");
-    expect(response.body).toHaveProperty("cover_image");
-    expect(response.body).toHaveProperty("gallery_image");
-    expect(response.body).toHaveProperty("comments");
+    expect(response.body).toHaveProperty("description");
     expect(response.body).toHaveProperty("is_published");
+    expect(response.body).toHaveProperty("cover_image");
+    expect(response.body).toHaveProperty("primary_image");
+    expect(response.body).toHaveProperty("second_image");
+    expect(response.body).toHaveProperty("comments");
   });
 
   test("Must be able to prevent editing of a product without token", async () => {

@@ -79,17 +79,15 @@ export interface IUserProps {
 
 export interface IProductProps {
   id: string;
-  title: string;
-  description: string;
-  year: number;
-  kilometers: number;
-  fipe: number;
   brand: string;
   model: string;
-  fuel: string;
+  year: number;
+  fuel: "Gasolina" | "Etanol";
+  kilometers: number;
   color: string;
-  price: string;
-  vehicle_type: "car" | "motorbike" | string;
+  fipe: number;
+  price: number;
+  description: string;
   is_published: boolean;
   cover_image: string;
   primary_image: string;

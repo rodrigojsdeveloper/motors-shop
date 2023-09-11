@@ -14,31 +14,43 @@ class Product {
   id: string;
 
   @Column()
-  title: string;
+  brand: string;
 
   @Column()
-  description: string;
+  model: string;
 
   @Column()
   year: number;
 
   @Column()
+  fuel: string;
+
+  @Column()
   kilometers: number;
 
   @Column()
-  price: string;
+  color: string;
+
+  @Column()
+  fipe: number;
+
+  @Column()
+  price: number;
+
+  @Column()
+  description: string;
 
   @Column({ default: true })
   is_published: boolean;
 
   @Column()
-  vehicle_type: string;
-
-  @Column()
   cover_image: string;
 
   @Column()
-  gallery_image: string;
+  primary_image: string;
+
+  @Column()
+  second_image: string;
 
   @ManyToOne((type) => User, (user) => user.products)
   user: User;

@@ -29,17 +29,20 @@ describe("Testing all service product methods", () => {
     );
 
     expect(result).toHaveProperty("id");
-    expect(result).toHaveProperty("title");
-    expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("brand");
+    expect(result).toHaveProperty("model");
     expect(result).toHaveProperty("year");
+    expect(result).toHaveProperty("fuel");
     expect(result).toHaveProperty("kilometers");
+    expect(result).toHaveProperty("color");
+    expect(result).toHaveProperty("fipe");
     expect(result).toHaveProperty("price");
-    expect(result).toHaveProperty("vehicle_type");
-    expect(result).toHaveProperty("cover_image");
-    expect(result).toHaveProperty("gallery_image");
-    expect(result).toHaveProperty("comments");
+    expect(result).toHaveProperty("description");
     expect(result).toHaveProperty("is_published");
-    expect(result).toHaveProperty("user");
+    expect(result).toHaveProperty("cover_image");
+    expect(result).toHaveProperty("primary_image");
+    expect(result).toHaveProperty("second_image");
+    expect(result).toHaveProperty("comments");
   });
 
   it("Must be able to list all products", async () => {
@@ -57,17 +60,20 @@ describe("Testing all service product methods", () => {
     const result = await new ProductsService().specific(createdProduct.id);
 
     expect(result).toHaveProperty("id");
-    expect(result).toHaveProperty("title");
-    expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("brand");
+    expect(result).toHaveProperty("model");
     expect(result).toHaveProperty("year");
+    expect(result).toHaveProperty("fuel");
     expect(result).toHaveProperty("kilometers");
+    expect(result).toHaveProperty("color");
+    expect(result).toHaveProperty("fipe");
     expect(result).toHaveProperty("price");
-    expect(result).toHaveProperty("vehicle_type");
-    expect(result).toHaveProperty("cover_image");
-    expect(result).toHaveProperty("gallery_image");
-    expect(result).toHaveProperty("comments");
+    expect(result).toHaveProperty("description");
     expect(result).toHaveProperty("is_published");
-    expect(result).toHaveProperty("user");
+    expect(result).toHaveProperty("cover_image");
+    expect(result).toHaveProperty("primary_image");
+    expect(result).toHaveProperty("second_image");
+    expect(result).toHaveProperty("comments");
   });
 
   it("Must be able to edit a product", async () => {
@@ -82,16 +88,20 @@ describe("Testing all service product methods", () => {
     );
 
     expect(result).toHaveProperty("id");
-    expect(result).toHaveProperty("title");
-    expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("brand");
+    expect(result).toHaveProperty("model");
     expect(result).toHaveProperty("year");
+    expect(result).toHaveProperty("fuel");
     expect(result).toHaveProperty("kilometers");
+    expect(result).toHaveProperty("color");
+    expect(result).toHaveProperty("fipe");
     expect(result).toHaveProperty("price");
-    expect(result).toHaveProperty("vehicle_type");
-    expect(result).toHaveProperty("cover_image");
-    expect(result).toHaveProperty("gallery_image");
-    expect(result).toHaveProperty("comments");
+    expect(result).toHaveProperty("description");
     expect(result).toHaveProperty("is_published");
+    expect(result).toHaveProperty("cover_image");
+    expect(result).toHaveProperty("primary_image");
+    expect(result).toHaveProperty("second_image");
+    expect(result).toHaveProperty("comments");
   });
 
   it("Must be able to delete a product", async () => {

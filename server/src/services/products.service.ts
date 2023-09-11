@@ -14,14 +14,18 @@ class ProductsService {
     }
 
     const newProduct = new Product();
-    newProduct.title = product.title;
-    newProduct.description = product.description;
+    newProduct.brand = product.brand;
+    newProduct.model = product.model;
     newProduct.year = product.year;
+    newProduct.fuel = product.fuel;
     newProduct.kilometers = product.kilometers;
+    newProduct.color = product.color;
+    newProduct.fipe = product.fipe;
     newProduct.price = product.price;
-    newProduct.vehicle_type = product.vehicle_type;
+    newProduct.description = product.description;
     newProduct.cover_image = product.cover_image;
-    newProduct.gallery_image = product.gallery_image;
+    newProduct.primary_image = product.primary_image;
+    newProduct.second_image = product.second_image;
     newProduct.comments = [];
     newProduct.user = user!;
 
@@ -60,24 +64,28 @@ class ProductsService {
     }
 
     await productRepository.update(findProduct.id, {
-      title: product.title ? product.title : findProduct.title,
-      description: product.description
-        ? product.description
-        : findProduct.description,
+      brand: product.brand ? product.brand : findProduct.brand,
+      model: product.model ? product.model : findProduct.model,
       year: product.year ? product.year : findProduct.year,
+      fuel: product.fuel ? product.fuel : findProduct.fuel,
       kilometers: product.kilometers
         ? product.kilometers
         : findProduct.kilometers,
+      color: product.color ? product.color : findProduct.color,
+      fipe: product.fipe ? product.fipe : findProduct.fipe,
       price: product.price ? product.price : findProduct.price,
-      vehicle_type: product.vehicle_type
-        ? product.vehicle_type
-        : findProduct.vehicle_type,
+      description: product.description
+        ? product.description
+        : findProduct.description,
       cover_image: product.cover_image
         ? product.cover_image
         : findProduct.cover_image,
-      gallery_image: product.gallery_image
-        ? product.gallery_image
-        : findProduct.gallery_image,
+      primary_image: product.primary_image
+        ? product.primary_image
+        : findProduct.primary_image,
+      second_image: product.second_image
+        ? product.second_image
+        : findProduct.second_image,
     });
 
     const updatedProduct = await productRepository.findOneBy({
