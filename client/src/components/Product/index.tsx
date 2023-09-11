@@ -18,9 +18,9 @@ const Product = ({ product }: IProduct) => {
 
   return (
     <Container onClick={() => navigate(`/products/${productId}`)}>
-      <ImageProduct src={product.cover_image} alt={product.title} />
+      <ImageProduct src={product.cover_image} alt={product.model} />
 
-      <TitleProduct title={product.title} />
+      <TitleProduct title={product.model} />
       <DescriptionProduct description={product.description} />
 
       <AvatarUser username={product.user.name} />

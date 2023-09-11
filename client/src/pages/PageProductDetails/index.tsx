@@ -73,7 +73,7 @@ const PageProductDetails = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title={`${productRequest.title} | Motors Shop`} />
+        <Helmet title={`${productRequest.model} | Motors Shop`} />
       </HelmetProvider>
       {loadedProduct ? (
         <ModalBackground>
@@ -85,7 +85,7 @@ const PageProductDetails = () => {
           <ModalPhoto
             setOpenModalPhoto={setOpenModalPhoto}
             cover_image={productRequest.cover_image}
-            title={productRequest.title}
+            title={productRequest.model}
           />
         </ModalBackground>
       ) : null}

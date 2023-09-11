@@ -1,13 +1,17 @@
-import { IListProducts, IProductProps } from "../../interfaces";
+import { ProductContext } from "../../contexts/product.context";
+import { IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { TitleList } from "../TitleList";
 import { Product } from "../Product";
 import { Container } from "./style";
+import { useContext } from "react";
 
-const ListCars = ({ products }: IListProducts) => {
+const List = () => {
+  const { products } = useContext(ProductContext);
+
   return (
-    <Container id="cars">
-      <TitleList title="Carros" />
+    <Container>
+      <TitleList title="Veículos" />
 
       <menu>
         {products.length > 0 ? (
@@ -15,11 +19,11 @@ const ListCars = ({ products }: IListProducts) => {
             <Product product={product} key={product.id} />
           ))
         ) : (
-          <EmptyMessage message="Não há carros" />
+          <EmptyMessage message="Não há veículos" />
         )}
       </menu>
     </Container>
   );
 };
 
-export { ListCars };
+export { List };

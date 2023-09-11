@@ -1,50 +1,14 @@
-import { ListMotorcycles } from "../components/ListMotorcycles";
 import { ModalBackground } from "../components/ModalBackground";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { ListCars } from "../components/ListCars";
-import React, { useEffect, useState } from "react";
-import { IProductProps } from "../interfaces";
 import { Header } from "../components/Header";
 import { Banner } from "../components/Banner";
 import { Footer } from "../components/Footer";
 import { Loaded } from "../components/Loaded";
-import { api } from "../services/api";
+import { List } from "../components/List";
+import React, { useState } from "react";
 
 const Home = () => {
-  const [cars, setCars] = useState<IProductProps[]>([]);
-
-  const [motorcycles, setMotorcycles] = useState<IProductProps[]>([]);
-
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const loadProducts = async () => {
-    try {
-      const { data } = await api.get("/products");
-      const products = data.filter(
-        (product: IProductProps) => product.is_published === true
-      );
-
-      setCars(
-        products.filter(
-          (product: IProductProps) => product.vehicle_type === "car"
-        )
-      );
-
-      setMotorcycles(
-        products.filter(
-          (product: IProductProps) => product.vehicle_type === "motorcycle"
-        )
-      );
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
 
   return (
     <React.Fragment>
@@ -58,8 +22,7 @@ const Home = () => {
       ) : null}
       <Header />
       <Banner />
-      <ListCars products={cars} />
-      <ListMotorcycles products={motorcycles} />
+      <List />
       <Footer />
     </React.Fragment>
   );

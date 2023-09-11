@@ -115,10 +115,6 @@ export interface IComment {
   comment: ICommentProps;
 }
 
-export interface IListProducts {
-  products: IProductProps[];
-}
-
 export interface IListComments {
   comments: ICommentProps[];
   loaded: boolean;
@@ -162,7 +158,7 @@ export interface IKmProduct {
 }
 
 export interface IPriceProduct {
-  price: string;
+  price: number;
 }
 
 export interface IModalBackground {
@@ -175,11 +171,7 @@ export interface IHeaderModal {
 }
 
 export interface IModalCreateAnnouncement {
-  setCloseModalCreateAnnouncement: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
-  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
-  listCarsFunc: (car: IProductProps) => void;
+  setOpenModalCreateProduct: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IModalDelete {
@@ -248,4 +240,22 @@ export interface IEmptyMessage {
 export interface ILayout {
   children: React.ReactNode;
   title: string;
+}
+
+export interface IChildren {
+  children: React.ReactNode;
+}
+
+export interface IProductContextData {
+  products: Array<IProductProps>;
+  addProduct: (product: IProductProps) => void;
+}
+
+export interface IUserContextData {
+  user: IUserProps;
+}
+
+export interface IUserProductsList {
+  products: Array<IProductProps>;
+  user: IUserProps;
 }

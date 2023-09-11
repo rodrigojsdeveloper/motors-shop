@@ -1,28 +1,24 @@
 import { ModalCreateProduct } from "../ModalCreateProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
+import { UserContext } from "../../contexts/user.context";
 import { ModalBackground } from "../ModalBackground";
-import { IShowAdvertiser } from "../../interfaces";
+import { useContext, useState } from "react";
 import { AvatarUser } from "../AvatarUser";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { useState } from "react";
 
-const ShowAdvertiser = ({
-  user,
-  listCarsFunc,
-  listMotorcyclesFunc,
-}: IShowAdvertiser) => {
-  const [openModalCreateAnnouncement, setOpenModalCreateAnnouncement] =
+const ShowAdvertiser = () => {
+  const { user } = useContext(UserContext);
+
+  const [openModalCreateProduct, setOpenModalCreateProduct] =
     useState<boolean>(false);
 
   return (
     <>
-      {openModalCreateAnnouncement && (
+      {openModalCreateProduct && (
         <ModalBackground>
           <ModalCreateProduct
-            setCloseModalCreateAnnouncement={setOpenModalCreateAnnouncement}
-            listMotorcyclesFunc={listMotorcyclesFunc}
-            listCarsFunc={listCarsFunc}
+            setOpenModalCreateProduct={setOpenModalCreateProduct}
           />
         </ModalBackground>
       )}
@@ -40,7 +36,7 @@ const ShowAdvertiser = ({
           color="light-blue"
           size="160px"
           type="button"
-          onClick={() => setOpenModalCreateAnnouncement(true)}
+          onClick={() => setOpenModalCreateProduct(true)}
         >
           Criar anúncio
         </Button>

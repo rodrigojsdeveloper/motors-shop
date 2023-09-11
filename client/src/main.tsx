@@ -2,15 +2,18 @@ import { ScrollToTop } from "./utils/scrollToTop";
 import { BrowserRouter } from "react-router-dom";
 import GlobalStyled from "./styles/global";
 import ReactDOM from "react-dom/client";
+import { Providers } from "./contexts";
 import { App } from "./App";
 import React from "react";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <GlobalStyled />
-      <ScrollToTop />
-      <App />
-    </BrowserRouter>
+    <Providers>
+      <BrowserRouter>
+        <GlobalStyled />
+        <ScrollToTop />
+        <App />
+      </BrowserRouter>
+    </Providers>
   </React.StrictMode>
 );

@@ -6,6 +6,7 @@ import {
   Column,
   ManyToOne,
   OneToMany,
+  JoinColumn,
 } from "typeorm";
 
 @Entity("products")
@@ -53,6 +54,7 @@ class Product {
   second_image: string;
 
   @ManyToOne((type) => User, (user) => user.products)
+  @JoinColumn({ name: "user_id" })
   user: User;
 
   @OneToMany((type) => Comment, (comment) => comment.product, {

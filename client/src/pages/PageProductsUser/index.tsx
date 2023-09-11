@@ -1,5 +1,4 @@
-import { UserProductsListMotorcycles } from "../../components/UserProductsListMotorcycles";
-import { UserProductsListCars } from "../../components/UserProductsListCars";
+import { UserProductsList } from "../../components/UserProductsList";
 import { ModalBackground } from "../../components/ModalBackground";
 import { IProductProps, IUserProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -15,9 +14,7 @@ import { Container } from "./style";
 const PageProductsUser = () => {
   const { userProductId } = useParams();
 
-  const [cars, setCars] = useState<IProductProps[]>([]);
-
-  const [motorcycles, setMotorcycles] = useState<IProductProps[]>([]);
+  const [products, setProducts] = useState<IProductProps[]>([]);
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
 
@@ -31,17 +28,7 @@ const PageProductsUser = () => {
         const { data } = await api.get(`/users/products/${userProductId}`);
         setUser(data);
 
-        setCars(
-          data.products.filter(
-            (product: IProductProps) => product.vehicle_type == "car"
-          )
-        );
-
-        setMotorcycles(
-          data.products.filter(
-            (product: IProductProps) => product.vehicle_type == "motorcycle"
-          )
-        );
+        setProducts(data.products);
       } catch (error) {
         console.error(error);
       } finally {
@@ -69,8 +56,7 @@ const PageProductsUser = () => {
         <div className="divWhite">
           <div>
             <ShowUser user={user} />
-            <UserProductsListCars products={cars} user={user} />
-            <UserProductsListMotorcycles products={motorcycles} user={user} />
+            <UserProductsList products={products} user={user} />
           </div>
         </div>
         <Footer />

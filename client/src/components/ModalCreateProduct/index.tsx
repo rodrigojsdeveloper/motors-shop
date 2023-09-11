@@ -1,42 +1,49 @@
+import { ProductContext } from "../../contexts/product.context";
 import { IModalCreateAnnouncement } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { HeaderModal } from "../HeaderModal";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
-import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
 
 const ModalCreateProduct = ({
-  setCloseModalCreateAnnouncement,
-  listMotorcyclesFunc,
-  listCarsFunc,
+  setOpenModalCreateProduct,
 }: IModalCreateAnnouncement) => {
+  const { addProduct } = useContext(ProductContext);
+
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    title: yup.string().required("Título obrigatório"),
-    description: yup.string().required("Descrição obrigatória"),
-    year: yup.number().positive().integer().required("Ano obrigatório"),
-    kilometers: yup.number().integer().required("Kilometros obrigatório"),
-    price: yup.string().required("Preço obrigatório"),
-    cover_image: yup.string().required("Imagem da capa obrigatória").url(),
-    gallery_image: yup
-      .string()
-      .required("1º Imagem da galeria obrigatória")
-      .url(),
+    brand: yup.string().required(),
+    model: yup.string().required(),
+    year: yup.number().required().typeError("year must be a number").integer(),
+    fuel: yup.mixed().oneOf(["Gasolina", "Etanol"]).required(),
+    kilometers: yup
+      .number()
+      .required()
+      .typeError("kilometers must be a number")
+      .integer(),
+    color: yup.string().required(),
+    fipe: yup.number().required().typeError("fipe must be a number").integer(),
+    price: yup
+      .number()
+      .required()
+      .typeError("price must be a number")
+      .integer(),
+    description: yup.string().required(),
+    cover_image: yup.string().required().url(),
+    primary_image: yup.string().required().url(),
+    second_image: yup.string().required().url(),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -50,15 +57,9 @@ const ModalCreateProduct = ({
         },
       })
       .then((res) => {
-        if (res.data.vehicle_type == "car") {
-          listCarsFunc(res.data);
-        }
+        addProduct(res.data);
 
-        if (res.data.vehicle_type == "motorcycle") {
-          listMotorcyclesFunc(res.data);
-        }
-
-        setCloseModalCreateAnnouncement(false);
+        setOpenModalCreateProduct(false);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
@@ -68,7 +69,7 @@ const ModalCreateProduct = ({
     <Container>
       <HeaderModal
         title="Criar anúncio"
-        setCloseModal={setCloseModalCreateAnnouncement}
+        setCloseModal={setOpenModalCreateProduct}
       />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
@@ -137,10 +138,7 @@ const ModalCreateProduct = ({
           />
         </div>
 
-        <TextArea
-          register={register}
-          name="description"
-        />
+        <TextArea register={register} name="description" />
 
         <Input
           label="Imagem da capa"
@@ -169,7 +167,7 @@ const ModalCreateProduct = ({
             color="grey-6"
             size="126px"
             type="button"
-            onClick={() => setCloseModalCreateAnnouncement(false)}
+            onClick={() => setOpenModalCreateProduct(false)}
           >
             Cancelar
           </Button>

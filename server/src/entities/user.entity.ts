@@ -47,20 +47,14 @@ class User {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToOne((type) => Address, {
-    eager: true,
-  })
+  @OneToOne((type) => Address)
   @JoinColumn({ name: "address_id" })
   address: Address;
 
-  @OneToMany((type) => Product, (product) => product.user, {
-    eager: true,
-  })
+  @OneToMany((type) => Product, (product) => product.user)
   products: Array<Product>;
 
-  @OneToMany((type) => Comment, (comment) => comment.user, {
-    eager: true,
-  })
+  @OneToMany((type) => Comment, (comment) => comment.user)
   comments: Array<Comment>;
 }
 
