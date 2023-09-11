@@ -6,7 +6,7 @@ const Container = styled.div`
   height: 289px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   padding: 40px 30px 40px 48px;
   margin-top: 35px;
@@ -22,7 +22,7 @@ const Container = styled.div`
     height: 128px;
 
     border: 2px solid var(--grey7);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
 
     padding: 10px;
     transition: 0.5s;
@@ -37,10 +37,7 @@ const Container = styled.div`
       height: 100%;
       width: 80%;
 
-      border: none;
-      resize: none;
-
-      background: transparent;
+      background-color: var(--transparent);
 
       &::placeholder {
         font-weight: 400;
@@ -56,7 +53,7 @@ const Container = styled.div`
       }
 
       &:focus::-webkit-input-placeholder {
-        color: transparent;
+        color: var(--transparent);
       }
     }
 
@@ -75,7 +72,7 @@ const Container = styled.div`
 
       & > textarea {
         border: 2px solid var(--grey7);
-        border-radius: 4px;
+        border-radius: var(--border-radius);
 
         width: 100%;
         height: 128px;
@@ -99,11 +96,11 @@ const Container = styled.div`
         }
 
         &:focus::-webkit-input-placeholder {
-          color: transparent;
+          color: var(--transparent);
         }
 
         &:focus::-moz-placeholder {
-          color: transparent;
+          color: var(--transparent);
         }
       }
     }

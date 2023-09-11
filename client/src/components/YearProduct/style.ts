@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.p`
   background-color: var(--brand4);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   padding: 4px 8px;
   height: 32px;
 

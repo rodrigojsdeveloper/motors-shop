@@ -20,8 +20,8 @@ const Container = styled.div`
     height: 255px;
     padding: 27px 7px;
 
-    background: var(--grey7);
-    border-radius: 4px;
+    background-color: var(--grey7);
+    border-radius: var(--border-radius);
     object-fit: contain;
   }
 `;

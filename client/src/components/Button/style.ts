@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 const Container = styled.button<IButtonStyledProps>`
   width: 100%;
 
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   font-weight: 600;
   font-size: 16px;
 
@@ -187,7 +187,7 @@ const Container = styled.button<IButtonStyledProps>`
       case "buttonColorBlueBanner":
         return css`
           border: 1.5px solid var(--grey10);
-          background-color: transparent;
+          background-color: var(--transparent);
           padding: 12px 28px;
 
           color: var(--grey10);
@@ -249,7 +249,7 @@ const Container = styled.button<IButtonStyledProps>`
           font-size: 14px;
           color: var(--grey0);
 
-          background-color: transparent;
+          background-color: var(--transparent);
 
           :hover {
             background-color: var(--grey1);

@@ -12,7 +12,7 @@ const Container = styled.section`
 
   padding: 36px 44px;
   background-color: var(--white-fixed);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   & > h4 {
     font-weight: 600;

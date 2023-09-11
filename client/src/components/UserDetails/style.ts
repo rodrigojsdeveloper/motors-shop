@@ -23,8 +23,8 @@ const Container = styled.div`
     }
 
     & > p {
-      background: var(--brand4);
-      border-radius: 4px;
+      background-color: var(--brand4);
+      border-radius: var(--border-radius);
       padding: 4px 8px;
 
       font-weight: 500;

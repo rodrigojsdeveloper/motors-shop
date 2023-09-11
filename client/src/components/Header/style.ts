@@ -42,7 +42,7 @@ const Container = styled.header`
 
     transition: 0.5s;
 
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     color: var(--grey2);
     border: 2px solid var(--grey4);
     background-color: var(--grey10);
@@ -196,7 +196,7 @@ const Container = styled.header`
     height: 202px;
     margin-right: 15px;
 
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     background-color: var(--grey9);
     box-shadow: 0px 4px 40px -10px var(--shadow4);
 

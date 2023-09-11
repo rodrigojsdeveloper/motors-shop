@@ -7,7 +7,7 @@ const Container = styled.section`
 
   padding: 28px 44px;
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   margin-top: 10px;
 
@@ -59,7 +59,7 @@ const Container = styled.section`
     padding: 12px 20px;
     background-color: var(--brand1);
     border: 1.5px solid var(--brand1);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     font-weight: 600;
     font-size: 14px;
     color: var(--white-fixed);

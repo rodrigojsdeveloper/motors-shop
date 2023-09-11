@@ -24,8 +24,8 @@ const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
           }}
           style={
             changeColorBuyerVehicleType
-              ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
-              : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
+              ? { backgroundColor: "#4529E6", color: "#fff", borderColor: "#4529E6" }
+              : { backgroundColor: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"
@@ -42,8 +42,8 @@ const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
           }}
           style={
             changeColorAdvertiserVehicleType
-              ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
-              : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
+              ? { backgroundColor: "#4529E6", color: "#fff", borderColor: "#4529E6" }
+              : { backgroundColor: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"

@@ -33,7 +33,7 @@ const Container = styled.div`
 const Content = styled.div`
   width: 32px;
   height: 32px;
-  border-radius: 150px;
+  border-radius: var(--border-radius-50);
 
   display: flex;
   align-items: center;

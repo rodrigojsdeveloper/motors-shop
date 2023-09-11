@@ -27,8 +27,8 @@ const TypeOfVehicleEdit = ({
           }}
           style={
             vehicle_type == "car"
-              ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
-              : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
+              ? { backgroundColor: "#4529E6", color: "#fff", borderColor: "#4529E6" }
+              : { backgroundColor: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"
@@ -45,8 +45,8 @@ const TypeOfVehicleEdit = ({
           }}
           style={
             vehicle_type == "motorcycle"
-              ? { background: "#4529E6", color: "#fff", borderColor: "#4529E6" }
-              : { background: "#fff", color: "#000", borderColor: "#ADB5BD" }
+              ? { backgroundColor: "#4529E6", color: "#fff", borderColor: "#4529E6" }
+              : { backgroundColor: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
           size="buttonSizeSignUp"
           color="buttonColorWhiteSignUp"

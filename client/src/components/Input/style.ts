@@ -22,13 +22,13 @@ const InputContainer = styled.input<InputStyledProps>`
   padding: 15px;
 
   border: 2px solid var(--grey7);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   font-weight: 400;
   font-size: 16px;
 
   transition: 0.5s;
-  background: transparent;
+  background-color: var(--transparent);
 
   &:hover {
     background-color: var(--grey8);
@@ -45,11 +45,11 @@ const InputContainer = styled.input<InputStyledProps>`
   }
 
   &:focus::-webkit-input-placeholder {
-    color: transparent;
+    color: var(--transparent);
   }
 
   &:focus::-moz-placeholder {
-    color: transparent;
+    color: var(--transparent);
   }
 
   ${({ size }) => {

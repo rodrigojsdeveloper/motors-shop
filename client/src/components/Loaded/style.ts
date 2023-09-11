@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   animation: ${AnimateLoading} 1s infinite;
-  border: 3px solid transparent;
-  border-radius: 50%;
+  border: 3px solid var(--transparent);
+  border-radius: var(--border-radius-50);
   border-top-color: var(--white-fixed);
   height: 150px;
   width: 150px;

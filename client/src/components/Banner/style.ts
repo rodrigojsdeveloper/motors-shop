@@ -72,7 +72,7 @@ const Container = styled.div`
         max-width: 182.51px;
         width: 100%;
 
-        border-radius: 4px;
+        border-radius: var(--border-radius);
         transition: 0.5s;
 
         display: flex;
@@ -80,7 +80,7 @@ const Container = styled.div`
         align-items: center;
 
         border: 1.5px solid var(--grey10);
-        background-color: transparent;
+        background-color: var(--transparent);
         padding: 12px 28px;
 
         font-weight: 600;

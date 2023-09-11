@@ -2,13 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 	* {
+		border: 0;
 		margin: 0;
 		padding: 0;
 		outline: 0;
-		border: 0;
+		resize: none;
 		box-sizing: border-box;
-		font-family: 'Lexend', sans-serif;
 		scroll-behavior: smooth;
+		font-family: 'Lexend', sans-serif;
 	}
 
 	:root {
@@ -65,11 +66,18 @@ export default createGlobalStyle`
 		--shadow7: rgba(255, 255, 255, 0.1);
 		--shadow8: rgba(0, 0, 0, 0.5);
 		--shadow9: rgba(0, 0, 0, 0.71);
+
+		// Transparent
+		--transparent: transparent;
+
+		// border-radius
+		--border-radius: 4px;
+		--border-radius-50: 50%;
 	}
 
 	body {
-		background: var(--white-fixed);
 		color: var(--grey0);
+		background-color: var(--white-fixed);
 	}
 
 	button, a {

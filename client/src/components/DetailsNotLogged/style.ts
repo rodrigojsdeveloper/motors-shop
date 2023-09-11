@@ -11,8 +11,8 @@ const Container = styled.div`
   width: 100%;
   max-width: 751px;
 
-  background: var(--grey10);
-  border-radius: 4px;
+  background-color: var(--grey10);
+  border-radius: var(--border-radius);
 
   & > div {
     display: flex;

@@ -12,7 +12,7 @@ const Container = styled.aside`
   height: 377px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   & > h3 {
     font-weight: 600;
@@ -48,7 +48,7 @@ const Container = styled.aside`
         padding: 27px 7px;
 
         background-color: var(--grey7);
-        border-radius: 4px;
+        border-radius: var(--border-radius);
 
         & > img {
           width: 100%;

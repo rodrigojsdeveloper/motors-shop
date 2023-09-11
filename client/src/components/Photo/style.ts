@@ -6,7 +6,7 @@ const Container = styled.section`
   height: 355px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   display: flex;
   justify-content: center;

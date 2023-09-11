@@ -9,7 +9,7 @@ const Container = styled.div`
   height: 557px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   margin-top: 15px;
 
@@ -43,8 +43,8 @@ const Container = styled.div`
 
       & > div {
         animation: ${AnimateLoading} 1s infinite;
-        border: 4px solid transparent;
-        border-radius: 50%;
+        border: 4px solid var(--transparent);
+        border-radius: var(--border-radius-50);
         border-top-color: var(--black-fixed);
         height: 50px;
         width: 50px;

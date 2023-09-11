@@ -5,7 +5,7 @@ const Container = styled.form`
   max-width: 412px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   padding: 44px 50px;
 

@@ -230,13 +230,13 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           style={
             changeColorBuyer
               ? {
-                  background: "#4529E6",
+                  backgroundColor: "#4529E6",
                   color: "#FFF",
                   borderColor: "#4529E6",
                   borderWidth: 2,
                 }
               : {
-                  background: "#FFF",
+                  backgroundColor: "#FFF",
                   color: "#0B0D0D",
                   borderColor: "#ADB5BD",
                   borderWidth: 2,
@@ -258,13 +258,13 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           style={
             changeColorAdvertiser
               ? {
-                  background: "#4529E6",
+                  backgroundColor: "#4529E6",
                   color: "#FFF",
                   borderColor: "#4529E6",
                   borderWidth: 2,
                 }
               : {
-                  background: "#FFF",
+                  backgroundColor: "#FFF",
                   color: "#0B0D0D",
                   borderColor: "#ADB5BD",
                   borderWidth: 2,

@@ -48,9 +48,9 @@ const Container = styled.div`
       max-width: 132px;
       height: 38px;
 
-      background: var(--brand1);
+      background-color: var(--brand1);
       border: 1.5px solid var(--brand1);
-      border-radius: 4px;
+      border-radius: var(--border-radius);
 
       font-weight: 600;
       font-size: 14px;

@@ -12,7 +12,7 @@ const Container = styled.div`
   top: 0;
   width: 100%;
   height: 100vh;
-  background: var(--shadow8);
+  background-color: var(--shadow8);
 
   overflow-y: auto;
 

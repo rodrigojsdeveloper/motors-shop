@@ -21,7 +21,7 @@ const Container = styled.div`
         content: "";
         width: 4px;
         height: 4px;
-        border-radius: 50%;
+        border-radius: var(--border-radius-50);
 
         background-color: var(--grey4);
         margin: 0 12px 0 8px;
@@ -60,7 +60,7 @@ const Container = styled.div`
       & > hr {
         width: 4px;
         height: 4px;
-        border-radius: 50%;
+        border-radius: var(--border-radius-50);
 
         background-color: var(--grey4);
         margin: 10px 8px 0 8px;

@@ -6,7 +6,7 @@ const Container = styled.form`
   height: 542px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   padding: 44px 48px;
 
@@ -47,7 +47,7 @@ const Container = styled.form`
   }
 
   & > a:nth-last-child(1) {
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     font-weight: 600;
     font-size: 16px;
 

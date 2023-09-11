@@ -9,7 +9,7 @@ const Container = styled.aside`
   justify-content: center;
 
   padding: 34px 24px;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   background-color: var(--white-fixed);
 
@@ -26,7 +26,7 @@ const Container = styled.aside`
       & > div {
         width: 104px;
         height: 104px;
-        border-radius: 50%;
+        border-radius: var(--border-radius-50);
 
         & > p {
           font-weight: 500;
@@ -82,7 +82,7 @@ const Container = styled.aside`
 
       background-color: var(--grey0);
       border: 1.5px solid var(--grey0);
-      border-radius: 4px;
+      border-radius: var(--border-radius);
 
       padding: 12px;
 

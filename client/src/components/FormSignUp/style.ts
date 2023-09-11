@@ -10,7 +10,7 @@ const Container = styled.form`
 
   padding: 44px 48px;
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   & > h2 {
     font-weight: bold;

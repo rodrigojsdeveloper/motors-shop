@@ -147,12 +147,12 @@ const ModalEdit = ({
               style={
                 changePostedToYes
                   ? {
-                      background: "#4529E6",
+                      backgroundColor: "#4529E6",
                       color: "#fff",
                       borderColor: "#4529E6",
                     }
                   : {
-                      background: "#fff",
+                      backgroundColor: "#fff",
                       color: "#000",
                       borderColor: "#ADB5BD",
                     }
@@ -172,12 +172,12 @@ const ModalEdit = ({
               style={
                 changePostedToNo
                   ? {
-                      background: "#4529E6",
+                      backgroundColor: "#4529E6",
                       color: "#fff",
                       borderColor: "#4529E6",
                     }
                   : {
-                      background: "#fff",
+                      backgroundColor: "#fff",
                       color: "#000",
                       borderColor: "#ADB5BD",
                     }

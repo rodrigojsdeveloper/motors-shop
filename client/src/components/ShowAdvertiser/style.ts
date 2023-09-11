@@ -5,7 +5,7 @@ const Container = styled.section`
   max-width: 1240px;
 
   background-color: var(--grey10);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 
   padding: 36px 44px;
   margin: -210px auto 0 auto;
@@ -43,7 +43,7 @@ const Container = styled.section`
       padding: 4px 8px;
 
       background-color: var(--brand4);
-      border-radius: 4px;
+      border-radius: var(--border-radius);
 
       font-weight: 500;
       font-size: 14px;

@@ -17,15 +17,13 @@ const Container = styled.div`
   }
 
   & > textarea {
-    resize: none;
-
-    background: transparent;
+    background-color: var(--transparent);
     width: 100%;
 
     padding: 15px;
 
     border: 2px solid var(--grey7);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
 
     font-weight: 400;
     font-size: 16px;
@@ -47,11 +45,11 @@ const Container = styled.div`
     }
 
     &:focus::-webkit-input-placeholder {
-      color: transparent;
+      color: var(--transparent);
     }
 
     &:focus::-moz-placeholder {
-      color: transparent;
+      color: var(--transparent);
     }
   }
 `;
