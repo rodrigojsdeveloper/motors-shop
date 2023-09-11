@@ -52,7 +52,6 @@ const FormSignIn = () => {
         placeholder="Digitar email"
         type="text"
         error={errors.email?.message}
-        size="inputSignIn"
       />
       <Input
         label="Senha"
@@ -61,7 +60,6 @@ const FormSignIn = () => {
         placeholder="Digitar senha"
         type="password"
         error={errors.password?.message}
-        size="inputSignIn"
       />
 
       <Link to="/resetpassword">Esqueci minha senha</Link>

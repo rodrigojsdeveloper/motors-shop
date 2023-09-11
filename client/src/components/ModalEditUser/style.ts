@@ -23,31 +23,6 @@ const Container = styled.div`
       padding-bottom: 10px;
     }
 
-    & > div:nth-child(2) {
-      overflow-y: auto;
-
-      .divInputs {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-
-        & > div:nth-child(1) {
-          margin-right: 9px;
-        }
-
-        .inputNumber {
-          width: 100%;
-          max-width: 228px;
-          margin-right: 9px;
-        }
-
-        .inputComplement {
-          width: 100%;
-          max-width: 228px;
-        }
-      }
-    }
-
     .divButtons {
       width: 100%;
       display: flex;

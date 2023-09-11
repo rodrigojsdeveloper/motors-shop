@@ -2,24 +2,18 @@ import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ReactNode } from "react";
 
 export interface InputProps {
-  type?: React.HTMLInputTypeAttribute;
   name: string;
-  placeholder?: string;
-  register: UseFormRegister<FieldValues>;
-  label?: string;
   error?: any;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  size:
-    | "inputSignIn"
-    | "inputSignUp"
-    | "inputSignUpSmall"
-    | "inputModalEditAddressLarge"
-    | "inputModalEditAddressMedium"
-    | "inputModalCreateAnnouncementSmall";
+  label?: string;
   className?: string;
-  value?: string | number | readonly string[];
   disabled?: boolean;
+  placeholder?: string;
+  type?: React.HTMLInputTypeAttribute;
+  register: UseFormRegister<FieldValues>;
+  value?: string | number | readonly string[];
   defaultValue?: string | number | readonly string[];
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  maxLength?: number;
 }
 
 export interface IButtonProps {
@@ -64,10 +58,6 @@ export interface ITextAreaProps {
   register: UseFormRegister<FieldValues>;
   name: string;
   error?: any;
-}
-
-export interface InputStyledProps {
-  size: any;
 }
 
 export interface IButtonStyledProps {
@@ -262,5 +252,5 @@ export interface IEmptyMessage {
 
 export interface ILayout {
   children: React.ReactNode;
-  title: string
+  title: string;
 }

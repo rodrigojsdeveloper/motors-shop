@@ -59,7 +59,6 @@ const FormEmail = () => {
           placeholder="Digitar email"
           type="email"
           error={errors.email?.message}
-          size="inputSignIn"
         />
 
         <Button

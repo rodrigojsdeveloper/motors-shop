@@ -105,7 +105,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="Ex: Rodrigo Silva"
         type="text"
         error={errors.name?.message}
-        size="inputSignIn"
       />
       <Input
         label="Email"
@@ -114,7 +113,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="Ex: rodrigo@gmail.com"
         type="email"
         error={errors.email?.message}
-        size="inputSignIn"
       />
       <Input
         label="CPF"
@@ -123,7 +121,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="000.000.000-00"
         type="text"
         error={errors.cpf?.message}
-        size="inputSignIn"
       />
       <Input
         label="Celular"
@@ -132,7 +129,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="(DDD) 99999-9999"
         type="text"
         error={errors.cellphone?.message}
-        size="inputSignIn"
       />
       <Input
         label="Data de nascimento"
@@ -140,7 +136,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         register={register}
         type="date"
         error={errors.birthdate?.message}
-        size="inputSignIn"
       />
       <TextArea
         register={register}
@@ -157,7 +152,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="00000-000"
         type="number"
         error={errors.zip_code?.message}
-        size="inputSignIn"
       />
       <div className="divInputs">
         <Input
@@ -166,8 +160,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           register={register}
           placeholder="Digitar estado"
           type="text"
-          size="inputSignUpSmall"
-          className="changeInput"
         />
         <Input
           label="Cidade"
@@ -175,8 +167,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
           register={register}
           placeholder="Digitar cidade"
           type="text"
-          size="inputSignUpSmall"
-          className="changeInput"
         />
       </div>
       <Input
@@ -186,7 +176,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="Digitar bairro"
         type="text"
         error={errors.district?.message}
-        size="inputSignIn"
       />
       <Input
         label="Rua"
@@ -195,26 +184,21 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         placeholder="Digitar rua"
         type="text"
         error={errors.street?.message}
-        size="inputSignIn"
       />
       <div className="divInputs">
         <Input
-          className="inputNumber"
           label="Número"
           name="number"
           register={register}
           placeholder="Digitar número"
           type="number"
-          size="inputSignUpSmall"
         />
         <Input
-          className="inputComplement"
           label="Complemento"
           name="complement"
           register={register}
           placeholder="Ex: apart 307"
           type="text"
-          size="inputSignUpSmall"
         />
       </div>
 
@@ -285,7 +269,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         register={register}
         placeholder="Digitar senha"
         type="password"
-        size="inputSignIn"
       />
       <Input
         label="Repetir a senha"
@@ -293,7 +276,6 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
         register={register}
         placeholder="Repetir senha"
         type="password"
-        size="inputSignIn"
       />
 
       <Button

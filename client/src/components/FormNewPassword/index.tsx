@@ -61,7 +61,6 @@ const FormNewPassword = () => {
           placeholder="Digitar senha"
           type="password"
           error={errors.password?.message}
-          size="inputSignIn"
         />
         <Input
           label="Repetir senha"
@@ -70,7 +69,6 @@ const FormNewPassword = () => {
           placeholder="Repetir senha"
           type="password"
           error={errors.repeat_password?.message}
-          size="inputSignIn"
         />
       </div>
 

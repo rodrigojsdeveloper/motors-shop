@@ -110,4 +110,17 @@ export default createGlobalStyle`
 	  background-color: var(--grey4);
 		border-radius: 12px;
 	}
+
+	.divInputs {
+		width: 100%;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		& > div:nth-child(1) {
+			margin-right: 11px;
+		}
+	}
 `;

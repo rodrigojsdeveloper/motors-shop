@@ -1,5 +1,5 @@
-import { Container, InputContainer } from "./style";
 import { InputProps } from "../../interfaces";
+import { Container } from "./style";
 
 const Input = ({
   type,
@@ -9,11 +9,11 @@ const Input = ({
   label,
   placeholder,
   onChange,
-  size,
   className,
   value,
   disabled,
   defaultValue,
+  maxLength,
 }: InputProps) => {
   return (
     <Container className={className}>
@@ -21,9 +21,8 @@ const Input = ({
         {label} {!!error && <span> - {error}</span>}
       </label>
 
-      <InputContainer
+      <input
         value={value}
-        size={size}
         type={type}
         {...register(name)}
         autoComplete="off"
@@ -32,6 +31,7 @@ const Input = ({
         onChange={onChange}
         disabled={disabled}
         defaultValue={defaultValue}
+        maxLength={maxLength}
       />
     </Container>
   );

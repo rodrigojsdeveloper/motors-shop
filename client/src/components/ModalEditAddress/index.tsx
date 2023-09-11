@@ -82,82 +82,68 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <h3>Infomações de endereço</h3>
 
-        <div>
+        <Input
+          label="CEP"
+          name="zip_code"
+          register={register}
+          placeholder="00000-000"
+          type="number"
+          value={user?.address.zip_code}
+        />
+
+        <div className="divInputs">
           <Input
-            label="CEP"
-            name="zip_code"
+            label="Estado"
+            name="state"
             register={register}
-            placeholder="00000-000"
+            placeholder="Digitar estado"
+            type="text"
+            value={user?.address.state}
+          />
+          <Input
+            label="Cidade"
+            name="city"
+            register={register}
+            placeholder="Digitar cidade"
+            type="text"
+            value={user?.address.city}
+          />
+        </div>
+
+        <Input
+          label="Bairro"
+          name="district"
+          register={register}
+          placeholder="Digitar bairro"
+          type="text"
+          value={user?.address.district}
+        />
+        <Input
+          label="Rua"
+          name="street"
+          register={register}
+          placeholder="Digitar rua"
+          type="text"
+          value={user?.address.street}
+        />
+
+        <div className="divInputs">
+          <Input
+            label="Número"
+            name="number"
+            register={register}
+            placeholder="Digitar número"
             type="number"
-            size="inputModalEditAddressLarge"
-            value={user?.address.zip_code}
-          />
-          <div className="divInputs">
-            <Input
-              label="Estado"
-              name="state"
-              register={register}
-              placeholder="Digitar estado"
-              type="text"
-              error={errors.state?.message}
-              size="inputModalEditAddressMedium"
-              className="changeInput"
-              value={user?.address.state}
-            />
-            <Input
-              label="Cidade"
-              name="city"
-              register={register}
-              placeholder="Digitar cidade"
-              type="text"
-              error={errors.city?.message}
-              size="inputModalEditAddressMedium"
-              className="changeInput"
-              value={user?.address.city}
-            />
-          </div>
-          <Input
-            label="Bairro"
-            name="district"
-            register={register}
-            placeholder="Digitar bairro"
-            type="text"
-            error={errors.district?.message}
-            size="inputModalEditAddressLarge"
-            value={user?.address.district}
+            value={user?.address.number}
           />
           <Input
-            label="Rua"
-            name="street"
+            label="Complemento"
+            name="complement"
             register={register}
-            placeholder="Digitar rua"
+            placeholder="Ex: Apart 307"
             type="text"
-            error={errors.street?.message}
-            size="inputModalEditAddressLarge"
-            value={user?.address.street}
+            value={user?.address.complement}
           />
-          <div className="divInputs">
-            <Input
-              className="inputNumber"
-              label="Número"
-              name="number"
-              register={register}
-              placeholder="Digitar número"
-              type="number"
-              size="inputModalEditAddressMedium"
-              value={user?.address.number}
-            />
-            <Input
-              className="inputComplement"
-              label="Complemento"
-              name="complement"
-              register={register}
-              placeholder="Ex: Apart 307"
-              type="text"
-              size="inputModalEditAddressMedium"
-              value={user?.address.complement}
-            />
-          </div>
         </div>
 
         <div className="divButtons">

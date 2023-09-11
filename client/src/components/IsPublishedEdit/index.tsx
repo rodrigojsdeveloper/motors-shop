@@ -14,7 +14,7 @@ const IsPublishedEdit = ({
   return (
     <Container>
       <h4>Publicado</h4>
-      <div className="divButtons">
+      <div>
         <Button
           onClick={() => setIsPublished(true)}
           style={

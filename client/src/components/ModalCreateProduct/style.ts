@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 520px;
-  height: 860px;
+  height: 1155px;
 
   background-color: var(--white-fixed);
   border-radius: var(--border-radius);
@@ -16,32 +16,6 @@ const Container = styled.div`
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-    }
-
-    & > .divInputs {
-      display: flex;
-      flex-direction: row;
-
-      .inputKilometers {
-        margin: 0 7px;
-        max-width: 160px;
-
-        & > input {
-          max-width: 160px;
-        }
-
-        @media (max-width: 375px) {
-          max-width: 110px;
-
-          label {
-            font-size: 12px;
-          }
-
-          & > input {
-            max-width: 110px;
-          }
-        }
-      }
     }
 
     & > .divButtons {

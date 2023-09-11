@@ -78,41 +78,59 @@ const ModalEditProduct = ({
           placeholder="Título"
           type="text"
           error={errors.title?.message}
-          size="inputModalEditAddressLarge"
           defaultValue={product?.title}
         />
 
-        <div className="divInputs">
+
+<div className="divInputs">
           <Input
             label="Ano"
             name="year"
             register={register}
-            placeholder="1998"
+            placeholder="Digitar ano"
             type="number"
-            error={errors.year?.message}
-            size="inputModalCreateAnnouncementSmall"
-            defaultValue={product?.year}
+            maxLength={4}
           />
+          <Input
+            label="Combustível"
+            name="fuel"
+            register={register}
+            placeholder="Gasolina/Etanol"
+            type="text"
+          />
+        </div>
+        
+        <div className="divInputs">
           <Input
             label="Quilometragem"
             name="kilometers"
             register={register}
             placeholder="0"
             type="number"
-            error={errors.kilometers?.message}
-            size="inputModalCreateAnnouncementSmall"
-            className="inputKilometers"
-            defaultValue={product?.kilometers}
+          />
+          <Input
+            label="Cor"
+            name="color"
+            register={register}
+            placeholder="Digite a cor"
+            type="text"
+          />
+        </div>
+        
+        <div className="divInputs">
+          <Input
+            label="Preço tabela FIPE"
+            name="fipe"
+            register={register}
+            placeholder="0"
+            type="number"
           />
           <Input
             label="Preço"
             name="price"
             register={register}
-            placeholder="R$ 0,00"
-            type="text"
-            error={errors.price?.message}
-            size="inputModalCreateAnnouncementSmall"
-            defaultValue={product?.price}
+            placeholder="0"
+            type="number"
           />
         </div>
 
@@ -140,7 +158,6 @@ const ModalEditProduct = ({
           placeholder="https://image.com"
           type="text"
           error={errors.cover_image?.message}
-          size="inputModalEditAddressLarge"
           defaultValue={product?.cover_image}
         />
         <Input
@@ -150,7 +167,6 @@ const ModalEditProduct = ({
           placeholder="https://image.com"
           type="text"
           error={errors.gallery_image?.message}
-          size="inputModalEditAddressLarge"
           defaultValue={product?.gallery_image}
         />
 

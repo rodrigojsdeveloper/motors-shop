@@ -83,13 +83,19 @@ const ModalCreateProduct = ({
         <h4>Informações do veículo</h4>
 
         <Input
-          label="Título"
-          name="title"
+          label="Marca"
+          name="brand"
           register={register}
-          placeholder="Digitar título"
+          placeholder="Digitar marca"
           type="text"
-          error={errors.title?.message}
-          size="inputModalEditAddressLarge"
+        />
+        
+        <Input
+          label="Modelo"
+          name="model"
+          register={register}
+          placeholder="Digitar modelo"
+          type="text"
         />
 
         <div className="divInputs">
@@ -99,27 +105,48 @@ const ModalCreateProduct = ({
             register={register}
             placeholder="Digitar ano"
             type="number"
-            error={errors.year?.message}
-            size="inputModalCreateAnnouncementSmall"
+            maxLength={4}
           />
+          <Input
+            label="Combustível"
+            name="fuel"
+            register={register}
+            placeholder="Gasolina/Etanol"
+            type="text"
+          />
+        </div>
+        
+        <div className="divInputs">
           <Input
             label="Quilometragem"
             name="kilometers"
             register={register}
             placeholder="0"
             type="number"
-            error={errors.kilometers?.message}
-            size="inputModalCreateAnnouncementSmall"
-            className="inputKilometers"
+          />
+          <Input
+            label="Cor"
+            name="color"
+            register={register}
+            placeholder="Digite a cor"
+            type="text"
+          />
+        </div>
+        
+        <div className="divInputs">
+          <Input
+            label="Preço tabela FIPE"
+            name="fipe"
+            register={register}
+            placeholder="0"
+            type="number"
           />
           <Input
             label="Preço"
             name="price"
             register={register}
-            placeholder="Digitar preço"
-            type="text"
-            error={errors.price?.message}
-            size="inputModalCreateAnnouncementSmall"
+            placeholder="0"
+            type="number"
           />
         </div>
 
@@ -140,7 +167,6 @@ const ModalCreateProduct = ({
           placeholder="Inserir URL da imagem"
           type="text"
           error={errors.cover_image?.message}
-          size="inputModalEditAddressLarge"
         />
         <Input
           label="1º Imagem da galeria"
@@ -149,7 +175,6 @@ const ModalCreateProduct = ({
           placeholder="Inserir URL da imagem"
           type="text"
           error={errors.gallery_image?.message}
-          size="inputModalEditAddressLarge"
         />
 
         <div className="divButtons">

@@ -89,7 +89,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <h3>Infomações pessoais</h3>
 
-        <div>
           <Input
             label="Nome"
             name="name"
@@ -97,7 +96,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             placeholder="Ex: Rodrigo Silva"
             type="text"
             error={errors.name?.message}
-            size="inputModalEditAddressLarge"
             value={user?.name}
           />
           <Input
@@ -107,7 +105,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             placeholder="Ex: rodrigo@gmail.com"
             type="email"
             error={errors.email?.message}
-            size="inputModalEditAddressLarge"
             value={user?.email}
           />
           <Input
@@ -117,7 +114,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             placeholder="000.000.000-00"
             type="number"
             error={errors.cpf?.message}
-            size="inputModalEditAddressLarge"
             value={user?.cpf}
           />
           <Input
@@ -127,7 +123,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             placeholder="(DDD) 99999-9999"
             type="text"
             error={errors.cellphone?.message}
-            size="inputModalEditAddressLarge"
             value={user?.cellphone}
           />
           <Input
@@ -135,7 +130,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="birthdate"
             register={register}
             type="date"
-            size="inputModalEditAddressLarge"
             value={formatBirthdate(user?.birthdate)}
           />
           <TextArea
@@ -144,7 +138,6 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             name="description"
             error={errors.description?.message}
           />
-        </div>
 
         <div className="divButtons">
           <Button

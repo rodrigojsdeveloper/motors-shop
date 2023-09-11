@@ -28,29 +28,6 @@ const Container = styled.form`
     padding: 20px 0;
   }
 
-  .divInputs {
-    width: 100%;
-    max-width: 315px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    & > div:nth-child(1),
-    & > button:nth-child(1) {
-      margin-right: 5px;
-    }
-
-    .inputComplement {
-      width: 100%;
-      max-width: 155.5px;
-
-      input {
-        max-width: 155.5px;
-      }
-    }
-  }
-
   .buttonSubmit {
     margin-top: 30px;
   }
@@ -60,30 +37,6 @@ const Container = styled.form`
 
     & > div {
       input {
-        max-width: unset;
-      }
-    }
-
-    .divInputs {
-      max-width: unset;
-      width: 100%;
-      flex-direction: column;
-      justify-content: unset;
-      align-items: unset;
-
-      & > div:nth-child(1) {
-        margin-right: 0;
-      }
-
-      .inputComplement {
-        max-width: unset;
-        input {
-          max-width: unset;
-        }
-      }
-
-      .changeButton {
-        margin-top: 10px;
         max-width: unset;
       }
     }

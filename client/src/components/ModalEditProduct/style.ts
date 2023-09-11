@@ -18,32 +18,6 @@ const Container = styled.div`
       line-height: 24px;
     }
 
-    & > .divInputs {
-      display: flex;
-      flex-direction: row;
-
-      .inputKilometers {
-        margin: 0 7px;
-        max-width: 160px;
-
-        & > input {
-          max-width: 160px;
-        }
-
-        @media (max-width: 375px) {
-          max-width: 110px;
-
-          label {
-            font-size: 12px;
-          }
-
-          & > input {
-            max-width: 110px;
-          }
-        }
-      }
-    }
-
     & > .divButtons {
       width: 100%;
       display: flex;
