@@ -17,10 +17,10 @@ const UserProductsProduct = ({ product, user }: IUserProductsProduct) => {
         ) : (
           <p className="deactive">Inativo</p>
         )}
-        <ImageProduct src={product.cover_image} alt={product.title} />
+        <ImageProduct src={product.cover_image} alt={product.model} />
       </div>
 
-      <TitleProduct title={product.title} />
+      <TitleProduct title={product.model} />
       <DescriptionProduct description={product.description} />
 
       <AvatarUser username={user.name} />

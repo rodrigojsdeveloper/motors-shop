@@ -4,26 +4,28 @@ import { IModalEditAddress } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { api } from "../../services/api";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
 
 const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
-  const { user } = useContext(UserContext);
-
-  const token = sessionStorage.getItem("Motors shop: token");
+  const { user, handleEditUser } = useContext(UserContext);
 
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    zip_code: yup.number().required("CEP obrigatória"),
-    state: yup.string().required(""),
-    city: yup.string().required(""),
-    district: yup.string().required("Bairro obrigatório"),
-    street: yup.string().required("Rua obrigatória"),
-    number: yup.number().required("Número obrigatório"),
+    zip_code: yup.string().required().max(8, "Maximum 8 caracters"),
+    state: yup.string().required(),
+    city: yup.string().required(),
+    district: yup.string().required(),
+    street: yup.string().required(),
+    number: yup
+      .number()
+      .required()
+      .typeError("number must be a number")
+      .positive()
+      .integer(),
     complement: yup.string(),
   });
 
@@ -31,31 +33,8 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {
-    setLoad(true);
-
-    const address = {
-      zip_code: data.zip_code,
-      state: data.state,
-      city: data.city,
-      district: data.district,
-      street: data.street,
-      number: data.number,
-      complement: data.complement,
-    };
-
-    data.address = address;
-
-    api
-      .patch(`/users/${user.id}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((_) => setOpenModalEditAddress(false))
-      .catch((error) => console.error(error))
-      .finally(() => setLoad(false));
-  };
+  const onSubmitFunction = (data: any) =>
+    handleEditUser(setLoad, user, data, setOpenModalEditAddress);
 
   return (
     <Container>

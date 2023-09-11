@@ -14,9 +14,7 @@ import * as yup from "yup";
 const ModalCreateProduct = ({
   setOpenModalCreateProduct,
 }: IModalCreateAnnouncement) => {
-  const { addProduct } = useContext(ProductContext);
-
-  const token = sessionStorage.getItem("Motors shop: token");
+  const { handlePostProduct } = useContext(ProductContext);
 
   const [load, setLoad] = useState<boolean>(false);
 
@@ -47,23 +45,8 @@ const ModalCreateProduct = ({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {
-    setLoad(true);
-
-    api
-      .post("/products", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        addProduct(res.data);
-
-        setOpenModalCreateProduct(false);
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setLoad(false));
-  };
+  const onSubmitFunction = (data: any) =>
+    handlePostProduct(setLoad, data, setOpenModalCreateProduct);
 
   return (
     <Container>

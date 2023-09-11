@@ -1,6 +1,7 @@
+import { ProductContext } from "../../contexts/product.context";
 import { IModalDelete } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
-import { api } from "../../services/api";
+import { useContext, useState } from "react";
 import { Container } from "./style";
 import { Button } from "../Button";
 
@@ -8,7 +9,9 @@ const ModalDeleteProduct = ({
   setOpenModalDelete,
   productId,
 }: IModalDelete) => {
-  const token = sessionStorage.getItem("Motors shop: token");
+  const { handleDeleteProduct } = useContext(ProductContext);
+
+  const [load, setLoad] = useState<boolean>(false);
 
   return (
     <Container>
@@ -35,18 +38,12 @@ const ModalDeleteProduct = ({
             size="211px"
             color="red"
             type="button"
-            onClick={() => {
-              api
-                .delete(`/products/${productId}`, {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                })
-                .then((_) => setOpenModalDelete(false))
-                .catch((error) => console.error(error));
-            }}
+            onClick={() =>
+              handleDeleteProduct(setLoad, productId, setOpenModalDelete)
+            }
+            disabled={load}
           >
-            Sim, excluir anúncio
+            {load ? "Excluindo..." : "Sim, excluir anúncio"}
           </Button>
         </div>
       </div>

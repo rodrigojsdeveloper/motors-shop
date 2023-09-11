@@ -83,9 +83,6 @@ class UsersService {
     await userRepository.update(id, {
       name: user.name ? user.name : findUser.name,
       email: user.email ? user.email : findUser.email,
-      password: user.password
-        ? await hash(user.password, 10)
-        : findUser.password,
       cellphone: user.cellphone ? user.cellphone : findUser.cellphone,
       address: user.address
         ? await addressRepository.save(user.address)

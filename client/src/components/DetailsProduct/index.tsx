@@ -9,7 +9,7 @@ const DetailsProduct = ({ product }: IProduct) => {
 
   return (
     <Container>
-      <h3>{product?.title}</h3>
+      <h3>{product?.model}</h3>
 
       <div>
         <div>
@@ -17,7 +17,7 @@ const DetailsProduct = ({ product }: IProduct) => {
           <YearProduct year={product?.year} />
         </div>
 
-        <PriceProduct price={String(product?.price)} />
+        <PriceProduct price={product?.price} />
       </div>
 
       <a href={link}>Comprar</a>

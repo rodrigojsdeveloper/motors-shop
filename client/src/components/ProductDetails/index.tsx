@@ -43,7 +43,11 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
         </article>
 
         <div className="divPhotosAndUserDetails">
-          <PhotosGallery gallery_image={product?.gallery_image} />
+          <PhotosGallery
+            primary_image={product.primary_image}
+            second_image={product.second_image}
+            model={product.model}
+          />
           <CardSeller user={product.user} />
         </div>
       </Content>
@@ -63,7 +67,11 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
         </article>
 
         <div className="divPhotosAndUserDetails">
-          <PhotosGallery gallery_image={product?.gallery_image} />
+          <PhotosGallery
+            primary_image={product.primary_image}
+            second_image={product.second_image}
+            model={product.model}
+          />
           <CardSeller user={product.user} />
         </div>
       </Container>
@@ -84,7 +92,11 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
       </article>
 
       <div className="divPhotosAndUserDetails">
-        <PhotosGallery gallery_image={product?.gallery_image} />
+        <PhotosGallery
+          primary_image={product.primary_image}
+          second_image={product.second_image}
+          model={product.model}
+        />
         <CardSeller user={product.user} />
       </div>
     </Content>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 312px;
   height: 350px;
-  margin-right: 40px;
+  margin: 0 40px 40px 0;
 
   .divKmYearPrice,
   .divKmYearPrice :where(div) {

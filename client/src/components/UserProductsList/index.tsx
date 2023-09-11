@@ -1,8 +1,8 @@
 import { UserProductsProduct } from "../UserProductsProduct";
 import { IUserProductsList } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
+import { Container } from "../List/style";
 import { TitleList } from "../TitleList";
-import { Container } from "./style";
 
 const UserProductsList = ({ products, user }: IUserProductsList) => {
   return (

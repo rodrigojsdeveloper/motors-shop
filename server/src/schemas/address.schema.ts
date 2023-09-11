@@ -3,17 +3,14 @@ import { SchemaOf } from "yup";
 import * as yup from "yup";
 
 const addressSchema: SchemaOf<IAddress> = yup.object().shape({
-  zip_code: yup
-    .string()
-    .required("zip_code is a required field")
-    .max(8, "Maximum 8 caracters"),
-  state: yup.string().required("state is a required field"),
-  city: yup.string().required("city is a required field"),
-  district: yup.string().required("district is a required field"),
-  street: yup.string().required("street is a required field"),
+  zip_code: yup.string().required().max(8, "Maximum 8 caracters"),
+  state: yup.string().required(),
+  city: yup.string().required(),
+  district: yup.string().required(),
+  street: yup.string().required(),
   number: yup
     .number()
-    .required("number is a required field")
+    .required()
     .typeError("number must be a number")
     .positive()
     .integer(),

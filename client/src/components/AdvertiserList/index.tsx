@@ -2,8 +2,8 @@ import { ProductContext } from "../../contexts/product.context";
 import { AdvertiserProduct } from "../AdvertiserProduct";
 import { IProductProps } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
+import { Container } from "../List/style";
 import { TitleList } from "../TitleList";
-import { Container } from "./style";
 import { useContext } from "react";
 
 const AdvertiserList = () => {

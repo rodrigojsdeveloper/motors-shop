@@ -1,14 +1,14 @@
+import { ProductContext } from "../../contexts/product.context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IsPublishedEdit } from "../IsPublishedEdit";
 import { IModalEdit } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { useState } from "react";
 import * as yup from "yup";
 
 const ModalEditProduct = ({
@@ -16,41 +16,41 @@ const ModalEditProduct = ({
   setOpenModalEdit,
   setOpenModalDelete,
 }: IModalEdit) => {
-  const token = sessionStorage.getItem("Motors shop: token");
+  const { handleEditProduct } = useContext(ProductContext);
 
   const [isPublished, setIsPublished] = useState<boolean>(false);
 
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    title: yup.string().required("Título obrigatório"),
-    description: yup.string().required("Descrição obrigatória"),
-    year: yup.number().required("Ano obrigatório"),
-    kilometers: yup.number().required("Kilometros obrigatório"),
-    price: yup.string().required("Preço obrigatório"),
-    cover_image: yup.string().required("Imagem da capa obrigatória"),
-    gallery_image: yup.string().required("1º Imagem da galeria obrigatória"),
+    brand: yup.string().required(),
+    model: yup.string().required(),
+    year: yup.number().required().typeError("year must be a number").integer(),
+    fuel: yup.mixed().oneOf(["Gasolina", "Etanol"]).required(),
+    kilometers: yup
+      .number()
+      .required()
+      .typeError("kilometers must be a number")
+      .integer(),
+    color: yup.string().required(),
+    fipe: yup.number().required().typeError("fipe must be a number").integer(),
+    price: yup
+      .number()
+      .required()
+      .typeError("price must be a number")
+      .integer(),
+    description: yup.string().required(),
+    cover_image: yup.string().required().url(),
+    primary_image: yup.string().required().url(),
+    second_image: yup.string().required().url(),
   });
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {
-    setLoad(true);
-
-    isPublished ? (data.is_published = true) : (data.is_published = false);
-
-    api
-      .patch(`/products/${product.id}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((_) => setOpenModalEdit(false))
-      .catch((error) => console.error(error))
-      .finally(() => setLoad(false));
-  };
+  const onSubmitFunction = (data: any) =>
+    handleEditProduct(setLoad, isPublished, data, product, setOpenModalEdit);
 
   return (
     <Container>
@@ -151,7 +151,7 @@ const ModalEditProduct = ({
         />
         <Input
           label="1º Imagem da galeria"
-          name="gallery_image"
+          name="primary_image"
           register={register}
           placeholder="https://image.com"
           type="url"
@@ -159,7 +159,7 @@ const ModalEditProduct = ({
         />
         <Input
           label="2º Imagem da galeria"
-          name="gallery_image"
+          name="second_image"
           register={register}
           placeholder="https://image.com"
           type="url"

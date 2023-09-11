@@ -5,7 +5,6 @@ import { IModalEditUser } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
@@ -13,40 +12,25 @@ import { Input } from "../Input";
 import * as yup from "yup";
 
 const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
-  const { user } = useContext(UserContext);
+  const { user, handleEditUser } = useContext(UserContext);
 
   const [load, setLoad] = useState<boolean>(false);
 
   const schema = yup.object().shape({
-    name: yup.string().required("Name obrigatório"),
-    email: yup.string().required("Email obrigatória").email("Email inválido"),
-    password: yup
-      .string()
-      .required("Senha obrigatória")
-      .min(8, "Minimum 8 caracters")
-      .matches(
-        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        "Password must contain uppercase and lowercase letters, numbers and special characters"
-      ),
-    cpf: yup.string().required("CPF obrigatória"),
-    cellphone: yup.string().required("Celular obrigatória"),
-    birthdate: yup.string().required("Data obrigatória"),
-    description: yup.string().required("Descrição obrigatória"),
+    name: yup.string().required(),
+    email: yup.string().required().email(),
+    cpf: yup.string().required(),
+    cellphone: yup.string().required(),
+    birthdate: yup.string().required(),
+    description: yup.string().required(),
   });
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data: any) => {
-    setLoad(true);
-
-    api
-      .patch(`/users/${user.id}`, data)
-      .then((_) => setOpenModalEditUser(false))
-      .catch((error) => console.error(error))
-      .finally(() => setLoad(false));
-  };
+  const onSubmitFunction = (data: any) =>
+    handleEditUser(setLoad, user, data, setOpenModalEditUser);
 
   return (
     <Container>

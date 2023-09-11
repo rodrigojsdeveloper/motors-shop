@@ -8,7 +8,7 @@ const DetailsNotLogged = ({ product }: IProduct) => {
   return (
     <Container>
       <div>
-        <h3>{product?.title}</h3>
+        <h3>{product?.model}</h3>
 
         <div>
           <div>
@@ -16,7 +16,7 @@ const DetailsNotLogged = ({ product }: IProduct) => {
             <YearProduct year={product?.year} />
           </div>
 
-          <PriceProduct price={String(product?.price)} />
+          <PriceProduct price={product?.price} />
         </div>
       </div>
     </Container>

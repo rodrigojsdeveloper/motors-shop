@@ -212,7 +212,9 @@ export interface IPhoto {
 }
 
 export interface IPhotosGallery {
-  gallery_image: string;
+  primary_image: string;
+  second_image: string;
+  model: string;
 }
 
 export interface IProductDetails {
@@ -252,13 +254,35 @@ export interface IChildren {
 export interface IProductContextData {
   products: Array<IProductProps>;
   advertiserProducts: Array<IProductProps>;
-  addProduct: (product: IProductProps) => void;
   isLoading: boolean;
   isLoadingAdvertiser: boolean;
+  handlePostProduct: (
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>,
+    data: any,
+    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void;
+  handleEditProduct: (
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>,
+    isPublished: boolean,
+    data: any,
+    product: IProductProps,
+    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void;
+  handleDeleteProduct: (
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>,
+    productId: string,
+    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void;
 }
 
 export interface IUserContextData {
   user: IUserProps;
+  handleEditUser: (
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>,
+    user: IUserProps,
+    data: any,
+    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void;
 }
 
 export interface IUserProductsList {
