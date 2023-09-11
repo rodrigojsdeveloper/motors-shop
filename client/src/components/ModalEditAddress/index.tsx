@@ -148,16 +148,16 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
 
         <div className="divButtons">
           <Button
-            color="buttonColorGrayModalEditAddress"
-            size="buttonSizeModalEditAddressSmall"
+            color="grey-6"
+            size="126px"
             type="button"
             onClick={() => setOpenModalEditAddress(false)}
           >
             Cancelar
           </Button>
           <Button
-            color="buttonColorBlueLogin"
-            size="buttonSizeModalEditAddressMedium"
+            color="blue"
+            size="193px"
             type="submit"
             disabled={load}
           >

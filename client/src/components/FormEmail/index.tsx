@@ -63,8 +63,8 @@ const FormEmail = () => {
 
         <Button
           className="buttonSubmit"
-          size="buttonSizeLogin"
-          color="buttonColorBlueLogin"
+          size="315px"
+          color="blue"
           type="submit"
           disabled={load}
         >

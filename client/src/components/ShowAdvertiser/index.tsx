@@ -37,8 +37,8 @@ const ShowAdvertiser = ({
         <DescriptionProduct description={user?.description} />
 
         <Button
-          color="buttonColorWhiteUserDetails"
-          size="buttonSizeShowAdvertiser"
+          color="light-blue"
+          size="160px"
           type="button"
           onClick={() => setOpenModalCreateAnnouncement(true)}
         >

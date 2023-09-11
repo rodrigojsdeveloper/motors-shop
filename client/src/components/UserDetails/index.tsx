@@ -16,8 +16,8 @@ const UserDetails = ({ user }: IUser) => {
       <p>{user.description}</p>
 
       <Button
-        size="buttonSizeUserDetailsMedium"
-        color="buttonColorWhiteUserDetails"
+        size="126px"
+        color="light-blue"
         type="button"
       >
         Criar anúncio

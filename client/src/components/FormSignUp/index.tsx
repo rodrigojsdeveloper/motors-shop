@@ -226,8 +226,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
                   borderWidth: 2,
                 }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >
@@ -254,8 +254,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
                   borderWidth: 2,
                 }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >
@@ -280,8 +280,8 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
       <Button
         className="buttonSubmit"
-        size="buttonSizeLogin"
-        color="buttonColorBlueLogin"
+        size="315px"
+        color="blue"
         type="submit"
         disabled={load}
       >

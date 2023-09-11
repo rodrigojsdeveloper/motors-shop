@@ -24,7 +24,7 @@ const Container = styled.form`
     font-size: 14px;
   }
 
-  & > a {
+  & > .resetPassword {
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
@@ -46,37 +46,26 @@ const Container = styled.form`
     align-items: center;
   }
 
-  & > a:nth-last-child(1) {
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: 16px;
-
-    border: none;
-
+  & > .buttonSignUp {
+    width: 100%;
+    max-width: 315px;
+    height: 48px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
 
-    transition: 0.5s;
-    height: 48px;
-    max-width: 315px;
-    width: 100%;
-    background-color: var(--grey10);
-    border: 2px solid var(--grey4);
-
-    color: var(--grey0);
-    padding: 12px 28px;
-
     font-weight: 600;
     font-size: 16px;
-    text-decoration: none;
-
-    :hover {
-      border-color: var(--shadow3);
-      box-shadow: var(--shadow1) 0 4px 12px;
-      color: var(--shadow5);
-      transform: translateY(-1px);
-    }
+    line-height: 18px;
+        
+    color: var(--grey0);
+    border: 2px solid var(--grey4);
+    background-color: var(--grey10);
+    border-radius: var(--border-radius);
+    
+    transition: 0.5s;
+    padding: 12px 28px;
   }
 
   @media (max-width: 425px) {

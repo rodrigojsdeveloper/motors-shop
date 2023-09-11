@@ -72,12 +72,7 @@ const FormNewPassword = () => {
         />
       </div>
 
-      <Button
-        className="buttonSubmit"
-        size="buttonSizeLogin"
-        color="buttonColorBlueLogin"
-        type="submit"
-      >
+      <Button size="315px" color="blue" type="submit">
         Alterar senha
       </Button>
     </Container>

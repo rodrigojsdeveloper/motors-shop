@@ -3,18 +3,19 @@ import styled, { css } from "styled-components";
 
 const Container = styled.button<IButtonStyledProps>`
   width: 100%;
-
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  font-size: 16px;
-
-  border: none;
+  height: 48px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: var(--border-radius);
+
   transition: 0.5s;
+  padding: 12px 28px;
 
   :disabled {
     opacity: 0.5;
@@ -23,100 +24,57 @@ const Container = styled.button<IButtonStyledProps>`
 
   ${({ size }) => {
     switch (size) {
-      case "buttonSizeLogin":
-        return css`
-          height: 48px;
-          max-width: 315px;
-        `;
-
-      case "buttonSizeHeader":
-        return css`
-          height: 48px;
-          max-width: 133px;
-        `;
-
-      case "buttonSizeFooter":
+      case "53px":
         return css`
           height: 50px;
           max-width: 53px;
         `;
 
-      case "buttonSizeBanner":
-        return css`
-          height: 48px;
-          max-width: 182.51px;
-        `;
-
-      case "buttonSizeSignUp":
-        return css`
-          height: 48px;
-          max-width: 155.5px;
-        `;
-
-      case "buttonSizeProductDetails":
-        return css`
-          height: 48px;
-          max-width: 206px;
-        `;
-
-      case "buttonSizeProductCarDetails":
-        return css`
-          height: 38px;
-          max-width: 100px;
-        `;
-
-      case "buttonSizeSuccessModal":
-        return css`
-          height: 38px;
-          max-width: 132px;
-        `;
-
-      case "buttonSizeModalEditAddressMedium":
-        return css`
-          height: 48px;
-          max-width: 193px;
-        `;
-
-      case "buttonSizeModalEditAddressSmall":
-        return css`
-          height: 48px;
-          max-width: 126px;
-        `;
-
-      case "buttonSizeUserDetailsMedium":
-        return css`
-          height: 48px;
-          max-width: 126px;
-        `;
-
-      case "buttonSizeEditProduct":
+      case "80px":
         return css`
           height: 38px;
           max-width: 80px;
         `;
 
-      case "buttonSizeShowProduct":
+      case "100px":
         return css`
           height: 38px;
-          max-width: 105px;
+          max-width: 100px;
         `;
 
-      case "buttonSizeShowAdvertiser":
+      case "126px":
         return css`
-          height: 48px;
+          max-width: 126px;
+        `;
+
+      case "155.5px":
+        return css`
+          max-width: 155.5px;
+        `;
+
+      case "160px":
+        return css`
           max-width: 160px;
         `;
 
-      case "buttonSizeModalEditProduct":
+      case "193px":
         return css`
-          height: 48px;
+          max-width: 193px;
+        `;
+
+      case "211px":
+        return css`
+          max-width: 211px;
+        `;
+
+      case "262px":
+        return css`
           max-width: 262px;
         `;
 
-      case "buttonSizeModalDeleteProduct":
+      case "315px":
         return css`
-          height: 48px;
-          max-width: 211px;
+          max-width: 315px;
         `;
 
       default:
@@ -126,151 +84,80 @@ const Container = styled.button<IButtonStyledProps>`
 
   ${({ color }) => {
     switch (color) {
-      case "buttonColorBlueLogin":
+      case "white":
         return css`
+          color: var(--grey0);
+          background-color: var(--grey10);
+          border: 1.5px solid var(--grey4);
+        `;
+
+      case "blue":
+        return css`
+          color: var(--white-fixed);
           background-color: var(--brand1);
           border: 1.5px solid var(--brand1);
 
-          color: var(--white-fixed);
-          padding: 12px 28px;
-
-          :hover {
-            background-color: var(--brand3);
+          &:hover {
             border-color: var(--brand3);
+            background-color: var(--brand3);
           }
         `;
 
-      case "buttonColorWhiteHeader":
+      case "red":
         return css`
-          background-color: var(--grey10);
-          border: 2px solid var(--grey4);
+          color: var(--alert1);
+          background-color: var(--alert3);
+          border: 1.5px solid var(--alert3);
 
-          color: var(--grey0);
-          padding: 12px 28px;
+          padding: 12px 15px;
 
-          font-weight: 600;
-          font-size: 16px;
-
-          :hover {
-            border-color: var(--shadow3);
-            box-shadow: var(--shadow1) 0 4px 12px;
-            color: var(--shadow5);
-            transform: translateY(-1px);
+          &:hover {
+            border-color: var(--alert2);
+            background-color: var(--alert2);
           }
         `;
 
-      case "buttonColorWhiteSignUp":
+      case "light-blue":
         return css`
-          background-color: var(--grey10);
-          border: 1.5px solid var(--grey4);
-
-          color: var(--grey0);
-          padding: 12px 28px;
-
-          :hover {
-            border-color: var(--brand1);
-            background-color: var(--brand1);
-
-            color: var(--grey10);
-          }
-        `;
-
-      case "buttonColorGrayFooter":
-        return css`
-          background-color: var(--grey1);
-
-          color: var(--white-fixed);
-          font-weight: 900;
-          line-height: 18px;
-        `;
-
-      case "buttonColorBlueBanner":
-        return css`
-          border: 1.5px solid var(--grey10);
-          background-color: var(--transparent);
-          padding: 12px 28px;
-
-          color: var(--grey10);
-
-          :hover {
-            background-color: var(--grey10);
-            color: var(--grey1);
-          }
-        `;
-
-      case "buttonColorBlackProductDetails":
-        return css`
-          background-color: var(--grey0);
-          border: 1.5px solid var(--grey0);
-
-          padding: 12px 28px;
-          font-weight: 600;
-          font-size: 15px;
-          color: var(--white-fixed);
-        `;
-
-      case "buttonColorGrayModalEditAddress":
-        return css`
-          background-color: var(--grey6);
-          border: 1.5px solid var(--grey6);
-
-          padding: 12px 28px;
-          font-weight: 600;
-          font-size: 16px;
-          color: var(--grey2);
-
-          :hover {
-            background-color: var(--grey5);
-            border-color: var(--grey5);
-          }
-        `;
-
-      case "buttonColorWhiteUserDetails":
-        return css`
+          color: var(--brand1);
           background-color: var(--grey10);
           border: 1.5px solid var(--brand1);
 
-          padding: 12px 28px;
-          font-weight: 600;
-          font-size: 16px;
-          color: var(--brand1);
-
-          :hover {
+          &:hover {
             background-color: var(--brand4);
           }
         `;
 
-      case "buttonColorWhiteEditAndShowProduct":
+      case "white-grey":
         return css`
-          padding: 12px 20px;
-          border: 1.5px solid var(--grey0);
-
-          font-weight: 600;
           font-size: 14px;
-          color: var(--grey0);
 
+          color: var(--grey0);
+          border: 1.5px solid var(--grey0);
           background-color: var(--transparent);
 
-          :hover {
-            background-color: var(--grey1);
-            border-color: var(--grey1);
+          &:hover {
             color: var(--grey10);
+            border-color: var(--grey1);
+            background-color: var(--grey1);
           }
         `;
 
-      case "buttonColorRedModalDeleteProduct":
+      case "grey-1":
         return css`
-          padding: 12px 15px;
-          background-color: var(--alert3);
-          border: 1.5px solid var(--alert3);
+          color: var(--white-fixed);
+          background-color: var(--grey1);
+        `;
 
-          font-weight: 600;
-          font-size: 16px;
-          color: var(--alert1);
+      case "grey-6":
+        return css`
+          color: var(--grey2);
+          background-color: var(--grey6);
+          border: 1.5px solid var(--grey6);
 
-          :hover {
-            border-color: var(--alert2);
-            background-color: var(--alert2);
+          &:hover {
+            background-color: var(--grey5);
+            border-color: var(--grey5);
           }
         `;
 

@@ -75,8 +75,8 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           required={true}
         />
         <Button
-          size="buttonSizeProductCarDetails"
-          color="buttonColorBlueLogin"
+          size="100px"
+          color="blue"
           type="submit"
           disabled={disable ? disable : load}
         >

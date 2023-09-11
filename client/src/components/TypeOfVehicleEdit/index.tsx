@@ -25,8 +25,8 @@ const TypeOfVehicleEdit = ({
                   borderColor: "#ADB5BD",
                 }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >
@@ -47,8 +47,8 @@ const TypeOfVehicleEdit = ({
                   borderColor: "#ADB5BD",
                 }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >

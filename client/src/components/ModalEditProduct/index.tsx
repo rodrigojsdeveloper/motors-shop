@@ -172,8 +172,8 @@ const ModalEditProduct = ({
 
         <div className="divButtons">
           <Button
-            color="buttonColorGrayModalEditAddress"
-            size="buttonSizeModalEditProduct"
+            color="grey-6"
+            size="262px"
             type="button"
             onClick={() => {
               setOpenModalEdit(false);
@@ -183,8 +183,8 @@ const ModalEditProduct = ({
             Excluir anúncio
           </Button>
           <Button
-            color="buttonColorBlueLogin"
-            size="buttonSizeModalEditAddressMedium"
+            color="blue"
+            size="193px"
             type="submit"
             disabled={load}
           >

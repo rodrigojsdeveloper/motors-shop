@@ -49,12 +49,6 @@ const Container = styled.header`
 
     padding: 12px 28px;
 
-    :hover {
-      transform: translateY(-1px);
-      border-color: var(--shadow3);
-      box-shadow: var(--shadow1) 0 4px 12px;
-    }
-
     @media (max-width: 768px) {
       max-width: unset;
     }

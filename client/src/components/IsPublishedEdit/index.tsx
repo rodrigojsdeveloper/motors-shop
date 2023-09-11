@@ -30,8 +30,8 @@ const IsPublishedEdit = ({
                   borderColor: "#ADB5BD",
                 }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >
@@ -52,8 +52,8 @@ const IsPublishedEdit = ({
                   borderColor: "#ADB5BD",
                 }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >

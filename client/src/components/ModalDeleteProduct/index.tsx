@@ -24,16 +24,16 @@ const ModalDeleteProduct = ({
 
         <div>
           <Button
-            size="buttonSizeUserDetailsMedium"
-            color="buttonColorGrayModalEditAddress"
+            size="126px"
+            color="grey-6"
             type="button"
             onClick={() => setOpenModalDelete(false)}
           >
             Cancelar
           </Button>
           <Button
-            size="buttonSizeModalDeleteProduct"
-            color="buttonColorRedModalDeleteProduct"
+            size="211px"
+            color="red"
             type="button"
             onClick={() => {
               api

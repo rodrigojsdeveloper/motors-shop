@@ -56,8 +56,8 @@ const Footer = () => {
       <small>© 2022 - Todos os direitos reservados.</small>
 
       <Button
-        size="buttonSizeFooter"
-        color="buttonColorGrayFooter"
+        size="53px"
+        color="grey-1"
         type="button"
         onClick={() => window.scroll({ top: 0 })}
       >

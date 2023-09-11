@@ -54,8 +54,8 @@ const AdvertiserProduct = ({ product }: IProduct) => {
 
         <div className="divButtons">
           <Button
-            color="buttonColorWhiteEditAndShowProduct"
-            size="buttonSizeEditProduct"
+            color="white-grey"
+            size="80px"
             type="button"
             onClick={() => setOpenModalEdit(true)}
           >

@@ -74,16 +74,16 @@ const ModalEditComment = ({
 
       <div className="divButtons">
         <Button
-          color="buttonColorBlueLogin"
-          size="buttonSizeModalEditAddressMedium"
+          color="blue"
+          size="193px"
           type="submit"
           disabled={load}
         >
           {load ? "Salvando..." : "Salvar alteração"}
         </Button>
         <Button
-          color="buttonColorGrayModalEditAddress"
-          size="buttonSizeModalEditAddressSmall"
+          color="grey-6"
+          size="126px"
           type="button"
           onClick={() => setOpenModalEditComment(false)}
         >

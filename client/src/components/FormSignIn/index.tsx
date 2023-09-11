@@ -62,18 +62,18 @@ const FormSignIn = () => {
         error={errors.password?.message}
       />
 
-      <Link to="/resetpassword">Esqueci minha senha</Link>
+      <Link className="resetPassword" to="/resetpassword">Esqueci minha senha</Link>
 
       <Button
-        size="buttonSizeLogin"
-        color="buttonColorBlueLogin"
+        size="315px"
+        color="blue"
         type="submit"
         disabled={load}
       >
         {load ? "Entrando..." : "Entrar"}
       </Button>
       <small>Ainda não possui conta?</small>
-      <Link to="/signup">Cadastrar</Link>
+      <Link className="buttonSignUp" to="/signup">Cadastrar</Link>
     </Container>
   );
 };

@@ -6,6 +6,7 @@ export interface InputProps {
   error?: any;
   label?: string;
   className?: string;
+  maxLength?: number;
   disabled?: boolean;
   placeholder?: string;
   type?: React.HTMLInputTypeAttribute;
@@ -13,44 +14,34 @@ export interface InputProps {
   value?: string | number | readonly string[];
   defaultValue?: string | number | readonly string[];
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  maxLength?: number;
 }
 
 export interface IButtonProps {
-  children: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  disabled?: boolean;
-  type?: "button" | "submit" | "reset";
   size:
-    | "buttonSizeLogin"
-    | "buttonSizeHeader"
-    | "buttonSizeBanner"
-    | "buttonSizeFooter"
-    | "buttonSizeSignUp"
-    | "buttonSizeProductDetails"
-    | "buttonSizeProductCarDetails"
-    | "buttonSizeSuccessModal"
-    | "buttonSizeModalEditAddressMedium"
-    | "buttonSizeModalEditAddressSmall"
-    | "buttonSizeUserDetailsMedium"
-    | "buttonSizeEditProduct"
-    | "buttonSizeShowProduct"
-    | "buttonSizeShowAdvertiser"
-    | "buttonSizeModalEditProduct"
-    | "buttonSizeModalDeleteProduct";
+    | "53px"
+    | "80px"
+    | "100px"
+    | "126px"
+    | "155.5px"
+    | "160px"
+    | "193px"
+    | "211px"
+    | "262px"
+    | "315px";
   color:
-    | "buttonColorBlueLogin"
-    | "buttonColorWhiteHeader"
-    | "buttonColorGrayFooter"
-    | "buttonColorBlueBanner"
-    | "buttonColorWhiteSignUp"
-    | "buttonColorBlackProductDetails"
-    | "buttonColorGrayModalEditAddress"
-    | "buttonColorWhiteUserDetails"
-    | "buttonColorWhiteEditAndShowProduct"
-    | "buttonColorRedModalDeleteProduct";
+    | "white"
+    | "blue"
+    | "red"
+    | "light-blue"
+    | "white-grey"
+    | "grey-1"
+    | "grey-6";
   className?: string;
+  disabled?: boolean;
+  children: React.ReactNode;
+  type?: "button" | "submit" | "reset";
   style?: React.CSSProperties | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface ITextAreaProps {

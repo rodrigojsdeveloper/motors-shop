@@ -27,8 +27,8 @@ const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
               ? { backgroundColor: "#4529E6", color: "#fff", borderColor: "#4529E6" }
               : { backgroundColor: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >
@@ -45,8 +45,8 @@ const TypeOfVehicle = ({ setBuyerOrAdvertiserVehicleType }: ITypeOfVehicle) => {
               ? { backgroundColor: "#4529E6", color: "#fff", borderColor: "#4529E6" }
               : { backgroundColor: "#fff", color: "#000", borderColor: "#ADB5BD" }
           }
-          size="buttonSizeSignUp"
-          color="buttonColorWhiteSignUp"
+          size="155.5px"
+          color="white"
           type="button"
           className="changeButton"
         >
