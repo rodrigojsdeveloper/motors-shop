@@ -175,6 +175,7 @@ const ModalEditProduct = ({
               setOpenModalEdit(false);
               setOpenModalDelete(true);
             }}
+            disabled={!product.is_published}
           >
             Excluir anúncio
           </Button>

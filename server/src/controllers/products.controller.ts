@@ -37,10 +37,18 @@ class ProductsController {
     return res.json(updatedProduct);
   }
 
-  async delete(req: Request, res: Response) {
+  async deactive(req: Request, res: Response) {
     const id: string = req.params.id;
 
-    await new ProductsService().delete(id);
+    await new ProductsService().deactive(id);
+
+    return res.status(204).json();
+  }
+
+  async active(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    await new ProductsService().active(id);
 
     return res.status(204).json();
   }

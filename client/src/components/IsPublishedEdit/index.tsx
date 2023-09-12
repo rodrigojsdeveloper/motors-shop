@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Button } from "../Button";
 import { Container } from "./style";
+import { Button } from "../Button";
+import { useState } from "react";
 
 interface IsPublishedEditProps {
   setIsPublished: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,14 +11,24 @@ const IsPublishedEdit = ({
   setIsPublished,
   is_published,
 }: IsPublishedEditProps) => {
+  const [isPublishedColor, setIsPublishedColor] =
+    useState<boolean>(is_published);
+  const [isNotPublishedColor, setIsNotPublishedColor] = useState<boolean>(
+    !is_published
+  );
+
   return (
     <Container>
       <h4>Publicado</h4>
       <div>
         <Button
-          onClick={() => setIsPublished(true)}
+          onClick={() => {
+            setIsPublished(true);
+            setIsPublishedColor(true);
+            setIsNotPublishedColor(false);
+          }}
           style={
-            is_published
+            isPublishedColor
               ? {
                   backgroundColor: "#4529E6",
                   color: "#fff",
@@ -38,9 +48,13 @@ const IsPublishedEdit = ({
           Sim
         </Button>
         <Button
-          onClick={() => setIsPublished(false)}
+          onClick={() => {
+            setIsPublished(false);
+            setIsPublishedColor(false);
+            setIsNotPublishedColor(true);
+          }}
           style={
-            !is_published
+            isNotPublishedColor
               ? {
                   backgroundColor: "#4529E6",
                   color: "#fff",

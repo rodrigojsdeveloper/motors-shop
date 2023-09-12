@@ -93,7 +93,10 @@ class UsersService {
       description: user.description ? user.description : findUser.description,
     });
 
-    const updatedUser = await userRepository.findOneBy({ id: findUser.id });
+    const updatedUser = await userRepository.findOne({
+      where: { id: findUser.id },
+      relations: ["address", "products", "comments"],
+    });
 
     Reflect.deleteProperty(updatedUser!, "password");
 

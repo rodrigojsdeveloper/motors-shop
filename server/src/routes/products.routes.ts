@@ -21,7 +21,9 @@ const productsRoutes = (): Router => {
 
   routes.patch("/:id", tokenMiddleware, new ProductsController().update);
 
-  routes.delete("/:id", tokenMiddleware, new ProductsController().delete);
+  routes.delete("/:id", tokenMiddleware, new ProductsController().deactive);
+
+  routes.post("/:id", tokenMiddleware, new ProductsController().active);
 
   routes.get("/:id", new ProductsController().specific);
 

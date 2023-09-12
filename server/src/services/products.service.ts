@@ -95,7 +95,7 @@ class ProductsService {
     return updatedProduct!;
   }
 
-  async delete(id: string): Promise<void> {
+  async deactive(id: string): Promise<void> {
     const product = await productRepository.findOneBy({ id });
 
     if (!product) {
@@ -103,6 +103,16 @@ class ProductsService {
     }
 
     await productRepository.update(product.id, { is_published: false });
+  }
+
+  async active(id: string): Promise<void> {
+    const product = await productRepository.findOneBy({ id });
+
+    if (!product) {
+      throw new NotFoundError("Product");
+    }
+
+    await productRepository.update(product.id, { is_published: true });
   }
 }
 

@@ -16,7 +16,7 @@ const AdvertiserList = () => {
       <menu>
         {advertiserProducts.length > 0 ? (
           advertiserProducts.map((product: IProductProps) => (
-            <AdvertiserProduct product={product} />
+            <AdvertiserProduct product={product} key={product.id} />
           ))
         ) : (
           <EmptyMessage message="Não há veículos" />

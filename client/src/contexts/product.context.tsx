@@ -72,8 +72,6 @@ export const ProductContextProvider = ({ children }: IChildren) => {
   ) => {
     setLoad(true);
 
-    isPublished ? (data.is_published = true) : (data.is_published = false);
-
     api
       .patch(`/products/${product.id}`, data, {
         headers: {
@@ -83,6 +81,18 @@ export const ProductContextProvider = ({ children }: IChildren) => {
       .then((_) => setOpenModal(false))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
+
+    if (isPublished) {
+      api
+        .post(`/products/${product.id}`, data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((_) => setOpenModal(false))
+        .catch((error) => console.error(error))
+        .finally(() => setLoad(false));
+    }
   };
 
   const handleDeleteProduct = (
@@ -103,6 +113,21 @@ export const ProductContextProvider = ({ children }: IChildren) => {
       .finally(() => setLoad(false));
   };
 
+  const handleGetProduct = (productId: string) => {
+    let product: any;
+
+    api
+      .get(`/products/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => (product = res.data))
+      .catch((error) => console.error(error));
+
+    return product;
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -113,6 +138,7 @@ export const ProductContextProvider = ({ children }: IChildren) => {
         handlePostProduct,
         handleEditProduct,
         handleDeleteProduct,
+        handleGetProduct,
       }}
     >
       {children}

@@ -104,13 +104,24 @@ describe("Testing all service product methods", () => {
     expect(result).toHaveProperty("comments");
   });
 
-  it("Must be able to delete a product", async () => {
+  it("Must be able to deactive a product", async () => {
     const createdProduct = await new ProductsService().create(
       product,
       createdUserEmail
     );
 
-    const result = await new ProductsService().delete(createdProduct.id);
+    const result = await new ProductsService().deactive(createdProduct.id);
+
+    expect(result).toBeUndefined();
+  });
+
+  it("Must be able to active a product", async () => {
+    const createdProduct = await new ProductsService().create(
+      product,
+      createdUserEmail
+    );
+
+    const result = await new ProductsService().active(createdProduct.id);
 
     expect(result).toBeUndefined();
   });

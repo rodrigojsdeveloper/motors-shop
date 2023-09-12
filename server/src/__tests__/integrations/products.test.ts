@@ -170,7 +170,7 @@ describe("Testing all product routes", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("Must be able to delete a product", async () => {
+  test("Must be able to deactive a product", async () => {
     const response = await request(app)
       .delete(`/api/products/${createdProductId}`)
       .set("Authorization", `Bearer ${token}`);
@@ -178,7 +178,7 @@ describe("Testing all product routes", () => {
     expect(response.status).toBe(204);
   });
 
-  test("Must be able to prevent deleting of a product without token", async () => {
+  test("Must be able to prevent disabling of a product without token", async () => {
     const response = await request(app).delete(
       `/api/products/${createdProductId}`
     );
@@ -187,9 +187,35 @@ describe("Testing all product routes", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("Must be able to prevent deleting a product with invalid id", async () => {
+  test("Must be able to prevent disabling a product with invalid id", async () => {
     const response = await request(app)
       .delete("/api/products/05a429c8-ca25-4007-8854-25c25f734167")
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.status).toBe(404);
+    expect(response.body).toHaveProperty("message");
+  });
+
+  test("Must be able to active a product", async () => {
+    const response = await request(app)
+      .post(`/api/products/${createdProductId}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.status).toBe(204);
+  });
+
+  test("Must be able to prevent activating of a product without token", async () => {
+    const response = await request(app).post(
+      `/api/products/${createdProductId}`
+    );
+
+    expect(response.status).toBe(401);
+    expect(response.body).toHaveProperty("message");
+  });
+
+  test("Must be able to prevent activating a product with invalid id", async () => {
+    const response = await request(app)
+      .post("/api/products/05a429c8-ca25-4007-8854-25c25f734167")
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(404);

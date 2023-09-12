@@ -9,13 +9,17 @@ import { useContext } from "react";
 const List = () => {
   const { products } = useContext(ProductContext);
 
+  const publishedProducts = products.filter(
+    (product) => product.is_published === true
+  );
+
   return (
     <Container>
       <TitleList title="Veículos" />
 
       <menu>
-        {products.length > 0 ? (
-          products.map((product: IProductProps) => (
+        {publishedProducts.length > 0 ? (
+          publishedProducts.map((product: IProductProps) => (
             <Product product={product} key={product.id} />
           ))
         ) : (

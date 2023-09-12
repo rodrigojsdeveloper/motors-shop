@@ -273,6 +273,7 @@ export interface IProductContextData {
     productId: string,
     setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
+  handleGetProduct: (productId: string) => IProductProps;
 }
 
 export interface IUserContextData {
