@@ -1,15 +1,11 @@
-<p align="center">
-<img src="https://img.shields.io/badge/react-18.2.0-blue">
-<img src="https://img.shields.io/badge/node-18.11.17-blue">
+<div align="center">
+<h1>Motors Shop</h1>
+<p>
+
+Motors Shop é um projeto de site de vendas de automóveis.
+
 </p>
-
-# Motors Shop
-
-A Motors shop é um site de vendas de carros, motos e de leilões por tempo limitado.
-
-#### Links da aplicação:
-
-Indisponíveis por enquanto...
+</div>
 
 ---
 
@@ -19,7 +15,7 @@ Projeto desenvolvido no backend com Node e no frontend com React.
 
 ### 1. Instalação das dependencias
 
-Efetue a criação das dependências com `yarn` ou `npm install` nas pastas client e server.
+Efetue a criação das dependências com `yarn` nas pastas client e server.
 
 ### 2. Configuração do .env
 
@@ -41,12 +37,6 @@ Acesse a pasta backend e rode o comando:
 yarn dev
 ```
 
-ou
-
-```
-npm run dev
-```
-
 e rode uma requisição no insomnia
 
 #### Exemplo de requisição - POST
@@ -58,7 +48,6 @@ e rode uma requisição no insomnia
   "password": "Johndoe@123",
   "cellphone": "99 99999-9999",
   "address": {
-    "country": "United State",
     "state": "Califórnia",
     "city": "Mountain View",
     "district": "Amphitheatre Pkwy",
@@ -80,12 +69,6 @@ Acesse a pasta client e rode o comando:
 yarn dev
 ```
 
-ou
-
-```
-npm run dev
-```
-
 e abra o projeto no seu navegador
 
 #### Link do projeto
@@ -98,13 +81,13 @@ http://localhost:5173
 
 Na raiz do projeto rode o comando:
 
-## Windows
+### Windows
 
 ```
 docker-compose up -d
 ```
 
-## Linux
+### Linux
 
 ```
 sudo docker-compose up -d
@@ -114,7 +97,7 @@ a flag `-d` é para rodar o projeto em 'background' deixando o terminal livre pa
 
 ### 4. Documentação
 
-Com o projeto rodando acesse `http://localhost:3000/docs` para ver a documentação
+Com o projeto rodando acesse `http://localhost:3000/api/docs` para ver a documentação
 
 ## Desenvolvedor
 

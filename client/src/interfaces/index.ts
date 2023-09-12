@@ -187,6 +187,7 @@ export interface IModalPhoto extends IOpenModal {
 
 export interface IPhoto extends IOpenModal {
   image: string;
+  alt: string;
 }
 
 export interface IPhotosGallery {

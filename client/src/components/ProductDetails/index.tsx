@@ -31,7 +31,11 @@ const ProductDetails = ({ product, setOpenModal }: IProductDetails) => {
       <Content>
         <article>
           <div className={"divCarPhotoAndDetails"}>
-            <Photo image={product?.cover_image} setOpenModal={setOpenModal} />
+            <Photo
+              image={product?.cover_image}
+              alt={product.model}
+              setOpenModal={setOpenModal}
+            />
 
             <DetailsNotLogged product={product} />
           </div>
@@ -52,7 +56,11 @@ const ProductDetails = ({ product, setOpenModal }: IProductDetails) => {
       <Container>
         <article>
           <div className={"divCarPhotoAndDetails"}>
-            <Photo image={product?.cover_image} setOpenModal={setOpenModal} />
+            <Photo
+              image={product?.cover_image}
+              alt={product.model}
+              setOpenModal={setOpenModal}
+            />
 
             <DetailsProduct product={product} />
           </div>
@@ -74,7 +82,11 @@ const ProductDetails = ({ product, setOpenModal }: IProductDetails) => {
     <Content>
       <article>
         <div className={"divCarPhotoAndDetails"}>
-          <Photo image={product?.cover_image} setOpenModal={setOpenModal} />
+          <Photo
+            image={product?.cover_image}
+            alt={product.model}
+            setOpenModal={setOpenModal}
+          />
 
           <DetailsNotLogged product={product} />
         </div>

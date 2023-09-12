@@ -1,10 +1,10 @@
 import { IPhoto } from "../../interfaces";
 import { Container } from "./style";
 
-const Photo = ({ image, setOpenModal }: IPhoto) => {
+const Photo = ({ image, alt, setOpenModal }: IPhoto) => {
   return (
     <Container>
-      <img src={image} onClick={() => setOpenModal(true)} />
+      <img src={image} alt={alt} onClick={() => setOpenModal(true)} />
     </Container>
   );
 };

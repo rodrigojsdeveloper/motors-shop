@@ -19,9 +19,6 @@ const Container = styled.section`
         font-size: 36px;
       }
     }
-    & > h5 {
-      display: none;
-    }
   }
 
   & > div:nth-child(2) {
@@ -50,6 +47,10 @@ const Container = styled.section`
       line-height: 24px;
       color: var(--brand1);
     }
+  }
+
+  .username {
+    display: none;
   }
 
   @media (max-width: 768px) {

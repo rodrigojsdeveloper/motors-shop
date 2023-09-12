@@ -19,7 +19,7 @@ const AvatarUser = ({ username }: IAvatarUser) => {
         )}
       </Content>
 
-      <h4>{username}</h4>
+      <h4 className="username">{username}</h4>
     </Container>
   );
 };

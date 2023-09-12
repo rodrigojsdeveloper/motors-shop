@@ -99,16 +99,7 @@ export default createGlobalStyle`
 	}
 
 	&::-webkit-scrollbar {
-  	width: 6px;
-	}
-
-	&::-webkit-scrollbar-track {
-		background-color: transparent;
-	}
-
-	&::-webkit-scrollbar-thumb {
-	  background-color: var(--grey4);
-		border-radius: 12px;
+		display: none;
 	}
 
 	.divInputs {

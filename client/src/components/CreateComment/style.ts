@@ -3,12 +3,11 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 751px;
-  height: 259px;
 
   background-color: var(--grey10);
   border-radius: var(--border-radius);
 
-  padding: 40px 30px 40px 48px;
+  padding: 40px 30px;
   margin-top: 35px;
 
   & > form {
@@ -18,7 +17,6 @@ const Container = styled.div`
     justify-content: space-around;
 
     width: 100%;
-    max-width: 672px;
     height: 128px;
 
     border: 2px solid var(--grey7);
@@ -34,8 +32,8 @@ const Container = styled.div`
     & > textarea {
       padding-top: 10px;
 
+      width: 100%;
       height: 100%;
-      width: 80%;
 
       background-color: var(--transparent);
 
@@ -64,18 +62,19 @@ const Container = styled.div`
     }
 
     @media (max-width: 768px) {
+      height: 185px;
       border: none;
+
       flex-direction: column;
       align-items: flex-start;
       padding: 0;
-      height: 185px;
 
       & > textarea {
-        border: 2px solid var(--grey7);
-        border-radius: var(--border-radius);
-
         width: 100%;
         height: 128px;
+
+        border: 2px solid var(--grey7);
+        border-radius: var(--border-radius);
 
         margin-bottom: 20px;
         padding: 15px 0 15px 15px;
@@ -112,11 +111,6 @@ const Container = styled.div`
 
   @media (max-width: 1440px) {
     margin: 35px auto 50px auto;
-  }
-
-  @media (max-width: 768px) {
-    padding: 30px;
-    height: 414px;
   }
 `;
 
