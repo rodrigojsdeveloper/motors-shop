@@ -17,9 +17,7 @@ const ShowAdvertiser = () => {
     <>
       {openModalCreateProduct && (
         <ModalBackground>
-          <ModalCreateProduct
-            setOpenModalCreateProduct={setOpenModalCreateProduct}
-          />
+          <ModalCreateProduct setOpenModal={setOpenModalCreateProduct} />
         </ModalBackground>
       )}
       <Container>

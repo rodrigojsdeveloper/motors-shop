@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { IOpenModal } from "../../interfaces";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
@@ -8,11 +9,7 @@ import { useState } from "react";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-interface IFormSignUp {
-  setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
+const FormSignUp = ({ setOpenModal }: IOpenModal) => {
   const [changeColorBuyer, setChangeColorBuyer] = useState<boolean>(true);
 
   const [changeColorAdvertiser, setChangeColorAdvertiser] =
@@ -87,7 +84,7 @@ const FormSignUp = ({ setOpenModalSuccess }: IFormSignUp) => {
 
     api
       .post("/users/signup", data)
-      .then(() => setOpenModalSuccess(true))
+      .then(() => setOpenModal(true))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };

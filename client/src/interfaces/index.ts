@@ -44,16 +44,16 @@ export interface IButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
+export interface IButtonStyledProps {
+  size: string;
+  color: string;
+}
+
 export interface ITextAreaProps {
   defaultValue?: string | number | readonly string[];
   register: UseFormRegister<FieldValues>;
   name: string;
   error?: any;
-}
-
-export interface IButtonStyledProps {
-  size: string;
-  color: string;
 }
 
 export interface IUserProps {
@@ -66,11 +66,11 @@ export interface IUserProps {
   birthdate: string;
   is_seller: boolean;
   description: string;
-  address: IAddress;
+  address: IAddressProps;
   products: [];
 }
 
-export interface IAddress {
+export interface IAddressProps {
   zip_code: string;
   state: string;
   city: string;
@@ -106,6 +106,10 @@ export interface ICommentProps {
   created_at: string;
 }
 
+export interface IModalEditComment extends IOpenModal {
+  comment_id: string;
+}
+
 export interface IUser {
   user: IUserProps;
 }
@@ -128,7 +132,7 @@ export interface ICreateComment {
   ListCommentsFunc: (comment: ICommentProps) => void;
 }
 
-export interface IimageProduct {
+export interface ImageProductProps {
   src: string;
   alt: string;
 }
@@ -139,13 +143,6 @@ export interface ITitleProduct {
 
 export interface IDescription {
   description: string;
-}
-
-export interface ITypeOfVehicle {
-  setBuyerOrAdvertiserVehicleType: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
-  vehicle_type?: string;
 }
 
 export interface IAvatarUser {
@@ -164,21 +161,16 @@ export interface IPriceProduct {
   price: number;
 }
 
-export interface IModalBackground {
-  children: ReactNode;
-}
-
 export interface IHeaderModal {
   title: string;
   setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface IModalCreateAnnouncement {
-  setOpenModalCreateProduct: React.Dispatch<React.SetStateAction<boolean>>;
+export interface IOpenModal {
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface IModalDelete {
-  setOpenModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
+export interface IModalDelete extends IOpenModal {
   productId: string;
 }
 
@@ -188,27 +180,13 @@ export interface IModalEdit {
   setOpenModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface IModalEditAddress {
-  setOpenModalEditAddress: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface IModalEditUser {
-  setOpenModalEditUser: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface IModalPhoto {
-  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
+export interface IModalPhoto extends IOpenModal {
   cover_image: string;
   title: string;
 }
 
-export interface IModalSuccess {
-  setOpenModalSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface IPhoto {
+export interface IPhoto extends IOpenModal {
   image: string;
-  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IPhotosGallery {
@@ -217,24 +195,12 @@ export interface IPhotosGallery {
   model: string;
 }
 
-export interface IProductDetails {
+export interface IProductDetails extends IOpenModal {
   product: IProductProps;
-  setOpenModalPhoto: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface IShowAdvertiser {
-  user: IUserProps;
-  listMotorcyclesFunc: (motorcycle: IProductProps) => void;
-  listCarsFunc: (car: IProductProps) => void;
 }
 
 export interface IUserProductsProduct {
   product: IProductProps;
-  user: IUserProps;
-}
-
-export interface IUserProductsListCars {
-  products: IProductProps[];
   user: IUserProps;
 }
 
@@ -289,4 +255,9 @@ export interface IUserContextData {
 export interface IUserProductsList {
   products: Array<IProductProps>;
   user: IUserProps;
+}
+
+export interface IsPublishedEditProps {
+  setIsPublished: React.Dispatch<React.SetStateAction<boolean>>;
+  is_published: boolean;
 }

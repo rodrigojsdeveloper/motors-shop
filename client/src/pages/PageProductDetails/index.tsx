@@ -83,7 +83,7 @@ const PageProductDetails = () => {
       {openModalPhoto ? (
         <ModalBackground>
           <ModalPhoto
-            setOpenModalPhoto={setOpenModalPhoto}
+            setOpenModal={setOpenModalPhoto}
             cover_image={productRequest.cover_image}
             title={productRequest.model}
           />
@@ -98,7 +98,7 @@ const PageProductDetails = () => {
             <div>
               <ProductDetails
                 product={productRequest}
-                setOpenModalPhoto={setOpenModalPhoto}
+                setOpenModal={setOpenModalPhoto}
               />
               <ListComments loaded={loaded} comments={commentsList} />
               <CreateComment

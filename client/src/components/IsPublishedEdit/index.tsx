@@ -1,11 +1,7 @@
+import { IsPublishedEditProps } from "../../interfaces";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { useState } from "react";
-
-interface IsPublishedEditProps {
-  setIsPublished: React.Dispatch<React.SetStateAction<boolean>>;
-  is_published: boolean;
-}
 
 const IsPublishedEdit = ({
   setIsPublished,

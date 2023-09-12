@@ -1,7 +1,7 @@
 import { formatBirthdate } from "../../utils/formatBirthdate";
 import { UserContext } from "../../contexts/user.context";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IModalEditUser } from "../../interfaces";
+import { IOpenModal } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,7 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
+const ModalEditUser = ({ setOpenModal }: IOpenModal) => {
   const { user, handleEditUser } = useContext(UserContext);
 
   const [load, setLoad] = useState<boolean>(false);
@@ -30,11 +30,11 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
   });
 
   const onSubmitFunction = (data: any) =>
-    handleEditUser(setLoad, user, data, setOpenModalEditUser);
+    handleEditUser(setLoad, user, data, setOpenModal);
 
   return (
     <Container>
-      <HeaderModal title="Editar perfil" setCloseModal={setOpenModalEditUser} />
+      <HeaderModal title="Editar perfil" setCloseModal={setOpenModal} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <h3>Infomações pessoais</h3>
@@ -87,7 +87,7 @@ const ModalEditUser = ({ setOpenModalEditUser }: IModalEditUser) => {
             color="grey-6"
             size="126px"
             type="button"
-            onClick={() => setOpenModalEditUser(false)}
+            onClick={() => setOpenModal(false)}
           >
             Cancelar
           </Button>

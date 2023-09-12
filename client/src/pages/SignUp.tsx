@@ -20,10 +20,10 @@ const SignUp = () => {
     <Layout title="Cadastro">
       {openModalSuccess ? (
         <ModalBackground>
-          <ModalSucessRegister setOpenModalSuccess={setOpenModalSuccess} />
+          <ModalSucessRegister setOpenModal={setOpenModalSuccess} />
         </ModalBackground>
       ) : null}
-      <FormSignUp setOpenModalSuccess={setOpenModalSuccess} />
+      <FormSignUp setOpenModal={setOpenModalSuccess} />
     </Layout>
   );
 };

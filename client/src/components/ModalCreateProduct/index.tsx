@@ -1,19 +1,16 @@
 import { ProductContext } from "../../contexts/product.context";
-import { IModalCreateAnnouncement } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { IOpenModal } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
 import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-const ModalCreateProduct = ({
-  setOpenModalCreateProduct,
-}: IModalCreateAnnouncement) => {
+const ModalCreateProduct = ({ setOpenModal }: IOpenModal) => {
   const { handlePostProduct } = useContext(ProductContext);
 
   const [load, setLoad] = useState<boolean>(false);
@@ -46,14 +43,11 @@ const ModalCreateProduct = ({
   });
 
   const onSubmitFunction = (data: any) =>
-    handlePostProduct(setLoad, data, setOpenModalCreateProduct);
+    handlePostProduct(setLoad, data, setOpenModal);
 
   return (
     <Container>
-      <HeaderModal
-        title="Criar anúncio"
-        setCloseModal={setOpenModalCreateProduct}
-      />
+      <HeaderModal title="Criar anúncio" setCloseModal={setOpenModal} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <h4>Informações do veículo</h4>
@@ -150,7 +144,7 @@ const ModalCreateProduct = ({
             color="grey-6"
             size="126px"
             type="button"
-            onClick={() => setOpenModalCreateProduct(false)}
+            onClick={() => setOpenModal(false)}
           >
             Cancelar
           </Button>

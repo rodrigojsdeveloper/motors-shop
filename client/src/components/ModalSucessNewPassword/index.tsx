@@ -1,11 +1,11 @@
-import { IModalSuccess } from "../../interfaces";
+import { IOpenModal } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { Container } from "./style";
 
-const ModalSucessNewPassword = ({ setOpenModalSuccess }: IModalSuccess) => {
+const ModalSucessNewPassword = ({ setOpenModal }: IOpenModal) => {
   return (
     <Container>
-      <HeaderModal title="Sucesso!" setCloseModal={setOpenModalSuccess} />
+      <HeaderModal title="Sucesso!" setCloseModal={setOpenModal} />
 
       <div>
         <h5>Link enviado para seu email com sucesso!</h5>

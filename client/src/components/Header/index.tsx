@@ -44,12 +44,12 @@ const Header = () => {
     <Container>
       {openModalEditAddress && (
         <ModalBackground>
-          <ModalEditAddress setOpenModalEditAddress={setOpenModalEditAddress} />
+          <ModalEditAddress setOpenModal={setOpenModalEditAddress} />
         </ModalBackground>
       )}
       {openModalEditUser && (
         <ModalBackground>
-          <ModalEditUser setOpenModalEditUser={setOpenModalEditUser} />
+          <ModalEditUser setOpenModal={setOpenModalEditUser} />
         </ModalBackground>
       )}
       {openNavAdvertiserLogged && user?.is_seller ? (

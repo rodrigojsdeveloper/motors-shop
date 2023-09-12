@@ -9,7 +9,7 @@ import { CardSeller } from "../CardSeller";
 import { api } from "../../services/api";
 import { Photo } from "../Photo";
 
-const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
+const ProductDetails = ({ product, setOpenModal }: IProductDetails) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [user, setUser] = useState<IUserProps>({} as IUserProps);
@@ -31,10 +31,7 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
       <Content>
         <article>
           <div className={"divCarPhotoAndDetails"}>
-            <Photo
-              image={product?.cover_image}
-              setOpenModalPhoto={setOpenModalPhoto}
-            />
+            <Photo image={product?.cover_image} setOpenModal={setOpenModal} />
 
             <DetailsNotLogged product={product} />
           </div>
@@ -55,10 +52,7 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
       <Container>
         <article>
           <div className={"divCarPhotoAndDetails"}>
-            <Photo
-              image={product?.cover_image}
-              setOpenModalPhoto={setOpenModalPhoto}
-            />
+            <Photo image={product?.cover_image} setOpenModal={setOpenModal} />
 
             <DetailsProduct product={product} />
           </div>
@@ -80,10 +74,7 @@ const ProductDetails = ({ product, setOpenModalPhoto }: IProductDetails) => {
     <Content>
       <article>
         <div className={"divCarPhotoAndDetails"}>
-          <Photo
-            image={product?.cover_image}
-            setOpenModalPhoto={setOpenModalPhoto}
-          />
+          <Photo image={product?.cover_image} setOpenModal={setOpenModal} />
 
           <DetailsNotLogged product={product} />
         </div>

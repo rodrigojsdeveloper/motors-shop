@@ -32,7 +32,7 @@ const AdvertiserProduct = ({ product }: IProduct) => {
       {openModalDelete && (
         <ModalBackground>
           <ModalDeleteProduct
-            setOpenModalDelete={setOpenModalDelete}
+            setOpenModal={setOpenModalDelete}
             productId={product.id}
           />
         </ModalBackground>

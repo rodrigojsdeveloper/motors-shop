@@ -1,6 +1,6 @@
 import { UserContext } from "../../contexts/user.context";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IModalEditAddress } from "../../interfaces";
+import { IOpenModal } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
 
-const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
+const ModalEditAddress = ({ setOpenModal }: IOpenModal) => {
   const { user, handleEditUser } = useContext(UserContext);
 
   const [load, setLoad] = useState<boolean>(false);
@@ -34,14 +34,11 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
   });
 
   const onSubmitFunction = (data: any) =>
-    handleEditUser(setLoad, user, data, setOpenModalEditAddress);
+    handleEditUser(setLoad, user, data, setOpenModal);
 
   return (
     <Container>
-      <HeaderModal
-        title="Editar endereço"
-        setCloseModal={setOpenModalEditAddress}
-      />
+      <HeaderModal title="Editar endereço" setCloseModal={setOpenModal} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <h3>Infomações de endereço</h3>
@@ -110,7 +107,7 @@ const ModalEditAddress = ({ setOpenModalEditAddress }: IModalEditAddress) => {
             color="grey-6"
             size="126px"
             type="button"
-            onClick={() => setOpenModalEditAddress(false)}
+            onClick={() => setOpenModal(false)}
           >
             Cancelar
           </Button>

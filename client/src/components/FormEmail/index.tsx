@@ -46,7 +46,7 @@ const FormEmail = () => {
     <>
       {openModalSucess && (
         <ModalBackground>
-          <ModalSucessNewPassword setOpenModalSuccess={setOpenModalSucess} />
+          <ModalSucessNewPassword setOpenModal={setOpenModalSucess} />
         </ModalBackground>
       )}
       <Container onSubmit={handleSubmit(onSubmitFunc)}>

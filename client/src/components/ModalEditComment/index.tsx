@@ -1,5 +1,5 @@
+import { ICommentProps, IModalEditComment } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ICommentProps } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,15 +9,7 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import * as yup from "yup";
 
-interface IModalEditComment {
-  comment_id: string;
-  setOpenModalEditComment: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const ModalEditComment = ({
-  comment_id,
-  setOpenModalEditComment,
-}: IModalEditComment) => {
+const ModalEditComment = ({ comment_id, setOpenModal }: IModalEditComment) => {
   const token = sessionStorage.getItem("Motors shop: token");
 
   const [comment, setComment] = useState<ICommentProps>({} as ICommentProps);
@@ -53,17 +45,14 @@ const ModalEditComment = ({
 
     api
       .patch(`/comments/${comment_id}`, data)
-      .then((_) => setOpenModalEditComment(false))
+      .then((_) => setOpenModal(false))
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
   };
 
   return (
     <Container onSubmit={handleSubmit(onSubmitFunction)}>
-      <HeaderModal
-        title="Editar comentário"
-        setCloseModal={setOpenModalEditComment}
-      />
+      <HeaderModal title="Editar comentário" setCloseModal={setOpenModal} />
 
       <TextArea
         defaultValue={comment?.content}
@@ -73,19 +62,14 @@ const ModalEditComment = ({
       />
 
       <div className="divButtons">
-        <Button
-          color="blue"
-          size="193px"
-          type="submit"
-          disabled={load}
-        >
+        <Button color="blue" size="193px" type="submit" disabled={load}>
           {load ? "Salvando..." : "Salvar alteração"}
         </Button>
         <Button
           color="grey-6"
           size="126px"
           type="button"
-          onClick={() => setOpenModalEditComment(false)}
+          onClick={() => setOpenModal(false)}
         >
           Cancelar
         </Button>

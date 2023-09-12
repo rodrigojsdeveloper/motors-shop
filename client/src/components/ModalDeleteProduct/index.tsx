@@ -5,17 +5,14 @@ import { useContext, useState } from "react";
 import { Container } from "./style";
 import { Button } from "../Button";
 
-const ModalDeleteProduct = ({
-  setOpenModalDelete,
-  productId,
-}: IModalDelete) => {
+const ModalDeleteProduct = ({ setOpenModal, productId }: IModalDelete) => {
   const { handleDeleteProduct } = useContext(ProductContext);
 
   const [load, setLoad] = useState<boolean>(false);
 
   return (
     <Container>
-      <HeaderModal title="Excluir anúncio" setCloseModal={setOpenModalDelete} />
+      <HeaderModal title="Excluir anúncio" setCloseModal={setOpenModal} />
 
       <div>
         <h3>Tem certeza que deseja remover este anúncio?</h3>
@@ -30,7 +27,7 @@ const ModalDeleteProduct = ({
             size="126px"
             color="grey-6"
             type="button"
-            onClick={() => setOpenModalDelete(false)}
+            onClick={() => setOpenModal(false)}
           >
             Cancelar
           </Button>
@@ -39,7 +36,7 @@ const ModalDeleteProduct = ({
             color="red"
             type="button"
             onClick={() =>
-              handleDeleteProduct(setLoad, productId, setOpenModalDelete)
+              handleDeleteProduct(setLoad, productId, setOpenModal)
             }
             disabled={load}
           >
