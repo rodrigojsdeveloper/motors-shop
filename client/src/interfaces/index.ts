@@ -18,7 +18,7 @@ export interface InputProps {
 
 export interface IButtonProps {
   size:
-    | "53px"
+    | "47px"
     | "80px"
     | "100px"
     | "126px"

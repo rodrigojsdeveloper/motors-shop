@@ -18,8 +18,30 @@ const Container = styled.header`
     font-weight: bold;
   }
 
-  & > svg {
+  & > div {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
+
+    transition: all 0.2s ease-in-out 0s;
+    border-radius: var(--border-radius-50);
+
+    &:hover {
+      background-color: var(--shadow-hover-modal);
+
+      path {
+        stroke: var(--grey2);
+      }
+    }
+
+    &:active {
+      background-color: var(--shadow-active-modal);
+    }
   }
 `;
 

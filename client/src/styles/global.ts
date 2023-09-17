@@ -67,6 +67,9 @@ export default createGlobalStyle`
 		--shadow8: rgba(0, 0, 0, 0.5);
 		--shadow9: rgba(0, 0, 0, 0.71);
 
+		--shadow-hover-modal: rgba(224, 224, 224, 0.4);
+		--shadow-active-modal: rgba(224, 224, 224, 0.5);
+
 		// Transparent
 		--transparent: transparent;
 

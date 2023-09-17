@@ -24,10 +24,12 @@ const Container = styled.button<IButtonStyledProps>`
 
   ${({ size }) => {
     switch (size) {
-      case "53px":
+      case "47px":
         return css`
-          height: 50px;
-          max-width: 53px;
+          height: 47px;
+          max-width: 47px;
+
+          padding: 8px;
         `;
 
       case "80px":
@@ -147,6 +149,11 @@ const Container = styled.button<IButtonStyledProps>`
         return css`
           color: var(--white-fixed);
           background-color: var(--grey1);
+          border: 2px solid var(--grey1);
+
+          &:hover {
+            background-color: var(--transparent);
+          }
         `;
 
       case "grey-6":
