@@ -99,13 +99,5 @@ a flag `-d` é para rodar o projeto em 'background' deixando o terminal livre pa
 
 Com o projeto rodando acesse `http://localhost:3000/api/docs` para ver a documentação
 
-## Desenvolvedor
-
-<div>
-  <a href="https://www.linkedin.com/in/rodrigo-de-jesus-silva" target="_blank">
-		<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-	</a>
-	<a href="mailto:rodrigojsdeveloper@gmail.com" rel="noreferrer" target="_blank">
-	  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white">
-	</a>
-</div>
+<br/>
+<p align="center">Feito por <a href="https://www.linkedin.com/in/rodrigo-de-jesus-silva/">Rodrigo Silva</a></p>
