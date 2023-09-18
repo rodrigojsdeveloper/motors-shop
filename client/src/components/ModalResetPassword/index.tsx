@@ -49,7 +49,7 @@ const ModalResetPassword = ({ setOpenModal }: IOpenModal) => {
         <div className="divButtons">
           <Button
             color="grey-6"
-            size="262px"
+            size="126px"
             type="button"
             onClick={() => setOpenModal(false)}
           >

@@ -24,7 +24,7 @@ const Container = styled.div`
       width: 100%;
 
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
 
       padding-top: 25px;

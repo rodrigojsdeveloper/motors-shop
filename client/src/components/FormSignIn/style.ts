@@ -37,7 +37,7 @@ const Container = styled.form`
     line-height: 24px;
 
     cursor: pointer;
-    padding: 10px 0 20px 0;
+    margin: 9px 0 21px 0;
 
     :hover {
       text-decoration: underline;
