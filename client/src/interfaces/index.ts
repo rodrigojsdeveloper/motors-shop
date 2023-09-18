@@ -251,6 +251,12 @@ export interface IUserContextData {
     data: any,
     setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
+  handleResetPassword: (
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>,
+    data: any,
+    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
+    userId: string | undefined
+  ) => void;
 }
 
 export interface IUserProductsList {

@@ -40,11 +40,30 @@ export const UserContextProvider = ({ children }: IChildren) => {
         .catch((error) => console.error(error));
     }, [handleEditUser]);
 
+  const handleResetPassword = (
+    setLoad: React.Dispatch<React.SetStateAction<boolean>>,
+    data: any,
+    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
+    userId: string | undefined
+  ) => {
+    setLoad(true);
+
+    api
+      .get(`/users/email/${data.email}`)
+      .then((res) => {
+        userId = res.data.id;
+        setOpenModal(true);
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoad(false));
+  };
+
   return (
     <UserContext.Provider
       value={{
         user,
         handleEditUser,
+        handleResetPassword,
       }}
     >
       {children}

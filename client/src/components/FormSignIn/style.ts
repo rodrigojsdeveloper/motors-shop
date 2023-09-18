@@ -36,6 +36,7 @@ const Container = styled.form`
     font-size: 14px;
     line-height: 24px;
 
+    cursor: pointer;
     padding: 10px 0 20px 0;
 
     :hover {
@@ -45,7 +46,7 @@ const Container = styled.form`
 
   & > small {
     height: 72px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;

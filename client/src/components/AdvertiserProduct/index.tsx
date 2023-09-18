@@ -1,12 +1,12 @@
 import { ModalDeleteProduct } from "../ModalDeleteProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
+import { ModalEditProduct } from "../ModalEditProduct";
 import { ModalBackground } from "../ModalBackground";
 import { PriceProduct } from "../PriceProduct";
 import { TitleProduct } from "../TitleProduct";
 import { ImageProduct } from "../ImageProduct";
 import { YearProduct } from "../YearProduct";
 import { IProduct } from "../../interfaces";
-import { ModalEditProduct } from "../ModalEditProduct";
 import { KmProduct } from "../KmProduct";
 import { Link } from "react-router-dom";
 import { Container } from "./style";
