@@ -17,6 +17,13 @@ export const ProductContextProvider = ({ children }: IChildren) => {
 
   const [isLoadingAdvertiser, setIsLoadingAdvertiser] = useState<boolean>(true);
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const [disabledNextPage, setDisabledNextPage] = useState<boolean>(false);
+
+  const [disabledPreviousPage, setDisabledPreviousPage] =
+    useState<boolean>(true);
+
   useEffect(() => {
     api
       .get("/products")
@@ -128,6 +135,27 @@ export const ProductContextProvider = ({ children }: IChildren) => {
     return product;
   };
 
+  const productsPerPage = 18;
+
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const endIndex = startIndex + productsPerPage;
+
+  const paginatedProducts = products.slice(startIndex, endIndex);
+
+  const handleNextPage = () => {
+    if (!disabledNextPage) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scroll({ top: 0 });
+  };
+
+  const handlePreviousPage = () => {
+    if (!disabledPreviousPage) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -139,6 +167,15 @@ export const ProductContextProvider = ({ children }: IChildren) => {
         handleEditProduct,
         handleDeleteProduct,
         handleGetProduct,
+        disabledNextPage,
+        disabledPreviousPage,
+        handleNextPage,
+        handlePreviousPage,
+        setDisabledNextPage,
+        setDisabledPreviousPage,
+        currentPage,
+        productsPerPage,
+        paginatedProducts,
       }}
     >
       {children}

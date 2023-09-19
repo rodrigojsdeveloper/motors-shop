@@ -1,17 +1,20 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-  padding: 100px 50px;
+const Container = styled.menu`
+  width: 100%;
+
+  padding: 62.5px 20px;
 
   & > menu {
+    width: 100%;
+    max-width: 1440px;
+
     display: flex;
-    flex-direction: row;
-
+    justify-content: center;
     flex-wrap: wrap;
-  }
 
-  @media (max-width: 1024px) {
-    padding: 50px 25px;
+    gap: 40px;
+    margin: 0 auto;
   }
 `;
 

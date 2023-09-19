@@ -6,7 +6,7 @@ const productSchema: SchemaOf<IProduct> = yup.object().shape({
   brand: yup.string().required(),
   model: yup.string().required(),
   year: yup.number().required().typeError("year must be a number").integer(),
-  fuel: yup.mixed().oneOf(["Gasolina", "Etanol"]).required(),
+  fuel: yup.mixed().oneOf(["gasoline", "ethanol"]).required(),
   kilometers: yup
     .number()
     .required()

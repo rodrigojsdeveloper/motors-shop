@@ -83,7 +83,7 @@ const product: IProduct = {
   brand: "BMW",
   model: "X5",
   year: 2023,
-  fuel: "Gasolina",
+  fuel: "gasoline",
   kilometers: 0,
   color: "white",
   fipe: 50000,

@@ -241,6 +241,15 @@ export interface IProductContextData {
     setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
   ) => void;
   handleGetProduct: (productId: string) => IProductProps;
+  disabledNextPage: boolean;
+  disabledPreviousPage: boolean;
+  handleNextPage: () => void;
+  handlePreviousPage: () => void;
+  setDisabledNextPage: React.Dispatch<React.SetStateAction<boolean>>;
+  setDisabledPreviousPage: React.Dispatch<React.SetStateAction<boolean>>;
+  currentPage: number;
+  productsPerPage: number;
+  paginatedProducts: Array<IProductProps>;
 }
 
 export interface IUserContextData {
@@ -267,4 +276,16 @@ export interface IUserProductsList {
 export interface IsPublishedEditProps {
   setIsPublished: React.Dispatch<React.SetStateAction<boolean>>;
   is_published: boolean;
+}
+
+export interface ISelectProps {
+  name: string;
+  register: UseFormRegister<FieldValues>;
+}
+
+export interface IButtons {
+  disabledPreviousPage: boolean;
+  disabledNextPage: boolean;
+  handleNextPage: () => void;
+  handlePreviousPage: () => void;
 }

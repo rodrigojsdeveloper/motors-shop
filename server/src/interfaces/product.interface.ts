@@ -2,7 +2,7 @@ interface IProduct {
   brand: string;
   model: string;
   year: number;
-  fuel: "Gasolina" | "Etanol";
+  fuel: "gasoline" | "ethanol";
   kilometers: number;
   color: string;
   fipe: number;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.img`
-  width: 312px;
+  width: 100%;
+  max-width: 312px;
   height: 152px;
   background-color: var(--grey7);
   object-fit: contain;

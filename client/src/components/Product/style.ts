@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 312px;
+  width: 100%;
+  max-width: 312px;
   height: 350px;
-  margin: 0 40px 40px 0;
 
   .divKmYearPrice,
   .divKmYearPrice :where(div) {

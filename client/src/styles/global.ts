@@ -83,7 +83,7 @@ export default createGlobalStyle`
 		background-color: var(--white-fixed);
 	}
 
-	button, a, input[type="date"] {
+	button, a, select, input[type="date"] {
 		cursor: pointer; 
 	}
 

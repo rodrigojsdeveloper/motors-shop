@@ -9,6 +9,7 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
+import { Select } from "../Select";
 
 const ModalCreateProduct = ({ setOpenModal }: IOpenModal) => {
   const { handlePostProduct } = useContext(ProductContext);
@@ -74,12 +75,7 @@ const ModalCreateProduct = ({ setOpenModal }: IOpenModal) => {
             placeholder="2020"
             type="number"
           />
-          <Input
-            label="Combustível"
-            name="fuel"
-            register={register}
-            placeholder="Gasolina/Etanol"
-          />
+          <Select name="fuel" register={register} />
         </div>
 
         <div className="divInputs">
