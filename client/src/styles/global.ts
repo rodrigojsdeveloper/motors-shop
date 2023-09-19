@@ -117,4 +117,33 @@ export default createGlobalStyle`
 			margin-right: 11px;
 		}
 	}
+
+	.divButtons {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+
+      padding-top: 20px;
+
+      & > button:nth-child(1) {
+        margin-right: 11px;
+      }
+
+      @media (max-width: 425px) {
+        flex-direction: column-reverse;
+
+        & > button {
+					max-width: unset;
+        }
+				
+        & > button:nth-child(1) {
+					margin-right: 0;
+				}
+
+        & > button:nth-child(2) {
+          margin-bottom: 10px;
+        }
+      }
+    }
 `;

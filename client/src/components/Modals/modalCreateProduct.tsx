@@ -50,7 +50,7 @@ const ModalCreateProduct = ({ setOpenModal }: IOpenModal) => {
       <HeaderModal title="Criar anúncio" setCloseModal={setOpenModal} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <h4>Informações do veículo</h4>
+        <h3>Informações do veículo</h3>
 
         <Input
           label="Marca"

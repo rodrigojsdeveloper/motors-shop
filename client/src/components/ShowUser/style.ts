@@ -59,9 +59,7 @@ const Container = styled.section`
 
   @media (max-width: 425px) {
     margin-top: -182.5px;
-  }
 
-  @media (max-width: 375px) {
     & > div:nth-child(2) {
       flex-direction: column;
       align-items: unset;

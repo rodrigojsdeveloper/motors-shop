@@ -57,7 +57,7 @@ const ModalEditProduct = ({
       <HeaderModal title="Editar anúncio" setCloseModal={setOpenModalEdit} />
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <h4>Informações do veículo</h4>
+        <h3>Informações do veículo</h3>
 
         <Input
           label="Marca"

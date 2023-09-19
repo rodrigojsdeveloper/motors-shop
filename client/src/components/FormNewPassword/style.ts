@@ -29,29 +29,6 @@ const Container = styled.form`
       max-width: unset;
     }
   }
-
-  @media (max-width: 265px) {
-    & > h2 {
-      font-size: 20px;
-    }
-
-    & > div {
-      & > div {
-        & > label {
-          font-size: 12px;
-        }
-        & > input {
-          &::placeholder {
-            font-size: 12px;
-          }
-        }
-      }
-    }
-
-    & > button {
-      font-size: 14px;
-    }
-  }
 `;
 
 export { Container };

@@ -1,4 +1,4 @@
-import { ModalCreateProduct } from "../ModalCreateProduct";
+import { ModalCreateProduct } from "../Modals/modalCreateProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
 import { UserContext } from "../../contexts/user.context";
 import { ModalBackground } from "../ModalBackground";

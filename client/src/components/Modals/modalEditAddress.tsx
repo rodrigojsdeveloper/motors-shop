@@ -4,10 +4,10 @@ import { IOpenModal } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
+import { Container } from "./style";
 
 const ModalEditAddress = ({ setOpenModal }: IOpenModal) => {
   const { user, handleEditUser } = useContext(UserContext);

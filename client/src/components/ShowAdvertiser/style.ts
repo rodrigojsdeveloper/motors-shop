@@ -19,7 +19,7 @@ const Container = styled.section`
         font-size: 36px;
       }
     }
-    & > h5 {
+    & > h4 {
       display: none;
     }
   }
@@ -65,15 +65,13 @@ const Container = styled.section`
     padding: 0;
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
     padding: 30px;
   }
 
   @media (max-width: 425px) {
     margin-top: -182.5px;
-  }
 
-  @media (max-width: 375px) {
     & > div:nth-child(2) {
       flex-direction: column;
       align-items: unset;

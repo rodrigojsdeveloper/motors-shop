@@ -17,13 +17,7 @@ const Container = styled.div`
   overflow-y: auto;
 
   @media (max-width: 768px) {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-
-  @media (max-width: 375px) {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 80px 20px;
   }
 `;
 

@@ -1,4 +1,4 @@
-import { ModalResetPassword } from "../ModalResetPassword";
+import { ModalResetPassword } from "../Modals/modalResetPassword";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ModalBackground } from "../ModalBackground";
 import { useNavigate } from "react-router-dom";

@@ -4,7 +4,7 @@ import { ICommentProps, IProductProps } from "../../interfaces";
 import { CreateComment } from "../../components/CreateComment";
 import { ListComments } from "../../components/ListComments";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { ModalPhoto } from "../../components/ModalPhoto";
+import { ModalPhoto } from "../../components/Modals/modalPhoto";
 import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";

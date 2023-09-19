@@ -51,29 +51,31 @@ const ModalEditComment = ({ comment_id, setOpenModal }: IModalEditComment) => {
   };
 
   return (
-    <Container onSubmit={handleSubmit(onSubmitFunction)}>
+    <Container>
       <HeaderModal title="Editar comentário" setCloseModal={setOpenModal} />
 
-      <TextArea
-        defaultValue={comment?.content}
-        register={register}
-        name="description"
-        error={errors.description?.message}
-      />
+      <form onSubmit={handleSubmit(onSubmitFunction)}>
+        <TextArea
+          defaultValue={comment?.content}
+          register={register}
+          name="description"
+          error={errors.description?.message}
+        />
 
-      <div className="divButtons">
-        <Button color="blue" size="193px" type="submit" disabled={load}>
-          {load ? "Salvando..." : "Salvar alteração"}
-        </Button>
-        <Button
-          color="grey-6"
-          size="126px"
-          type="button"
-          onClick={() => setOpenModal(false)}
-        >
-          Cancelar
-        </Button>
-      </div>
+        <div className="divButtons">
+          <Button color="blue" size="193px" type="submit" disabled={load}>
+            {load ? "Salvando..." : "Salvar alteração"}
+          </Button>
+          <Button
+            color="grey-6"
+            size="126px"
+            type="button"
+            onClick={() => setOpenModal(false)}
+          >
+            Cancelar
+          </Button>
+        </div>
+      </form>
     </Container>
   );
 };

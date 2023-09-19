@@ -25,14 +25,8 @@ const Container = styled.footer`
     flex-direction: column;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
     padding: 44px 10px;
-  }
-
-  @media (max-width: 265px) {
-    & > small {
-      font-size: 12px;
-    }
   }
 `;
 

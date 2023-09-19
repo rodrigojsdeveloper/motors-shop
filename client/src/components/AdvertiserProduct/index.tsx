@@ -1,6 +1,6 @@
-import { ModalDeleteProduct } from "../ModalDeleteProduct";
+import { ModalDeleteProduct } from "../Modals/modalDeleteProduct";
 import { DescriptionProduct } from "../DescriptionProduct";
-import { ModalEditProduct } from "../ModalEditProduct";
+import { ModalEditProduct } from "../Modals/modalEditProduct";
 import { ModalBackground } from "../ModalBackground";
 import { PriceProduct } from "../PriceProduct";
 import { TitleProduct } from "../TitleProduct";

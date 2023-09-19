@@ -1,6 +1,6 @@
-import { ModalEditAddress } from "../ModalEditAddress";
+import { ModalEditAddress } from "../Modals/modalEditAddress";
 import { ModalBackground } from "../ModalBackground";
-import { ModalEditUser } from "../ModalEditUser";
+import { ModalEditUser } from "../Modals/modalEditUser";
 import { IUserProps } from "../../interfaces";
 import { useEffect, useState } from "react";
 import { AvatarUser } from "../AvatarUser";

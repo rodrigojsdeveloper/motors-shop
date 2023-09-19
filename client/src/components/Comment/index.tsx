@@ -1,5 +1,5 @@
 import { IComment, IUserProps } from "../../interfaces";
-import { ModalEditComment } from "../ModalEditComment";
+import { ModalEditComment } from "../Modals/modalEditComment";
 import { ModalBackground } from "../ModalBackground";
 import { showDate } from "../../utils/dateCreated";
 import { useEffect, useState } from "react";

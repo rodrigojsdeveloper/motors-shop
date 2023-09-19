@@ -14,7 +14,7 @@ const ModalDeleteProduct = ({ setOpenModal, productId }: IModalDelete) => {
     <Container>
       <HeaderModal title="Excluir anúncio" setCloseModal={setOpenModal} />
 
-      <div>
+      <div className="modalDelete">
         <h3>Tem certeza que deseja remover este anúncio?</h3>
 
         <p>
@@ -22,7 +22,7 @@ const ModalDeleteProduct = ({ setOpenModal, productId }: IModalDelete) => {
           anúncio e removerá esse produto do seu servidor.
         </p>
 
-        <div>
+        <div className="divButtons">
           <Button
             size="126px"
             color="grey-6"
