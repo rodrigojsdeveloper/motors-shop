@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IProductProps, IProductContextData, IChildren } from "../interfaces";
+import { AxiosResponse } from "axios";
 
 export const ProductContext = createContext({} as IProductContextData);
 
@@ -23,6 +24,8 @@ export const ProductContextProvider = ({ children }: IChildren) => {
 
   const [disabledPreviousPage, setDisabledPreviousPage] =
     useState<boolean>(true);
+
+  const [editedProducts, setEditedProducts] = useState<IProductProps[]>([]);
 
   useEffect(() => {
     api
@@ -85,7 +88,19 @@ export const ProductContextProvider = ({ children }: IChildren) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => setOpenModal(false))
+      .then((res) => {
+        const editedProduct = res.data;
+
+        setOpenModal(false);
+
+        const index = products.findIndex((p) => p.id === editedProduct.id);
+
+        const updatedProducts = [...products];
+        updatedProducts[index] = editedProduct;
+
+        setProducts(updatedProducts);
+        setEditedProducts([...editedProducts, editedProduct]);
+      })
       .catch((error) => console.error(error))
       .finally(() => setLoad(false));
 

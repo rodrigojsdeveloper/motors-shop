@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 312px;
-  height: 356px;
-  margin-right: 40px;
+  width: 100%;
+  max-width: 312px;
 
   .divKmYearPrice,
   .divKmYearPrice :where(div) {
@@ -59,10 +58,14 @@ const Container = styled.div`
         color: var(--grey10);
       }
     }
-  }
 
-  @media (max-width: 425px) {
-    margin-right: 12px;
+    @media (max-width: 425px) {
+      flex-direction: row;
+
+      & > button {
+        margin-right: 11px;
+      }
+    }
   }
 `;
 

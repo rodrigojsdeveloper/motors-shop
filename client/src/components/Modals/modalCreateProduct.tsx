@@ -1,5 +1,6 @@
 import { ProductContext } from "../../contexts/product.context";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Select } from "../Selects/selectCreate";
 import { IOpenModal } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
@@ -9,7 +10,6 @@ import { Container } from "./style";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import * as yup from "yup";
-import { Select } from "../Select";
 
 const ModalCreateProduct = ({ setOpenModal }: IOpenModal) => {
   const { handlePostProduct } = useContext(ProductContext);
@@ -20,7 +20,7 @@ const ModalCreateProduct = ({ setOpenModal }: IOpenModal) => {
     brand: yup.string().required(),
     model: yup.string().required(),
     year: yup.number().required().typeError("year must be a number").integer(),
-    fuel: yup.mixed().oneOf(["Gasolina", "Etanol"]).required(),
+    fuel: yup.mixed().oneOf(["gasoline", "ethanol"]).required(),
     kilometers: yup
       .number()
       .required()

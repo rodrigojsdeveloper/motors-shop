@@ -85,7 +85,7 @@ export interface IProductProps {
   brand: string;
   model: string;
   year: number;
-  fuel: "Gasolina" | "Etanol";
+  fuel: "gasoline" | "ethanol";
   kilometers: number;
   color: string;
   fipe: number;
@@ -281,6 +281,10 @@ export interface IsPublishedEditProps {
 export interface ISelectProps {
   name: string;
   register: UseFormRegister<FieldValues>;
+}
+
+export interface ISelectEditProps extends ISelectProps {
+  defaultValue: string | number | readonly string[];
 }
 
 export interface IButtons {

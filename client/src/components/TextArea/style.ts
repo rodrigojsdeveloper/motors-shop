@@ -17,19 +17,19 @@ const Container = styled.div`
   }
 
   & > textarea {
-    background-color: var(--transparent);
     width: 100%;
-
+    height: 80px;
+    
     padding: 15px;
-
+    
     border: 2px solid var(--grey7);
     border-radius: var(--border-radius);
-
+    background-color: var(--transparent);
+    
     font-weight: 400;
     font-size: 16px;
 
     transition: 0.5s;
-    height: 80px;
 
     &::placeholder {
       color: var(--grey3);

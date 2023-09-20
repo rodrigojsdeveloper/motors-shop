@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 312px;
+  width: 100%;
+  max-width: 312px;
   height: 350px;
-  margin-right: 40px;
 
   & > div:nth-child(1) {
     .active,
@@ -53,10 +53,6 @@ const Container = styled.div`
       border: none;
       cursor: default;
     }
-  }
-
-  @media (max-width: 425px) {
-    margin-right: 12px;
   }
 `;
 

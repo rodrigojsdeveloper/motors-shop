@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  margin: 20px auto 0 auto;
+  margin: 35px auto 0 auto;
 
   & > button {
     padding: 8px;

@@ -1,6 +1,7 @@
 import { ProductContext } from "../../contexts/product.context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IsPublishedEdit } from "../IsPublishedEdit";
+import { SelectEdit } from "../Selects/selectEdit";
 import { IModalEdit } from "../../interfaces";
 import { HeaderModal } from "../HeaderModal";
 import { useContext, useState } from "react";
@@ -26,7 +27,7 @@ const ModalEditProduct = ({
     brand: yup.string().required(),
     model: yup.string().required(),
     year: yup.number().required().typeError("year must be a number").integer(),
-    fuel: yup.mixed().oneOf(["Gasolina", "Etanol"]).required(),
+    fuel: yup.mixed().oneOf(["gasoline", "ethanol"]).required(),
     kilometers: yup
       .number()
       .required()
@@ -84,11 +85,9 @@ const ModalEditProduct = ({
             type="number"
             defaultValue={product.year}
           />
-          <Input
-            label="Combustível"
-            name="fuel"
+          <SelectEdit
             register={register}
-            placeholder="Gasolina/Etanol"
+            name="fuel"
             defaultValue={product.fuel}
           />
         </div>

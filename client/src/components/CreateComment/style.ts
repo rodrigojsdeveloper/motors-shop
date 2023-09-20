@@ -30,7 +30,7 @@ const Container = styled.div`
     }
 
     & > textarea {
-      padding-top: 10px;
+      padding: 2px;
 
       width: 100%;
       height: 100%;

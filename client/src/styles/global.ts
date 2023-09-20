@@ -101,10 +101,6 @@ export default createGlobalStyle`
 		-moz-appearance:textfield;
 	}
 
-	&::-webkit-scrollbar {
-		display: none;
-	}
-
 	.divInputs {
 		width: 100%;
 
@@ -119,31 +115,44 @@ export default createGlobalStyle`
 	}
 
 	.divButtons {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: end;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
 
-      padding-top: 20px;
+		padding-top: 20px;
 
-      & > button:nth-child(1) {
-        margin-right: 11px;
-      }
+		& > button:nth-child(1) {
+			margin-right: 11px;
+		}
 
-      @media (max-width: 425px) {
-        flex-direction: column-reverse;
+		@media (max-width: 425px) {
+			flex-direction: column-reverse;
 
-        & > button {
-					max-width: unset;
-        }
-				
-        & > button:nth-child(1) {
-					margin-right: 0;
-				}
+			& > button {
+				max-width: unset;
+			}
+			
+			& > button:nth-child(1) {
+				margin-right: 0;
+			}
 
-        & > button:nth-child(2) {
-          margin-bottom: 10px;
-        }
-      }
-    }
+			& > button:nth-child(2) {
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	::-webkit-scrollbar-track {
+		background-color: var(--transparent);
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 0.5px;
+		background-color: var(--grey4);
+	}
 `;
