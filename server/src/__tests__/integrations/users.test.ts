@@ -39,6 +39,7 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("birthdate");
     expect(response.body).toHaveProperty("is_seller");
     expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("color");
     expect(response.body).toHaveProperty("date_joined");
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
@@ -79,6 +80,7 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("birthdate");
     expect(response.body).toHaveProperty("is_seller");
     expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("color");
     expect(response.body).toHaveProperty("date_joined");
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
@@ -112,6 +114,7 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("birthdate");
     expect(response.body).toHaveProperty("is_seller");
     expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("color");
     expect(response.body).toHaveProperty("date_joined");
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");
@@ -152,6 +155,7 @@ describe("Testing all user routes", () => {
     expect(response.body).toHaveProperty("birthdate");
     expect(response.body).toHaveProperty("is_seller");
     expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("color");
     expect(response.body).toHaveProperty("date_joined");
     expect(response.body).toHaveProperty("updated_at");
     expect(response.body).toHaveProperty("products");

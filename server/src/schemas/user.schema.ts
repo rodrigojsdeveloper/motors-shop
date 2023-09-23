@@ -8,6 +8,7 @@ const userSchema: SchemaOf<IUser> = yup.object().shape({
   cellphone: yup.string().required(),
   birthdate: yup.string().required(),
   description: yup.string().required(),
+  color: yup.string().required(),
   is_seller: yup.boolean().required(),
   email: yup.string().required().email("Invalid email"),
   password: yup

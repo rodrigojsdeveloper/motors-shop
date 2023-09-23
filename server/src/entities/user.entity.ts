@@ -36,6 +36,9 @@ class User {
   description: string;
 
   @Column()
+  color: string;
+
+  @Column()
   birthdate: string;
 
   @Column()

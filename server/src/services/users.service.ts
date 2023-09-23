@@ -28,6 +28,7 @@ class UsersService {
     newUser.birthdate = user.birthdate;
     newUser.is_seller = user.is_seller;
     newUser.description = user.description;
+    newUser.color = user.color;
     newUser.comments = [];
     newUser.products = [];
 

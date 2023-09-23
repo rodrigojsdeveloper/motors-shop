@@ -29,6 +29,7 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("birthdate");
     expect(result).toHaveProperty("is_seller");
     expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("color");
     expect(result).toHaveProperty("date_joined");
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
@@ -54,6 +55,7 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("birthdate");
     expect(result).toHaveProperty("is_seller");
     expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("color");
     expect(result).toHaveProperty("date_joined");
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
@@ -75,6 +77,7 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("birthdate");
     expect(result).toHaveProperty("is_seller");
     expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("color");
     expect(result).toHaveProperty("date_joined");
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");
@@ -99,6 +102,7 @@ describe("Testing all service user methods", () => {
     expect(result).toHaveProperty("birthdate");
     expect(result).toHaveProperty("is_seller");
     expect(result).toHaveProperty("description");
+    expect(result).toHaveProperty("color");
     expect(result).toHaveProperty("date_joined");
     expect(result).toHaveProperty("updated_at");
     expect(result).toHaveProperty("products");

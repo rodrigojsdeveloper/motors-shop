@@ -10,6 +10,7 @@ interface IUser {
   birthdate: string;
   is_seller: boolean;
   description: string;
+  color: string;
 }
 
 export { IUser };
