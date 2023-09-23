@@ -23,7 +23,7 @@ const UserProductsProduct = ({ product, user }: IUserProductsProduct) => {
       <TitleProduct title={product.model} />
       <DescriptionProduct description={product.description} />
 
-      <AvatarUser username={user.name} />
+      <AvatarUser username={user.name} color={user.color} />
 
       <div className="divKmYearPrice">
         <div>

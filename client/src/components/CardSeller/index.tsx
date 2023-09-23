@@ -12,7 +12,7 @@ const CardSeller = ({ user }: IUser) => {
   return (
     <Container>
       <div>
-        <AvatarUser username={user.name} />
+        <AvatarUser username={user.name}  color={user.color} />
         <h4>{user.name}</h4>
         <p>{user.description}</p>
 

@@ -62,7 +62,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   return (
     <Container>
-      {token && <AvatarUser username={user.name} />}
+      {token && <AvatarUser username={user.name}  color={user.color} />}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <textarea

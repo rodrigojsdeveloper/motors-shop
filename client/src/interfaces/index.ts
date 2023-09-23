@@ -66,6 +66,7 @@ export interface IUserProps {
   birthdate: string;
   is_seller: boolean;
   description: string;
+  color: string;
   address: IAddressProps;
   products: [];
 }
@@ -147,6 +148,7 @@ export interface IDescription {
 
 export interface IAvatarUser {
   username: string;
+  color: string;
 }
 
 export interface IYearProduct {

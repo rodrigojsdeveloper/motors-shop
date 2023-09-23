@@ -48,8 +48,8 @@ export const ProductContextProvider = ({ children }: IChildren) => {
         .finally(() => setIsLoadingAdvertiser(false));
     }, []);
 
-  const addProduct = (product: IProductProps) =>
-    setProducts([...products, product]);
+  const addProductAdvertiser = (product: IProductProps) =>
+    setAdvertiserProducts([...advertiserProducts, product]);
 
   const handlePostProduct = (
     setLoad: React.Dispatch<React.SetStateAction<boolean>>,
@@ -65,7 +65,7 @@ export const ProductContextProvider = ({ children }: IChildren) => {
         },
       })
       .then((res) => {
-        addProduct(res.data);
+        addProductAdvertiser(res.data);
 
         setOpenModal(false);
       })

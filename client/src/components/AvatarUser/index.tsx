@@ -1,14 +1,14 @@
 import { IAvatarUser } from "../../interfaces";
 import { Container, Content } from "./style";
 
-const AvatarUser = ({ username }: IAvatarUser) => {
+const AvatarUser = ({ username, color }: IAvatarUser) => {
   if (typeof username !== "string") {
     username = "";
   }
 
   return (
     <Container>
-      <Content>
+      <Content style={{ backgroundColor: color }}>
         {username.split(" ").length == 1 ? (
           <p>{username[0]}</p>
         ) : (

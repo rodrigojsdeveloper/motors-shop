@@ -33,13 +33,13 @@ const Comment = ({ comment }: IComment) => {
         <ModalBackground>
           <ModalEditComment
             comment_id={comment.id}
-            setOpenModalEditComment={setOpenModalEditComment}
+            setOpenModal={setOpenModalEditComment}
           />
         </ModalBackground>
       ) : null}
       <Container>
         <div>
-          <AvatarUser username={comment.user.name} />
+          <AvatarUser username={comment.user.name}  color={comment.user.color} />
 
           <p>{showDate(comment.created_at)}</p>
 

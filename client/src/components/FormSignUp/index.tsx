@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IOpenModal } from "../../interfaces";
+import { getColor } from "../../utils/colors";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/api";
 import { TextArea } from "../TextArea";
@@ -66,6 +67,7 @@ const FormSignUp = ({ setOpenModal }: IOpenModal) => {
   const onSubmitFunction = (data: any) => {
     setLoad(true);
 
+    data.color = getColor();
     data.is_seller = buyerOrAdvertiser;
 
     const address = {

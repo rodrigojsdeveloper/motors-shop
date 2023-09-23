@@ -6,7 +6,7 @@ import { Button } from "../Button";
 const UserDetails = ({ user }: IUser) => {
   return (
     <Container>
-      <AvatarUser username={user.name} />
+      <AvatarUser username={user.name}  color={user.color} />
 
       <div>
         <h2>{user.name}</h2>

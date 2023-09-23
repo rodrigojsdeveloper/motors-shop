@@ -23,7 +23,7 @@ const Product = ({ product }: IProduct) => {
       <TitleProduct title={product.model} />
       <DescriptionProduct description={product.description} />
 
-      <AvatarUser username={product.user.name} />
+      <AvatarUser username={product.user.name} color={product.user.color} />
 
       <div className="divKmYearPrice">
         <div>

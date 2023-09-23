@@ -6,7 +6,7 @@ import { Container } from "./style";
 const ShowUser = ({ user }: IUser) => {
   return (
     <Container>
-      <AvatarUser username={user?.name} />
+      <AvatarUser username={user?.name}  color={user?.color} />
 
       <div>
         <h3>{user?.name}</h3>
