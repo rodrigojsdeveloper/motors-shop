@@ -78,8 +78,6 @@ const Container = styled.aside`
       justify-content: center;
       align-items: center;
 
-      transition: 0.5s;
-
       background-color: var(--grey0);
       border: 1.5px solid var(--grey0);
       border-radius: var(--border-radius);

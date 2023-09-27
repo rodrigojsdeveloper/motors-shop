@@ -34,6 +34,10 @@ export default createGlobalStyle`
 		--grey10: #FDFDFD;
 		--white-fixed: #FFFFFF;
 
+		// Gray Scale
+		--gray0: rgb(248, 248, 248);
+		--gray1: rgb(241, 241, 242);
+
 		// FeedBack
 		--alert1: #CD2B31;
 		--alert2: #FDD8D8;
@@ -67,8 +71,12 @@ export default createGlobalStyle`
 		--shadow8: rgba(0, 0, 0, 0.5);
 		--shadow9: rgba(0, 0, 0, 0.71);
 
-		--shadow-hover-modal: rgba(224, 224, 224, 0.4);
-		--shadow-active-modal: rgba(224, 224, 224, 0.5);
+		// Shadow hover and active
+		--shadow-hover-button-exit: rgba(224, 224, 224, 0.4);
+		--shadow-active-button-exit: rgba(224, 224, 224, 0.5);
+		
+		--shadow-hover-link-modal: rgba(22, 24, 35, 0.03);
+		--shadow-active-link-modal: rgba(22, 24, 35, 0.06);
 
 		// Transparent
 		--transparent: transparent;
@@ -84,6 +92,7 @@ export default createGlobalStyle`
 	}
 
 	button, a, select, input[type="date"] {
+		transition: 0.5s;
 		cursor: pointer; 
 	}
 
@@ -153,6 +162,6 @@ export default createGlobalStyle`
 
 	::-webkit-scrollbar-thumb {
 		border-radius: 0.5px;
-		background-color: var(--grey4);
+		background-color: var(--grey5);
 	}
 `;

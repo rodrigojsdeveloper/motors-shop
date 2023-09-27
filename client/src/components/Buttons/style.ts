@@ -12,7 +12,6 @@ const Container = styled.div`
 
   & > button {
     padding: 8px;
-    transition: 0.5s all;
 
     display: flex;
     justify-content: center;
@@ -27,7 +26,7 @@ const Container = styled.div`
     }
 
     &:hover {
-      background-color: var(--shadow-hover-modal);
+      background-color: var(--shadow-hover-button-exit);
     }
 
     &:disabled:hover {
@@ -35,7 +34,7 @@ const Container = styled.div`
     }
 
     &:active {
-      background-color: var(--shadow-active-modal);
+      background-color: var(--shadow-active-button-exit);
     }
   }
 `;

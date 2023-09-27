@@ -14,10 +14,9 @@ const Container = styled.button<IButtonStyledProps>`
   line-height: 18px;
   border-radius: var(--border-radius);
 
-  transition: 0.5s;
   padding: 12px 28px;
 
-  :disabled {
+  &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -38,10 +37,10 @@ const Container = styled.button<IButtonStyledProps>`
           max-width: 80px;
         `;
 
-      case "100px":
+      case "120px":
         return css`
           height: 38px;
-          max-width: 100px;
+          max-width: 126px;
         `;
 
       case "126px":
@@ -103,6 +102,11 @@ const Container = styled.button<IButtonStyledProps>`
             border-color: var(--brand3);
             background-color: var(--brand3);
           }
+
+          &:disabled:hover {
+            border-color: var(--brand1);
+            background-color: var(--brand1);
+          }
         `;
 
       case "red":
@@ -117,6 +121,11 @@ const Container = styled.button<IButtonStyledProps>`
             border-color: var(--alert2);
             background-color: var(--alert2);
           }
+
+          &:disabled:hover {
+            border-color: var(--alert3);
+            background-color: var(--alert3);
+          }
         `;
 
       case "light-blue":
@@ -127,6 +136,10 @@ const Container = styled.button<IButtonStyledProps>`
 
           &:hover {
             background-color: var(--brand4);
+          }
+
+          &:disabled:hover {
+            background-color: var(--grey10);
           }
         `;
 
@@ -143,6 +156,12 @@ const Container = styled.button<IButtonStyledProps>`
             border-color: var(--grey1);
             background-color: var(--grey1);
           }
+
+          &:disabled:hover {
+            color: var(--grey0);
+            border-color: var(--grey0);
+            background-color: var(--transparent);
+          }
         `;
 
       case "grey-1":
@@ -154,6 +173,10 @@ const Container = styled.button<IButtonStyledProps>`
           &:hover {
             background-color: var(--transparent);
           }
+
+          &:disabled:hover {
+            background-color: var(--grey1);
+          }
         `;
 
       case "grey-6":
@@ -163,8 +186,13 @@ const Container = styled.button<IButtonStyledProps>`
           border: 1.5px solid var(--grey6);
 
           &:hover {
-            background-color: var(--grey5);
             border-color: var(--grey5);
+            background-color: var(--grey5);
+          }
+
+          &:disabled:hover {
+            border-color: var(--grey6);
+            background-color: var(--grey6);
           }
         `;
 

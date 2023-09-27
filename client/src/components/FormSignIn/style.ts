@@ -65,13 +65,20 @@ const Container = styled.form`
     font-size: 16px;
     line-height: 18px;
 
-    color: var(--grey0);
+    color: var(--grey2);
     border: 2px solid var(--grey4);
     background-color: var(--grey10);
     border-radius: var(--border-radius);
 
-    transition: 0.5s;
     padding: 12px 28px;
+
+    &:hover {
+      background-color: var(--gray0);
+    }
+
+    &:active {
+      background-color: var(--gray1);
+    }
   }
 
   @media (max-width: 425px) {

@@ -56,8 +56,6 @@ const Container = styled.div`
       font-size: 14px;
       color: var(--white-fixed);
 
-      transition: 0.5s;
-
       display: flex;
       justify-content: center;
       align-items: center;

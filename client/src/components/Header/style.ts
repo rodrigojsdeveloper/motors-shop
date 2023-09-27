@@ -40,14 +40,20 @@ const Container = styled.header`
     justify-content: center;
     align-items: center;
 
-    transition: 0.5s;
-
-    border-radius: var(--border-radius);
     color: var(--grey2);
     border: 2px solid var(--grey4);
     background-color: var(--grey10);
+    border-radius: var(--border-radius);
 
     padding: 12px 28px;
+
+    &:hover {
+      background-color: var(--gray0);
+    }
+
+    &:active {
+      background-color: var(--gray1);
+    }
 
     @media (max-width: 768px) {
       max-width: unset;
@@ -55,17 +61,23 @@ const Container = styled.header`
   }
 
   .link {
+    width: 100%;
+
     font-weight: 500;
     font-size: 16px;
     line-height: 28px;
-
     color: var(--grey3);
-    cursor: pointer;
+    text-align: center;
 
     transition: 0.5s;
+    cursor: pointer;
 
-    :hover {
-      color: var(--grey0);
+    &:hover {
+      background-color: var(--shadow-hover-link-modal);
+    }
+
+    &:active {
+      background-color: var(--shadow-active-link-modal);
     }
   }
 

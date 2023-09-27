@@ -68,8 +68,6 @@ const Container = styled.section`
     justify-content: center;
     align-items: center;
 
-    transition: 0.5s;
-
     &:hover {
       background-color: var(--brand3);
       border-color: var(--brand3);

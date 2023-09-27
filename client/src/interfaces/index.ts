@@ -20,7 +20,7 @@ export interface IButtonProps {
   size:
     | "47px"
     | "80px"
-    | "100px"
+    | "120px"
     | "126px"
     | "155.5px"
     | "160px"

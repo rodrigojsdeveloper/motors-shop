@@ -32,7 +32,7 @@ const Container = styled.header`
     border-radius: var(--border-radius-50);
 
     &:hover {
-      background-color: var(--shadow-hover-modal);
+      background-color: var(--shadow-hover-button-exit);
 
       path {
         stroke: var(--grey2);
@@ -40,7 +40,7 @@ const Container = styled.header`
     }
 
     &:active {
-      background-color: var(--shadow-active-modal);
+      background-color: var(--shadow-active-button-exit);
     }
   }
 `;

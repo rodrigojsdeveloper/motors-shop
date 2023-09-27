@@ -46,12 +46,11 @@ const Container = styled.div`
       justify-content: center;
       align-items: center;
 
-      transition: 0.5s;
-
       :disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
+      
       :hover {
         background-color: var(--grey1);
         border-color: var(--grey1);

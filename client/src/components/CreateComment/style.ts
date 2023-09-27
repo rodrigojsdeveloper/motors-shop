@@ -56,9 +56,7 @@ const Container = styled.div`
     }
 
     & > button {
-      font-weight: 600;
       font-size: 14px;
-      max-width: 120px;
     }
 
     @media (max-width: 768px) {

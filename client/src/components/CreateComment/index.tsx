@@ -62,7 +62,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
 
   return (
     <Container>
-      {token && <AvatarUser username={user.name}  color={user.color} />}
+      {token && <AvatarUser username={user.name} color={user.color} />}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <textarea
@@ -75,7 +75,7 @@ const CreateComment = ({ product, ListCommentsFunc }: ICreateComment) => {
           required={true}
         />
         <Button
-          size="100px"
+          size="120px"
           color="blue"
           type="submit"
           disabled={disable ? disable : load}
