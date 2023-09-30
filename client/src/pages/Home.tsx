@@ -5,7 +5,7 @@ import { Header } from "../components/Header";
 import { Banner } from "../components/Banner";
 import { Footer } from "../components/Footer";
 import { Loaded } from "../components/Loaded";
-import { List } from "../components/List";
+import { List } from "../components/Lists/List";
 import React, { useContext } from "react";
 
 const Home = () => {

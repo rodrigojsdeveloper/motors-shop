@@ -1,14 +1,13 @@
 import { ProductContext } from "../../contexts/product.context";
-import { AdvertiserProduct } from "../AdvertiserProduct";
-import { IProductProps } from "../../interfaces";
+import { UserProductsProduct } from "../UserProductsProduct";
+import { IUserProductsList } from "../../interfaces";
 import { EmptyMessage } from "../EmptyMessage";
 import { useContext, useEffect } from "react";
-import { Container } from "../List/style";
+import { Container } from "./style";
 import { Buttons } from "../Buttons";
 
-const AdvertiserList = () => {
+const UserProductsList = ({ products, user }: IUserProductsList) => {
   const {
-    advertiserProducts,
     disabledNextPage,
     disabledPreviousPage,
     handleNextPage,
@@ -22,18 +21,20 @@ const AdvertiserList = () => {
 
   useEffect(() => {
     setDisabledPreviousPage(currentPage === 1);
-    setDisabledNextPage(
-      currentPage * productsPerPage >= advertiserProducts.length
-    );
-  }, [currentPage, advertiserProducts]);
+    setDisabledNextPage(currentPage * productsPerPage >= products.length);
+  }, [currentPage, products]);
 
   return (
     <Container>
-      {advertiserProducts.length > 0 ? (
+      {products.length > 0 ? (
         <>
           <menu>
-            {paginatedProducts.map((product: IProductProps) => (
-              <AdvertiserProduct product={product} key={product.id} />
+            {paginatedProducts.map((product) => (
+              <UserProductsProduct
+                product={product}
+                key={product.id}
+                user={user}
+              />
             ))}
           </menu>
           <Buttons
@@ -44,10 +45,10 @@ const AdvertiserList = () => {
           />
         </>
       ) : (
-        <EmptyMessage message="Não há veículos" />
+        <EmptyMessage message="Não há carros" />
       )}
     </Container>
   );
 };
 
-export { AdvertiserList };
+export { UserProductsList };

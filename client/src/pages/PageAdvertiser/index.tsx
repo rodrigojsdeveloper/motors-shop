@@ -1,5 +1,5 @@
 import { ModalBackground } from "../../components/ModalBackground";
-import { AdvertiserList } from "../../components/AdvertiserList";
+import { AdvertiserList } from "../../components/Lists/AdvertiserList";
 import { ShowAdvertiser } from "../../components/ShowAdvertiser";
 import { ProductContext } from "../../contexts/product.context";
 import { Helmet, HelmetProvider } from "react-helmet-async";

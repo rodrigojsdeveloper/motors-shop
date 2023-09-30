@@ -17,7 +17,7 @@ const SignUp = () => {
   }, [token]);
 
   return (
-    <Layout title="Cadastro">
+    <Layout title="Cadastrar">
       {openModalSuccess ? (
         <ModalBackground>
           <ModalSucessRegister setOpenModal={setOpenModalSuccess} />

@@ -81,6 +81,11 @@ const Container = styled.header`
     }
   }
 
+  .link.login:hover {
+    color: var(--grey2);
+    background-color: var(--transparent);
+  }
+
   .divLogged {
     width: 100%;
     max-width: 185px;

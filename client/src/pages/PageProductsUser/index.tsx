@@ -1,4 +1,4 @@
-import { UserProductsList } from "../../components/UserProductsList";
+import { UserProductsList } from "../../components/Lists/UserProductsList";
 import { ModalBackground } from "../../components/ModalBackground";
 import { IProductProps, IUserProps } from "../../interfaces";
 import { Helmet, HelmetProvider } from "react-helmet-async";

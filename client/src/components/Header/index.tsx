@@ -315,7 +315,7 @@ const Header = () => {
           </div>
         ) : (
           <nav>
-            <Link to="/signin" className="link">
+            <Link to="/signin" className="link login">
               Fazer Login
             </Link>
             <Link to="/signup" className="buttonOut">
@@ -451,7 +451,7 @@ const Header = () => {
               <nav>
                 <Link
                   to="/signin"
-                  className="link"
+                  className="link login"
                   onClick={() => setMenuOpen(false)}
                 >
                   Fazer Login

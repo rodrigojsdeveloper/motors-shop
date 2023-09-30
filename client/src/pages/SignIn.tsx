@@ -13,7 +13,7 @@ const SignIn = () => {
   }, [token]);
 
   return (
-    <Layout title="Iniciar Sessão">
+    <Layout title="Entrar">
       <FormSignIn />
     </Layout>
   );

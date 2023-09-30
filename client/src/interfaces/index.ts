@@ -1,5 +1,4 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { ReactNode } from "react";
 
 export interface InputProps {
   name: string;
