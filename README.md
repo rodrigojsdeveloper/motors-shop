@@ -1,43 +1,53 @@
 <div align="center">
 <h1>Motors Shop</h1>
-<p>
-
-Motors Shop é um projeto de site de vendas de automóveis.
-
-</p>
+<p>Motors Shop é um projeto de site de vendas de automóveis.</p>
 </div>
+<br/>
 
----
+## Clonando o Repositório
 
-## Instalação do Projeto
+Você pode clonar este repositório usando o seguinte comando:
 
-Projeto desenvolvido no backend com Node e no frontend com React.
+```
+git clone https://github.com/rodrigojsdeveloper/motors-shop.git
+```
 
-### 1. Instalação das dependencias
+## Gerenciador de Pacotes
 
-Efetue a criação das dependências com `yarn` nas pastas client e server.
+Este projeto utiliza o Yarn como gerenciador de pacotes. Certifique-se de tê-lo instalado antes de prosseguir. Se ainda não o possui, você pode baixá-lo <a href="https://classic.yarnpkg.com/lang/en/docs/install">aqui</a>.
 
-### 2. Configuração do .env
+### Aviso:
 
-Crie o arquivo `.env` com base no arquivo `.env.example` na pasta server.
+Embora o Yarn seja o gerenciador de pacotes recomendado, você também pode usar o NPM executando os seguintes comandos:
 
-#### Se estiver no Linux, rode esse comando na pasta server
+- Para instalar as dependências: npm install
+- Para iniciar o Motors Shop: npm run dev
+
+## Instalação das Dependências
+
+Execute a instalação das dependências executando `yarn` nas pastas "client" e "server".
+
+## Configuração do .env
+
+Crie um arquivo `.env` com base no arquivo `.env.example` na pasta "server".
+
+#### Para sistemas Linux, você pode usar o seguinte comando:
 
 ```
 cp .env.example .env
 ```
 
-### 3. Iniciando apenas client ou server do projeto no navegador ou insomnia
+## Iniciando o Projeto
 
-#### Powershell ou Bash
+Iniciando o Backend (Server)
 
-Acesse a pasta backend e rode o comando:
+No diretório "server" execute o seguinte comando:
 
 ```
 yarn dev
 ```
 
-e rode uma requisição no insomnia
+Em seguida, faça uma requisição usando o Insomnia ou outra ferramenta similar.
 
 #### Exemplo de requisição - POST
 
@@ -63,13 +73,17 @@ e rode uma requisição no insomnia
 }
 ```
 
-Acesse a pasta client e rode o comando:
+Iniciando o Frontend (Client)
+
+No diretório "client" execute o seguinte comando:
 
 ```
 yarn dev
 ```
 
-e abra o projeto no seu navegador
+Em seguida, abra o projeto em seu navegador.
+
+Acesse o projeto em:
 
 #### Link do projeto
 
@@ -77,27 +91,35 @@ e abra o projeto no seu navegador
 http://localhost:5173
 ```
 
-### 3. Iniciando todo o projeto no docker-compose
+## Iniciando o Projeto no Docker-Compose
 
-Na raiz do projeto rode o comando:
+Primeiro, navegue até a pasta "server" e edite o arquivo .env da seguinte forma:
 
-### Windows
+```
+POSTGRES_HOST=localhost
+
+POSTGRES_HOST=postgres
+```
+
+Agora na raiz do projeto rode o comando:
+
+### Para Windows
 
 ```
 docker-compose up -d
 ```
 
-### Linux
+### Para Linux
 
 ```
 sudo docker-compose up -d
 ```
 
-a flag `-d` é para rodar o projeto em 'background' deixando o terminal livre para uso
+A flag -d executa o projeto em segundo plano, liberando o terminal para outros usos.
 
-### 4. Documentação
+## Documentação
 
-Com o projeto rodando acesse `http://localhost:3000/api/docs` para ver a documentação
+Com o projeto em execução, acesse http://localhost:3000/api/docs para visualizar a documentação.
 
 <br/>
-<p align="center">Feito por <a href="https://www.linkedin.com/in/rodrigo-de-jesus-silva/">Rodrigo Silva</a></p>
+<p align="center">Desenvolvido por <a href="https://www.linkedin.com/in/rodrigo-de-jesus-silva/">Rodrigo Silva</a></p>
